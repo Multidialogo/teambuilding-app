@@ -1,19 +1,20 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+
 from .models import User
 
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField(label = "Email")
-    nickname = forms.CharField(label = "Nickname", required=False)
+    email = forms.EmailField(label="Email")
+    nickname = forms.CharField(label="Nickname", required=False)
 
     class Meta:
         model = User
-        fields = ("nickname", "email", )
+        fields = ("nickname", "email",)
 
 
 class ChangeNicknameForm(forms.ModelForm):
-    nickname = forms.CharField(label = "Nickname", required=False)
+    nickname = forms.CharField(label="Nickname", required=False)
 
     class Meta:
         model = User
