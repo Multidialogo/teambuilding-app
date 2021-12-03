@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Manage events</h2>
+
+<table>
+    <tr>
+      <th>Title</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Description</th>
+    </tr>
+    {% for event in events %}
+    <tr>
+      <td> {{ event.title }}</td>
+      <td> {{ event.start_date }}</td>
+      <td> {{ event.end_date }}</td>
+      <td> {{ event.description }}</td>
+    </tr> 
+    {% endfor %}
+    </table>
+
+{% endblock %}

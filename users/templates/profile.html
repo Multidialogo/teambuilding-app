@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Taste & Purchase - Profile
+
+{% endblock %}
+
+{% block content %}
+
+<h2>Profile</h2>
+
+<p>
+    Your nickname is: {{ user.get_nickname }}. 
+    <a href="/accounts/profile/change_nickname">Edit nickname</a>
+</p>
+
+{% endblock %}

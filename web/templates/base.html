@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Taste & Purchase{% endblock %}</title>
+</head>
+
+<body>
+    <div id="navbar">
+        {% block navbar %}
+        <p>
+            <a href="/">Home</a> |
+            {% if user.is_authenticated %}
+            Events: 
+            <a href="{% url 'create_event' %}">Create</a>
+            <a href="{% url 'manage_own_events' %}">Manage</a>
+            <a href="{% url 'past_events' %}">Past</a>
+            <a href="{% url 'future_events' %}">Future</a>
+            <a href="{% url 'past_events' %}">Purchase</a> |
+            Account: 
+            <a href="/accounts/profile/">Profile</a>
+            <a href="/accounts/logout/">Logout</a>
+            {% else %}
+            Account: 
+            <a href="/accounts/signin/">Log In</a>
+            <a href="/accounts/signup/">Register</a>
+            {% endif %}
+        </p>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
