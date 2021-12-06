@@ -1,6 +1,6 @@
 from django import forms
 
-from events.models import PriceByQuantity
+from products.models import PriceByQuantity
 from orders.models import Order
 
 

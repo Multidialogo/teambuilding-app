@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+
 from events.forms import CreateEventForm
 from events.models import TasteAndPurchaseEvent
 

@@ -4,5 +4,5 @@ from web import settings
 
 
 def home(request):
-    text = settings.SECRET_KEY
+    text = ''
     return render(request, 'welcome.html', {'text': text})

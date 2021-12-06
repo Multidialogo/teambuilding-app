@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
-from events.models import Product
+from products.models import Product
 from orders.forms import PurchaseForm
 
 
