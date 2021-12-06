@@ -9,8 +9,8 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from .forms import RegisterForm, ChangeNicknameForm
-from .models import User
+from users.forms import RegisterForm, ChangeNicknameForm
+from users.models import User
 
 
 def signup(request):
@@ -19,22 +19,28 @@ def signup(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
+
+            # TODO : possibile refactoring
             current_site = get_current_site(request)
             mail_subject = 'Activate your Taste & Purchase account.'
             message = render_to_string(
                 'acc_active_email.html', {
                     'user': user,
                     'domain': current_site.domain,
-                    'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-                    'token':default_token_generator.make_token(user),
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': default_token_generator.make_token(user),
                 }
             )
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
+            # NB: il seguente print serve per testarlo piu' velocemente
             print(message)
-            return HttpResponse('Please confirm your email address ' +
-                'to complete the registration')
+
+            return HttpResponse(
+                'Please confirm your email address '
+                'to complete the registration'
+            )
     else:
         form = RegisterForm()
     return render(request, 'signup.html', {'form': form})
@@ -53,6 +59,7 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
+
 def change_nickname(request):
     if request.method == 'POST':
         form = ChangeNicknameForm(request.POST, instance=request.user)
@@ -64,9 +71,11 @@ def change_nickname(request):
         form = ChangeNicknameForm()
     return render(request, 'change_nickname.html', {'form': form})
 
+
 def logout_view(request):
     logout(request)
     return redirect('home')
+
 
 @login_required
 def profile(request):

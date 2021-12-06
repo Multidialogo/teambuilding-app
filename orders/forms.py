@@ -1,7 +1,8 @@
 from django import forms
 
-from events.models import PriceByQuantity, Product
-from .models import Order
+from events.models import PriceByQuantity
+from orders.models import Order
+
 
 class PurchaseForm(forms.ModelForm):
 
@@ -13,4 +14,5 @@ class PurchaseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         product_id = kwargs.pop('product_id', None)
         super(PurchaseForm, self).__init__(*args, **kwargs)
-        self.fields['priceByQuantity'].queryset = PriceByQuantity.objects.filter(product_id__exact=product_id)
+        self.fields['priceByQuantity'].queryset = PriceByQuantity.objects.filter(
+            product_id__exact=product_id)

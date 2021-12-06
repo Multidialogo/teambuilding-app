@@ -19,6 +19,7 @@ from django.urls import include, path
 
 from web import views
 
+
 urlpatterns = [
     path('accounts/', include('users.urls')),
     path('events/', include('events.urls')),

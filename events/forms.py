@@ -1,5 +1,7 @@
 from django import forms
+
 from .models import Product, TasteAndPurchaseEvent
+
 
 class CreateEventForm(forms.ModelForm):
 
