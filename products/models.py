@@ -4,6 +4,8 @@ from django.core.exceptions import ValidationError
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
+from country_adm_levels.models import Country
+
 
 # TODO : refactor? move somewhere else?
 def validate_zip_code(value):
@@ -19,7 +21,7 @@ class Producer(models.Model):
     name = models.CharField('Name', max_length=50, unique=True)
     email = models.EmailField('Email', blank=True)
     phone = PhoneNumberField('Phone number', blank=True)
-    address_country = CountryField('Country')
+    address_country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name='Country')
     address_zip_code = models.CharField('Zip code', max_length=5, validators=[validate_zip_code])
     address_street = models.CharField('Street', max_length=100)
     address_adm_level_1 = models.CharField('Administrative Level 1', max_length=100, blank=True)

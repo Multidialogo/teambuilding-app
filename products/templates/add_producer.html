@@ -4,7 +4,7 @@
 
 <h2>Add product</h2>
 
-<form method="post">
+<form id="add_producer_form" method="post">
   {% csrf_token %}
   {% for field in form %}
     <p>
@@ -20,5 +20,36 @@
   {% endfor %}
   <button type="submit">Add</button>
 </form>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+  function saveSessionStorage(){
+    sessionStorage.setItem("id_name", $('#id_name').val());
+    sessionStorage.setItem("id_email", $('#id_email').val());
+    sessionStorage.setItem("id_phone", $('#id_phone').val());
+  }
+
+  function loadSessionStorage(){
+    var name = sessionStorage.getItem('id_name');
+    if (name !== null) $('#id_name').val(name);
+    var email = sessionStorage.getItem('id_email');
+    if (email !== null) $('#id_email').val(email);
+    var phone= sessionStorage.getItem('id_phone');
+    if (phone!== null) $('#id_phone').val(phone);
+  }
+
+  $('document').ready(function(){
+    loadSessionStorage();
+
+    $('#id_address_country').on('change', function (e) {
+      saveSessionStorage();
+      var url = "{% url 'add_producer' %}";
+      window.location.replace(url+this.value);
+    });
+  });
+</script>
 
 {% endblock %}

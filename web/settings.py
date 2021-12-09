@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'icalendar',
     'localflavor',
     'phonenumber_field',
+    'country_adm_levels',
     'events',
     'orders',
     'products',
