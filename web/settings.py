@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +25,13 @@ SECRET_KEY = os.getenv('SECRET_KEY', "n3r4zq2uum(ouciq8od=$q1!$zxl_&z#fa*el(r!kp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+if DEBUG:
+    ALLOWED_HOSTS = [
+        '127.0.0.1',
+        'localhost',
+        'teambuilding.tasting.local']
+else:
+    ALLOWED_HOSTS = []
 
 # Application definition
 
