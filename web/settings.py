@@ -27,8 +27,6 @@ DEBUG = os.environ.get('DEBUG')
 
 if DEBUG:
     ALLOWED_HOSTS = [
-        '127.0.0.1',
-        'localhost',
         'teambuilding.tasting.local']
 else:
     ALLOWED_HOSTS = []
