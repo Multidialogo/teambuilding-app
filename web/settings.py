@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', "n3r4zq2uum(ouciq8od=$q1!$zxl_&z#fa*el(r!kp+wnus^=c")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = bool(strtobool(os.getenv('DEBUG', False)))
 
 if DEBUG:
     ALLOWED_HOSTS = [
@@ -41,10 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_countries',
     'django_extensions',
     'icalendar',
-    'localflavor',
     'phonenumber_field',
     'country_adm_levels',
     'events',

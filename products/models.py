@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
-from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
 from country_adm_levels.models import Country

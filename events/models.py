@@ -2,8 +2,6 @@ from django.db import models
 from django.core.mail import EmailMessage
 import datetime
 
-from django_countries.fields import CountryField
-from phonenumber_field.modelfields import PhoneNumberField
 from icalendar import Calendar, Event
 from tempfile import NamedTemporaryFile
 
