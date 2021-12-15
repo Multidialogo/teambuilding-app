@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_countries',
+    'django_extensions',
     'icalendar',
     'localflavor',
     'phonenumber_field',
