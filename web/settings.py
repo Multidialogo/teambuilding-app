@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'debug_toolbar',
     'icalendar',
     'phonenumber_field',
     'country_adm_levels',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,6 +137,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
 
 AUTH_USER_MODEL = 'users.User'
+
+
+# Debug toolbar
+
+def show_toolbar(request):
+    return DEBUG
+
+
+STATIC_ROOT = 'static/'
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
+}
 
 # Mail configuration
 
