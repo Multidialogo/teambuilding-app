@@ -3,7 +3,6 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -33,14 +32,8 @@ def signup(request):
                 }
             )
             from_email = getattr(settings, "DEFAULT_FROM_EMAIL", '')
-            to_email = form.cleaned_data.get('email')
-            send_mail(
-                mail_subject,
-                message,
-                from_email,
-                [to_email],
-                fail_silently=False,
-            )
+            user.email_user(mail_subject, message, from_email)
+            # END TODO
 
             return HttpResponse(
                 'Please confirm your email address '
