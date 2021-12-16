@@ -1,7 +1,14 @@
 from django import forms
 
 from country_adm_levels.models import Country, CountryAdminLevelMapping
-from products.models import Producer
+from products.models import Producer, Product
+
+
+class AddProductForm(forms.ModelForm):
+
+    class Meta:
+        model = Product
+        fields = ('title', 'description', 'producer')
 
 
 class AddProducerForm(forms.ModelForm):

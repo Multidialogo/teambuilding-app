@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Delete product</h2>
+
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>{{ product.title }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ product.description }}</td>
+        </tr>
+        <tr>
+            <td>Producer</td>
+            <td>{{ product.producer }}</td>
+        </tr>
+    </table>
+
+    <form method="post">
+        {% csrf_token %}
+        Are you want to delete this product ?
+        <input type="submit" value="Yes"/>
+        <a href="{% url 'list_products' %}">Cancel</a>
+    </form>
+
+{% endblock %}
