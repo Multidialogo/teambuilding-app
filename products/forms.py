@@ -1,22 +1,22 @@
 from django import forms
 
 from country_adm_levels.models import Country, CountryAdminLevelMapping
-from products.models import Producer, Product, PriceByQuantity
+from products.models import Producer, Product, ProductPurchaseOption
 
 
-class ProductFlavourForm(forms.ModelForm):
+class ProductPurchaseOptionForm(forms.ModelForm):
 
     class Meta:
-        model = PriceByQuantity
+        model = ProductPurchaseOption
         fields = ('product', 'quantity', 'priceInCents')
 
     def __init__(self, *args, **kwargs):
         if 'product' in kwargs:
             product_in = kwargs.pop('product')
-            super(ProductFlavourForm, self).__init__(*args, **kwargs)
+            super(ProductPurchaseOptionForm, self).__init__(*args, **kwargs)
             self.fields['product'].initial = product_in
         else:
-            super(ProductFlavourForm, self).__init__(*args, **kwargs)
+            super(ProductPurchaseOptionForm, self).__init__(*args, **kwargs)
 
 
 class AddProductForm(forms.ModelForm):

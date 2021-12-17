@@ -48,7 +48,7 @@ class Product(models.Model):
         return self.title
 
 
-class PriceByQuantity(models.Model):
+class ProductPurchaseOption(models.Model):
     priceInCents = models.IntegerField('Price (cents)')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Product')
     quantity = models.CharField('Quantity', max_length=50)

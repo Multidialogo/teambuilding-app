@@ -3,16 +3,16 @@ from django.urls import path
 from products import views
 
 urlpatterns = [
-    path('add_product/', views.add_product, name='add_product'),
-    path('list_products/', views.list_products, name='list_products'),
-    path('update_product/<int:product_id>', views.update_product, name='update_product'),
-    path('delete_product/<int:product_id>', views.delete_product, name='delete_product'),
-    path('add_product_flavour/', views.add_product_flavour, name='add_product_flavour'),
-    path('add_product_flavour/<int:product_id>', views.add_product_flavour, name='add_product_flavour'),
-    path('list_product_flavours/', views.list_product_flavours, name='list_product_flavours'),
-    path('list_product_flavours/<int:product_id>', views.list_product_flavours, name='list_product_flavours'),
-    path('update_product_flavour/<int:product_flavour_id>', views.update_product_flavour, name='update_product_flavour'),
-    path('delete_product_flavour/<int:product_flavour_id>', views.delete_product_flavour, name='delete_product_flavour'),
+    path('add/', views.add_product, name='add_product'),
+    path('list/', views.list_products, name='list_products'),
+    path('update/<int:prod_id>', views.update_product, name='update_product'),
+    path('delete/<int:prod_id>', views.delete_product, name='delete_product'),
+    path('add_option/', views.add_product_purchase_option, name='add_prod_purchase_opt'),
+    path('add_option/<int:prod_id>', views.add_product_purchase_option, name='add_prod_purchase_opt'),
+    path('list_options/', views.list_product_purchase_options, name='list_prod_purchase_opt'),
+    path('list_options/<int:prod_id>', views.list_product_purchase_options, name='list_prod_purchase_opt'),
+    path('update_option/<int:prod_option_id>', views.update_product_purchase_option, name='update_prod_purchase_opt'),
+    path('delete_option/<int:prod_option_id>', views.delete_product_purchase_option, name='delete_prod_purchase_opt'),
     path('add_producer/', views.redirect_add_producer_it, name='add_producer'),
     path('add_producer/<str:country>', views.add_producer, name='add_producer'),
 ]

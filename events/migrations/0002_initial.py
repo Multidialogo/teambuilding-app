@@ -12,18 +12,18 @@ class Migration(migrations.Migration):
     dependencies = [
         ('products', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('orders', '0001_initial'),
+        ('events', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='order',
-            name='customer',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Customer'),
+            model_name='tasteandpurchaseevent',
+            name='organizer',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Organizer'),
         ),
         migrations.AddField(
-            model_name='order',
-            name='priceByQuantity',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.productpurchaseoption', verbose_name='Price by quantity'),
+            model_name='tasteandpurchaseevent',
+            name='product',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.product', verbose_name='Product'),
         ),
     ]

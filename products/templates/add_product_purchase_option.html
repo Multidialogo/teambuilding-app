@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>Update product flavour</h2>
+<h2>Add product purchase option</h2>
 
 <form method="post">
   {% csrf_token %}
@@ -18,7 +18,7 @@
       {% endfor %}
     </p>
   {% endfor %}
-  <button type="submit">Update product flavour</button>
+  <button type="submit">Add</button>
 </form>
 
 {% endblock %}
