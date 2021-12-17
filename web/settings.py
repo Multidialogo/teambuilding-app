@@ -120,9 +120,21 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
+
+DATETIME_INPUT_FORMATS = [
+    '%Y-%d-%m %H:%M:%S',     # '2006-10-25 14:30:59'
+    '%Y-%d-%m %H:%M:%S.%f',  # '2006-10-25 14:30:59.000200'
+    '%Y-%d-%m %H:%M',        # '2006-10-25 14:30'
+    '%d/%m/%Y %H:%M:%S',     # '10/25/2006 14:30:59'
+    '%d/%m/%Y %H:%M:%S.%f',  # '10/25/2006 14:30:59.000200'
+    '%d/%m/%Y %H:%M',        # '10/25/2006 14:30'
+    '%d/%m/%y %H:%M:%S',     # '10/25/06 14:30:59'
+    '%d/%m/%y %H:%M:%S.%f',  # '10/25/06 14:30:59.000200'
+    '%d/%m/%y %H:%M',        # '10/25/06 14:30'
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

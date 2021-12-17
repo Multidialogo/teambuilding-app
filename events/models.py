@@ -10,8 +10,8 @@ from users.models import User
 
 
 class TasteAndPurchaseEvent(models.Model):
-    start_date = models.DateTimeField('Event starts')
-    end_date = models.DateTimeField('Event ends')
+    start_date = models.DateTimeField('Event starts', help_text='Format: gg/mm/yyyy hh:mm')
+    end_date = models.DateTimeField('Event ends', help_text='Format: gg/mm/yyyy hh:mm')
     title = models.CharField('Title', max_length=50)
     description = models.CharField('Description', max_length=100)
     organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Organizer')
