@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Product flavours list</h2>
+
+<table>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price (cents)</th>
+      <th></th>
+      <th></th>
+    </tr>
+    {% for product_flavour in product_flavours_list %}
+    <tr>
+      <td> {{ product_flavour.product }} </td>
+      <td> {{ product_flavour.quantity }} </td>
+      <td> {{ product_flavour.priceInCents }} </td>
+      <td> <a href="{% url 'update_product_flavour' product_flavour.id %}">Edit</a> </td>
+      <td> <a href="{% url 'delete_product_flavour' product_flavour.id %}">Delete</a> </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Delete product flavour</h2>
+
+    <table>
+        <tr>
+            <td>Product</td>
+            <td>{{ product_flavour.product }}</td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>{{ product_flavour.quantity }}</td>
+        </tr>
+        <tr>
+            <td>Price (cents)</td>
+            <td>{{ product_flavour.priceInCents }}</td>
+        </tr>
+    </table>
+
+    <form method="post">
+        {% csrf_token %}
+        Are you want to delete this product flavour ?
+        <input type="submit" value="Yes"/>
+        <a href="{% url 'list_product_flavours' %}">Cancel</a>
+    </form>
+
+{% endblock %}
