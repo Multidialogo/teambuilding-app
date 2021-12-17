@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 
 from events.forms import CreateEventForm
 from events.models import TasteAndPurchaseEvent
@@ -46,3 +46,15 @@ def create_event(request):
         form = CreateEventForm()
 
     return render(request, 'create_event.html', {'form': form})
+
+
+@login_required
+def delete_event(request, pk):
+    event = get_object_or_404(TasteAndPurchaseEvent, pk=pk)
+    if request.method == 'POST':
+        if event.organizer == request.user:
+            event.delete()
+        return redirect('manage_own_events')
+
+    return render(request, 'delete_event.html', {'event': event})
+
