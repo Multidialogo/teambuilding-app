@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.mail import EmailMessage
-import datetime
+from datetime import datetime
 
 from icalendar import Calendar, Event
 from tempfile import NamedTemporaryFile
