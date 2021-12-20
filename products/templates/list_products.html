@@ -2,25 +2,27 @@
 
 {% block content %}
 
-<h2>Product list</h2>
+    <h2>Product list</h2>
 
-<table>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Producer</th>
-      <th></th>
-      <th></th>
-    </tr>
-    {% for product in product_list %}
-    <tr>
-      <td> {{ product.title }} </td>
-      <td> {{ product.description }} </td>
-      <td> {{ product.producer }} </td>
-      <td> <a href="{% url 'update_product' product.id %}">Edit</a> </td>
-      <td> <a href="{% url 'delete_product' product.id %}">Delete</a> </td>
-    </tr> 
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Producer</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for product in product_list %}
+            <tr>
+                <td> {{ product.title }} </td>
+                <td> {{ product.description }} </td>
+                <td> {{ product.producer }} </td>
+                <td><a href="{% url 'purchase' product.id %}">Purchase</a></td>
+                <td><a href="{% url 'update_product' product.id %}">Edit</a></td>
+                <td><a href="{% url 'delete_product' product.id %}">Delete</a></td>
+            </tr>
+        {% endfor %}
     </table>
 
 {% endblock %}

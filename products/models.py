@@ -58,5 +58,4 @@ class ProductPurchaseOption(models.Model):
         ordering = ['priceInCents']
 
     def __str__(self):
-        price_in_cents_str = str(self.priceInCents)
-        return "Quantity: %s, Price: %s" % price_in_cents_str, self.quantity
+        return "%s, %01.0f" % (self.quantity, self.priceInCents)
