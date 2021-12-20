@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Order list</h2>
+
+    <table>
+        <tr>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Producer</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for order in order_list %}
+            <tr>
+                <td>{{ order.customer }}</td>
+                <td>{{ order.priceByQuantity.product }}</td>
+                <td>{{ order.priceByQuantity.product.producer }}</td>
+                <td>{{ order.priceByQuantity.quantity }}</td>
+                <td>{{ order.priceByQuantity.priceInCents }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

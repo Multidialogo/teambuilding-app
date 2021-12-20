@@ -5,7 +5,6 @@ from orders.models import Order
 
 
 class PurchaseForm(forms.ModelForm):
-
     class Meta:
         model = Order
         priceByQuantity = forms.ModelChoiceField(queryset=ProductPurchaseOption.objects.all())
