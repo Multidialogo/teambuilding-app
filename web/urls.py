@@ -23,10 +23,10 @@ from web import views
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
-    path('accounts/', include('users.urls')),
-    path('events/', include('events.urls')),
-    path('products/', include('products.urls')),
-    path('purchase/', include('orders.urls')),
+    path('accounts/', include('services.users.urls')),
+    path('events/', include('apps.events.urls')),
+    path('products/', include('apps.products.urls')),
+    path('purchase/', include('apps.orders.urls')),
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -45,11 +45,11 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'icalendar',
     'phonenumber_field',
-    'country_adm_levels',
-    'events',
-    'orders',
-    'products',
-    'users',
+    'services.country_adm_levels',
+    'services.users',
+    'apps.events',
+    'apps.orders',
+    'apps.products',
 ]
 
 MIDDLEWARE = [
