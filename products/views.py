@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 
 from products.forms import AddProducerForm, AddProductForm, ProductPurchaseOptionForm
-from products.models import Product, ProductPurchaseOption
+from products.models import Product, ProductPurchaseOption, Producer
 
 
 @login_required
@@ -112,6 +112,12 @@ def add_producer(request, country):
         form = AddProducerForm(country=country)
 
     return render(request, 'add_producer.html', {'form': form})
+
+
+@login_required
+def list_producers(request):
+    producers = Producer.objects.all()
+    return render(request, 'list_producers.html', {'producer_list': producers})
 
 
 @login_required
