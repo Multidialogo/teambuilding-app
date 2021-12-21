@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
 from services.postal_address.localization import localize_formset
@@ -51,6 +52,14 @@ def order_producer_create(request, producer):
                 for order in order_list:
                     order.producerOrder = producer_order
                     order.save()
+                if producer_inst.email:
+                    send_mail(
+                        'New order',
+                        'Placeholder message. Contact an admin.',
+                        None,
+                        [producer_inst.email],
+                        fail_silently=True
+                    )
                 return redirect('list_producers')
     else:
         form = ProducerOrderForm()

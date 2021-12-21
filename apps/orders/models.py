@@ -23,7 +23,7 @@ class Order(models.Model):
         ordering = ['priceByQuantity']
 
     def __str__(self):
-        return self.priceByQuantity
+        return "Product: %s, %s " % (str(self.priceByQuantity.product), str(self.priceByQuantity))
 
     def get_status(self):
         if self.producerOrder:

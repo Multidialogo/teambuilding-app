@@ -13,7 +13,7 @@
         {% endfor %}
         <ul>
         {%  for order in order_list %}
-            <li> {{ order.customer }}</li>
+            <li> {{ order }} </li>
         {% empty %}
             <li>Nothing to order</li>
         {% endfor %}
