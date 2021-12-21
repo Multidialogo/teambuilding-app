@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Add producer</h2>
+
+    <form id="add_producer_form" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ address_formset.management_form }}
+        {% for subform in address_formset %}
+            {{ subform.as_p }}
+        {% endfor %}
+        <ul>
+        {%  for order in order_list %}
+            <li> {{ order.customer }}</li>
+        {% empty %}
+            <li>Nothing to order</li>
+        {% endfor %}
+        </ul>
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
