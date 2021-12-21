@@ -14,6 +14,6 @@ urlpatterns = [
     path('update_option/<int:prod_option_id>', views.update_product_purchase_option, name='update_prod_purchase_opt'),
     path('delete_option/<int:prod_option_id>', views.delete_product_purchase_option, name='delete_prod_purchase_opt'),
     path('add_producer/', views.redirect_add_producer_it, name='add_producer'),
-    path('add_producer/<str:country>', views.add_producer, name='add_producer'),
+    path('add_producer/<str:country_code>', views.producer_create, name='add_producer'),
     path('list_producers/', views.list_producers, name='list_producers'),
 ]

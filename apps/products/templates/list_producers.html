@@ -9,7 +9,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Address country</th>
+            <th>Address</th>
             <th></th>
         </tr>
         {% for producer in producer_list %}
@@ -17,7 +17,7 @@
                 <td> {{ producer.name }} </td>
                 <td> {{ producer.email }} </td>
                 <td> {{ producer.phone }} </td>
-                <td> {{ producer.address_country }} </td>
+                <td> {{ producer.producerpostaladdress }} </td>
                 <td><a href="{% url 'list_orders' producer.id %}">List orders</a></td>
             </tr>
         {% endfor %}

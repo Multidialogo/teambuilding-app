@@ -1,39 +1,25 @@
 from django.db import models
-from django.core.exceptions import ValidationError
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from services.country_adm_levels.models import Country
-
-
-# TODO : refactor? move somewhere else?
-def validate_zip_code(value):
-    str_value = str(value)
-    if not str_value.isdigit():
-        raise ValidationError(
-            '%(value)s is not a valid zip code',
-            params={'value': value},
-        )
+from services.postal_address.models import PostalAddress
+from services.postal_address.validators import validate_zip_code
 
 
 class Producer(models.Model):
     name = models.CharField('Name', max_length=50, unique=True)
     email = models.EmailField('Email', blank=True)
     phone = PhoneNumberField('Phone number', blank=True)
-    address_country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name='Country')
-    address_zip_code = models.CharField('Zip code', max_length=5, validators=[validate_zip_code])
-    address_street = models.CharField('Street', max_length=100)
-    address_adm_level_1 = models.CharField('Administrative Level 1', max_length=100, blank=True)
-    address_adm_level_2 = models.CharField('Administrative Level 2', max_length=100, blank=True)
-    address_adm_level_3 = models.CharField('Administrative Level 3', max_length=100, blank=True)
-    address_adm_level_4 = models.CharField('Administrative Level 4', max_length=100, blank=True)
-    address_adm_level_5 = models.CharField('Administrative Level 5', max_length=100, blank=True)
 
     class Meta:
         ordering = ['name']
 
     def __str__(self):
         return self.name
+
+
+class ProducerPostalAddress(PostalAddress):
+    producer = models.OneToOneField(Producer, on_delete=models.CASCADE)
 
 
 class Product(models.Model):

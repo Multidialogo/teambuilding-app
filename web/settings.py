@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'icalendar',
     'phonenumber_field',
-    'services.country_adm_levels',
+    'services.postal_address',
     'services.users',
     'apps.events',
     'apps.orders',

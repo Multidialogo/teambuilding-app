@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 
-from .forms import AddProducerForm, AddProductForm, ProductPurchaseOptionForm
+from services.postal_address.localization import localize_formset
+from services.postal_address.services import safe_country_code
+from .forms import PostalAddressFormSet, ProducerForm, AddProductForm, ProductPurchaseOptionForm
 from .models import Product, ProductPurchaseOption, Producer
 
 
@@ -101,25 +103,33 @@ def delete_product(request, prod_id):
 
 
 @login_required
-def add_producer(request, country):
+def producer_create(request, country_code):
+    country_code = safe_country_code(country_code)
+
     if request.method == 'POST':
-        form = AddProducerForm(request.POST, country=request.POST.get('address_country'))
+        form = ProducerForm(request.POST)
+        address_formset = localize_formset(country_code, PostalAddressFormSet(instance=form.instance))
 
         if form.is_valid():
-            form.save()
-            return redirect('add_producer', country=request.POST.get('address_country'))
+            producer = form.save(commit=False)
+            address_formset = localize_formset(country_code, PostalAddressFormSet(request.POST, instance=producer))
+            if address_formset.is_valid():
+                form.save()
+                address_formset.save()
+                return redirect('list_producers')
     else:
-        form = AddProducerForm(country=country)
+        form = ProducerForm()
+        address_formset = localize_formset(country_code, PostalAddressFormSet(instance=form.instance))
 
-    return render(request, 'add_producer.html', {'form': form})
+    return render(request, 'add_producer.html', {'form': form, 'address_formset': address_formset})
 
 
 @login_required
 def list_producers(request):
-    producers = Producer.objects.all()
-    return render(request, 'list_producers.html', {'producer_list': producers})
+    producer_list = Producer.objects.all()
+    return render(request, 'list_producers.html', {'producer_list': producer_list})
 
 
 @login_required
 def redirect_add_producer_it(request):
-    return redirect('add_producer', country='IT')
+    return redirect('add_producer', country_code='IT')
