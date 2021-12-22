@@ -10,7 +10,9 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Address</th>
-            <th></th>
+            {% if user.is_staff %}
+                <th></th>
+            {% endif %}
             <th></th>
         </tr>
         {% for producer in producer_list %}
@@ -19,7 +21,9 @@
                 <td> {{ producer.email }} </td>
                 <td> {{ producer.phone }} </td>
                 <td> {{ producer.producerpostaladdress }} </td>
-                <td><a href="{% url 'add_producer_order' producer.id %}">Bulk order</a></td>
+                {% if user.is_staff %}
+                    <td><a href="{% url 'add_producer_order' producer.id %}">Bulk order</a></td>
+                {% endif %}
                 <td><a href="{% url 'list_orders' producer.id %}">List orders</a></td>
             </tr>
         {% endfor %}

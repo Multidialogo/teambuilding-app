@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
@@ -32,6 +33,7 @@ def purchase_success(request):
     return render(request, 'purchase_success.html', {})
 
 
+@staff_member_required
 @login_required
 def order_producer_create(request, producer):
     producer_inst = Producer.objects.get(pk=producer)
