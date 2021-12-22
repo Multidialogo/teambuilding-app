@@ -29,4 +29,4 @@ urlpatterns = [
     path('purchase/', include('apps.orders.urls')),
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]

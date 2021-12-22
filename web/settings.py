@@ -141,6 +141,8 @@ DATETIME_INPUT_FORMATS = [
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR / 'static/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -156,8 +158,6 @@ AUTH_USER_MODEL = 'users.User'
 def show_toolbar(request):
     return DEBUG
 
-
-STATIC_ROOT = 'static/'
 
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": show_toolbar,
