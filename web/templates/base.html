@@ -12,10 +12,10 @@
             <a href="/">Home</a> |
             {% if user.is_authenticated %}
                 Events:
-                <a href="{% url 'create_event' %}">Create</a>
-                <a href="{% url 'manage_own_events' %}">List (created by me)</a>
-                <a href="{% url 'past_events' %}">List (all, past)</a>
-                <a href="{% url 'future_events' %}">List (all, upcoming)</a>
+                <a href="{% url 'events-list-next' %}">List</a> |
+                <a href="{% url 'events-list-history' %}">History</a> |
+                Manage:
+                <a href="{% url 'events-list-manage' %}">Events</a> |
                 Products:
                 <a href="{% url 'add_product' %}">Add</a> |
                 <a href="{% url 'list_products' %}">List & Purchase</a> |

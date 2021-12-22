@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <h2>Past events</h2>
+    <h2>Next events (created by You)</h2>
 
     <table>
         <tr>
@@ -12,7 +12,8 @@
             <th>End date</th>
             <th>Description</th>
             <th>Products</th>
-            <th>Purchase</th>
+            <th></th>
+            <th></th>
         </tr>
         {% for event in events %}
             <tr>
@@ -22,9 +23,12 @@
                 <td>{{ event.end_date }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.products.all|join:", " }}</td>
-                <td><a href="{% url 'purchase' event.product_id %}">Purchase</a></td>
+                <td><a href="{% url 'events-edit' event.id %}">Edit</a></td>
+                <td><a href="{% url 'events-delete' event.id %}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>
+
+    <a href="{% url 'events-add' %}">Create new event</a>
 
 {% endblock %}

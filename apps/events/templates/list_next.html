@@ -2,11 +2,12 @@
 
 {% block content %}
 
-    <h2>Manage events</h2>
+    <h2>Upcoming events</h2>
 
     <table>
         <tr>
             <th>Title</th>
+            <th>Organizer</th>
             <th>Start date</th>
             <th>End date</th>
             <th>Description</th>
@@ -16,11 +17,12 @@
         {% for event in events %}
             <tr>
                 <td>{{ event.title }}</td>
+                <td>{{ event.organizer }}</td>
                 <td>{{ event.start_date }}</td>
                 <td>{{ event.end_date }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.products.all|join:", " }}</td>
-                <td><a href="{% url 'delete_event' event.id %}">Delete</a></td>
+                <td><a href="{% url 'events-detail' event.id %}">Detail</a></td>
             </tr>
         {% endfor %}
     </table>

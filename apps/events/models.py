@@ -10,6 +10,7 @@ from services.users.models import User
 from ..products.models import Product
 
 
+# TODO / rinominare in TasteEvent
 class TasteAndPurchaseEvent(models.Model):
     start_date = models.DateTimeField('Event starts', help_text='Format: gg/mm/yyyy hh:mm')
     end_date = models.DateTimeField('Event ends', help_text='Format: gg/mm/yyyy hh:mm')

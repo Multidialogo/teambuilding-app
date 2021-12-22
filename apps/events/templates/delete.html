@@ -10,6 +10,18 @@
             <td>{{ event.title }}</td>
         </tr>
         <tr>
+            <td>Organizer</td>
+            <td>{{ event.organizer }}</td>
+        </tr>
+        <tr>
+            <td>Start date</td>
+            <td>{{ event.start_date }}</td>
+        </tr>
+        <tr>
+            <td>End date</td>
+            <td>{{ event.end_date }}</td>
+        </tr>
+        <tr>
             <td>Description</td>
             <td>{{ event.description }}</td>
         </tr>
@@ -17,21 +29,13 @@
             <td>Products</td>
             <td>{{ event.products.all|join:", " }}</td>
         </tr>
-        <tr>
-            <td>Start date time</td>
-            <td>{{ event.start_date }}</td>
-        </tr>
-        <tr>
-            <td>End date time</td>
-            <td>{{ event.end_date }}</td>
-        </tr>
     </table>
 
     <form method="post">
         {% csrf_token %}
         Are you want to delete this event ?
         <input type="submit" value="Yes"/>
-        <a href="{% url 'manage_own_events' %}">Cancel</a>
+        <a href="{% url 'events-list-manage' %}">Cancel</a>
     </form>
 
 {% endblock %}
