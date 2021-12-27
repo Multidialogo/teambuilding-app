@@ -3,6 +3,8 @@
 <head>
     <title>{% block title %}Taste & Purchase{% endblock %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% block scripts %}
+    {% endblock %}
 </head>
 
 <body>
@@ -16,14 +18,7 @@
                 <a href="{% url 'events-list-history' %}">History</a> |
                 Manage:
                 <a href="{% url 'events-list-manage' %}">Events</a> |
-                Products:
-                <a href="{% url 'add_product' %}">Add</a> |
-                <a href="{% url 'list_products' %}">List & Purchase</a> |
-                <a href="{% url 'add_prod_purchase_opt' %}">Add product purchase option</a> |
-                <a href="{% url 'list_prod_purchase_opt' %}">List product purchase options</a> |
-                Producers:
-                <a href="{% url 'add_producer' %}">Add</a> |
-                <a href="{% url 'list_producers' %}">List</a> |
+                <a href="{% url 'products-list-manage' %}">Products</a> |
                 Account:
                 <a href="/accounts/profile/">Profile</a>
                 <a href="/accounts/logout/">Logout</a>

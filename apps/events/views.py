@@ -12,7 +12,7 @@ def list_upcoming(request):
     today = datetime.today()
     events = TasteAndPurchaseEvent.objects.filter(end_date__gte=today)
     context = {'events': events}
-    return render(request, 'list_next.html', context)
+    return render(request, 'apps/events/list_next.html', context)
 
 
 @login_required
@@ -20,14 +20,14 @@ def list_history(request):
     today = datetime.today()
     events = TasteAndPurchaseEvent.objects.filter(end_date__lt=today)
     context = {'events': events}
-    return render(request, 'list_history.html', context)
+    return render(request, 'apps/events/list_history.html', context)
 
 
 @login_required
 def list_manage(request):
     events = list(TasteAndPurchaseEvent.objects.filter(organizer=request.user))
     context = {'events': events}
-    return render(request, 'list_manage.html', context)
+    return render(request, 'apps/events/list_manage.html', context)
 
 
 @login_required
@@ -51,7 +51,7 @@ def add(request):
 def detail(request, pk):
     event = get_object_or_404(TasteAndPurchaseEvent, pk=pk)
     context = {'event': event}
-    return render(request, 'detail.html', context)
+    return render(request, 'apps/events/detail.html', context)
 
 
 @login_required
@@ -67,7 +67,7 @@ def edit(request, pk):
         form = TasteEventForm(instance=event)
 
     context = {'form': form}
-    return render(request, 'edit.html', context)
+    return render(request, 'apps/events/edit.html', context)
 
 
 @login_required
@@ -82,4 +82,4 @@ def delete(request, pk):
         return redirect('events-list-manage')
 
     context = {'event': event}
-    return render(request, 'delete.html', context)
+    return render(request, 'apps/events/delete.html', context)

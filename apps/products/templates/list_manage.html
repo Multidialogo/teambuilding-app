@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Product list</h2>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Producer</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.producer }}</td>
+                <td><a href="{% url 'products-edit' product.id %}">Edit</a></td>
+                <td><a href="{% url 'products-delete' product.id %}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'products-add' %}">Add new product</a>
+
+{% endblock %}

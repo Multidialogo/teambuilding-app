@@ -18,10 +18,29 @@ class ProductPurchaseOptionForm(forms.ModelForm):
             super(ProductPurchaseOptionForm, self).__init__(*args, **kwargs)
 
 
-class AddProductForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('title', 'description', 'producer')
+        exclude = ()
+
+
+class PurchaseOptionForm(forms.ModelForm):
+    class Meta:
+        model = ProductPurchaseOption
+        exclude = ('product',)
+
+    def __init__(self, *arg, **kwarg):
+        super(PurchaseOptionForm, self).__init__(*arg, **kwarg)
+        self.empty_permitted = False
+
+
+PurchaseOptionFormSet = inlineformset_factory(
+    Product,
+    ProductPurchaseOption,
+    form=PurchaseOptionForm,
+    extra=1,
+    can_delete=False
+)
 
 
 class ProducerForm(forms.ModelForm):

@@ -1,0 +1,94 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+
+    <h2>Add product</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+            <table>
+                {% for field in form.visible_fields %}
+                    <tr>
+                        <td>{{ field.label_tag }}</td>
+                        <td>{{ field }}</td>
+                        <td>{{ field.help_text }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <table>
+                <tr>
+                    <td><h4>Purchase options</h4></td>
+                    <td><input type="button" value="Add option" onclick="onAddClick()"/></td>
+                </tr>
+            </table>
+            {{ options_formset.management_form }}
+            <div id="id_options_form_set_container">
+                <div id="id_option_form_0">
+                    {% for option_form in options_formset %}
+                        <h5 id="id_h5_{{ forloop.counter }}">Purchase option #{{ forloop.counter }}</h5>
+                        {% for hidden in option_form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                        <table>
+                            {% for field in option_form.visible_fields %}
+                                <tr>
+                                    <td>{{ field.label_tag }}</td>
+                                    <td>{{ field }}</td>
+                                    <td>{{ field.errors }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endfor %}
+                </div>
+            </div>
+            <input type="submit" value="Submit"/>
+            <div id="id_option_empty_form_container" style="display: none">
+                <div id="id_option_extra_form_" data-extra_form_container>
+                    <div data-prefix_holder data-prefix="__prefix"></div>
+                    {% for hidden in options_formset.empty_form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                    <table>
+                        <tr>
+                            <td><h5 data-extra_form_title>Option #</h5></td>
+                            <td><input type="button" value="Remove" onclick="onRemoveClick(this)"/></td>
+                        </tr>
+                        {% for field in options_formset.empty_form.visible_fields %}
+                            <tr>
+                                <td>{{ field.label_tag }}</td>
+                                <td>{{ field }}</td>
+                                <td>{{ field.errors }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="/static/apps/shared/js/django-formsetUtils.js"></script>
+    <script type="text/javascript">
+        let optionsFormsetManagerConfig = new FormsetManagerConfig(
+            'id_options_form_set_container',
+            'id_option_empty_form_container',
+            'id_option_extra_form',
+            'productpurchasepption',
+            1
+        )
+
+        function onAddClick() {
+            addNewExtraFormsetForm(optionsFormsetManagerConfig);
+        }
+
+        function onRemoveClick(button) {
+            removeFormsetExtraForm(optionsFormsetManagerConfig, button);
+        }
+    </script>
+
+{% endblock %}
