@@ -6,19 +6,11 @@
 
     <form method="post">
         {% csrf_token %}
-        {% for field in form %}
-            <p>
-                {{ field.label_tag }}<br>
-                {{ field }}
-                {% if field.help_text %}
-                    <small style="color: grey">{{ field.help_text }}</small>
-                {% endif %}
-                {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
-                {% endfor %}
-            </p>
-        {% endfor %}
-        <button type="submit">Edit</button>
+        {% include 'shared/form.html' with form=form formsets=formsets %}
+        <input type="submit" value="Edit"/>
     </form>
+{% endblock %}
 
+{% block scripts %}
+    <script type="text/javascript" src="/static/apps/shared/js/django_formset_utils.js"></script>
 {% endblock %}

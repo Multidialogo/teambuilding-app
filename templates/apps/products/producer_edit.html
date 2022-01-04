@@ -1,0 +1,50 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+
+    <h2>Edit producer</h2>
+    <h3>{{ debug_text }}</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        <table>
+            {% for field in form.visible_fields %}
+                <tr>
+                    <td>{{ field.label_tag }}</td>
+                    <td>{{ field }}</td>
+                    <td>{{ field.errors }}</td>
+                </tr>
+            {% endfor %}
+            {% for formset_meta in formsets %}
+                {{ formset_meta.formset.management_form }}
+                {% for formset_form in formset_meta.formset %}
+                    {% for hidden in formset_form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                    {% for field in formset_form.visible_fields %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                            <td>{{ field.errors }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        </table>
+        <input type="submit" value="Edit"/>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('document').ready(function () {
+            $('#id_producerpostaladdress-0-country').on('change', function (e) {
+                let url = "{% url 'product-producer-edit' request.resolver_match.kwargs.pk %}";
+                window.location.replace(url + '/' + this.value);
+            });
+        });
+    </script>
+{% endblock %}

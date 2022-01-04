@@ -15,7 +15,7 @@ def localize_form(country_code, form):
     country = Country.objects.get(pk=country_code)
     country_map = CountryAdminLevelMapping.objects.filter(country=country).first()
 
-    form.fields['country'].initial = country
+    form.initial['country'] = country
     form.fields['country'].empty_label = None
 
     setup_form_field(

@@ -1,0 +1,79 @@
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+<table>
+    {% for field in form.visible_fields %}
+        <tr>
+            <td>{{ field.label_tag }}</td>
+            <td>{{ field }}</td>
+            <td>{{ field.errors }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% for formset_meta in formsets %}
+    <div data-formset_meta_container>
+        <table>
+            <tr>
+                <td><h4>{{ formset_meta.config.title }}</h4></td>
+                <td><input type="button" value="Add"
+                           onclick="onFormsetFormAddNewClick(this, '{{ formset_meta.config.model_name }}')">
+                </td>
+            </tr>
+        </table>
+        <div>
+            {{ formset_meta.formset.management_form }}
+        </div>
+        <div data-formset_forms_container>
+            {% for formset_form in formset_meta.formset %}
+                <div data-formset_form>
+                    <div data-formset_form_prefix_holder data-formset_form_prefix="{{ forloop.counter0 }}"></div>
+                    <table>
+                        <tr>
+                            <td><h5 data-formset_form_display_count>#{{ forloop.counter }}</h5></td>
+                            <td><input type="button" value="Remove"
+                                       onclick="onFormsetFormRemoveClick(this, '{{ formset_meta.config.model_name }}')">
+                            </td>
+                        </tr>
+                    </table>
+                    {% for hidden in formset_form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                    <table>
+                        {% for field in formset_form.visible_fields %}
+                            <tr>
+                                <td>{{ field.label_tag }}</td>
+                                <td>{{ field }}</td>
+                                <td>{{ field.errors }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+        <div style="display:none" data-formset_empty_form_container>
+            <div data-formset_form>
+                <div data-formset_form_prefix_holder data-formset_form_prefix="__prefix__"></div>
+                <table>
+                    <tr>
+                        <td><h5 data-formset_form_display_count>#__prefix__</h5></td>
+                        <td><input type="button" value="Remove"
+                                   onclick="onFormsetFormRemoveClick(this, '{{ formset_meta.config.model_name }}')">
+                        </td>
+                    </tr>
+                </table>
+                {% for hidden in formset_meta.formset.empty_form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+                <table>
+                    {% for field in formset_meta.formset.empty_form.visible_fields %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                            <td>{{ field.errors }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endfor %}
