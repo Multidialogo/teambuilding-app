@@ -1,6 +1,11 @@
 **/__pycache__
-static
+
+static/*
+
 .idea
 .venv
 .vscode
+
 db.sqlite3
+
+!static/apps
