@@ -1,0 +1,12 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+
+    <h2>Add purchase option</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {% include 'shared/form.html' with form=option_form %}
+        <input type="submit" value="Add"/>
+    </form>
+{% endblock %}

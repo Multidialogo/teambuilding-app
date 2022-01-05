@@ -1,10 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 
-from apps.products.forms import ProductForm, ProducerForm, ProducerPostalAddressFormsetFactory, \
-    ProductPurchaseOptionFormsetFactory
-from apps.products.models import Product, Producer
-from services.postal_address.models import Country
+from apps.products.forms import ProductForm, ProducerForm, ProducerPostalAddressFormsetFactory, PurchaseOptionForm, \
+    ProductPurchaseOptionForm
+from apps.products.models import Product, Producer, ProductPurchaseOption
 
 
 @login_required
@@ -16,64 +15,42 @@ def list_manage(request):
 
 @login_required
 def add(request):
-    purchase_option_formset_factory = ProductPurchaseOptionFormsetFactory(1)
     if request.method == 'POST':
         form = ProductForm(request.POST)
 
         if form.is_valid():
             product = form.save(commit=False)
-            options_formset = purchase_option_formset_factory.make(request.POST, instance=product)
+            option_form = PurchaseOptionForm(request.POST)
+            option_form.instance.product = product
 
-            if options_formset.is_valid():
+            if option_form.is_valid():
                 form.save()
-                options_formset.save()
+                option_form.save()
                 return redirect('product-list-manage')
         else:
-            options_formset = purchase_option_formset_factory.make(request.POST)
+            option_form = PurchaseOptionForm(request.POST)
     else:
         form = ProductForm()
-        options_formset = purchase_option_formset_factory.make(instance=form.instance)
+        option_form = PurchaseOptionForm()
 
-    options_formset_config = {
-        'title': 'Purchase options',
-        'model_name': 'productpurchaseoption',
-        'min_num': purchase_option_formset_factory.min_num
-    }
-
-    options_formset_meta = {'config': options_formset_config, 'formset': options_formset}
-    context = {'form': form, 'formsets': (options_formset_meta,)}
+    context = {'form': form, 'option_form': option_form}
     return render(request, 'apps/products/add.html', context)
 
 
 @login_required
 def edit(request, pk):
-    purchase_option_formset_factory = ProductPurchaseOptionFormsetFactory(1)
     if request.method == 'POST':
         form = ProductForm(request.POST)
 
         if form.is_valid():
-            product = form.save(commit=False)
-            options_formset = purchase_option_formset_factory.make(request.POST, instance=product)
-
-            if options_formset.is_valid():
-                form.save()
-                options_formset.save()
-                return redirect('product-list-manage')
-        else:
-            options_formset = purchase_option_formset_factory.make(request.POST)
+            form.save()
+            return redirect('product-list-manage')
     else:
         product = get_object_or_404(Product, pk=pk)
         form = ProductForm(instance=product)
-        options_formset = purchase_option_formset_factory.make(instance=product)
 
-    options_formset_config = {
-        'title': 'Purchase options',
-        'model_name': 'productpurchaseoption',
-        'min_num': purchase_option_formset_factory.min_num
-    }
-
-    options_formset_meta = {'config': options_formset_config, 'formset': options_formset}
-    context = {'form': form, 'formsets': (options_formset_meta,)}
+    options = ProductPurchaseOption.objects.filter(product_id__exact=pk)
+    context = {'product_id': pk, 'options': options, 'product_form': form}
     return render(request, 'apps/products/edit.html', context)
 
 
@@ -170,3 +147,47 @@ def producer_delete(request, pk):
 
     context = {'producer': producer}
     return render(request, 'apps/products/producer_delete.html', context)
+
+
+@login_required
+def purchase_option_add(request, product_id):
+    if request.method == 'POST':
+        form = ProductPurchaseOptionForm(request.POST, product_id=product_id)
+
+        if form.is_valid():
+            form.save()
+            return redirect('product-edit', pk=product_id)
+    else:
+        form = ProductPurchaseOptionForm(product_id=product_id)
+
+    context = {'option_form': form}
+    return render(request, 'apps/products/purchase_option_add.html', context)
+
+
+@login_required
+def purchase_option_edit(request, product_id, pk):
+    option = ProductPurchaseOption.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = ProductPurchaseOptionForm(request.POST, instance=option, product_id=product_id)
+
+        if form.is_valid():
+            form.save()
+            return redirect('product-edit', pk=product_id)
+    else:
+        form = ProductPurchaseOptionForm(instance=option, product_id=product_id)
+
+    context = {'option_form': form}
+    return render(request, 'apps/products/purchase_option_edit.html', context)
+
+
+@login_required
+def purchase_option_delete(request, product_id, pk):
+    option = get_object_or_404(ProductPurchaseOption, pk=pk)
+
+    if request.method == 'POST':
+        option.delete()
+        return redirect('product-edit', pk=product_id)
+
+    context = {'option': option, 'product_id': product_id}
+    return render(request, 'apps/products/purchase_option_delete.html', context)

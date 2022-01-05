@@ -1,0 +1,29 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+
+    <h2>Delete purchase option</h2>
+
+    <table>
+        <tr>
+            <td>Product</td>
+            <td>{{ option.product }}</td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>{{ option.quantity }}</td>
+        </tr>
+        <tr>
+            <td>Price (cents)</td>
+            <td>{{ option.priceInCents }}</td>
+        </tr>
+    </table>
+
+    <form method="post">
+        {% csrf_token %}
+        Are you want to delete this purchase option ?
+        <input type="submit" value="Yes"/>
+        <a href="{% url 'product-edit' pk=product_id %}">Cancel</a>
+    </form>
+
+{% endblock %}

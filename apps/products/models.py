@@ -35,8 +35,8 @@ class Product(models.Model):
 
 
 class ProductPurchaseOption(models.Model):
-    priceInCents = models.IntegerField('Price (cents)')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Product')
+    priceInCents = models.IntegerField('Price (cents)')
     quantity = models.CharField('Quantity', max_length=50)
 
     class Meta:

@@ -6,11 +6,31 @@
 
     <form method="post">
         {% csrf_token %}
-        {% include 'shared/form.html' with form=form formsets=formsets %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        <table>
+            {% for field in form.visible_fields %}
+                <tr>
+                    <td>{{ field.label_tag }}</td>
+                    <td>{{ field }}</td>
+                    <td>{{ field.errors }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <h3>Purchase option</h3>
+        {% for hidden in option_form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        <table>
+            {% for field in option_form.visible_fields %}
+                <tr>
+                    <td>{{ field.label_tag }}</td>
+                    <td>{{ field }}</td>
+                    <td>{{ field.errors }}</td>
+                </tr>
+            {% endfor %}
+        </table>
         <input type="submit" value="Add"/>
     </form>
-{% endblock %}
-
-{% block scripts %}
-    <script type="text/javascript" src="/static/apps/shared/js/django_formset_utils.js"></script>
 {% endblock %}

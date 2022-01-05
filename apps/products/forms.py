@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.models import inlineformset_factory
+from django.shortcuts import get_object_or_404
 
 from services.postal_address.localization import localize_formset
 from services.postal_address.services import safe_country_code
@@ -17,21 +18,24 @@ class PurchaseOptionForm(forms.ModelForm):
         model = ProductPurchaseOption
         exclude = ('product',)
 
-    def __init__(self, *arg, **kwarg):
-        super(PurchaseOptionForm, self).__init__(*arg, **kwarg)
+    def __init__(self, *args, **kwargs):
+        super(PurchaseOptionForm, self).__init__(*args, **kwargs)
         self.empty_permitted = False
 
 
-class ProductPurchaseOptionFormsetFactory:
-    def __init__(self, min_num=0, *args, **kwargs):
-        self.min_num = min_num
+class ProductPurchaseOptionForm(forms.ModelForm):
+    class Meta:
+        model = ProductPurchaseOption
+        exclude = ()
 
-    def make(self, request=None, instance=None, extra=0):
-        builder = inlineformset_factory(
-            Product, ProductPurchaseOption, form=PurchaseOptionForm, min_num=self.min_num,
-            validate_min=True, extra=extra, can_delete=True
-        )
-        return builder(request or None, instance=instance)
+    def __init__(self, *args, **kwargs):
+        product_id = kwargs.pop('product_id', None)
+        super(ProductPurchaseOptionForm, self).__init__(*args, **kwargs)
+        self.fields['product'].disabled = True
+
+        if product_id:
+            product = get_object_or_404(Product, pk=product_id)
+            self.initial['product'] = product
 
 
 class ProducerForm(forms.ModelForm):
