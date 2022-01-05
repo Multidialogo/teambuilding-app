@@ -1,0 +1,24 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+
+    <h2>Send to producer</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {% include 'shared/form_complex.html' with form=form formsets=formsets %}
+        <input type="submit" value="Send"/>
+    </form>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('document').ready(function () {
+            $('#id_producerorderdeliveryaddress-0-country').on('change', function (e) {
+                let url = "{% url 'orders-staff-send-to-producer' producer_id %}";
+                window.location.replace(url + '/' + this.value);
+            });
+        });
+    </script>
+{% endblock %}

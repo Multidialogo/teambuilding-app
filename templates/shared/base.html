@@ -16,10 +16,15 @@
                 Events:
                 <a href="{% url 'events-list-next' %}">List</a> |
                 <a href="{% url 'events-list-history' %}">History</a> |
+                Purchase:
+                <a href="{% url 'orders-user-purchase' %}">Purchase</a> |
+                {% if user.is_staff %}
+                    <a href="{% url 'orders-staff-list-manage' %}">List</a> |
+                {% endif %}
                 Manage:
                 <a href="{% url 'events-list-manage' %}">Events</a> |
-                <a href="{% url 'products-list-manage' %}">Products</a> |
-                <a href="{% url 'producer-list-manage' %}">Producers</a> |
+                <a href="{% url 'product-list-manage' %}">Products</a> |
+                <a href="{% url 'product-producer-list-manage' %}">Producers</a> |
                 Account:
                 <a href="/accounts/profile/">Profile</a>
                 <a href="/accounts/logout/">Logout</a>

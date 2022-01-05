@@ -17,12 +17,12 @@
                 <td>{{ product.title }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.producer }}</td>
-                <td><a href="{% url 'products-edit' product.id %}">Edit</a></td>
-                <td><a href="{% url 'products-delete' product.id %}">Delete</a></td>
+                <td><a href="{% url 'product-edit' product.id %}">Edit</a></td>
+                <td><a href="{% url 'product-delete' product.id %}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>
 
-    <a href="{% url 'products-add' %}">Add new product</a>
+    <a href="{% url 'product-add' %}">Add new product</a>
 
 {% endblock %}

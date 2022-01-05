@@ -27,7 +27,7 @@ def add(request):
             if options_formset.is_valid():
                 form.save()
                 options_formset.save()
-                return redirect('products-list-manage')
+                return redirect('product-list-manage')
         else:
             options_formset = purchase_option_formset_factory.make(request.POST)
     else:
@@ -58,7 +58,7 @@ def edit(request, pk):
             if options_formset.is_valid():
                 form.save()
                 options_formset.save()
-                return redirect('products-list-manage')
+                return redirect('product-list-manage')
         else:
             options_formset = purchase_option_formset_factory.make(request.POST)
     else:
@@ -83,7 +83,7 @@ def delete(request, pk):
 
     if request.method == 'POST':
         product.delete()
-        return redirect('products-list-manage')
+        return redirect('product-list-manage')
 
     context = {'product': product}
     return render(request, 'apps/products/delete.html', context)
@@ -109,7 +109,7 @@ def producer_add(request, country=None):
             if address_formset.is_valid():
                 form.save()
                 address_formset.save()
-                return redirect('producer-list-manage')
+                return redirect('product-producer-list-manage')
         else:
             address_formset = address_formset_factory.make(country, request.POST)
     else:
@@ -141,7 +141,7 @@ def producer_edit(request, pk, country=None):
             if address_formset.is_valid():
                 form.save()
                 address_formset.save()
-                return redirect('producer-list-manage')
+                return redirect('product-producer-list-manage')
         else:
             country = producer.producerpostaladdress.country.country_code
             address_formset = address_formset_factory.make(country, request.POST, producer)
@@ -166,7 +166,7 @@ def producer_delete(request, pk):
 
     if request.method == 'POST':
         producer.delete()
-        return redirect('producer-list-manage')
+        return redirect('product-producer-list-manage')
 
     context = {'producer': producer}
     return render(request, 'apps/products/producer_delete.html', context)
