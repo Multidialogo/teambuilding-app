@@ -44,7 +44,7 @@ def add(request):
         form = TasteEventForm()
 
     context = {'form': form}
-    return render(request, 'add.html', context)
+    return render(request, 'apps/events/add.html', context)
 
 
 @login_required
