@@ -26,12 +26,12 @@
                 <a href="{% url 'product-list-manage' %}">Products</a> |
                 <a href="{% url 'product-producer-list-manage' %}">Producers</a> |
                 Account:
-                <a href="/accounts/profile/">Profile</a>
-                <a href="/accounts/logout/">Logout</a>
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
             {% else %}
                 Account:
-                <a href="/accounts/signin/">Log In</a>
-                <a href="/accounts/signup/">Register</a>
+                <a href="{% url 'login' %}">Log In</a>
+                <a href="{% url 'signup' %}">Register</a>
             {% endif %}
         </p>
     {% endblock %}

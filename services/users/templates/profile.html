@@ -12,7 +12,7 @@ Taste & Purchase - Profile
 
 <p>
     Your nickname is: {{ user.nickname }}.
-    <a href="/accounts/profile/change_nickname">Edit nickname</a>
+    <a href="{% url 'change_nickname' %}">Edit nickname</a>
 </p>
 
 {% endblock %}
