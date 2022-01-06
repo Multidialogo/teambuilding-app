@@ -16,8 +16,4 @@ urlpatterns = [
     path('manage/<int:product_id>/options/add', views.purchase_option_add, name='product-purchase-option-add'),
     path('manage/<int:product_id>/options/delete/<int:pk>', views.purchase_option_delete, name='product-purchase-option-delete'),
     path('manage/<int:product_id>/options/edit/<int:pk>', views.purchase_option_edit, name='product-purchase-option-edit'),
-    # path('manage/producers/list/', views.add_product, name='products-producers-list-manage'),
-    # path('manage/producers/add/', views.add_product, name='products-producers-add'),
-    # path('manage/producers/edit/<int:pk>', views.add_product, name='products-producers-edit'),
-    # path('manage/producers/delete/<int:pk>', views.add_product, name='products-producers-delete'),
 ]

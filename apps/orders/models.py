@@ -30,21 +30,3 @@ class OrderV2(models.Model):
         if self.producerOrder:
             return 'PROCESSED'
         return 'CREATED'
-
-
-class Order(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Customer')
-    priceByQuantity = models.ForeignKey(ProductPurchaseOption, on_delete=models.CASCADE,
-                                        verbose_name='Price by quantity')
-    producerOrder = models.ForeignKey(ProducerOrder, on_delete=models.CASCADE, null=True)
-
-    class Meta:
-        ordering = ['priceByQuantity']
-
-    def __str__(self):
-        return "Product: %s, %s " % (str(self.priceByQuantity.product), str(self.priceByQuantity))
-
-    def get_status(self):
-        if self.producerOrder:
-            return 'PROCESSED'
-        return 'CREATED'

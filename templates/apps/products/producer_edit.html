@@ -6,7 +6,10 @@
 
     <form method="post">
         {% csrf_token %}
-        {% include 'shared/form_complex.html' with form=form formsets=formsets %}
+        {% include 'shared/form.html' with form=producer_form %}
+        <h4>Postal address</h4>
+        {% include 'shared/form.html' with form=address_form %}
+        <br>
         <input type="submit" value="Edit"/>
     </form>
 {% endblock %}
@@ -14,9 +17,9 @@
 {% block scripts %}
     <script>
         $('document').ready(function () {
-            $('#id_producerpostaladdress-0-country').on('change', function (e) {
-                let url = "{% url 'product-producer-edit' request.resolver_match.kwargs.pk %}";
-                window.location.replace(url + '/' + this.value);
+            $('#id_country').on('change', function (e) {
+                let url = "{% url 'product-producer-edit' pk=producer_id country='__country__' %}".replace('__country__', this.value);
+                window.location.replace(url);
             });
         });
     </script>

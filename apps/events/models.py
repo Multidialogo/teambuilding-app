@@ -18,7 +18,6 @@ class TasteAndPurchaseEvent(models.Model):
     description = models.CharField('Description', max_length=100)
     organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Organizer')
     products = models.ManyToManyField(Product, verbose_name='Products')
-    # product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Product')
 
     class Meta:
         ordering = ['start_date', 'title']

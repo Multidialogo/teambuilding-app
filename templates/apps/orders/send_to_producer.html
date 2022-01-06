@@ -6,7 +6,10 @@
 
     <form method="post">
         {% csrf_token %}
-        {% include 'shared/form_complex.html' with form=form formsets=formsets %}
+        {% include 'shared/form.html' with form=order_form %}
+        <h4>Delivery address</h4>
+        {% include 'shared/form.html' with form=address_form %}
+        <br>
         <input type="submit" value="Send"/>
     </form>
 
@@ -15,9 +18,9 @@
 {% block scripts %}
     <script>
         $('document').ready(function () {
-            $('#id_producerorderdeliveryaddress-0-country').on('change', function (e) {
-                let url = "{% url 'orders-staff-send-to-producer' producer_id %}";
-                window.location.replace(url + '/' + this.value);
+            $('#id_country').on('change', function (e) {
+                let url = "{% url 'orders-staff-send-to-producer' producer_id=producer_id country='__country__' %}".replace('__country__', this.value);
+                window.location.replace(url);
             });
         });
     </script>

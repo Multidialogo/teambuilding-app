@@ -19,8 +19,8 @@
                 <td>{{ producer.email }}</td>
                 <td>{{ producer.phone }}</td>
                 <td>{{ producer.producerpostaladdress }}</td>
-                <td><a href="{% url 'product-producer-edit' producer.id %}">Edit</a></td>
-                <td><a href="{% url 'product-producer-delete' producer.id %}">Delete</a></td>
+                <td><a href="{% url 'product-producer-edit' pk=producer.id %}">Edit</a></td>
+                <td><a href="{% url 'product-producer-delete' pk=producer.id %}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>

@@ -25,7 +25,7 @@ def list_history(request):
 
 @login_required
 def list_manage(request):
-    events = list(TasteAndPurchaseEvent.objects.filter(organizer=request.user))
+    events = TasteAndPurchaseEvent.objects.filter(organizer=request.user)
     context = {'events': events}
     return render(request, 'apps/events/list_manage.html', context)
 

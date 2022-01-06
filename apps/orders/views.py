@@ -2,8 +2,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 
+from services.postal_address.localization import localize_form
 from services.postal_address.services import is_country_code_valid, safe_country_code
-from .forms import PurchaseForm, ProducerOrderDeliveryAddressFormsetFactory, ProducerOrderForm
+from .forms import PurchaseForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
 from .models import OrderV2
 from .services import make_receipt, send_order_email_to_producer
 from ..products.models import Product, Producer
@@ -49,25 +50,26 @@ def list_manage(request, producer_id=None):
 
 @staff_member_required
 def send_to_producer(request, producer_id, country=None):
+    producer = get_object_or_404(Producer, pk=producer_id)
+
     if not is_country_code_valid(country):
         valid_country_code = safe_country_code(None)
         return redirect('orders-staff-send-to-producer', producer_id=producer_id, country=valid_country_code)
 
-    address_formset_factory = ProducerOrderDeliveryAddressFormsetFactory()
-    producer = get_object_or_404(Producer, pk=producer_id)
     user_orders = OrderV2.objects.filter(product__producer_id__exact=producer_id).filter(producerOrder__isnull=True)
     receipt = make_receipt(user_orders)
 
     if request.method == 'POST':
         form = ProducerOrderForm(request.POST, receipt=receipt)
+        address_form = localize_form(country, ProducerOrderDeliveryAddressForm(request.POST))
 
         if form.is_valid():
             order = form.save(commit=False)
-            address_formset = address_formset_factory.make(country, request.POST, order)
+            address_form.instance.order = order
 
-            if address_formset.is_valid():
+            if address_form.is_valid():
                 form.save()
-                address_formset.save()
+                address_form.save()
 
                 for user_order in user_orders:
                     user_order.producerOrder = order
@@ -77,17 +79,10 @@ def send_to_producer(request, producer_id, country=None):
                     send_order_email_to_producer(producer.email, receipt)
 
                 return redirect('orders-staff-list-manage', producer_id=producer_id)
-        else:
-            address_formset = address_formset_factory.make(country, request.POST)
     else:
         form = ProducerOrderForm(receipt=receipt)
         form.instance.producer = producer
-        address_formset = address_formset_factory.make(country, instance=form.instance)
+        address_form = localize_form(country, ProducerOrderDeliveryAddressForm())
 
-    address_formset_config = {
-        'model_name': 'producerorderdeliveryaddress'
-    }
-
-    address_formset_meta = {'config': address_formset_config, 'formset': address_formset}
-    context = {'form': form, 'formsets': (address_formset_meta,), 'producer_id': producer_id}
+    context = {'producer_id': producer_id, 'country': country, 'order_form': form, 'address_form': address_form}
     return render(request, 'apps/orders/send_to_producer.html', context)
