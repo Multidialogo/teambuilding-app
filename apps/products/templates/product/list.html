@@ -1,9 +1,10 @@
-{% extends "shared/base.html" %}
+{% extends "web/crud/base_page.html" %}
 
-{% block content %}
+{% block crud_header %}
+    Products list
+{% endblock %}
 
-    <h2>Product list</h2>
-
+{% block crud_content %}
     <table>
         <tr>
             <th>Title</th>
@@ -17,12 +18,11 @@
                 <td>{{ product.title }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.producer }}</td>
-                <td><a href="{% url 'product-edit' product.id %}">Edit</a></td>
+                <td><a href="{% url 'product-update' product.id %}">Edit</a></td>
                 <td><a href="{% url 'product-delete' product.id %}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>
-
-    <a href="{% url 'product-add' %}">Add new product</a>
-
+    <br>
+    <a href="{% url 'product-create' %}">Add new product</a>
 {% endblock %}

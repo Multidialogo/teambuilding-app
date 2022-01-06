@@ -8,6 +8,7 @@
     <form method="post">
         {% csrf_token %}
         {% include 'web/crud/base_form.html' with form=event_form %}
+        <br>
         <button type="submit">Edit event</button>
     </form>
 {% endblock %}

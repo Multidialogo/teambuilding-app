@@ -1,0 +1,36 @@
+{% extends "web/crud/base_page.html" %}
+
+{% block crud_header %}
+    Edit product
+{% endblock %}
+
+{% block crud_content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'web/crud/base_form.html' with form=product_form %}
+        <h3>Purchase options</h3>
+        <a href="{% url 'product-purchase-option-create' product_id=pk %}">Add new purchase option</a>
+        <table>
+            <tr>
+                <th>Quantity</th>
+                <th>Price (in cents)</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for option in options %}
+                <tr>
+                    <td>{{ option.quantity }}</td>
+                    <td>{{ option.priceInCents }}</td>
+                    <td><a href="{% url 'product-purchase-option-update' product_id=pk pk=option.id %}">Edit</a></td>
+                    <td>
+                        {% if options.count > 1 %}
+                            <a href="{% url 'product-purchase-option-delete' product_id=pk pk=option.id %}">Delete</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button type="submit">Update product</button>
+    </form>
+{% endblock %}

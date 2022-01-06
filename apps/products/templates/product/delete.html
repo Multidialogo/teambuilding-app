@@ -1,9 +1,10 @@
-{% extends "shared/base.html" %}
+{% extends "web/crud/base_page.html" %}
 
-{% block content %}
+{% block crud_header %}
+    Delete product
+{% endblock %}
 
-    <h2>Delete product</h2>
-
+{% block crud_content %}
     <table>
         <tr>
             <td>Title</td>
@@ -18,12 +19,11 @@
             <td>{{ product.producer }}</td>
         </tr>
     </table>
-
+    <br>
     <form method="post">
         {% csrf_token %}
-        Are you want to delete this product ?
+        Are you sure ?
         <input type="submit" value="Yes"/>
-        <a href="{% url 'product-list-manage' %}">Cancel</a>
+        <a href="{% url 'product-list' %}">Cancel</a>
     </form>
-
 {% endblock %}

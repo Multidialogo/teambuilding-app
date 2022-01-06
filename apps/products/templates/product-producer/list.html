@@ -1,9 +1,10 @@
-{% extends "shared/base.html" %}
+{% extends "web/crud/base_page.html" %}
 
-{% block content %}
+{% block crud_header %}
+    Producers list
+{% endblock %}
 
-    <h2>Producer list</h2>
-
+{% block crud_content %}
     <table>
         <tr>
             <th>Name</th>
@@ -19,12 +20,11 @@
                 <td>{{ producer.email }}</td>
                 <td>{{ producer.phone }}</td>
                 <td>{{ producer.producerpostaladdress }}</td>
-                <td><a href="{% url 'product-producer-edit' pk=producer.id %}">Edit</a></td>
+                <td><a href="{% url 'product-producer-update' pk=producer.id %}">Edit</a></td>
                 <td><a href="{% url 'product-producer-delete' pk=producer.id %}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>
-
-    <a href="{% url 'product-producer-add' %}">Add new producer</a>
-
+    <br>
+    <a href="{% url 'product-producer-create' %}">Add new producer</a>
 {% endblock %}
