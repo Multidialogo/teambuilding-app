@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import TasteAndPurchaseEvent
+from .models import TasteEvent
 
 
 class TasteEventForm(forms.ModelForm):
     class Meta:
-        model = TasteAndPurchaseEvent
+        model = TasteEvent
         fields = ('title', 'description', 'products', 'start_date', 'end_date',)

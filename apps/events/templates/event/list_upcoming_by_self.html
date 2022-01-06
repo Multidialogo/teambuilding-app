@@ -1,9 +1,10 @@
-{% extends "shared/base.html" %}
+{% extends "web/crud/base_page.html" %}
 
-{% block content %}
+{% block crud_header %}
+    Next events (created by You)
+{% endblock %}
 
-    <h2>Events history</h2>
-
+{% block crud_content %}
     <table>
         <tr>
             <th>Title</th>
@@ -12,6 +13,7 @@
             <th>End date</th>
             <th>Description</th>
             <th>Products</th>
+            <th></th>
             <th></th>
         </tr>
         {% for event in events %}
@@ -22,9 +24,11 @@
                 <td>{{ event.end_date }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.products.all|join:", " }}</td>
-                <td><a href="{% url 'events-detail' event.id %}">Detail</a></td>
+                <td><a href="{% url 'event-update' event.id %}">Edit</a></td>
+                <td><a href="{% url 'event-delete' event.id %}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>
 
+    <a href="{% url 'event-create' %}">Create new event</a>
 {% endblock %}

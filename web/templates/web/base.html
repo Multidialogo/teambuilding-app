@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {% block title %}
+            Taste & Purchase
+        {% endblock %}
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% block scripts %}
+
+    {% endblock %}
+</head>
+
+<body>
+<div id="navbar">
+    {% block navbar %}
+        {% include 'web/navbar.html' with user=user %}
+    {% endblock %}
+</div>
+
+<div id="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+</body>
+</html>

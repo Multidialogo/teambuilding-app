@@ -1,0 +1,15 @@
+{% extends "web/base.html" %}
+
+{% block content %}
+
+    <h2>
+        {% block crud_header %}
+            Header
+        {% endblock %}
+    </h2>
+
+    {% block crud_content %}
+        Content
+    {% endblock %}
+
+{% endblock %}

@@ -1,9 +1,10 @@
-{% extends "shared/base.html" %}
+{% extends "web/crud/base_page.html" %}
 
-{% block content %}
+{% block crud_header %}
+    Event detail
+{% endblock %}
 
-    <h2>Event detail</h2>
-
+{% block crud_content %}
     <table>
         <tr>
             <td>Title</td>
@@ -30,5 +31,4 @@
             <td>{{ event.products.all|join:", " }}</td>
         </tr>
     </table>
-
 {% endblock %}

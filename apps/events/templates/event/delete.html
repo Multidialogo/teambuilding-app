@@ -1,8 +1,10 @@
-{% extends "shared/base.html" %}
+{% extends "web/crud/base_page.html" %}
 
-{% block content %}
+{% block crud_header %}
+    Delete event
+{% endblock %}
 
-    <h2>Delete event</h2>
+{% block crud_content %}
 
     <table>
         <tr>
@@ -31,11 +33,12 @@
         </tr>
     </table>
 
+    <br>
+
     <form method="post">
         {% csrf_token %}
-        Are you want to delete this event ?
+        Are you sure ?
         <input type="submit" value="Yes"/>
-        <a href="{% url 'events-list-manage' %}">Cancel</a>
+        <a href="{% url 'event-user-list' %}">Cancel</a>
     </form>
-
 {% endblock %}

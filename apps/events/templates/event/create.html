@@ -1,0 +1,13 @@
+{% extends "web/crud/base_page.html" %}
+
+{% block crud_header %}
+    Create new event
+{% endblock %}
+
+{% block crud_content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'web/crud/base_form.html' with form=event_form %}
+        <button type="submit">Create new event</button>
+    </form>
+{% endblock %}

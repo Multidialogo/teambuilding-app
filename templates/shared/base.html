@@ -14,15 +14,15 @@
             <a href="/">Home</a> |
             {% if user.is_authenticated %}
                 Events:
-                <a href="{% url 'events-list-next' %}">List</a> |
-                <a href="{% url 'events-list-history' %}">History</a> |
+                <a href="{% url 'event-all-list-upcoming' %}">List</a> |
+                <a href="{% url 'event-all-list-history' %}">History</a> |
                 Purchase:
                 <a href="{% url 'orders-user-purchase' %}">Purchase</a> |
                 {% if user.is_staff %}
                     <a href="{% url 'orders-staff-list-manage' %}">List</a> |
                 {% endif %}
                 Manage:
-                <a href="{% url 'events-list-manage' %}">Events</a> |
+                <a href="{% url 'event-user-list' %}">Events</a> |
                 <a href="{% url 'product-list-manage' %}">Products</a> |
                 <a href="{% url 'product-producer-list-manage' %}">Producers</a> |
                 Account:
