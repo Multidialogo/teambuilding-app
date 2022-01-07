@@ -10,4 +10,4 @@ def on_producer_order_created(request, order, producer, product_orders):
         product_order.save()
 
     if producer.email:
-        send_order_email_to_producer(producer.email, order.receipt)
+        send_order_email_to_producer(producer.email, order)

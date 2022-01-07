@@ -12,10 +12,14 @@ def make_receipt(orders):
     return receipt
 
 
-def send_order_email_to_producer(email, receipt):
+def send_order_email_to_producer(email, order):
+    receipt = order.receipt
+    delivery_address = order.producerorderdeliveryaddress
+    message = "Receipt:\n%s\n\nDelivery address:\n%s" % (receipt, str(delivery_address))
+
     send_mail(
         'New order',
-        receipt,
+        message,
         None,
         [email],
         fail_silently=True

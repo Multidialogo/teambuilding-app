@@ -88,7 +88,7 @@ def product_order_create(request, pk):
 
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('product-list-purchasable')
     else:
         form = ProductOrderForm(product_id=pk)
 
