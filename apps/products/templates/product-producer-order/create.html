@@ -1,17 +1,17 @@
 {% extends "web/crud/base_page.html" %}
 
 {% block crud_header %}
-    Create new producer
+    Create new producer order
 {% endblock %}
 
 {% block crud_content %}
     <form method="post">
         {% csrf_token %}
-        {% include 'web/crud/base_form.html' with form=producer_form %}
-        <h4>Postal address</h4>
+        {% include 'web/crud/base_form.html' with form=order_form %}
+        <h4>Delivery address</h4>
         {% include 'web/crud/base_form.html' with form=address_form %}
         <br>
-        <button type="submit">Create new producer</button>
+        <button type="submit">Create new order</button>
     </form>
 {% endblock %}
 
@@ -19,7 +19,7 @@
     <script>
         $('document').ready(function () {
             $('#id_country').on('change', function (e) {
-                let url = "{% url 'product-producer-create' country='__country__' %}".replace('__country__', this.value);
+                let url = "{% url 'product-producer-order-create' producer_id=producer_id country='__country__' %}".replace('__country__', this.value);
                 window.location.replace(url);
             });
         });

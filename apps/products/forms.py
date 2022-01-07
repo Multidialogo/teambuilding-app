@@ -1,7 +1,9 @@
 from django import forms
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-from .models import Producer, Product, ProductPurchaseOption, ProducerPostalAddress
+from .models import Producer, Product, ProductPurchaseOption, ProducerPostalAddress, ProductOrder, ProducerOrder, \
+    ProducerOrderDeliveryAddress
 
 
 class ProductForm(forms.ModelForm):
@@ -44,3 +46,38 @@ class ProducerPostalAddressForm(forms.ModelForm):
     class Meta:
         model = ProducerPostalAddress
         exclude = ('producer',)
+
+
+class ProductOrderForm(forms.ModelForm):
+    class Meta:
+        model = ProductOrder
+        exclude = ('customer', 'producerOrder')
+
+    def __init__(self, *args, **kwargs):
+        product_id = kwargs.pop('product_id')
+        super(ProductOrderForm, self).__init__(*args, **kwargs)
+
+        if not Product.objects.filter(pk=product_id).exists():
+            raise Http404
+
+        self.fields['purchaseOption'].queryset = ProductPurchaseOption.objects.filter(product_id__exact=product_id)
+        self.fields['purchaseOption'].empty_label = None
+
+
+class ProducerOrderForm(forms.ModelForm):
+    class Meta:
+        model = ProducerOrder
+        exclude = ()
+
+    def __init__(self, *args, **kwargs):
+        receipt = kwargs.pop('receipt')
+        super(ProducerOrderForm, self).__init__(*args, **kwargs)
+
+        self.initial['receipt'] = receipt
+        self.fields['receipt'].disabled = True
+
+
+class ProducerOrderDeliveryAddressForm(forms.ModelForm):
+    class Meta:
+        model = ProducerOrderDeliveryAddress
+        exclude = ('order',)

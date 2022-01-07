@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from services.postal_address.models import PostalAddress
 from services.postal_address.validators import validate_zip_code
+from services.users.models import User
 
 
 class Producer(models.Model):
@@ -45,3 +46,29 @@ class ProductPurchaseOption(models.Model):
 
     def __str__(self):
         return "Quantity: %s, Price (in cents): %01.0f" % (self.quantity, self.priceInCents)
+
+
+class ProducerOrder(models.Model):
+    receipt = models.TextField()
+
+
+class ProducerOrderDeliveryAddress(PostalAddress):
+    order = models.OneToOneField(ProducerOrder, on_delete=models.CASCADE)
+
+
+class ProductOrder(models.Model):
+    purchaseOption = models.ForeignKey(ProductPurchaseOption, on_delete=models.CASCADE)
+    producerOrder = models.ForeignKey(ProducerOrder, on_delete=models.CASCADE, null=True)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['purchaseOption']
+
+    def __str__(self):
+        return "Product: %s, Quantity: %s, Price: %s " % (
+            self.purchaseOption.product.title, self.purchaseOption.quantity, str(self.purchaseOption.priceInCents))
+
+    def get_status(self):
+        if self.producerOrder:
+            return 'PROCESSED'
+        return 'CREATED'

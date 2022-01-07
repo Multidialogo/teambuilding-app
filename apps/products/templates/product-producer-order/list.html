@@ -1,0 +1,24 @@
+{% extends "web/crud/base_page.html" %}
+
+{% block crud_header %}
+    Products list
+{% endblock %}
+
+{% block crud_content %}
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Option</th>
+            <th>Customer</th>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.product }}</td>
+                <td>{{ order.purchaseOption }}</td>
+                <td>{{ order.customer }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'product-producer-order-create' producer_id=producer_id %}">Send order to producer</a>
+{% endblock %}

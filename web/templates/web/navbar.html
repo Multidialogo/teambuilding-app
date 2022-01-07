@@ -5,9 +5,9 @@
         <a href="{% url 'event-all-list-upcoming' %}">List</a> |
         <a href="{% url 'event-all-list-history' %}">History</a> |
         Purchase:
-        <a href="{% url 'orders-user-purchase' %}">Purchase</a> |
+        <a href="{% url 'product-list-purchasable' %}">Purchase</a> |
         {% if user.is_staff %}
-            <a href="{% url 'orders-staff-list-manage' %}">List</a> |
+            <a href="{% url 'product-producer-list-purchasable' %}">List</a> |
         {% endif %}
         Manage:
         <a href="{% url 'event-user-list' %}">Events</a> |

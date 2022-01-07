@@ -1,0 +1,14 @@
+{% extends "web/crud/base_page.html" %}
+
+{% block crud_header %}
+    Create new purchase order
+{% endblock %}
+
+{% block crud_content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'web/crud/base_form.html' with form=order_form %}
+        <br>
+        <button type="submit">Create new order</button>
+    </form>
+{% endblock %}

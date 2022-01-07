@@ -26,7 +26,6 @@ urlpatterns = [
     path('accounts/', include('services.users.urls')),
     path('events/', include('apps.events.urls')),
     path('products/', include('apps.products.urls')),
-    path('purchase/', include('apps.orders.urls')),
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
 ]

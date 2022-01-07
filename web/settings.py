@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'services.postal_address',
     'services.users',
     'apps.events',
-    'apps.orders',
     'apps.products',
 ]
 

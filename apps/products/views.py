@@ -1,9 +1,12 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.http.response import Http404
 from django.shortcuts import redirect, render, get_object_or_404
 
-from apps.products.forms import ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm
-from apps.products.models import Product, Producer, ProductPurchaseOption
+from apps.products.forms import ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm, \
+    ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
+from apps.products.models import Product, Producer, ProductPurchaseOption, ProductOrder
+from apps.products.services import make_receipt, send_order_email_to_producer
 from services.postal_address.localization import localize_form
 from services.postal_address.services import is_country_code_valid, safe_country_code
 
@@ -13,6 +16,13 @@ def list_all(request):
     products = Product.objects.all()
     context = {'products': products}
     return render(request, 'product/list.html', context)
+
+
+@login_required
+def list_purchasable(request):
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'product/list_purchasable.html', context)
 
 
 @login_required
@@ -68,10 +78,38 @@ def delete(request, pk):
 
 
 @login_required
+def product_order_create(request, pk):
+    if not Product.objects.filter(pk=pk).exists():
+        raise Http404
+
+    if request.method == 'POST':
+        form = ProductOrderForm(request.POST, product_id=pk)
+        form.instance.customer = request.user
+
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = ProductOrderForm(product_id=pk)
+
+    context = {'order_form': form}
+    return render(request, 'product-order/create.html', context)
+
+
+@login_required
 def producer_list_all(request):
     producers = Producer.objects.all()
     context = {'producers': producers}
     return render(request, 'product-producer/list.html', context)
+
+
+@login_required
+def producer_list_purchasable(request):
+    producer_ids = ProductOrder.objects.filter(producerOrder__isnull=True).values('purchaseOption__product__producer_id').distinct()
+    producers = Producer.objects.filter(id__in=producer_ids)
+
+    context = {'producers': producers}
+    return render(request, 'product-producer/list_purchasable.html', context)
 
 
 @login_required
@@ -136,6 +174,46 @@ def producer_delete(request, pk):
 
     context = {'producer': producer}
     return render(request, 'product-producer/delete.html', context)
+
+
+@staff_member_required
+def producer_order_create(request, producer_id, country=None):
+    producer = get_object_or_404(Producer, pk=producer_id)
+
+    if not is_country_code_valid(country):
+        valid_country_code = safe_country_code(None)
+        return redirect('product-producer-order-create', producer_id=producer_id, country=valid_country_code)
+
+    product_orders = ProductOrder.objects.filter(purchaseOption__product__producer_id=producer_id, producerOrder__isnull=True)
+    receipt = make_receipt(product_orders)
+
+    if request.method == 'POST':
+        form = ProducerOrderForm(request.POST, receipt=receipt)
+        address_form = localize_form(country, ProducerOrderDeliveryAddressForm(request.POST))
+
+        if form.is_valid():
+            order = form.save(commit=False)
+            address_form.instance.order = order
+
+            if address_form.is_valid():
+                form.save()
+                address_form.save()
+
+                for user_order in product_orders:
+                    user_order.producerOrder = order
+                    user_order.save()
+
+                if producer.email:
+                    send_order_email_to_producer(producer.email, receipt)
+
+                return redirect('home', producer_id=producer_id)
+    else:
+        form = ProducerOrderForm(receipt=receipt)
+        form.instance.producer = producer
+        address_form = localize_form(country, ProducerOrderDeliveryAddressForm())
+
+    context = {'producer_id': producer_id, 'country': country, 'order_form': form, 'address_form': address_form}
+    return render(request, 'product-producer-order/create.html', context)
 
 
 @login_required
