@@ -79,8 +79,7 @@ def delete(request, pk):
 
 @login_required
 def product_order_create(request, pk):
-    if not Product.objects.filter(pk=pk).exists():
-        raise Http404
+    product = get_object_or_404(Product, pk=pk)
 
     if request.method == 'POST':
         form = ProductOrderForm(request.POST, product_id=pk)
@@ -92,7 +91,7 @@ def product_order_create(request, pk):
     else:
         form = ProductOrderForm(product_id=pk)
 
-    context = {'order_form': form}
+    context = {'product': product, 'order_form': form}
     return render(request, 'product-order/create.html', context)
 
 

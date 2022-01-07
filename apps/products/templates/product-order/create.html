@@ -5,6 +5,21 @@
 {% endblock %}
 
 {% block crud_content %}
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>{{ product.title }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ product.description }}</td>
+        </tr>
+        <tr>
+            <td>Producer</td>
+            <td>{{ product.producer }}</td>
+        </tr>
+    </table>
+    <br>
     <form method="post">
         {% csrf_token %}
         {% include 'web/crud/base_form.html' with form=order_form %}
