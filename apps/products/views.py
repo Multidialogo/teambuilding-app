@@ -139,17 +139,17 @@ def producer_create(request, country=None):
 
 @login_required
 def producer_update(request, pk, country=None):
-    if not is_country_code_valid(country):
-        producer = get_object_or_404(Producer, pk=pk)
-        country = producer.producerpostaladdress.country.country_code
-        return redirect('product-producer-update', pk=pk, country=country)
-
     producer = get_object_or_404(Producer, pk=pk)
-    address = producer.producerpostaladdress
+    producer_address = producer.producerpostaladdress
+
+    if not is_country_code_valid(country):
+        country_from_address = producer_address.country.country_code
+        country = safe_country_code(country, country_from_address)
+        return redirect('product-producer-update', pk=pk, country=country)
 
     if request.method == 'POST':
         form = ProducerForm(request.POST, instance=producer)
-        address_form = localize_form(country, ProducerPostalAddressForm(request.POST, instance=address))
+        address_form = localize_form(country, ProducerPostalAddressForm(request.POST, instance=producer_address))
 
         if form.is_valid() and address_form.is_valid():
             form.save()
@@ -157,7 +157,7 @@ def producer_update(request, pk, country=None):
             return redirect('product-producer-list')
     else:
         form = ProducerForm(instance=producer)
-        address_form = localize_form(country, ProducerPostalAddressForm(instance=address))
+        address_form = localize_form(country, ProducerPostalAddressForm(instance=producer_address))
 
     context = {'pk': pk, 'producer_form': form, 'address_form': address_form}
     return render(request, 'product-producer/update.html', context)
@@ -178,10 +178,12 @@ def producer_delete(request, pk):
 @staff_member_required
 def producer_order_create(request, producer_id, country=None):
     producer = get_object_or_404(Producer, pk=producer_id)
+    producer_address = producer.producerpostaladdress
 
     if not is_country_code_valid(country):
-        valid_country_code = safe_country_code(None)
-        return redirect('product-producer-order-create', producer_id=producer_id, country=valid_country_code)
+        country_from_producer_address = producer_address.country.country_code
+        country = safe_country_code(country, country_from_producer_address)
+        return redirect('product-producer-order-create', producer_id=producer_id, country=country)
 
     product_orders = ProductOrder.objects.filter(purchaseOption__product__producer_id=producer_id, producerOrder__isnull=True)
     receipt = make_receipt(product_orders)
@@ -205,7 +207,7 @@ def producer_order_create(request, producer_id, country=None):
                 if producer.email:
                     send_order_email_to_producer(producer.email, receipt)
 
-                return redirect('home', producer_id=producer_id)
+                return redirect('product-producer-list-purchasable')
     else:
         form = ProducerOrderForm(receipt=receipt)
         form.instance.producer = producer
