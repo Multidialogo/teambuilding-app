@@ -3,7 +3,6 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from services.postal_address.models import PostalAddress
-from services.postal_address.validators import validate_zip_code
 from services.users.models import User
 
 

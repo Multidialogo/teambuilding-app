@@ -1,23 +1,23 @@
 <p>
     <a href="{% url 'home' %}">Home</a> |
     {% if user.is_authenticated %}
-        Events:
-        <a href="{% url 'event-all-list-upcoming' %}">List</a> |
+        <strong>Events:</strong>
+        <a href="{% url 'event-all-list-upcoming' %}">Upcoming</a> |
         <a href="{% url 'event-all-list-history' %}">History</a> |
-        Purchase:
+        <a href="{% url 'event-user-list' %}">Manage your events</a> |
+        <strong>Products:</strong>
         <a href="{% url 'product-list-purchasable' %}">Purchase</a> |
-        {% if user.is_staff %}
-            <a href="{% url 'product-producer-list-purchasable' %}">List</a> |
-        {% endif %}
-        Manage:
-        <a href="{% url 'event-user-list' %}">Events</a> |
-        <a href="{% url 'product-list' %}">Products</a> |
+        <a href="{% url 'product-list' %}">Manage</a> |
         <a href="{% url 'product-producer-list' %}">Producers</a> |
-        Account:
+        {% if user.is_staff %}
+            <strong>Staff only:</strong>
+            <a href="{% url 'product-producer-list-purchasable' %}">Send orders to producers</a> |
+        {% endif %}
+        <strong>Account:</strong>
         <a href="{% url 'profile' %}">Profile</a>
         <a href="{% url 'logout' %}">Logout</a>
     {% else %}
-        Account:
+        <strong>Account:</strong>
         <a href="{% url 'login' %}">Log In</a>
         <a href="{% url 'signup' %}">Register</a>
     {% endif %}

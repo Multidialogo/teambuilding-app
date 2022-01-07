@@ -9,7 +9,7 @@
         {% csrf_token %}
         {% include 'web/crud/base_form.html' with form=producer_form %}
         <h4>Postal address</h4>
-        {% include 'shared/form.html' with form=address_form %}
+        {% include 'web/crud/base_form.html' with form=address_form %}
         <br>
         <button type="submit">Update producer</button>
     </form>
