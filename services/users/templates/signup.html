@@ -1,4 +1,4 @@
-{% extends "shared/base.html" %}
+{% extends "web/base.html" %}
 
 {% block content %}
 
@@ -6,7 +6,7 @@
 
     <form method="post">
         {% csrf_token %}
-        {% include 'shared/form.html' with form=form %}
+        {% include 'web/crud/base_form.html' with form=form %}
         <button type="submit">Sign up</button>
     </form>
 
