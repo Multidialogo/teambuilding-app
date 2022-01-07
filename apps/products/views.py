@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import Http404
 from django.shortcuts import redirect, render, get_object_or_404
 
+from apps.products.events import on_producer_order_created
 from apps.products.forms import ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm, \
     ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
 from apps.products.models import Product, Producer, ProductPurchaseOption, ProductOrder
@@ -200,13 +201,7 @@ def producer_order_create(request, producer_id, country=None):
                 form.save()
                 address_form.save()
 
-                for user_order in product_orders:
-                    user_order.producerOrder = order
-                    user_order.save()
-
-                if producer.email:
-                    send_order_email_to_producer(producer.email, receipt)
-
+                on_producer_order_created(request, order, producer, product_orders)
                 return redirect('product-producer-list-purchasable')
     else:
         form = ProducerOrderForm(receipt=receipt)

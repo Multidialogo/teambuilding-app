@@ -40,7 +40,8 @@ def create(request):
 
         if form.is_valid():
             event = form.save()
-            on_taste_event_created(event)
+
+            on_taste_event_created(request, event)
             return redirect('event-user-list')
     else:
         form = TasteEventForm()
