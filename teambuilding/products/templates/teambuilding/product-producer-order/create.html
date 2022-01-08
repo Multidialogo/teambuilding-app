@@ -1,0 +1,34 @@
+{% extends "teambuilding/shared/crud/page.html" %}
+
+{% block crud_header %}
+    Create new producer order
+{% endblock %}
+
+{% block crud_content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'teambuilding/shared/crud/form.html' with form=order_form %}
+        {% include 'teambuilding/shared/crud/errors.html' with errors=order_form.non_field_errors %}
+        <hr>
+        <h5 class="title is-5">Delivery address</h5>
+        {% include 'teambuilding/shared/crud/form.html' with form=address_form %}
+        {% include 'teambuilding/shared/crud/errors.html' with errors=address_form.non_field_errors %}
+        <hr>
+        <div class="field">
+            <div class="control">
+                <button class="button is-link" type="submit">Create new</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('document').ready(function () {
+            $('#id_country').on('change', function (e) {
+                let url = "{% url 'product-producer-order-create' producer_id=producer_id country='__country__' %}".replace('__country__', this.value);
+                window.location.replace(url);
+            });
+        });
+    </script>
+{% endblock %}

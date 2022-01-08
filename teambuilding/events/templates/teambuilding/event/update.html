@@ -1,0 +1,19 @@
+{% extends "teambuilding/shared/crud/page.html" %}
+
+{% block crud_header %}
+    Update event
+{% endblock %}
+
+{% block crud_content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'teambuilding/shared/crud/form.html' with form=event_form %}
+        {% include 'teambuilding/shared/crud/errors.html' with errors=event_form.non_field_errors %}
+        <hr>
+        <div class="field">
+            <div class="control">
+                <button class="button is-link" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

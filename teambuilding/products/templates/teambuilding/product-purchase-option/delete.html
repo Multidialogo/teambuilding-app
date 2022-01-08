@@ -1,0 +1,37 @@
+{% extends "teambuilding/shared/crud/page.html" %}
+
+{% block crud_header %}
+    Delete product purchase option
+{% endblock %}
+
+{% block crud_content %}
+    <table class="table">
+        <tr>
+            <td><strong>Product</strong></td>
+            <td>{{ option.product }}</td>
+        </tr>
+        <tr>
+            <td><strong>Quantity</strong></td>
+            <td>{{ option.quantity }}</td>
+        </tr>
+        <tr>
+            <td><strong>Price (cents)</strong></td>
+            <td>{{ option.priceInCents }}</td>
+        </tr>
+    </table>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <div class="field">
+            <p class="control">Are you sure you want to delete this item?</p>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link" type="submit">Yes</button>
+            </div>
+            <div class="control">
+                <a class="button is-link is-light" href="{% url 'product-update' %}">Cancel</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

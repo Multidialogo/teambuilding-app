@@ -1,0 +1,28 @@
+{% extends "teambuilding/shared/crud/page.html" %}
+
+{% block crud_header %}
+    Product list
+{% endblock %}
+
+{% block crud_content %}
+    <a class="button" href="{% url 'product-create' %}">Create new product</a>
+    <hr>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Producer</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.title }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.producer }}</td>
+                <td><a href="{% url 'product-update' product.id %}">Edit</a></td>
+                <td><a href="{% url 'product-delete' product.id %}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

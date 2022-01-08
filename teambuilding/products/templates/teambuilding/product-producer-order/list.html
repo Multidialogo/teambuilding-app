@@ -1,0 +1,24 @@
+{% extends "teambuilding/shared/crud/page.html" %}
+
+{% block crud_header %}
+    Products list
+{% endblock %}
+
+{% block crud_content %}
+    <a class="button" href="{% url 'product-producer-order-create' %}">Send order to producer</a>
+    <hr>
+    <table class="table">
+        <tr>
+            <th>Product</th>
+            <th>Option</th>
+            <th>Customer</th>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.product }}</td>
+                <td>{{ order.purchaseOption }}</td>
+                <td>{{ order.customer }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
