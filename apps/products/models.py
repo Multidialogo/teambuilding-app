@@ -2,7 +2,7 @@ from django.db import models
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from lib.postal_address.models import PostalAddress
+from lib.postaladdress.models import PostalAddress
 from apps.accounts.models import User
 
 

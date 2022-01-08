@@ -1,12 +1,13 @@
+from django import forms
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-from lib.form_utils.forms import BaseModelForm
+
 from .models import Producer, Product, ProductPurchaseOption, ProducerPostalAddress, ProductOrder, ProducerOrder, \
     ProducerOrderDeliveryAddress
 
 
-class ProductForm(BaseModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         exclude = ()
@@ -17,7 +18,7 @@ class ProductForm(BaseModelForm):
         self.fields['producer'].empty_label = None
 
 
-class ProductPurchaseOptionForm(BaseModelForm):
+class ProductPurchaseOptionForm(forms.ModelForm):
     class Meta:
         model = ProductPurchaseOption
         exclude = ()
@@ -36,19 +37,19 @@ class ProductPurchaseOptionForm(BaseModelForm):
             del self.fields['product']
 
 
-class ProducerForm(BaseModelForm):
+class ProducerForm(forms.ModelForm):
     class Meta:
         model = Producer
         exclude = ()
 
 
-class ProducerPostalAddressForm(BaseModelForm):
+class ProducerPostalAddressForm(forms.ModelForm):
     class Meta:
         model = ProducerPostalAddress
         exclude = ('producer',)
 
 
-class ProductOrderForm(BaseModelForm):
+class ProductOrderForm(forms.ModelForm):
     class Meta:
         model = ProductOrder
         exclude = ('customer', 'producerOrder')
@@ -64,7 +65,7 @@ class ProductOrderForm(BaseModelForm):
         self.fields['purchaseOption'].empty_label = None
 
 
-class ProducerOrderForm(BaseModelForm):
+class ProducerOrderForm(forms.ModelForm):
     class Meta:
         model = ProducerOrder
         exclude = ()
@@ -77,7 +78,7 @@ class ProducerOrderForm(BaseModelForm):
         self.fields['receipt'].disabled = True
 
 
-class ProducerOrderDeliveryAddressForm(BaseModelForm):
+class ProducerOrderDeliveryAddressForm(forms.ModelForm):
     class Meta:
         model = ProducerOrderDeliveryAddress
         exclude = ('order',)

@@ -1,4 +1,4 @@
-{% extends "web/crud/page.html" %}
+{% extends "app/crud/page.html" %}
 
 {% block crud_header %}
     Edit product
@@ -7,8 +7,8 @@
 {% block crud_content %}
     <form method="post">
         {% csrf_token %}
-        {% include 'web/crud/form.html' with form=product_form %}
-        {% include 'web/crud/errors.html' with errors=product_form.non_field_errors %}
+        {% include 'app/crud/form.html' with form=product_form %}
+        {% include 'app/crud/errors.html' with errors=product_form.non_field_errors %}
         <h5 class="title is-5">Purchase options</h5>
         <a class="button" href="{% url 'product-purchase-option-create' product_id=pk %}">Add new purchase option</a>
         <hr>

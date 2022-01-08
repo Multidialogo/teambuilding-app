@@ -1,4 +1,4 @@
-{% extends "web/crud/page.html" %}
+{% extends "app/crud/page.html" %}
 
 {% block crud_header %}
     Create new purchase order
@@ -22,7 +22,7 @@
     <hr>
     <form method="post">
         {% csrf_token %}
-        {% include 'web/crud/form.html' with form=order_form %}
+        {% include 'app/crud/form.html' with form=order_form %}
         <hr>
         <div class="field">
             <div class="control">

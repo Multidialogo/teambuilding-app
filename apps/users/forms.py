@@ -1,8 +1,9 @@
+from django import forms
+
 from apps.accounts.models import User
-from lib.form_utils.forms import BaseModelForm
 
 
-class UserForm(BaseModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('nickname',)

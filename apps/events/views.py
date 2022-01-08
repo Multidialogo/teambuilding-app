@@ -70,8 +70,8 @@ def update(request, pk):
     else:
         form = TasteEventForm(instance=event)
 
-    context = {'form': form}
-    return render(request, 'apps/events/edit.html', context)
+    context = {'event_form': form}
+    return render(request, 'event/update.html', context)
 
 
 @login_required

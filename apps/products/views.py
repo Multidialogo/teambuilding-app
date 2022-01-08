@@ -8,8 +8,8 @@ from apps.products.forms import ProductForm, ProducerForm, ProductPurchaseOption
     ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
 from apps.products.models import Product, Producer, ProductPurchaseOption, ProductOrder
 from apps.products.services import make_receipt
-from lib.postal_address.localization import localize_form
-from lib.postal_address.services import is_country_code_valid, safe_country_code
+from lib.postaladdress.localization import localize_form
+from lib.postaladdress.services import is_country_code_valid, safe_country_code
 
 
 @login_required

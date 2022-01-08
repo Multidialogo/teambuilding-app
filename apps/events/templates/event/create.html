@@ -1,4 +1,4 @@
-{% extends "web/crud/page.html" %}
+{% extends "app/crud/page.html" %}
 
 {% block crud_header %}
     Create new event
@@ -7,8 +7,8 @@
 {% block crud_content %}
     <form method="post">
         {% csrf_token %}
-        {% include 'web/crud/form.html' with form=event_form %}
-        {% include 'web/crud/errors.html' with errors=event_form.non_field_errors %}
+        {% include 'app/crud/form.html' with form=event_form %}
+        {% include 'app/crud/errors.html' with errors=event_form.non_field_errors %}
         <hr>
         <div class="field">
             <div class="control">

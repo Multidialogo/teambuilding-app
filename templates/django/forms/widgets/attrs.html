@@ -1,0 +1,13 @@
+{% if not 'class' in widget.attrs.items %}
+    {% if default_class %}
+        class="{{ default_class }}"
+    {% endif %}
+{% endif %}
+{% for name, value in widget.attrs.items %}
+    {% if value is not False %}
+        {{ name }}
+        {% if value is not True %}
+            ="{{ value|stringformat:'s' }}"
+        {% endif %}
+    {% endif %}
+{% endfor %}
