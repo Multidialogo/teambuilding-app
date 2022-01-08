@@ -1,15 +1,16 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.http.response import Http404
 from django.shortcuts import redirect, render, get_object_or_404
 
-from teambuilding.products.events import on_producer_order_created
 from teambuilding.products.forms import ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm, \
     ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
 from teambuilding.products.models import Product, Producer, ProductPurchaseOption, ProductOrder
-from teambuilding.products.services import make_receipt
+from teambuilding.products.utils import make_receipt
 from lib.postaladdress.localization import localize_form
 from lib.postaladdress.services import is_country_code_valid, safe_country_code
+from teambuilding.products.signals import pre_producer_order_created, post_producer_order_created
 
 
 @login_required
@@ -37,8 +38,9 @@ def create(request):
             option_form.instance.product = product
 
             if option_form.is_valid():
-                form.save()
-                option_form.save()
+                with transaction.atomic():
+                    form.save()
+                    option_form.save()
                 return redirect('product-list')
     else:
         form = ProductForm()
@@ -105,7 +107,8 @@ def producer_list_all(request):
 
 @login_required
 def producer_list_purchasable(request):
-    producer_ids = ProductOrder.objects.filter(producerOrder__isnull=True).values('purchaseOption__product__producer_id').distinct()
+    producer_ids = ProductOrder.objects.filter(producerOrder__isnull=True).values(
+        'purchaseOption__product__producer_id').distinct()
     producers = Producer.objects.filter(id__in=producer_ids)
 
     context = {'producers': producers}
@@ -127,8 +130,9 @@ def producer_create(request, country=None):
             address_form.instance.producer = producer
 
             if address_form.is_valid():
-                form.save()
-                address_form.save()
+                with transaction.atomic():
+                    form.save()
+                    address_form.save()
                 return redirect('product-producer-list')
     else:
         form = ProducerForm()
@@ -153,8 +157,9 @@ def producer_update(request, pk, country=None):
         address_form = localize_form(country, ProducerPostalAddressForm(request.POST, instance=producer_address))
 
         if form.is_valid() and address_form.is_valid():
-            form.save()
-            address_form.save()
+            with transaction.atomic():
+                form.save()
+                address_form.save()
             return redirect('product-producer-list')
     else:
         form = ProducerForm(instance=producer)
@@ -186,7 +191,9 @@ def producer_order_create(request, producer_id, country=None):
         country = safe_country_code(country, country_from_producer_address)
         return redirect('product-producer-order-create', producer_id=producer_id, country=country)
 
-    product_orders = ProductOrder.objects.filter(purchaseOption__product__producer_id=producer_id, producerOrder__isnull=True)
+    product_orders = ProductOrder.objects.filter(
+        purchaseOption__product__producer_id=producer_id, producerOrder__isnull=True
+    )
     receipt = make_receipt(product_orders)
 
     if request.method == 'POST':
@@ -198,10 +205,12 @@ def producer_order_create(request, producer_id, country=None):
             address_form.instance.order = order
 
             if address_form.is_valid():
-                form.save()
-                address_form.save()
+                with transaction.atomic():
+                    form.save()
+                    address_form.save()
+                    pre_producer_order_created.send(sender='', instance=form.instance, product_orders=product_orders)
 
-                on_producer_order_created(request, order, producer, product_orders)
+                post_producer_order_created.send(sender='', instance=form.instance, producer=producer)
                 return redirect('product-producer-list-purchasable')
     else:
         form = ProducerOrderForm(receipt=receipt)

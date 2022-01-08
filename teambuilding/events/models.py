@@ -1,7 +1,7 @@
 from django.db import models
 
 from teambuilding.accounts.models import User
-from ..products.models import Product
+from teambuilding.products.models import Product
 
 
 class TasteEvent(models.Model):

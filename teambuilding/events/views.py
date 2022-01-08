@@ -2,11 +2,12 @@ from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
 
 from teambuilding.events.forms import TasteEventForm
 from teambuilding.events.models import TasteEvent
-from teambuilding.events.events import on_taste_event_created
+from teambuilding.events.signals import post_taste_event_created, pre_taste_event_created
 
 
 @login_required
@@ -39,9 +40,11 @@ def create(request):
         form.instance.organizer = request.user
 
         if form.is_valid():
-            event = form.save()
+            with transaction.atomic():
+                form.save()
+                pre_taste_event_created.send(sender='', instance=form.instance)
 
-            on_taste_event_created(request, event)
+            post_taste_event_created.send(sender='', instance=form.instance)
             return redirect('event-user-list')
     else:
         form = TasteEventForm()
