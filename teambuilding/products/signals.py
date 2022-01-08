@@ -1,5 +1,3 @@
 from django.dispatch import Signal
 
-pre_producer_order_created = Signal()
-
-post_producer_order_created = Signal()
+producer_order_form_transaction_done = Signal()

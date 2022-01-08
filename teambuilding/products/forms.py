@@ -2,7 +2,6 @@ from django import forms
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-
 from .models import Producer, Product, ProductPurchaseOption, ProducerPostalAddress, ProductOrder, ProducerOrder, \
     ProducerOrderDeliveryAddress
 
@@ -52,7 +51,7 @@ class ProducerPostalAddressForm(forms.ModelForm):
 class ProductOrderForm(forms.ModelForm):
     class Meta:
         model = ProductOrder
-        exclude = ('customer', 'producerOrder')
+        exclude = ('customer', 'producerOrder', 'producer')
 
     def __init__(self, *args, **kwargs):
         product_id = kwargs.pop('product_id')
@@ -68,7 +67,7 @@ class ProductOrderForm(forms.ModelForm):
 class ProducerOrderForm(forms.ModelForm):
     class Meta:
         model = ProducerOrder
-        exclude = ()
+        exclude = ('producer',)
 
     def __init__(self, *args, **kwargs):
         receipt = kwargs.pop('receipt')

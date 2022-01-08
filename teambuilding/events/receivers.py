@@ -1,10 +1,10 @@
 from django.dispatch import receiver
 
 from teambuilding.events.tasks import notify_new_taste_event_to_all_users
-from teambuilding.events.signals import post_taste_event_created
+from teambuilding.events.signals import taste_event_form_transaction_done
 
 
-@receiver(post_taste_event_created)
-def on_post_event_created(**kwargs):
+@receiver(taste_event_form_transaction_done)
+def on_taste_event_form_transaction_done(**kwargs):
     taste_event = kwargs['instance']
     notify_new_taste_event_to_all_users(taste_event)

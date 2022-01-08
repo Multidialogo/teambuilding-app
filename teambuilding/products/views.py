@@ -4,13 +4,13 @@ from django.db import transaction
 from django.http.response import Http404
 from django.shortcuts import redirect, render, get_object_or_404
 
-from teambuilding.products.forms import ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm, \
-    ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
+from teambuilding.products.forms import ProductForm, ProducerForm, ProductPurchaseOptionForm, \
+    ProducerPostalAddressForm, ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
 from teambuilding.products.models import Product, Producer, ProductPurchaseOption, ProductOrder
 from teambuilding.products.utils import make_receipt
 from lib.postaladdress.localization import localize_form
 from lib.postaladdress.services import is_country_code_valid, safe_country_code
-from teambuilding.products.signals import pre_producer_order_created, post_producer_order_created
+from teambuilding.products.signals import producer_order_form_transaction_done
 
 
 @login_required
@@ -87,6 +87,7 @@ def product_order_create(request, pk):
     if request.method == 'POST':
         form = ProductOrderForm(request.POST, product_id=pk)
         form.instance.customer = request.user
+        form.instance.producer = product.producer
 
         if form.is_valid():
             form.save()
@@ -184,20 +185,17 @@ def producer_delete(request, pk):
 @staff_member_required
 def producer_order_create(request, producer_id, country=None):
     producer = get_object_or_404(Producer, pk=producer_id)
-    producer_address = producer.producerpostaladdress
 
     if not is_country_code_valid(country):
-        country_from_producer_address = producer_address.country.country_code
-        country = safe_country_code(country, country_from_producer_address)
+        country = safe_country_code(country, producer.producerpostaladdress.country.country_code)
         return redirect('product-producer-order-create', producer_id=producer_id, country=country)
 
-    product_orders = ProductOrder.objects.filter(
-        purchaseOption__product__producer_id=producer_id, producerOrder__isnull=True
-    )
-    receipt = make_receipt(product_orders)
+    orders = producer.productorder_set.filter(producerOrder__isnull=True)
+    receipt = make_receipt(orders)
 
     if request.method == 'POST':
         form = ProducerOrderForm(request.POST, receipt=receipt)
+        form.instance.producer = producer
         address_form = localize_form(country, ProducerOrderDeliveryAddressForm(request.POST))
 
         if form.is_valid():
@@ -208,9 +206,12 @@ def producer_order_create(request, producer_id, country=None):
                 with transaction.atomic():
                     form.save()
                     address_form.save()
-                    pre_producer_order_created.send(sender='', instance=form.instance, product_orders=product_orders)
 
-                post_producer_order_created.send(sender='', instance=form.instance, producer=producer)
+                    for product_order in orders:
+                        product_order.producerOrder = order
+                        product_order.save()
+
+                producer_order_form_transaction_done.send(sender='', instance=form.instance)
                 return redirect('product-producer-list-purchasable')
     else:
         form = ProducerOrderForm(receipt=receipt)

@@ -49,6 +49,7 @@ class ProductPurchaseOption(models.Model):
 
 class ProducerOrder(models.Model):
     receipt = models.TextField()
+    producer = models.ForeignKey(Producer, on_delete=models.CASCADE, verbose_name='Producer')
 
 
 class ProducerOrderDeliveryAddress(PostalAddress):
@@ -59,6 +60,7 @@ class ProductOrder(models.Model):
     purchaseOption = models.ForeignKey(ProductPurchaseOption, on_delete=models.CASCADE)
     producerOrder = models.ForeignKey(ProducerOrder, on_delete=models.CASCADE, null=True)
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    producer = models.ForeignKey(Producer, on_delete=models.CASCADE, verbose_name='Producer')
 
     class Meta:
         ordering = ['purchaseOption']

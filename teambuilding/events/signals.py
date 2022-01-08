@@ -1,5 +1,3 @@
 from django.dispatch import Signal
 
-pre_taste_event_created = Signal()
-
-post_taste_event_created = Signal()
+taste_event_form_transaction_done = Signal()
