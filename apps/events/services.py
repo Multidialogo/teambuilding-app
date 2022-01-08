@@ -4,7 +4,7 @@ from tempfile import NamedTemporaryFile
 from django.core.mail import EmailMessage
 from icalendar import Event, Calendar
 
-from services.users.models import User
+from apps.accounts.models import User
 
 
 def create_icalendar_from_taste_event(taste_event, calendar=None):

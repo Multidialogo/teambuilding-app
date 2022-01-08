@@ -1,11 +1,13 @@
-{% extends "web/crud/base_page.html" %}
+{% extends "web/crud/page.html" %}
 
 {% block crud_header %}
     Upcoming events (created by You)
 {% endblock %}
 
 {% block crud_content %}
-    <table>
+    <a class="button" href="{% url 'event-create' %}">Create new event</a>
+    <hr>
+    <table class="table">
         <tr>
             <th>Title</th>
             <th>Organizer</th>
@@ -29,6 +31,4 @@
             </tr>
         {% endfor %}
     </table>
-    <br>
-    <a href="{% url 'event-create' %}">Create new event</a>
 {% endblock %}

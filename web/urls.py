@@ -23,7 +23,8 @@ from web import views
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
-    path('accounts/', include('services.users.urls')),
+    path('auth/', include('apps.users.urls')),
+    path('accounts/', include('apps.accounts.urls')),
     path('events/', include('apps.events.urls')),
     path('products/', include('apps.products.urls')),
     path('admin/', admin.site.urls),

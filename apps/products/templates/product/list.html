@@ -1,11 +1,13 @@
-{% extends "web/crud/base_page.html" %}
+{% extends "web/crud/page.html" %}
 
 {% block crud_header %}
-    Products list
+    Product list
 {% endblock %}
 
 {% block crud_content %}
-    <table>
+    <a class="button" href="{% url 'product-create' %}">Create new product</a>
+    <hr>
+    <table class="table">
         <tr>
             <th>Title</th>
             <th>Description</th>
@@ -23,6 +25,4 @@
             </tr>
         {% endfor %}
     </table>
-    <br>
-    <a href="{% url 'product-create' %}">Add new product</a>
 {% endblock %}

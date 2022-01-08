@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'icalendar',
     'phonenumber_field',
-    'services.postal_address',
-    'services.users',
+    'lib.postal_address',
+    'apps.accounts',
+    'apps.users',
     'apps.events',
     'apps.products',
 ]
@@ -149,7 +150,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'accounts.User'
+
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'home'
 
 
 # Debug toolbar

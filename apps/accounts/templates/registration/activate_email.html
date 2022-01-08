@@ -1,0 +1,5 @@
+{% autoescape off %}
+Hi {{ user.nickname }},
+Please click on the link to confirm your registration,http://{{ domain }}{% url 'activate' uid_b64=user_id token=token %}
+If you think, it's not you, then just ignore this email.
+{% endautoescape %}

@@ -1,11 +1,11 @@
-{% extends "web/crud/base_page.html" %}
+{% extends "web/crud/page.html" %}
 
 {% block crud_header %}
     Producers with open orders list
 {% endblock %}
 
 {% block crud_content %}
-    <table>
+    <table class="table">
         <tr>
             <th>Name</th>
             <th>Email</th>
@@ -19,7 +19,8 @@
                 <td>{{ producer.email }}</td>
                 <td>{{ producer.phone }}</td>
                 <td>{{ producer.producerpostaladdress }}</td>
-                <td><a href="{% url 'product-producer-order-create' producer_id=producer.id %}">View open orders</a></td>
+                <td><a href="{% url 'product-producer-order-create' producer_id=producer.id %}">View open orders</a>
+                </td>
             </tr>
         {% endfor %}
     </table>

@@ -1,4 +1,4 @@
-{% extends "web/crud/base_page.html" %}
+{% extends "web/crud/page.html" %}
 
 {% block crud_header %}
     Create new producer
@@ -7,11 +7,18 @@
 {% block crud_content %}
     <form method="post">
         {% csrf_token %}
-        {% include 'web/crud/base_form.html' with form=producer_form %}
-        <h4>Postal address</h4>
-        {% include 'web/crud/base_form.html' with form=address_form %}
-        <br>
-        <button type="submit">Create new producer</button>
+        {% include 'web/crud/form.html' with form=producer_form %}
+        {% include 'web/crud/errors.html' with errors=producer_form.non_field_errors %}
+        <hr>
+        <h5 class="title is-5">Postal address</h5>
+        {% include 'web/crud/form.html' with form=address_form %}
+        {% include 'web/crud/errors.html' with errors=address_form.non_field_errors %}
+        <hr>
+        <div class="field">
+            <div class="control">
+                <button class="button is-link" type="submit">Create new</button>
+            </div>
+        </div>
     </form>
 {% endblock %}
 

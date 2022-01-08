@@ -2,8 +2,8 @@ from django.db import models
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from services.postal_address.models import PostalAddress
-from services.users.models import User
+from lib.postal_address.models import PostalAddress
+from apps.accounts.models import User
 
 
 class Producer(models.Model):

@@ -7,9 +7,9 @@ from apps.products.events import on_producer_order_created
 from apps.products.forms import ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm, \
     ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm
 from apps.products.models import Product, Producer, ProductPurchaseOption, ProductOrder
-from apps.products.services import make_receipt, send_order_email_to_producer
-from services.postal_address.localization import localize_form
-from services.postal_address.services import is_country_code_valid, safe_country_code
+from apps.products.services import make_receipt
+from lib.postal_address.localization import localize_form
+from lib.postal_address.services import is_country_code_valid, safe_country_code
 
 
 @login_required

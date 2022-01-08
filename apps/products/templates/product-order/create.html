@@ -1,29 +1,33 @@
-{% extends "web/crud/base_page.html" %}
+{% extends "web/crud/page.html" %}
 
 {% block crud_header %}
     Create new purchase order
 {% endblock %}
 
 {% block crud_content %}
-    <table>
+    <table class="table">
         <tr>
-            <td>Title</td>
+            <td><strong>Title</strong></td>
             <td>{{ product.title }}</td>
         </tr>
         <tr>
-            <td>Description</td>
+            <td><strong>Description</strong></td>
             <td>{{ product.description }}</td>
         </tr>
         <tr>
-            <td>Producer</td>
+            <td><strong>Producer</strong></td>
             <td>{{ product.producer }}</td>
         </tr>
     </table>
-    <br>
+    <hr>
     <form method="post">
         {% csrf_token %}
-        {% include 'web/crud/base_form.html' with form=order_form %}
-        <br>
-        <button type="submit">Create new order</button>
+        {% include 'web/crud/form.html' with form=order_form %}
+        <hr>
+        <div class="field">
+            <div class="control">
+                <button class="button is-link" type="submit">Create new</button>
+            </div>
+        </div>
     </form>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "web/base.html" %}
+
+{% block content %}
+    <section class="section">
+        <h3 class="title is-3">
+            {% block crud_header %}
+                Header
+            {% endblock %}
+        </h3>
+        <div class="box">
+            {% block crud_content %}
+                Content
+            {% endblock %}
+        </div>
+    </section>
+{% endblock %}

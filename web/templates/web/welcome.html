@@ -1,14 +1,21 @@
 {% extends "web/base.html" %}
 
 {% block content %}
-    <h2>Welcome to Taste & Purchase</h2>
-
-    <p>
-        Welcome,
-        {% if user.is_authenticated %}
-            {{ user.nickname }}
-        {% else %}
-            Guest
-        {% endif %}
-    </p>
+    <section class="hero is-primary is-halfheight">
+        <div class="hero-body">
+            <div class="">
+                <p class="title">
+                    Welcome,
+                    {% if user.is_authenticated %}
+                        {{ user.nickname }}
+                    {% else %}
+                        Guest
+                    {% endif %}
+                </p>
+                <p class="subtitle">
+                    Welcome to Taste & Purchase
+                </p>
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -1,0 +1,12 @@
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}
+{% for field in form.visible_fields %}
+    <div class="field">
+        <label id="{{ field.id_for_label }}" class="label">{{ field.label_tag }}</label>
+        <div class="control">
+            {{ field }}
+        </div>
+        <p class="help is-danger">{{ field.errors }}</p>
+    </div>
+{% endfor %}
