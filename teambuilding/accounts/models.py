@@ -51,6 +51,7 @@ class User(AbstractUser):
         return self.email
 
     def save(self, *args, **kwargs):
-        if not self.nickname:
+        is_nickname_empty = ('' + self.nickname).isspace()
+        if (not self.nickname) or is_nickname_empty:
             self.nickname = self.email
         super(User, self).save(*args, **kwargs)
