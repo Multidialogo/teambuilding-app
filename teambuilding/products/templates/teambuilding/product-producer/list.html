@@ -1,18 +1,18 @@
 {% extends "teambuilding/shared/crud/page.html" %}
 
 {% block crud_header %}
-    Producers list
+    Gestisci produttori
 {% endblock %}
 
 {% block crud_content %}
-    <a class="button" href="{% url 'product-producer-create' %}">Create new producer</a>
+    <a class="button" href="{% url 'product-producer-create' %}">Nuovo</a>
     <hr>
     <table class="table">
         <tr>
-            <th>Name</th>
+            <th>Nome</th>
             <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
+            <th>Telefono</th>
+            <th>Indirizzo</th>
             <th></th>
             <th></th>
         </tr>
@@ -21,9 +21,9 @@
                 <td>{{ producer.name }}</td>
                 <td>{{ producer.email }}</td>
                 <td>{{ producer.phone }}</td>
-                <td>{{ producer.producerpostaladdress }}</td>
-                <td><a href="{% url 'product-producer-update' pk=producer.id %}">Edit</a></td>
-                <td><a href="{% url 'product-producer-delete' pk=producer.id %}">Delete</a></td>
+                <td>{{ producer.postal_address }}</td>
+                <td><a href="{% url 'product-producer-update' pk=producer.id %}">Modifica</a></td>
+                <td><a href="{% url 'product-producer-delete' pk=producer.id %}">Rimuovi</a></td>
             </tr>
         {% endfor %}
     </table>

@@ -1,9 +1,9 @@
 from django import forms
 
-from teambuilding.accounts.models import User
+from .models import User
 
 
-class UserForm(forms.ModelForm):
+class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('nickname',)
+        exclude = ('account',)

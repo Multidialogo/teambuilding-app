@@ -1,0 +1,10 @@
+{% extends "teambuilding/shared/base.html" %}
+
+{% block content %}
+    <section class="section">
+        <h3 class="title is-3">Registrazione in attesa di conferma</h3>
+        <div>
+            <p>Abbiamo inviato una mail per la conferma all'indirizzo email <strong>{{ registered_user.email }}</strong>. E' necessario confermare la propria mail prima di poter accedere.</p>
+        </div>
+    </section>
+{% endblock %}

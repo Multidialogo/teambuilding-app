@@ -1,9 +1,9 @@
 from django import forms
-from django.http import Http404
-from django.shortcuts import get_object_or_404
 
-from .models import Producer, Product, ProductPurchaseOption, ProducerPostalAddress, ProductOrder, ProducerOrder, \
+from .models import (
+    Producer, Product, ProductPurchaseOption, ProducerPostalAddress, ProductOrder, ProducerOrder,
     ProducerOrderDeliveryAddress
+)
 
 
 class ProductForm(forms.ModelForm):
@@ -11,70 +11,35 @@ class ProductForm(forms.ModelForm):
         model = Product
         exclude = ()
 
-    def __init__(self, *args, **kwargs):
-        super(ProductForm, self).__init__(*args, **kwargs)
-
-        self.fields['producer'].empty_label = None
-
 
 class ProductPurchaseOptionForm(forms.ModelForm):
     class Meta:
         model = ProductPurchaseOption
-        exclude = ()
-
-    def __init__(self, *args, **kwargs):
-        product_id = kwargs.pop('product_id', None)
-        exclude_product_field = bool(kwargs.pop('exclude_product_field', False))
-        super(ProductPurchaseOptionForm, self).__init__(*args, **kwargs)
-
-        if product_id:
-            product = get_object_or_404(Product, pk=product_id)
-            self.initial['product'] = product
-            self.fields['product'].disabled = True
-
-        if exclude_product_field:
-            del self.fields['product']
+        exclude = ('product',)
 
 
 class ProducerForm(forms.ModelForm):
     class Meta:
         model = Producer
-        exclude = ()
+        exclude = ('postal_address',)
 
 
 class ProducerPostalAddressForm(forms.ModelForm):
     class Meta:
         model = ProducerPostalAddress
-        exclude = ('producer',)
+        exclude = ()
 
 
 class ProductOrderForm(forms.ModelForm):
     class Meta:
         model = ProductOrder
-        exclude = ('customer', 'producerOrder', 'producer')
-
-    def __init__(self, *args, **kwargs):
-        product_id = kwargs.pop('product_id')
-        super(ProductOrderForm, self).__init__(*args, **kwargs)
-
-        if not Product.objects.filter(pk=product_id).exists():
-            raise Http404
-
-        self.fields['purchaseOption'].queryset = ProductPurchaseOption.objects.filter(product_id__exact=product_id)
-        self.fields['purchaseOption'].empty_label = None
+        exclude = ('customer', 'producer_order', 'producer', 'product', 'status')
 
 
 class ProducerOrderForm(forms.ModelForm):
     class Meta:
         model = ProducerOrder
-        exclude = ('producer',)
-
-    def __init__(self, *args, **kwargs):
-        receipt = kwargs.pop('receipt')
-        super(ProducerOrderForm, self).__init__(*args, **kwargs)
-
-        self.initial['receipt'] = receipt
-        self.fields['receipt'].disabled = True
+        exclude = ('producer', 'address')
 
 
 class ProducerOrderDeliveryAddressForm(forms.ModelForm):

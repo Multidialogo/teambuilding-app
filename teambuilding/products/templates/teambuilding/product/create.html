@@ -1,7 +1,7 @@
 {% extends "teambuilding/shared/crud/page.html" %}
 
 {% block crud_header %}
-    Create new product
+    Nuovo prodotto
 {% endblock %}
 
 {% block crud_content %}
@@ -10,13 +10,13 @@
         {% include 'teambuilding/shared/crud/form.html' with form=product_form %}
         {% include 'teambuilding/shared/crud/errors.html' with errors=product_form.non_field_errors %}
         <hr>
-        <h5 class="title is-5">Purchase option</h5>
+        <h5 class="title is-5">Opzione di acquisto</h5>
         {% include 'teambuilding/shared/crud/form.html' with form=option_form %}
         {% include 'teambuilding/shared/crud/errors.html' with errors=option_form.non_field_errors %}
         <hr>
         <div class="field">
             <div class="control">
-                <button class="button is-link" type="submit">Create new</button>
+                <button class="button is-link" type="submit">Salva</button>
             </div>
         </div>
     </form>

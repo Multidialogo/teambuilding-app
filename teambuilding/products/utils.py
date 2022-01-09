@@ -3,7 +3,7 @@ def make_receipt(orders):
 
     for order in orders:
         receipt = receipt + "\n%s, %s, %s, %s" % (
-            str(order.purchaseOption.product), order.purchaseOption.quantity, str(order.purchaseOption.priceInCents),
+            str(order.purchaseOption.product), order.purchaseOption.quantity, str(order.purchaseOption.price_cents),
             str(order.customer))
 
     return receipt

@@ -14,7 +14,7 @@ def safe_country_code(country_code, fallback_value='IT'):
             if not Country.objects.exists():
                 raise Http404()
             else:
-                country_code = Country.objects.values('country_code').first()
+                country_code = Country.objects.values_list('country_code', flat=True).first()
         else:
             country_code = fallback_value
     return country_code

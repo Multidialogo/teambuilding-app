@@ -21,8 +21,8 @@ from . import views
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
-    path('auth/', include('teambuilding.users.urls')),
-    path('accounts/', include('teambuilding.accounts.urls')),
+    path('accounts/', include('teambuilding.users.urls')),
+    path('auth/', include('teambuilding.accounts.urls')),
     path('events/', include('teambuilding.events.urls')),
     path('products/', include('teambuilding.products.urls')),
     path('admin/', admin.site.urls),

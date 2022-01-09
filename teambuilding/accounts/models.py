@@ -13,6 +13,10 @@ class UserManager(BaseUserManager):
             raise ValueError('The Password must be set')
 
         email = self.normalize_email(email)
+
+        if 'nickname' not in extra_fields:
+            extra_fields['nickname'] = email
+
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -22,6 +26,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         extra_fields.setdefault('is_active', False)
+
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
@@ -37,9 +42,9 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class User(AbstractUser):
+class UserAccount(AbstractUser):
     username = None
-    email = models.EmailField(verbose_name='email address', blank=False, unique=True)
+    email = models.EmailField(verbose_name='indirizzo email', blank=False, unique=True)
     nickname = models.CharField(max_length=100, verbose_name='nickname', unique=True)
 
     objects = UserManager()
@@ -48,10 +53,11 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.email
+        return self.nickname
 
-    def save(self, *args, **kwargs):
+    def clean(self):
+        super().clean()
+
         is_nickname_empty = ('' + self.nickname).isspace()
         if (not self.nickname) or is_nickname_empty:
             self.nickname = self.email
-        super(User, self).save(*args, **kwargs)

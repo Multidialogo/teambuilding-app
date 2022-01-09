@@ -1,10 +1,14 @@
+from django.db import transaction
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from teambuilding.events.tasks import notify_new_taste_event_to_all_users
-from teambuilding.events.signals import taste_event_form_transaction_done
+from .models import TasteEvent
+from .tasks import notify_new_taste_event_to_all_users
 
 
-@receiver(taste_event_form_transaction_done)
-def on_taste_event_form_transaction_done(**kwargs):
-    taste_event = kwargs['instance']
-    notify_new_taste_event_to_all_users(taste_event)
+@receiver(post_save, sender=TasteEvent)
+def on_taste_event_post_save(instance, created, **kwargs):
+    if created:
+        transaction.on_commit(
+            lambda: notify_new_taste_event_to_all_users(instance)
+        )

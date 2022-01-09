@@ -1,18 +1,18 @@
 {% extends "teambuilding/shared/crud/page.html" %}
 
 {% block crud_header %}
-    Upcoming events (created by Everyone)
+    Elenco eventi futuri
 {% endblock %}
 
 {% block crud_content %}
     <table class="table">
         <tr>
-            <th>Title</th>
-            <th>Organizer</th>
-            <th>Start date</th>
-            <th>End date</th>
-            <th>Description</th>
-            <th>Products</th>
+            <th>Titolo</th>
+            <th>Organizzatore</th>
+            <th>Data inizio</th>
+            <th>Data fine</th>
+            <th>Descrizione</th>
+            <th>Prodotti</th>
             <th></th>
         </tr>
         {% for event in events %}
@@ -23,7 +23,7 @@
                 <td>{{ event.end_date }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.products.all|join:", " }}</td>
-                <td><a href="{% url 'event-detail' event.id %}">Detail</a></td>
+                <td><a href="{% url 'event-detail' event.id %}">Dettagli</a></td>
             </tr>
         {% endfor %}
     </table>

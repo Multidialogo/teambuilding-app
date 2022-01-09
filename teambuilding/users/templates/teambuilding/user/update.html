@@ -1,14 +1,16 @@
 {% extends "teambuilding/shared/crud/page.html" %}
 
 {% block crud_header %}
-Profile - edit
+    Profilo utente - Modifica
 {% endblock %}
 
 {% block crud_content %}
     <form method="POST">
         {% csrf_token %}
         {% include 'teambuilding/shared/crud/form.html' with form=user_form %}
+        {% include 'teambuilding/shared/crud/form.html' with form=user_extra_form %}
         {% include 'teambuilding/shared/crud/errors.html' with errors=user_form.non_field_errors %}
+        {% include 'teambuilding/shared/crud/errors.html' with errors=user_extra_form.non_field_errors %}
         <hr>
         <div class="field">
             <div class="control">

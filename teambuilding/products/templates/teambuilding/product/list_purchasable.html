@@ -1,15 +1,15 @@
 {% extends "teambuilding/shared/crud/page.html" %}
 
 {% block crud_header %}
-    Purchasable products list
+    Elenco prodotti acquistabili
 {% endblock %}
 
 {% block crud_content %}
     <table class="table">
         <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Producer</th>
+            <th>Nome prodotto</th>
+            <th>Descrizione</th>
+            <th>Produttore</th>
             <th></th>
         </tr>
         {% for product in products %}
@@ -17,7 +17,7 @@
                 <td>{{ product.title }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.producer }}</td>
-                <td><a href="{% url 'product-order-create' product.id %}">Buy</a></td>
+                <td><a href="{% url 'product-order-create' product.id %}">Acquista</a></td>
             </tr>
         {% endfor %}
     </table>

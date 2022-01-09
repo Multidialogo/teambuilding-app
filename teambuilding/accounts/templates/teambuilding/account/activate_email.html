@@ -1,5 +1,5 @@
 {% autoescape off %}
-Hi {{ user.nickname }},
-Please click on the link to confirm your registration,http://{{ domain }}{% url 'activate' uid_b64=user_id token=token %}
-If you think, it's not you, then just ignore this email.
+Ciao {{ user.nickname }},
+puoi clickare sul seguente link per confermare la tua registrazione, http://{{ domain }}{% url 'activate' uid_64=user_id token=token %}
+Se non sei stato tu ad effettuare la registrazione, puoi ignorare questa mail.
 {% endautoescape %}

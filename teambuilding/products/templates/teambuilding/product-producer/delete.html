@@ -1,13 +1,13 @@
 {% extends "teambuilding/shared/crud/page.html" %}
 
 {% block crud_header %}
-    Delete producer
+    Rimuovi produttore
 {% endblock %}
 
 {% block crud_content %}
     <table class="table">
         <tr>
-            <td><strong>Name</strong></td>
+            <td><strong>Nome</strong></td>
             <td>{{ producer.name }}</td>
         </tr>
         <tr>
@@ -15,26 +15,26 @@
             <td>{{ producer.email }}</td>
         </tr>
         <tr>
-            <td><strong>Phone</strong></td>
+            <td><strong>Telefono</strong></td>
             <td>{{ producer.phone }}</td>
         </tr>
         <tr>
-            <td><strong>Address</strong></td>
-            <td>{{ producer.producerpostaladdress }}</td>
+            <td><strong>Indirizzo</strong></td>
+            <td>{{ producer.postal_address }}</td>
         </tr>
     </table>
     <hr>
     <form method="post">
         {% csrf_token %}
         <div class="field">
-            <p class="control">Are you sure you want to delete this item?</p>
+            <p class="control">Sei sicuro di voler rimuovere questo produttore?</p>
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" type="submit">Yes</button>
+                <button class="button is-link" type="submit">Conferma</button>
             </div>
             <div class="control">
-                <a class="button is-link is-light" href="{% url 'product-producer-list' %}">Cancel</a>
+                <a class="button is-link is-light" href="{% url 'product-producer-list' %}">Annulla</a>
             </div>
         </div>
     </form>

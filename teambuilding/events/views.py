@@ -2,12 +2,10 @@ from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
 
-from teambuilding.events.forms import TasteEventForm
-from teambuilding.events.models import TasteEvent
-from teambuilding.events.signals import taste_event_form_transaction_done
+from .forms import TasteEventForm
+from .models import TasteEvent
 
 
 @login_required
@@ -28,7 +26,7 @@ def list_past_by_all(request):
 
 @login_required
 def list_upcoming_by_self(request):
-    events = TasteEvent.objects.filter(organizer=request.user)
+    events = TasteEvent.objects.filter(organizer_id=request.user.profile.id)
     context = {'events': events}
     return render(request, 'teambuilding/event/list_upcoming_by_self.html', context)
 
@@ -37,14 +35,10 @@ def list_upcoming_by_self(request):
 def create(request):
     if request.method == 'POST':
         form = TasteEventForm(request.POST)
-        form.instance.organizer = request.user
+        form.instance.organizer = request.user.profile
 
         if form.is_valid():
-            with transaction.atomic():
-                form.save()
-                pre_taste_event_created.send(sender='', instance=form.instance)
-
-            taste_event_form_transaction_done.send(sender='', instance=form.instance)
+            form.save()
             return redirect('event-user-list')
     else:
         form = TasteEventForm()
@@ -81,7 +75,7 @@ def update(request, pk):
 def delete(request, pk):
     event = get_object_or_404(TasteEvent, pk=pk)
 
-    if event.organizer.id != request.user.id:
+    if event.organizer.id != request.user.profile.id:
         raise PermissionDenied()
 
     if request.method == 'POST':
