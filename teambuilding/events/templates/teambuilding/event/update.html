@@ -1,7 +1,8 @@
 {% extends "teambuilding/shared/crud/page.html" %}
+{% load i18n %}
 
 {% block crud_header %}
-    Modifica evento
+    {% translate "Edit event" %}
 {% endblock %}
 
 {% block crud_content %}
@@ -12,7 +13,7 @@
         <hr>
         <div class="field">
             <div class="control">
-                <button class="button is-link" type="submit">Salva</button>
+                <button class="button is-link" type="submit">{% translate "Save" %}</button>
             </div>
         </div>
     </form>

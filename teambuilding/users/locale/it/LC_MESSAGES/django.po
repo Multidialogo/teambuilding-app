@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 16:16+0000\n"
+"POT-Creation-Date: 2022-01-10 17:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,3 +29,31 @@ msgstr "profilo utente"
 #: teambuilding/users/models.py:13
 msgid "user profiles"
 msgstr "profili utenti"
+
+#: teambuilding/users/templates/teambuilding/user/detail.html:5
+#, fuzzy
+#| msgid "user profile"
+msgid "User profile"
+msgstr "Profilo utente"
+
+#: teambuilding/users/templates/teambuilding/user/detail.html:11
+msgid "Nickname"
+msgstr ""
+
+#: teambuilding/users/templates/teambuilding/user/detail.html:15
+msgid "Email"
+msgstr ""
+
+#: teambuilding/users/templates/teambuilding/user/detail.html:22
+msgid "Edit"
+msgstr "Modifica"
+
+#: teambuilding/users/templates/teambuilding/user/update.html:5
+#, fuzzy
+#| msgid "user profile"
+msgid "User profile - Edit"
+msgstr "Profilo utente - Modifica"
+
+#: teambuilding/users/templates/teambuilding/user/update.html:18
+msgid "Save"
+msgstr "Salva"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 16:16+0000\n"
+"POT-Creation-Date: 2022-01-10 17:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,10 +172,14 @@ msgstr "indirizzo postale"
 msgid "postal addresses"
 msgstr "indirizzi postali"
 
-#: lib/postaladdress/models.py:54
-#, python-format
-msgid "%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s"
+#: lib/postaladdress/models.py:55
+#, fuzzy, python-format
+#| msgid "%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s"
+msgid ""
+"%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s%(adm-2)0s"
+"%(adm-4)0s%(adm-5)0s"
 msgstr "%(street)s, %(zipcode)s, %(adm-3)s, %(adm-2)s, %(country)s"
+"%(adm-1)0s%(adm-4)0s%(adm-5)0s"
 
 #: lib/postaladdress/validators.py:9
 #, fuzzy, python-format

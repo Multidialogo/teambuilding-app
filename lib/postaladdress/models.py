@@ -51,13 +51,15 @@ class PostalAddress(models.Model):
         verbose_name_plural = _("postal addresses")
 
     def __str__(self):
-        return gettext("%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s") % {
-            'country': str(self.country),
-            'zipcode': self.zip_code,
-            'street': self.street,
-            'adm-1': self.adm_level_1,
-            'adm-2': self.adm_level_2,
-            'adm-3': self.adm_level_3,
-            'adm-4': self.adm_level_4,
-            'adm-5': self.adm_level_5
-        }
+        return gettext(
+            "%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s"
+            "%(adm-2)0s%(adm-4)0s%(adm-5)0s") % {
+                'country': str(self.country),
+                'zipcode': self.zip_code,
+                'street': self.street,
+                'adm-1': self.adm_level_1,
+                'adm-2': self.adm_level_2,
+                'adm-3': self.adm_level_3,
+                'adm-4': self.adm_level_4,
+                'adm-5': self.adm_level_5
+            }

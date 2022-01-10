@@ -1,21 +1,22 @@
 {% extends "teambuilding/shared/base.html" %}
+{% load i18n %}
 
 {% block content %}
     <section class="section">
         <h3 class="title is-3">
-            Invia ordine complessivo al produttore
+            {% translate "Send cumulative order to producer" %}
         </h3>
         <article class="message">
             <div class="message-body">
-                <h5 class="title is-5">Elenco ordini singoli</h5>
+                <h5 class="title is-5">{% translate "Orders" %}</h5>
                 <table class="table">
                     <tr>
                         <th>#</th>
-                        <th>Produttore</th>
-                        <th>Prodotto</th>
-                        <th>Committente</th>
-                        <th>Quantità</th>
-                        <th>Prezzo EURO (cents)</th>
+                        <th>{% translate "Producer" %}</th>
+                        <th>{% translate "Product" %}</th>
+                        <th>{% translate "Customer email" %}</th>
+                        <th>{% translate "Amount" %}</th>
+                        <th>{% translate "EUR (cents)" %}</th>
                     </tr>
                     {% for order in orders %}
                         <tr>
@@ -35,13 +36,13 @@
                 {% csrf_token %}
                 {% include 'teambuilding/shared/crud/form.html' with form=order_form %}
                 {% include 'teambuilding/shared/crud/errors.html' with errors=order_form.non_field_errors %}
-                <h5 class="title is-5">Indirizzo di spedizione</h5>
+                <h5 class="title is-5">{% translate "Delivery address" %}</h5>
                 {% include 'teambuilding/shared/crud/form.html' with form=address_form %}
                 {% include 'teambuilding/shared/crud/errors.html' with errors=address_form.non_field_errors %}
                 <hr>
                 <div class="field">
                     <div class="control">
-                        <button class="button is-link" type="submit">Crea ed invia</button>
+                        <button class="button is-link" type="submit">{% translate "Send" %}</button>
                     </div>
                 </div>
             </form>

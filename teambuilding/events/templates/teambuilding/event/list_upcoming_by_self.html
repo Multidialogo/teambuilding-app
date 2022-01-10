@@ -1,20 +1,21 @@
 {% extends "teambuilding/shared/crud/page.html" %}
+{% load i18n %}
 
 {% block crud_header %}
-    Gestisci eventi futuri (creati da Te)
+    {% translate "Manage future events (created by You)" %}
 {% endblock %}
 
 {% block crud_content %}
-    <a class="button" href="{% url 'event-create' %}">Nuovo</a>
+    <a class="button" href="{% url 'event-create' %}">{% translate "New" %}</a>
     <hr>
     <table class="table">
         <tr>
-            <th>Titolo</th>
-            <th>Organizzatore</th>
-            <th>Data inizio</th>
-            <th>Data fine</th>
-            <th>Descrizione</th>
-            <th>Prodotti</th>
+            <th>{% translate "Title" %}</th>
+            <th>{% translate "Organizer" %}</th>
+            <th>{% translate "Start date" %}</th>
+            <th>{% translate "End date" %}</th>
+            <th>{% translate "Description" %}</th>
+            <th>{% translate "Products" %}</th>
             <th></th>
             <th></th>
         </tr>
@@ -26,8 +27,8 @@
                 <td>{{ event.end_date }}</td>
                 <td>{{ event.description }}</td>
                 <td>{{ event.products.all|join:", " }}</td>
-                <td><a href="{% url 'event-update' event.id %}">Modifica</a></td>
-                <td><a href="{% url 'event-delete' event.id %}">Rimuovi</a></td>
+                <td><a href="{% url 'event-update' event.id %}">{% translate "Edit" %}</a></td>
+                <td><a href="{% url 'event-delete' event.id %}">{% translate "Remove" %}</a></td>
             </tr>
         {% endfor %}
     </table>

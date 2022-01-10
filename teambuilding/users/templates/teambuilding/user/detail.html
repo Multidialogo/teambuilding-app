@@ -1,24 +1,25 @@
 {% extends "teambuilding/shared/crud/page.html" %}
+{% load i18n %}
 
 {% block crud_header %}
-    Profilo utente
+    {% translate "User profile" %}
 {% endblock %}
 
 {% block crud_content %}
     <table class="table">
         <tr>
-            <td><strong>Nickname</strong></td>
+            <td><strong>{% translate "Nickname" %}</strong></td>
             <td>{{ user_profile.account.nickname }}</td>
         </tr>
         <tr>
-            <td><strong>Email</strong></td>
+            <td><strong>{% translate "Email" %}</strong></td>
             <td>{{ user_profile.account.email }}</td>
         </tr>
     </table>
     <hr>
     <div class="field">
         <div class="control">
-            <a class="button is-link" href="{% url 'user-profile-update' %}">Modifica</a>
+            <a class="button is-link" href="{% url 'user-profile-update' %}">{% translate "Edit" %}</a>
         </div>
     </div>
 {% endblock %}

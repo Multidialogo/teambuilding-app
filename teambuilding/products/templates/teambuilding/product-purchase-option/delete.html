@@ -1,21 +1,22 @@
 {% extends "teambuilding/shared/crud/page.html" %}
+{% load i18n %}
 
 {% block crud_header %}
-    Rimuovi opzione di acquisto prodotto
+    {% translate "Remove product purchase option" %}
 {% endblock %}
 
 {% block crud_content %}
     <table class="table">
         <tr>
-            <td><strong>Prodotto</strong></td>
+            <td><strong>{% translate "Product" %}</strong></td>
             <td>{{ option.product }}</td>
         </tr>
         <tr>
-            <td><strong>Quantità</strong></td>
+            <td><strong>{% translate "Amount" %}</strong></td>
             <td>{{ option.amount }}</td>
         </tr>
         <tr>
-            <td><strong>Prezzo EURO (cents)</strong></td>
+            <td><strong>{% translate "Price EUR (cents)" %}</strong></td>
             <td>{{ option.price_cents }}</td>
         </tr>
     </table>
@@ -23,14 +24,14 @@
     <form method="post">
         {% csrf_token %}
         <div class="field">
-            <p class="control">Sei sicuro di voler rimuovere questa opzione di acquisto?</p>
+            <p class="control">{% translate "Are you sure you want to remove this product purchase option?" %}</p>
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" type="submit">Conferma</button>
+                <button class="button is-link" type="submit">{% translate "Confirm" %}</button>
             </div>
             <div class="control">
-                <a class="button is-link is-light" href="{% url 'product-update' option.product.id %}">Annulla</a>
+                <a class="button is-link is-light" href="{% url 'product-update' option.product.id %}">{% translate "Cancel" %}</a>
             </div>
         </div>
     </form>

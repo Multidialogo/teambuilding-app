@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 16:16+0000\n"
+"POT-Creation-Date: 2022-01-10 17:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,3 +61,139 @@ msgstr "Nuovo evento Taste & Purchase!"
 #: teambuilding/events/tasks.py:15
 msgid "A new event has been added, check it out."
 msgstr "E' stato aggiunto un nuovo evento."
+
+#: teambuilding/events/templates/teambuilding/event/create.html:5
+#, fuzzy
+#| msgid "taste event"
+msgid "New event"
+msgstr "evento degustazione"
+
+#: teambuilding/events/templates/teambuilding/event/create.html:16
+#: teambuilding/events/templates/teambuilding/event/update.html:16
+msgid "Save"
+msgstr "Salva"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:5
+#, fuzzy
+#| msgid "taste event"
+msgid "Remove event"
+msgstr "Rimuovi evento"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:11
+#: teambuilding/events/templates/teambuilding/event/detail.html:11
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:11
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:11
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:13
+#, fuzzy
+#| msgid "title"
+msgid "Title"
+msgstr "titolo"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:15
+#: teambuilding/events/templates/teambuilding/event/detail.html:15
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:12
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:12
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:14
+#, fuzzy
+#| msgid "organizer"
+msgid "Organizer"
+msgstr "organizzatore"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:19
+#: teambuilding/events/templates/teambuilding/event/detail.html:19
+msgid "Start datetime"
+msgstr "Data ora di inizio"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:23
+#: teambuilding/events/templates/teambuilding/event/detail.html:23
+msgid "End datetime"
+msgstr "Data ora di fine"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:27
+#: teambuilding/events/templates/teambuilding/event/detail.html:27
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:15
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:15
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:17
+#, fuzzy
+#| msgid "description"
+msgid "Description"
+msgstr "Descrizione"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:31
+#: teambuilding/events/templates/teambuilding/event/detail.html:31
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:16
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:16
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:18
+#, fuzzy
+#| msgid "products"
+msgid "Products"
+msgstr "Prodotti"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:39
+msgid "Are you sure you want to remove this event?"
+msgstr "Confermi di voler rimuovere questo evento?"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:43
+msgid "Confirm"
+msgstr "Conferma"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:46
+msgid "Cancel"
+msgstr "Annulla"
+
+#: teambuilding/events/templates/teambuilding/event/detail.html:5
+msgid "Event details"
+msgstr "Dettagli evento"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:5
+#, fuzzy
+#| msgid "taste events"
+msgid "Past events"
+msgstr "Eventi passati"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:13
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:13
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:15
+msgid "Start date"
+msgstr "Data inizio"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:14
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:14
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:16
+msgid "End date"
+msgstr "Data fine"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:27
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:27
+msgid "Details"
+msgstr "Dettagli"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:5
+#, fuzzy
+#| msgid "taste events"
+msgid "Future events"
+msgstr "Eventi futuri"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:5
+#, fuzzy
+#| msgid "Manage future events (created by You"
+msgid "Manage future events (created by You)"
+msgstr "Gestione eventi futuri (creati da Te)"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:9
+msgid "New"
+msgstr "Nuovo"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:30
+msgid "Edit"
+msgstr "Modifica"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:31
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: teambuilding/events/templates/teambuilding/event/update.html:5
+#, fuzzy
+#| msgid "taste event"
+msgid "Edit event"
+msgstr "Modifica evento"

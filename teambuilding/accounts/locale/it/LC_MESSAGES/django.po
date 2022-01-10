@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 16:16+0000\n"
+"POT-Creation-Date: 2022-01-10 17:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,20 @@ msgstr ""
 #: teambuilding/accounts/tasks.py:11
 msgid "Taste & Purchase account activation"
 msgstr "Taste & Purchase attivazione account"
+
+#: teambuilding/accounts/templates/teambuilding/account/activate.html:6
+msgid "Confirm email"
+msgstr "Conferma email"
+
+#: teambuilding/accounts/templates/teambuilding/account/login.html:5
+#: teambuilding/accounts/templates/teambuilding/account/login.html:16
+msgid "Login"
+msgstr ""
+
+#: teambuilding/accounts/templates/teambuilding/account/signup.html:5
+#: teambuilding/accounts/templates/teambuilding/account/signup.html:16
+msgid "Sign up"
+msgstr "Registrati"
 
 #: teambuilding/accounts/views.py:52
 msgid "Your account has been activated."

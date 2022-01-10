@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 16:16+0000\n"
+"POT-Creation-Date: 2022-01-10 17:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,7 +164,272 @@ msgstr ""
 "%(address)s"
 
 #: teambuilding/products/tasks.py:18
+#: teambuilding/products/templates/teambuilding/product-order/create.html:5
 #, fuzzy
 #| msgid "simple order"
 msgid "New order"
 msgstr "Nuovo ordine"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:11
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:11
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:13
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:11
+#: teambuilding/products/templates/teambuilding/product/delete.html:11
+#: teambuilding/products/templates/teambuilding/product/list.html:13
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:11
+msgid "Name"
+msgstr "Nome"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:15
+#: teambuilding/products/templates/teambuilding/product/delete.html:15
+#: teambuilding/products/templates/teambuilding/product/list.html:14
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:12
+#, fuzzy
+#| msgid "description"
+msgid "Description"
+msgstr "Descrizione"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:19
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:15
+#: teambuilding/products/templates/teambuilding/product/delete.html:19
+#: teambuilding/products/templates/teambuilding/product/list.html:15
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:13
+#, fuzzy
+#| msgid "producer"
+msgid "Producer"
+msgstr "Produttore"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:30
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:21
+#, fuzzy
+#| msgid "purchase option"
+msgid "Purchase"
+msgstr "Acquista"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:7
+#, fuzzy
+#| msgid "cumulative order to producer"
+msgid "Send cumulative order to producer"
+msgstr "Ordine cumulativo al produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:11
+msgid "Orders"
+msgstr "Ordini"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:16
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:11
+#, fuzzy
+#| msgid "product"
+msgid "Product"
+msgstr "Prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:17
+#, fuzzy
+#| msgid "customer"
+msgid "Customer email"
+msgstr "Email acquirente"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:18
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:15
+#: teambuilding/products/templates/teambuilding/product/update.html:20
+#, fuzzy
+#| msgid "amount"
+msgid "Amount"
+msgstr "Quantità"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:19
+msgid "EUR (cents)"
+msgstr ""
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:39
+#, fuzzy
+#| msgid "delivery address"
+msgid "Delivery address"
+msgstr "Indirizzo di spedizione"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:45
+msgid "Send"
+msgstr "Invia"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:5
+#, fuzzy
+#| msgid "producer"
+msgid "New producer"
+msgstr "Nuovo produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:23
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:16
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:14
+#, fuzzy
+#| msgid "postal addresses"
+msgid "Postal address"
+msgstr "Indirizzo postale"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:20
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:20
+#: teambuilding/products/templates/teambuilding/product-purchase-option/create.html:16
+#: teambuilding/products/templates/teambuilding/product-purchase-option/update.html:16
+#: teambuilding/products/templates/teambuilding/product/create.html:20
+#: teambuilding/products/templates/teambuilding/product/update.html:43
+msgid "Save"
+msgstr "Salva"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:5
+#, fuzzy
+#| msgid "producer"
+msgid "Remove producer"
+msgstr "Rimuovi produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:15
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:12
+msgid "Email"
+msgstr ""
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:19
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:15
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:13
+#, fuzzy
+#| msgid "phone number"
+msgid "Phone number"
+msgstr "Telefono"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:31
+msgid "Are you sure you want to remove this producer?"
+msgstr "Confermi di voler rimuovere questo produttore?"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:35
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:31
+#: teambuilding/products/templates/teambuilding/product/delete.html:31
+msgid "Confirm"
+msgstr "Conferma"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:38
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:34
+#: teambuilding/products/templates/teambuilding/product/delete.html:34
+msgid "Cancel"
+msgstr "Annulla"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:5
+#, fuzzy
+#| msgid "producers"
+msgid "Manage producers"
+msgstr "Gestione produttori"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:9
+#: teambuilding/products/templates/teambuilding/product/list.html:9
+msgid "New"
+msgstr "Nuovo"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:26
+#: teambuilding/products/templates/teambuilding/product/list.html:24
+#: teambuilding/products/templates/teambuilding/product/update.html:30
+msgid "Edit"
+msgstr "Modifica"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:27
+#: teambuilding/products/templates/teambuilding/product/list.html:25
+#: teambuilding/products/templates/teambuilding/product/update.html:34
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:5
+msgid "Manage pending orders"
+msgstr "Gestione ordini non evasi"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:23
+msgid "Show pending orders"
+msgstr "Mostra ordini non evasi"
+
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:5
+#, fuzzy
+#| msgid "producer"
+msgid "Edit producer"
+msgstr "Modifica produttore"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/create.html:5
+#, fuzzy
+#| msgid "purchase option"
+msgid "New product purchase option"
+msgstr "Nuova opzione di acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:5
+#, fuzzy
+#| msgid "purchase option"
+msgid "Remove product purchase option"
+msgstr "Rimuovi opzione di acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:19
+#: teambuilding/products/templates/teambuilding/product/update.html:21
+#, fuzzy
+#| msgid "price EUR (cents)"
+msgid "Price EUR (cents)"
+msgstr "Prezzo EUR (cents)"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:27
+#, fuzzy
+#| msgid "Are you sure you want to delete this product?"
+msgid "Are you sure you want to remove this product purchase option?"
+msgstr "Confermi di voler rimuovere questa opzione di acquisto prodotto?"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/update.html:5
+#, fuzzy
+#| msgid "purchase option"
+msgid "Edit product purchase option"
+msgstr "Modifica opzione di acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/create.html:5
+#, fuzzy
+#| msgid "product"
+msgid "New product"
+msgstr "Nuovo prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/create.html:14
+#, fuzzy
+#| msgid "purchase option"
+msgid "Purchase option"
+msgstr "Opzione di acquisto"
+
+#: teambuilding/products/templates/teambuilding/product/delete.html:5
+#, fuzzy
+#| msgid "product"
+msgid "Remove product"
+msgstr "Rimuovi prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/delete.html:27
+#, fuzzy
+#| msgid "Are you sure you want to delete this product?"
+msgid "Are you sure you want to remove this product?"
+msgstr "Confermi di voler rimuovere questo prodotto?"
+
+#: teambuilding/products/templates/teambuilding/product/list.html:5
+#, fuzzy
+#| msgid "products"
+msgid "Manage products"
+msgstr "Gestione prodotti"
+
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:5
+#, fuzzy
+#| msgid "purchase option"
+msgid "Purchase product"
+msgstr "Acquista prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:5
+#, fuzzy
+#| msgid "product"
+msgid "Edit product"
+msgstr "Modifica prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:14
+#, fuzzy
+#| msgid "purchase options"
+msgid "Purchase options"
+msgstr "Opzioni di acquisto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:16
+#, fuzzy
+#| msgid "purchase option"
+msgid "New purchase option"
+msgstr "Nuova opzione di acquisto"

@@ -1,25 +1,26 @@
 {% extends "teambuilding/shared/crud/page.html" %}
+{% load i18n %}
 
 {% block crud_header %}
-    Rimuovi produttore
+    {% translate "Remove producer" %}
 {% endblock %}
 
 {% block crud_content %}
     <table class="table">
         <tr>
-            <td><strong>Nome</strong></td>
+            <td><strong>{% translate "Name" %}</strong></td>
             <td>{{ producer.name }}</td>
         </tr>
         <tr>
-            <td><strong>Email</strong></td>
+            <td><strong>{% translate "Email" %}</strong></td>
             <td>{{ producer.email }}</td>
         </tr>
         <tr>
-            <td><strong>Telefono</strong></td>
+            <td><strong>{% translate "Phone number" %}</strong></td>
             <td>{{ producer.phone }}</td>
         </tr>
         <tr>
-            <td><strong>Indirizzo</strong></td>
+            <td><strong>{% translate "Postal address" %}</strong></td>
             <td>{{ producer.postal_address }}</td>
         </tr>
     </table>
@@ -27,14 +28,14 @@
     <form method="post">
         {% csrf_token %}
         <div class="field">
-            <p class="control">Sei sicuro di voler rimuovere questo produttore?</p>
+            <p class="control">{% translate "Are you sure you want to remove this producer?" %}</p>
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" type="submit">Conferma</button>
+                <button class="button is-link" type="submit">{% translate "Confirm" %}</button>
             </div>
             <div class="control">
-                <a class="button is-link is-light" href="{% url 'product-producer-list' %}">Annulla</a>
+                <a class="button is-link is-light" href="{% url 'product-producer-list' %}">{% translate "Cancel" %}</a>
             </div>
         </div>
     </form>

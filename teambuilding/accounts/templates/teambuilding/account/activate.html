@@ -1,8 +1,9 @@
 {% extends "teambuilding/shared/base.html" %}
+{% load i18n %}
 
 {% block content %}
     <section class="section">
-        <h3 class="title is-3">Conferma email</h3>
+        <h3 class="title is-3">{% translate "Confirm email" %}</h3>
         <div>
             <p>{{ message }}</p>
         </div>

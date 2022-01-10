@@ -1,7 +1,8 @@
 {% extends "teambuilding/shared/crud/page.html" %}
+{% load i18n %}
 
 {% block crud_header %}
-Login
+    {% translate "Login" %}
 {% endblock %}
 
 {% block crud_content %}
@@ -12,7 +13,7 @@ Login
         <hr>
         <div class="field">
             <div class="control">
-                <button class="button is-link" type="submit">Login</button>
+                <button class="button is-link" type="submit">{% translate "Login" %}</button>
             </div>
         </div>
     </form>

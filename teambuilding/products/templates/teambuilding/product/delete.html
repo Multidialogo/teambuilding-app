@@ -1,21 +1,22 @@
 {% extends "teambuilding/shared/crud/page.html" %}
+{% load i18n %}
 
 {% block crud_header %}
-    Rimuovi prodotto
+    {% translate "Remove product" %}
 {% endblock %}
 
 {% block crud_content %}
     <table class="table">
         <tr>
-            <td><strong>Nome prodotto</strong></td>
+            <td><strong>{% translate "Name" %}</strong></td>
             <td>{{ product.title }}</td>
         </tr>
         <tr>
-            <td><strong>Descrizione</strong></td>
+            <td><strong>{% translate "Description" %}</strong></td>
             <td>{{ product.description }}</td>
         </tr>
         <tr>
-            <td><strong>Produttore</strong></td>
+            <td><strong>{% translate "Producer" %}</strong></td>
             <td>{{ product.producer }}</td>
         </tr>
     </table>
@@ -23,14 +24,14 @@
     <form method="post">
         {% csrf_token %}
         <div class="field">
-            <p class="control">Sei sicuro di voler rimuovere questo prodotto?</p>
+            <p class="control">{% translate "Are you sure you want to remove this product?" %}</p>
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link" type="submit">Conferma</button>
+                <button class="button is-link" type="submit">{% translate "Confirm" %}</button>
             </div>
             <div class="control">
-                <a class="button is-link is-light" href="{% url 'product-list' %}">Annulla</a>
+                <a class="button is-link is-light" href="{% url 'product-list' %}">{% translate "Cancel" %}</a>
             </div>
         </div>
     </form>
