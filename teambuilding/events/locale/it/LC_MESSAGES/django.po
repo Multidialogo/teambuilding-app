@@ -35,7 +35,7 @@ msgid "description"
 msgstr "descrizione"
 
 #: teambuilding/events/models.py:14
-msgid "promoter"
+msgid "organizer"
 msgstr "organizzatore"
 
 #: teambuilding/events/models.py:15

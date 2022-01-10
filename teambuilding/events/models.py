@@ -11,7 +11,7 @@ class TasteEvent(models.Model):
     end_date = models.DateTimeField(_("event end"), help_text='Format: gg/mm/yyyy hh:mm')
     title = models.CharField(_("title"), max_length=50)
     description = models.CharField(_("description"), max_length=100)
-    organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("promoter"))
+    organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("organizer"))
     products = models.ManyToManyField(Product, verbose_name=_("products"))
 
     class Meta:
