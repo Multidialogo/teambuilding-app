@@ -1,9 +1,11 @@
 from django.core.mail import send_mail
 from django.utils.translation import gettext
 
+from .models import ProductOrder
+
 
 def send_order_email_to_producer(order):
-    small_orders = order.product_order_set
+    small_orders = ProductOrder.objects.filter(producer_order_id=order.id)
     email = order.producer.email
     receipt = ""
 

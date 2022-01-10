@@ -4,11 +4,13 @@ from django.conf import settings
 from django.contrib.auth import logout as logout_request, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.shortcuts import get_current_site
 from django.db import transaction
 from django.shortcuts import render, redirect
 from django.utils.http import urlsafe_base64_decode
 
 from .forms import RegistrationForm
+from .tasks import send_activation_mail_to_user
 
 
 @login_required
@@ -27,6 +29,8 @@ def signup(request):
         if form.is_valid():
             with transaction.atomic():
                 user_inactive = form.save()
+                site_domain = get_current_site(request).domain
+                send_activation_mail_to_user(user_inactive, site_domain)
 
             context = {'registered_user': user_inactive}
             return render(request, 'teambuilding/account/signup_success.html', context)

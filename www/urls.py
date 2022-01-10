@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from . import views
+from teambuilding.site import views as site_views
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/', include('teambuilding.accounts.urls')),
     path('events/', include('teambuilding.events.urls')),
     path('products/', include('teambuilding.products.urls')),
+    path('site/', include('teambuilding.site.urls')),
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', site_views.home, name='home'),
 ]

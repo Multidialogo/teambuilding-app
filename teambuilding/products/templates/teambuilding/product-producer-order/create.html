@@ -1,4 +1,4 @@
-{% extends "teambuilding/shared/base.html" %}
+{% extends "teambuilding/site/shared/base.html" %}
 {% load i18n %}
 
 {% block content %}
@@ -34,11 +34,11 @@
         <div class="box">
             <form method="post">
                 {% csrf_token %}
-                {% include 'teambuilding/shared/crud/form.html' with form=order_form %}
-                {% include 'teambuilding/shared/crud/errors.html' with errors=order_form.non_field_errors %}
+                {% include 'teambuilding/site/shared/crud/form.html' with form=order_form %}
+                {% include 'teambuilding/site/shared/crud/errors.html' with errors=order_form.non_field_errors %}
                 <h5 class="title is-5">{% translate "Delivery address" %}</h5>
-                {% include 'teambuilding/shared/crud/form.html' with form=address_form %}
-                {% include 'teambuilding/shared/crud/errors.html' with errors=address_form.non_field_errors %}
+                {% include 'teambuilding/site/shared/crud/form.html' with form=address_form %}
+                {% include 'teambuilding/site/shared/crud/errors.html' with errors=address_form.non_field_errors %}
                 <hr>
                 <div class="field">
                     <div class="control">

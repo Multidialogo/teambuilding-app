@@ -1,11 +1,12 @@
-{% extends "teambuilding/shared/crud/page.html" %}
-{% load i18n %}
+{% extends "teambuilding/site/shared/crud/page.html" %}
 
 {% block crud_header %}
+    {% load i18n %}
     {% translate "User profile" %}
 {% endblock %}
 
 {% block crud_content %}
+    {% load i18n %}
     <table class="table">
         <tr>
             <td><strong>{% translate "Nickname" %}</strong></td>

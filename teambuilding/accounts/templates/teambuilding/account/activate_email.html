@@ -1,5 +1,0 @@
-{% autoescape off %}
-Ciao {{ user.nickname }},
-puoi clickare sul seguente link per confermare la tua registrazione, http://{{ domain }}{% url 'activate' uid_64=user_id token=token %}
-Se non sei stato tu ad effettuare la registrazione, puoi ignorare questa mail.
-{% endautoescape %}

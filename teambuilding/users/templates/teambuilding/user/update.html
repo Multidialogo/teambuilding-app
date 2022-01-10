@@ -1,4 +1,4 @@
-{% extends "teambuilding/shared/crud/page.html" %}
+{% extends "teambuilding/site/shared/crud/page.html" %}
 {% load i18n %}
 
 {% block crud_header %}
@@ -8,10 +8,10 @@
 {% block crud_content %}
     <form method="POST">
         {% csrf_token %}
-        {% include 'teambuilding/shared/crud/form.html' with form=user_form %}
-        {% include 'teambuilding/shared/crud/form.html' with form=user_extra_form %}
-        {% include 'teambuilding/shared/crud/errors.html' with errors=user_form.non_field_errors %}
-        {% include 'teambuilding/shared/crud/errors.html' with errors=user_extra_form.non_field_errors %}
+        {% include 'teambuilding/site/shared/crud/form.html' with form=user_form %}
+        {% include 'teambuilding/site/shared/crud/form.html' with form=user_extra_form %}
+        {% include 'teambuilding/site/shared/crud/errors.html' with errors=user_form.non_field_errors %}
+        {% include 'teambuilding/site/shared/crud/errors.html' with errors=user_extra_form.non_field_errors %}
         <hr>
         <div class="field">
             <div class="control">

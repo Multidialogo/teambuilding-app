@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AccountsConfig(AppConfig):
+class SiteConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'teambuilding.accounts'
+    name = 'teambuilding.site'

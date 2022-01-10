@@ -1,3 +1,4 @@
+{% load i18n %}
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a role="button" class="navbar-burger m-0" aria-label="menu" aria-expanded="false" data-target="id_navbar">
@@ -8,24 +9,24 @@
     </div>
     <div id="id_navbar" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="{% url 'home' %}">Home</a>
+            <a class="navbar-item" href="{% url 'home' %}">{% translate "Home" %}</a>
             {% if user.is_authenticated %}
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">Events</a>
+                    <a class="navbar-link">{% translate "Events" %}</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item" href="{% url 'event-all-list-upcoming' %}">Upcoming</a>
-                        <a class="navbar-item" href="{% url 'event-all-list-history' %}">History</a>
+                        <a class="navbar-item" href="{% url 'event-all-list-upcoming' %}">{% translate "Upcoming" %}</a>
+                        <a class="navbar-item" href="{% url 'event-all-list-history' %}">{% translate "History" %}</a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item" href="{% url 'event-user-list' %}">Created by You</a>
+                        <a class="navbar-item" href="{% url 'event-user-list' %}">{% translate "Created by you" %}</a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">Products</a>
+                    <a class="navbar-link">{% translate "Products" %}</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item" href="{% url 'product-list-purchasable' %}">Purchase</a>
-                        <a class="navbar-item" href="{% url 'product-list' %}">Manage</a>
+                        <a class="navbar-item" href="{% url 'product-list-purchasable' %}">{% translate "Purchase" %}</a>
+                        <a class="navbar-item" href="{% url 'product-list' %}">{% translate "Manage" %}</a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item" href="{% url 'product-producer-list' %}">Producers</a>
+                        <a class="navbar-item" href="{% url 'product-producer-list' %}">{% translate "Producers" %}</a>
                     </div>
                 </div>
             {% endif %}
@@ -34,24 +35,23 @@
             {% if user.is_authenticated %}
                 {% if user.is_staff %}
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">Admin</a>
+                        <a class="navbar-link">{% translate "Admin" %}</a>
                         <div class="navbar-dropdown">
-                            <a class="navbar-item" href="{% url 'product-producer-list-purchasable' %}">Send orders to
-                                producers</a>
+                            <a class="navbar-item" href="{% url 'product-producer-list-purchasable' %}">{% translate "Pending orders" %}</a>
                         </div>
                     </div>
                 {% endif %}
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-light" href="{% url 'user-profile' %}">Profile</a>
-                        <a class="button is-light" href="{% url 'logout' %}">Logout</a>
+                        <a class="button is-light" href="{% url 'user-profile' %}">{% translate "Profile" %}</a>
+                        <a class="button is-light" href="{% url 'logout' %}">{% translate "Logout" %}</a>
                     </div>
                 </div>
             {% else %}
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary" href="{% url 'signup' %}">Sign up</a>
-                        <a class="button is-light" href="{% url 'login' %}">Log in</a>
+                        <a class="button is-primary" href="{% url 'signup' %}">{% translate "Sign up" %}</a>
+                        <a class="button is-light" href="{% url 'login' %}">{% translate "Log in" %}</a>
                     </div>
                 </div>
             {% endif %}

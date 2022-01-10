@@ -1,19 +1,20 @@
-{% extends "teambuilding/shared/base.html" %}
+{% extends "teambuilding/site/shared/base.html" %}
+{% load i18n %}
 
 {% block content %}
     <section class="hero is-primary is-halfheight">
         <div class="hero-body">
             <div class="">
                 <p class="title">
-                    Welcome,
+                    {% translate "Welcome" %},
                     {% if user.is_authenticated %}
                         {{ user.nickname }}
                     {% else %}
-                        Guest
+                        {% translate "Guest" %}
                     {% endif %}
                 </p>
                 <p class="subtitle">
-                    Welcome to Taste & Purchase
+                    {% translate "Welcome to Taste & Purchase" %}
                 </p>
             </div>
         </div>

@@ -1,0 +1,814 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 22:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/postaladdress/migrations/0002_data.py:15
+msgid "Regione"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:17
+#: lib/postaladdress/migrations/0002_data.py:53
+msgid "Provincia"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:19
+msgid "Comune"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:21
+msgid "Frazione"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:33
+msgid "Région"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:35
+msgid "Département"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:37
+msgid "Arrondissement"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:39
+#: lib/postaladdress/migrations/0002_data.py:87
+msgid "Canton"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:41
+msgid "Intercommunality"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:51
+msgid "Comunidad Autónomas"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:55
+msgid "Comarca"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:57
+msgid "Municipio"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:69
+msgid "Distrito"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:71
+msgid "Concelho"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:73
+msgid "Freguesia"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:89
+msgid "District"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:91
+msgid "Commune"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:105
+msgid "Județ"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:107
+msgid "Orașe"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:123
+msgid "Province"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:125
+msgid "District municipality"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:127
+msgid "Local municipality"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:129
+msgid "Ward"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:141
+msgid "Todōfuken"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:143
+msgid "Shi"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:145
+msgid "Shichōsonku"
+msgstr ""
+
+#: lib/postaladdress/models.py:8
+msgid "country code"
+msgstr "codice nazione"
+
+#: lib/postaladdress/models.py:12 lib/postaladdress/models.py:40
+msgid "country"
+msgstr "nazione"
+
+#: lib/postaladdress/models.py:13
+msgid "countries"
+msgstr "nazioni"
+
+#: lib/postaladdress/models.py:41
+msgid "zip code"
+msgstr "codice postale"
+
+#: lib/postaladdress/models.py:42
+msgid "street"
+msgstr "indirizzo"
+
+#: lib/postaladdress/models.py:43
+msgid "administrative level 1"
+msgstr "livello amministrativo 1"
+
+#: lib/postaladdress/models.py:44
+msgid "administrative level 2"
+msgstr "livello amministrativo 2"
+
+#: lib/postaladdress/models.py:45
+msgid "administrative level 3"
+msgstr "livello amministrativo 3"
+
+#: lib/postaladdress/models.py:46
+msgid "administrative level 4"
+msgstr "livello amministrativo 4"
+
+#: lib/postaladdress/models.py:47
+msgid "administrative level 5"
+msgstr "livello amministrativo 5"
+
+#: lib/postaladdress/models.py:50 teambuilding/products/models.py:13
+#: teambuilding/products/models.py:22
+msgid "postal address"
+msgstr "indirizzo postale"
+
+#: lib/postaladdress/models.py:51 teambuilding/products/models.py:14
+msgid "postal addresses"
+msgstr "indirizzi postali"
+
+#: lib/postaladdress/models.py:55
+#, python-format
+msgid ""
+"%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s%(adm-2)0s"
+"%(adm-4)0s%(adm-5)0s"
+msgstr ""
+"%(street)s, %(adm-3)s, %(zipcode)s, %(adm-2)s, %(country)s%(adm-1)0s"
+"%(adm-4)0s%(adm-5)0s"
+
+#: lib/postaladdress/validators.py:9
+#, python-format
+msgid "%(value)s is not a valid zip code."
+msgstr "%(value)s non è un codice postale valido."
+
+#: teambuilding/accounts/forms.py:14
+msgid "Password (confirm)"
+msgstr "Password (conferma)"
+
+#: teambuilding/accounts/models.py:48
+msgid "email address"
+msgstr "indirizzo email"
+
+#: teambuilding/accounts/models.py:49
+msgid "nickname"
+msgstr ""
+
+#: teambuilding/accounts/tasks.py:16
+#, python-format
+msgid ""
+"Hi %(nickname)s,\n"
+"Please click on the link to confirm your registration, %(link)s\n"
+"If you think it's not you, then just ignore this email."
+msgstr ""
+"Ciao %(nickname)s,\n"
+"Apri il link seguente per confermare al tua registrazione, %(link)s\n"
+"Se non sei stato tu puoi ignorare questa email."
+
+#: teambuilding/accounts/tasks.py:23
+msgid "Taste & Purchase account activation"
+msgstr "Attivazione account Taste & Purchase"
+
+#: teambuilding/accounts/templates/teambuilding/account/activate.html:6
+#: teambuilding/accounts/templates/teambuilding/account/signup_success.html:6
+msgid "Account activation"
+msgstr "Attivazione account"
+
+#: teambuilding/accounts/templates/teambuilding/account/login.html:5
+#: teambuilding/accounts/templates/teambuilding/account/login.html:16
+msgid "Login"
+msgstr ""
+
+#: teambuilding/accounts/templates/teambuilding/account/signup.html:5
+#: teambuilding/accounts/templates/teambuilding/account/signup.html:16
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:53
+msgid "Sign up"
+msgstr "Registrati"
+
+#: teambuilding/accounts/templates/teambuilding/account/signup_success.html:8
+msgid ""
+"An email containing an activation link has been sent to you. Check your "
+"inbox, and activate your account."
+msgstr ""
+"Ti è stata inviata una email con un link di attivazione. Controlla la "
+"tua casella di posta ed attiva il tuo account."
+
+#: teambuilding/accounts/views.py:56
+msgid "Your account has been activated."
+msgstr "Il tuo account è stato attivato."
+
+#: teambuilding/accounts/views.py:58
+msgid "Invalid link."
+msgstr "Link non valido."
+
+#: teambuilding/events/models.py:10
+msgid "event start"
+msgstr "inizio evento"
+
+#: teambuilding/events/models.py:11
+msgid "event end"
+msgstr "fine evento"
+
+#: teambuilding/events/models.py:12
+msgid "title"
+msgstr "titolo"
+
+#: teambuilding/events/models.py:13 teambuilding/products/models.py:36
+msgid "description"
+msgstr "descrizione"
+
+#: teambuilding/events/models.py:14
+msgid "organizer"
+msgstr "organizzatore"
+
+#: teambuilding/events/models.py:15 teambuilding/products/models.py:42
+msgid "products"
+msgstr "prodotti"
+
+#: teambuilding/events/models.py:19
+msgid "taste event"
+msgstr "evento degustazione"
+
+#: teambuilding/events/models.py:20
+msgid "taste events"
+msgstr "eventi degustazione"
+
+#: teambuilding/events/models.py:29 teambuilding/events/models.py:30
+msgid "End date must come after start date."
+msgstr "La data di fine deve essere successiva alla data di inizio"
+
+#: teambuilding/events/tasks.py:14
+msgid "New event Taste & Purchase!"
+msgstr "Nuovo evento Taste & Purchase!"
+
+#: teambuilding/events/tasks.py:15
+msgid "A new event has been added, check it out."
+msgstr "Un nuovo evento è stato aggiunto."
+
+#: teambuilding/events/templates/teambuilding/event/create.html:5
+msgid "New event"
+msgstr "Nuovo evento"
+
+#: teambuilding/events/templates/teambuilding/event/create.html:16
+#: teambuilding/events/templates/teambuilding/event/update.html:16
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:20
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:20
+#: teambuilding/products/templates/teambuilding/product-purchase-option/create.html:16
+#: teambuilding/products/templates/teambuilding/product-purchase-option/update.html:16
+#: teambuilding/products/templates/teambuilding/product/create.html:20
+#: teambuilding/products/templates/teambuilding/product/update.html:43
+#: teambuilding/users/templates/teambuilding/user/update.html:18
+msgid "Save"
+msgstr "Salva"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:5
+msgid "Remove event"
+msgstr "Rimuovi evento"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:11
+#: teambuilding/events/templates/teambuilding/event/detail.html:11
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:11
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:11
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:13
+msgid "Title"
+msgstr "Titolo"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:15
+#: teambuilding/events/templates/teambuilding/event/detail.html:15
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:12
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:12
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:14
+msgid "Organizer"
+msgstr "Organizzatore"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:19
+#: teambuilding/events/templates/teambuilding/event/detail.html:19
+msgid "Start datetime"
+msgstr "Data ed ora di inizio"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:23
+#: teambuilding/events/templates/teambuilding/event/detail.html:23
+msgid "End datetime"
+msgstr "Data ed ora di fine"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:27
+#: teambuilding/events/templates/teambuilding/event/detail.html:27
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:15
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:15
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:17
+#: teambuilding/products/templates/teambuilding/product-order/create.html:15
+#: teambuilding/products/templates/teambuilding/product/delete.html:15
+#: teambuilding/products/templates/teambuilding/product/list.html:14
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:12
+msgid "Description"
+msgstr "Descrizione"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:31
+#: teambuilding/events/templates/teambuilding/event/detail.html:31
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:16
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:16
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:18
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:24
+msgid "Products"
+msgstr "Prodotti"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:39
+msgid "Are you sure you want to remove this event?"
+msgstr "Sei sicuro di voler rimuovere questo evento?"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:43
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:35
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:31
+#: teambuilding/products/templates/teambuilding/product/delete.html:31
+msgid "Confirm"
+msgstr "Conferma"
+
+#: teambuilding/events/templates/teambuilding/event/delete.html:46
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:38
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:34
+#: teambuilding/products/templates/teambuilding/product/delete.html:34
+msgid "Cancel"
+msgstr "Annulla"
+
+#: teambuilding/events/templates/teambuilding/event/detail.html:5
+msgid "Event details"
+msgstr "Dettagli evento"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:5
+msgid "Past events"
+msgstr "Eventi terminati"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:13
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:13
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:15
+msgid "Start date"
+msgstr "Data inizio"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:14
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:14
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:16
+msgid "End date"
+msgstr "Data fine"
+
+#: teambuilding/events/templates/teambuilding/event/list_past_by_all.html:27
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:27
+msgid "Details"
+msgstr "Dettagli"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_all.html:5
+msgid "Future events"
+msgstr "Eventi in arrivo"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:5
+msgid "Manage future events (created by You)"
+msgstr "Gestione eventi in arrivo (creati da Te)"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:9
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:9
+#: teambuilding/products/templates/teambuilding/product/list.html:9
+msgid "New"
+msgstr "Nuovo"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:30
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:26
+#: teambuilding/products/templates/teambuilding/product/list.html:24
+#: teambuilding/products/templates/teambuilding/product/update.html:30
+#: teambuilding/users/templates/teambuilding/user/detail.html:23
+msgid "Edit"
+msgstr "Modifica"
+
+#: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:31
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:27
+#: teambuilding/products/templates/teambuilding/product/list.html:25
+#: teambuilding/products/templates/teambuilding/product/update.html:34
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: teambuilding/events/templates/teambuilding/event/update.html:5
+msgid "Edit event"
+msgstr "Modifica evento"
+
+#: teambuilding/products/models.py:18 teambuilding/products/models.py:35
+msgid "name"
+msgstr "nome"
+
+#: teambuilding/products/models.py:19
+msgid "email"
+msgstr ""
+
+#: teambuilding/products/models.py:20
+msgid "phone number"
+msgstr "telefono"
+
+#: teambuilding/products/models.py:27 teambuilding/products/models.py:37
+#: teambuilding/products/models.py:75 teambuilding/products/models.py:109
+msgid "producer"
+msgstr "produttore"
+
+#: teambuilding/products/models.py:28
+msgid "producers"
+msgstr "produttori"
+
+#: teambuilding/products/models.py:41 teambuilding/products/models.py:50
+#: teambuilding/products/models.py:112
+msgid "product"
+msgstr "prodotto"
+
+#: teambuilding/products/models.py:52
+msgid "price EUR (cents)"
+msgstr "prezzo EURO (cents)"
+
+#: teambuilding/products/models.py:53
+msgid "amount"
+msgstr "quantità"
+
+#: teambuilding/products/models.py:58 teambuilding/products/models.py:99
+msgid "purchase option"
+msgstr "opzione di acquisto"
+
+#: teambuilding/products/models.py:59
+msgid "purchase options"
+msgstr "opzioni di acquisto"
+
+#: teambuilding/products/models.py:62
+#, python-format
+msgid "Amount: %(amount)s, EUR (cents): %(price)01.0f"
+msgstr "Quantità: %(amount)s, EURO (cents): %(price)01.0f"
+
+#: teambuilding/products/models.py:69 teambuilding/products/models.py:78
+msgid "delivery address"
+msgstr "indirizzo di spedizione"
+
+#: teambuilding/products/models.py:70
+msgid "delivery addresses"
+msgstr "indirizzi di spedizione"
+
+#: teambuilding/products/models.py:82
+msgid "cumulative order to producer"
+msgstr "ordine cumulativo al produttore"
+
+#: teambuilding/products/models.py:83
+msgid "cumulative orders to producers"
+msgstr "ordini cumulativi al produttore"
+
+#: teambuilding/products/models.py:86
+#, python-format
+msgid "cumulative order for producer %(producer)s"
+msgstr "ordine cumulativo per il produttore %(producer)s"
+
+#: teambuilding/products/models.py:93
+msgid "Created"
+msgstr "In attesa"
+
+#: teambuilding/products/models.py:94
+msgid "Processed"
+msgstr "Processato"
+
+#: teambuilding/products/models.py:103
+msgid "in cumulative order"
+msgstr "nell'ordine cumulativo"
+
+#: teambuilding/products/models.py:106
+msgid "customer"
+msgstr "cliente"
+
+#: teambuilding/products/models.py:115
+msgid "order status"
+msgstr "stato ordine"
+
+#: teambuilding/products/models.py:120
+msgid "simple order"
+msgstr "ordine semplice"
+
+#: teambuilding/products/models.py:121
+msgid "simple orders"
+msgstr "ordini semplici"
+
+#: teambuilding/products/models.py:125
+#, python-format
+msgid ""
+"Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR "
+"(cents): %(price)01.0f, Customer email: %(customer-email)s"
+msgstr ""
+"Prodotto: %(product)s, Produttore: %(producer)s, Quantità: %(amount)s, EURO "
+"(cents): %(price)01.0f, Email cliente: %(customer-email)s"
+
+#: teambuilding/products/models.py:141
+msgid ""
+"Producer in instance ProductOrder must be equal to Producer in instance "
+"ProducerOrder."
+msgstr ""
+"Producer nell'istanza ProductOrder deve essere identico al Producer nell'istanza "
+"ProducerOrder."
+
+#: teambuilding/products/tasks.py:15
+#, python-format
+msgid ""
+"Orders:\n"
+"%(receipt)s\n"
+"Delivery address:\n"
+"%(address)s"
+msgstr ""
+"Ordini:\n"
+"%(receipt)s\n"
+"Indirizzo di spedizione:\n"
+"%(address)s"
+
+#: teambuilding/products/tasks.py:20
+#: teambuilding/products/templates/teambuilding/product-order/create.html:5
+msgid "New order"
+msgstr "Nuovo ordine"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:11
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:11
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:13
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:11
+#: teambuilding/products/templates/teambuilding/product/delete.html:11
+#: teambuilding/products/templates/teambuilding/product/list.html:13
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:11
+msgid "Name"
+msgstr "Nome"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:19
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:15
+#: teambuilding/products/templates/teambuilding/product/delete.html:19
+#: teambuilding/products/templates/teambuilding/product/list.html:15
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:13
+msgid "Producer"
+msgstr "Produttore"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:30
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:21
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:26
+msgid "Purchase"
+msgstr "Acquista"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:7
+msgid "Send cumulative order to producer"
+msgstr "Invia ordine cumulativo al produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:11
+msgid "Orders"
+msgstr "Ordini"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:16
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:11
+msgid "Product"
+msgstr "Prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:17
+msgid "Customer email"
+msgstr "Email cliente"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:18
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:15
+#: teambuilding/products/templates/teambuilding/product/update.html:20
+msgid "Amount"
+msgstr "Quantità"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:19
+msgid "EUR (cents)"
+msgstr "EURO (cents)"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:39
+msgid "Delivery address"
+msgstr "Indirizzo di spedizione"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:45
+msgid "Send"
+msgstr "Invia"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:5
+msgid "New producer"
+msgstr "Nuovo produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:23
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:16
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:14
+msgid "Postal address"
+msgstr "Indirizzo postale"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:5
+msgid "Remove producer"
+msgstr "Rimuovi produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:15
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:12
+#: teambuilding/users/templates/teambuilding/user/detail.html:16
+msgid "Email"
+msgstr ""
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:19
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:15
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:13
+msgid "Phone number"
+msgstr "Telefono"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:31
+msgid "Are you sure you want to remove this producer?"
+msgstr "Sei sicuro di voler rimuovere questo produttore?"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:5
+msgid "Manage producers"
+msgstr "Gestione produttori"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:5
+msgid "Manage pending orders"
+msgstr "Gestione ordini in attesa"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:23
+msgid "Show pending orders"
+msgstr "Mostra ordini in attesa"
+
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:5
+msgid "Edit producer"
+msgstr "Modifica produttore"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/create.html:5
+msgid "New product purchase option"
+msgstr "Nuova opzione acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:5
+msgid "Remove product purchase option"
+msgstr "Rimuovi opzione acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:19
+#: teambuilding/products/templates/teambuilding/product/update.html:21
+msgid "Price EUR (cents)"
+msgstr "Prezzo EURO (cents)"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:27
+msgid "Are you sure you want to remove this product purchase option?"
+msgstr "Sei sicuro di voler rimuovere questa opzione di acquisto prodotto?"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/update.html:5
+msgid "Edit product purchase option"
+msgstr "Modifica opzione di acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/create.html:5
+msgid "New product"
+msgstr "Nuovo prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/create.html:14
+msgid "Purchase option"
+msgstr "Opzione di acquisto"
+
+#: teambuilding/products/templates/teambuilding/product/delete.html:5
+msgid "Remove product"
+msgstr "Rimuovi prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/delete.html:27
+msgid "Are you sure you want to remove this product?"
+msgstr "Sei sicuro di voler rimuovere questo prodotto?"
+
+#: teambuilding/products/templates/teambuilding/product/list.html:5
+msgid "Manage products"
+msgstr "Gestione prodotti"
+
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:5
+msgid "Purchase product"
+msgstr "Acquista prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:5
+msgid "Edit product"
+msgstr "Modifica prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:14
+msgid "Purchase options"
+msgstr "Opzioni di acquisto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:16
+msgid "New purchase option"
+msgstr "Nuova opzione di acquisto"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:12
+msgid "Home"
+msgstr "Home"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:15
+msgid "Events"
+msgstr "Eventi"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:17
+msgid "Upcoming"
+msgstr "In arrivo"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:18
+msgid "History"
+msgstr "Cronologia"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:20
+msgid "Created by you"
+msgstr "Creati da Te"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:27
+msgid "Manage"
+msgstr "Gestione"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:29
+msgid "Producers"
+msgstr "Produttori"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:38
+msgid "Admin"
+msgstr ""
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:40
+msgid "Pending orders"
+msgstr "Ordini in attesa"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:46
+msgid "Profile"
+msgstr "Profilo"
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:47
+msgid "Logout"
+msgstr ""
+
+#: teambuilding/site/templates/teambuilding/site/shared/navbar.html:54
+msgid "Log in"
+msgstr ""
+
+#: teambuilding/site/templates/teambuilding/site/welcome.html:9
+msgid "Welcome"
+msgstr "Ciao"
+
+#: teambuilding/site/templates/teambuilding/site/welcome.html:13
+msgid "Guest"
+msgstr "Ospite"
+
+#: teambuilding/site/templates/teambuilding/site/welcome.html:17
+msgid "Welcome to Taste & Purchase"
+msgstr "Ti diamo il benvenuto in Taste & Purchase"
+
+#: teambuilding/users/models.py:8
+msgid "account"
+msgstr ""
+
+#: teambuilding/users/models.py:12
+msgid "user profile"
+msgstr "profilo utente"
+
+#: teambuilding/users/models.py:13
+msgid "user profiles"
+msgstr "profili utenti"
+
+#: teambuilding/users/templates/teambuilding/user/detail.html:5
+msgid "User profile"
+msgstr "Profilo utente"
+
+#: teambuilding/users/templates/teambuilding/user/detail.html:12
+msgid "Nickname"
+msgstr ""
+
+#: teambuilding/users/templates/teambuilding/user/update.html:5
+msgid "User profile - Edit"
+msgstr "Profilo utente - Modifica"
