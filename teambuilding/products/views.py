@@ -4,7 +4,7 @@ from django.db import transaction
 from django.shortcuts import redirect, render, get_object_or_404
 
 from lib.postaladdress.localization import localize_form
-from lib.postaladdress.services import is_country_code_valid, safe_country_code
+from lib.postaladdress.utils import is_country_code_valid, safe_country_code
 
 from .models import Product, Producer, ProductPurchaseOption, ProductOrder
 from .forms import (

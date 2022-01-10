@@ -1,5 +1,5 @@
 from .models import Country, CountryAdminLevelMapping
-from .services import safe_country_code
+from .utils import safe_country_code
 
 
 def setup_form_field(form, field_name, value, required):
