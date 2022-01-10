@@ -50,17 +50,17 @@ class ProductPurchaseOption(models.Model):
         Product, on_delete=models.CASCADE, related_name='purchase_option', verbose_name=_("product")
     )
     price_cents = models.IntegerField(_("price EUR (cents)"))
-    quantity = models.CharField(_("amount"), max_length=50)
+    amount = models.CharField(_("amount"), max_length=50)
 
     class Meta:
-        unique_together = ('quantity', 'product')
+        unique_together = ('amount', 'product')
         ordering = ['price_cents']
         verbose_name = _("purchase option")
         verbose_name_plural = _("purchase options")
 
     def __str__(self):
         return gettext("Amount: %(amount)s, EUR (cents): %(price)01.0f") % (
-            {'amount': self.quantity, 'price': self.price_cents}
+            {'amount': self.amount, 'price': self.price_cents}
         )
 
 
@@ -122,7 +122,7 @@ class ProductOrder(models.Model):
 
     def __str__(self):
         return gettext("Product: %(product)s, Amount: %(amount)s, EUR (cents): %(price)01.0f") % ({
-            'product': str(self.product), 'amount': self.purchase_option.quantity,
+            'product': str(self.product), 'amount': self.purchase_option.amount,
             'price': self.purchase_option.price_cents
         })
 

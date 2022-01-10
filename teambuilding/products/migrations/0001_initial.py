@@ -80,14 +80,14 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('price_cents', models.IntegerField(verbose_name='prezzo EURO (cents)')),
-                ('quantity', models.CharField(max_length=50, verbose_name='quantità')),
+                ('amount', models.CharField(max_length=50, verbose_name='quantità')),
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='purchase_option', to='products.product', verbose_name='prodotto')),
             ],
             options={
                 'verbose_name': 'opzione di acquisto',
                 'verbose_name_plural': 'opzioni di acquisto',
                 'ordering': ['price_cents'],
-                'unique_together': {('quantity', 'product')},
+                'unique_together': {('amount', 'product')},
             },
         ),
         migrations.CreateModel(
