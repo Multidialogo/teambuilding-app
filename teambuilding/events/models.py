@@ -7,8 +7,8 @@ from teambuilding.products.models import Product
 
 
 class TasteEvent(models.Model):
-    start_date = models.DateTimeField(_("event start"), help_text='Format: gg/mm/yyyy hh:mm')
-    end_date = models.DateTimeField(_("event end"), help_text='Format: gg/mm/yyyy hh:mm')
+    start_date = models.DateTimeField(_("event start"), help_text=_("Format: dd/mm/YYYY hh:mm"))
+    end_date = models.DateTimeField(_("event end"), help_text=_("Format: dd/mm/YYYY hh:mm"))
     title = models.CharField(_("title"), max_length=50)
     description = models.CharField(_("description"), max_length=100)
     organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("organizer"))

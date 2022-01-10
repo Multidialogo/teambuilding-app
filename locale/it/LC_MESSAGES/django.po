@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 22:05+0000\n"
+"POT-Creation-Date: 2022-01-10 23:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,8 +235,8 @@ msgid ""
 "An email containing an activation link has been sent to you. Check your "
 "inbox, and activate your account."
 msgstr ""
-"Ti è stata inviata una email con un link di attivazione. Controlla la "
-"tua casella di posta ed attiva il tuo account."
+"Ti è stata inviata una email con un link di attivazione. Controlla la tua "
+"casella di posta ed attiva il tuo account."
 
 #: teambuilding/accounts/views.py:56
 msgid "Your account has been activated."
@@ -249,6 +249,10 @@ msgstr "Link non valido."
 #: teambuilding/events/models.py:10
 msgid "event start"
 msgstr "inizio evento"
+
+#: teambuilding/events/models.py:10 teambuilding/events/models.py:11
+msgid "Format: dd/mm/YYYY hh:mm"
+msgstr "Formato: gg/mm/YYYY hh:mm"
 
 #: teambuilding/events/models.py:11
 msgid "event end"
@@ -543,8 +547,8 @@ msgid ""
 "Producer in instance ProductOrder must be equal to Producer in instance "
 "ProducerOrder."
 msgstr ""
-"Producer nell'istanza ProductOrder deve essere identico al Producer nell'istanza "
-"ProducerOrder."
+"Producer nell'istanza ProductOrder deve essere identico al Producer "
+"nell'istanza ProducerOrder."
 
 #: teambuilding/products/tasks.py:15
 #, python-format
