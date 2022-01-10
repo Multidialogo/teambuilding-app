@@ -1,4 +1,5 @@
 from django.db import migrations
+from django.utils.translation import gettext
 
 
 def insert_data(apps, schema_editor):
@@ -11,13 +12,13 @@ def insert_data(apps, schema_editor):
     map_it = CountryAdminLevelMapping(
         country=country_it,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Regione',
+        administrative_level_1_endonym=gettext("Regione"),
         administrative_level_2_mandatory=True,
-        administrative_level_2_endonym='Provincia',
+        administrative_level_2_endonym=gettext("Provincia"),
         administrative_level_3_mandatory=True,
-        administrative_level_3_endonym='Comune',
+        administrative_level_3_endonym=gettext("Comune"),
         administrative_level_4_mandatory=False,
-        administrative_level_4_endonym='Frazione',
+        administrative_level_4_endonym=gettext("Frazione"),
         administrative_level_5_mandatory=False,
         administrative_level_5_endonym=None,
     )
@@ -29,15 +30,15 @@ def insert_data(apps, schema_editor):
     map_fr = CountryAdminLevelMapping(
         country=country_fr,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Région',
+        administrative_level_1_endonym=gettext("Région"),
         administrative_level_2_mandatory=False,
-        administrative_level_2_endonym='Département',
+        administrative_level_2_endonym=gettext("Département"),
         administrative_level_3_mandatory=True,
-        administrative_level_3_endonym='Arrondissement',
+        administrative_level_3_endonym=gettext("Arrondissement"),
         administrative_level_4_mandatory=False,
-        administrative_level_4_endonym='Canton',
+        administrative_level_4_endonym=gettext("Canton"),
         administrative_level_5_mandatory=False,
-        administrative_level_5_endonym='Intercommunality',
+        administrative_level_5_endonym=gettext("Intercommunality"),
     )
     map_fr.save()
 
@@ -47,13 +48,13 @@ def insert_data(apps, schema_editor):
     map_es = CountryAdminLevelMapping(
         country=country_es,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Comunidad Autónomas',
+        administrative_level_1_endonym=gettext("Comunidad Autónomas"),
         administrative_level_2_mandatory=False,
-        administrative_level_2_endonym='Provincia',
+        administrative_level_2_endonym=gettext("Provincia"),
         administrative_level_3_mandatory=False,
-        administrative_level_3_endonym='Comarca',
+        administrative_level_3_endonym=gettext("Comarca"),
         administrative_level_4_mandatory=True,
-        administrative_level_4_endonym='Municipio',
+        administrative_level_4_endonym=gettext("Municipio"),
         administrative_level_5_mandatory=False,
         administrative_level_5_endonym=None,
     )
@@ -65,11 +66,11 @@ def insert_data(apps, schema_editor):
     map_pt = CountryAdminLevelMapping(
         country=country_pt,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Distrito',
+        administrative_level_1_endonym=gettext("Distrito"),
         administrative_level_2_mandatory=True,
-        administrative_level_2_endonym='Concelho',
+        administrative_level_2_endonym=gettext("Concelho"),
         administrative_level_3_mandatory=False,
-        administrative_level_3_endonym='Freguesia',
+        administrative_level_3_endonym=gettext("Freguesia"),
         administrative_level_4_mandatory=False,
         administrative_level_4_endonym=None,
         administrative_level_5_mandatory=False,
@@ -83,11 +84,11 @@ def insert_data(apps, schema_editor):
     map_ch = CountryAdminLevelMapping(
         country=country_ch,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Canton',
+        administrative_level_1_endonym=gettext("Canton"),
         administrative_level_2_mandatory=False,
-        administrative_level_2_endonym='District',
+        administrative_level_2_endonym=gettext("District"),
         administrative_level_3_mandatory=True,
-        administrative_level_3_endonym='Commune',
+        administrative_level_3_endonym=gettext("Commune"),
         administrative_level_4_mandatory=False,
         administrative_level_4_endonym=None,
         administrative_level_5_mandatory=False,
@@ -101,9 +102,9 @@ def insert_data(apps, schema_editor):
     map_ro = CountryAdminLevelMapping(
         country=country_ro,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Județ',
+        administrative_level_1_endonym=gettext("Județ"),
         administrative_level_2_mandatory=True,
-        administrative_level_2_endonym='Orașe',
+        administrative_level_2_endonym=gettext("Orașe"),
         administrative_level_3_mandatory=False,
         administrative_level_3_endonym=None,
         administrative_level_4_mandatory=False,
@@ -119,13 +120,13 @@ def insert_data(apps, schema_editor):
     map_za = CountryAdminLevelMapping(
         country=country_za,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Province',
+        administrative_level_1_endonym=gettext("Province"),
         administrative_level_2_mandatory=False,
-        administrative_level_2_endonym='District municipality',
+        administrative_level_2_endonym=gettext("District municipality"),
         administrative_level_3_mandatory=True,
-        administrative_level_3_endonym='Local municipality',
+        administrative_level_3_endonym=gettext("Local municipality"),
         administrative_level_4_mandatory=False,
-        administrative_level_4_endonym='Ward',
+        administrative_level_4_endonym=gettext("Ward"),
         administrative_level_5_mandatory=False,
         administrative_level_5_endonym=None,
     )
@@ -137,11 +138,11 @@ def insert_data(apps, schema_editor):
     map_jp = CountryAdminLevelMapping(
         country=country_jp,
         administrative_level_1_mandatory=False,
-        administrative_level_1_endonym='Todōfuken',
+        administrative_level_1_endonym=gettext("Todōfuken"),
         administrative_level_2_mandatory=True,
-        administrative_level_2_endonym='Shi',
+        administrative_level_2_endonym=gettext("Shi"),
         administrative_level_3_mandatory=False,
-        administrative_level_3_endonym='Shichōsonku',
+        administrative_level_3_endonym=gettext("Shichōsonku"),
         administrative_level_4_mandatory=False,
         administrative_level_4_endonym=None,
         administrative_level_5_mandatory=False,

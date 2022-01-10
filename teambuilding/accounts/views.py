@@ -1,3 +1,5 @@
+from gettext import gettext
+
 from django.conf import settings
 from django.contrib.auth import logout as logout_request, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -47,9 +49,9 @@ def activate(request, uid_64, token):
             user.is_active = True
             user.save()
 
-        message = "Congratulazioni, l'email è stata confermata."
+        message = gettext("Your account has been activated.")
     else:
-        message = 'Link non valido.'
+        message = gettext("Invalid link.")
 
     context = {'message': message}
     return render(request, 'teambuilding/account/activate.html', context)

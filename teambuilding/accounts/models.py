@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
@@ -44,8 +45,8 @@ class UserManager(BaseUserManager):
 
 class UserAccount(AbstractUser):
     username = None
-    email = models.EmailField(verbose_name='indirizzo email', blank=False, unique=True)
-    nickname = models.CharField(max_length=100, verbose_name='nickname', unique=True)
+    email = models.EmailField(verbose_name=_('email address'), blank=False, unique=True)
+    nickname = models.CharField(max_length=100, verbose_name=_('nickname'), unique=True)
 
     objects = UserManager()
 

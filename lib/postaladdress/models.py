@@ -1,15 +1,16 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _, gettext
 
 from .validators import validate_zip_code
 
 
 class Country(models.Model):
-    country_code = models.CharField('codice nazione', max_length=2, primary_key=True)
+    country_code = models.CharField(_('country code'), max_length=2, primary_key=True)
 
     class Meta:
         ordering = ['country_code']
-        verbose_name = 'nazione'
-        verbose_name_plural = 'nazioni'
+        verbose_name = _("country")
+        verbose_name_plural = _("countries")
 
     def __str__(self):
         return self.country_code
@@ -36,18 +37,27 @@ class CountryAdminLevelMapping(models.Model):
 
 
 class PostalAddress(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name='nazione')
-    zip_code = models.CharField('codice postale', max_length=5, validators=[validate_zip_code])
-    street = models.CharField('strada', max_length=100)
-    adm_level_1 = models.CharField('livello amministrativo 1', max_length=100, blank=True)
-    adm_level_2 = models.CharField('livello amministrativo 2', max_length=100, blank=True)
-    adm_level_3 = models.CharField('livello amministrativo 3', max_length=100, blank=True)
-    adm_level_4 = models.CharField('livello amministrativo 4', max_length=100, blank=True)
-    adm_level_5 = models.CharField('livello amministrativo 5', max_length=100, blank=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name=_("country"))
+    zip_code = models.CharField(_("zip code"), max_length=5, validators=[validate_zip_code])
+    street = models.CharField(_("street"), max_length=100)
+    adm_level_1 = models.CharField(_("administrative level 1"), max_length=100, blank=True)
+    adm_level_2 = models.CharField(_("administrative level 2"), max_length=100, blank=True)
+    adm_level_3 = models.CharField(_("administrative level 3"), max_length=100, blank=True)
+    adm_level_4 = models.CharField(_("administrative level 4"), max_length=100, blank=True)
+    adm_level_5 = models.CharField(_("administrative level 5"), max_length=100, blank=True)
 
     class Meta:
-        verbose_name = 'indirizzo postale'
-        verbose_name_plural = 'indirizzi postali'
+        verbose_name = _("postal address")
+        verbose_name_plural = _("postal addresses")
 
     def __str__(self):
-        return "%s, %s, %s, %s" % (self.adm_level_3, self.street, self.zip_code, self.country)
+        return gettext("%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s") % {
+            'country': str(self.country),
+            'zipcode': self.zip_code,
+            'street': self.street,
+            'adm-1': self.adm_level_1,
+            'adm-2': self.adm_level_2,
+            'adm-3': self.adm_level_3,
+            'adm-4': self.adm_level_4,
+            'adm-5': self.adm_level_5
+        }

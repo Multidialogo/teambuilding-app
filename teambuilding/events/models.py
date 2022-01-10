@@ -1,22 +1,23 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.translation import gettext_lazy as _, gettext
 
 from teambuilding.users.models import User
 from teambuilding.products.models import Product
 
 
 class TasteEvent(models.Model):
-    start_date = models.DateTimeField('inizio evento', help_text='Format: gg/mm/yyyy hh:mm')
-    end_date = models.DateTimeField('fine evento', help_text='Format: gg/mm/yyyy hh:mm')
-    title = models.CharField('titolo', max_length=50)
-    description = models.CharField('descrizione', max_length=100)
-    organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='organizzatore')
-    products = models.ManyToManyField(Product, verbose_name='prodotti')
+    start_date = models.DateTimeField(_("event start"), help_text='Format: gg/mm/yyyy hh:mm')
+    end_date = models.DateTimeField(_("event end"), help_text='Format: gg/mm/yyyy hh:mm')
+    title = models.CharField(_("title"), max_length=50)
+    description = models.CharField(_("description"), max_length=100)
+    organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("promoter"))
+    products = models.ManyToManyField(Product, verbose_name=_("products"))
 
     class Meta:
         ordering = ['start_date', 'title']
-        verbose_name = 'evento degustazione'
-        verbose_name_plural = 'eventi degustazione'
+        verbose_name = _("taste event")
+        verbose_name_plural = _("taste events")
 
     def __str__(self):
         return self.title
@@ -25,6 +26,6 @@ class TasteEvent(models.Model):
         super().clean()
         if self.start_date > self.end_date:
             raise ValidationError({
-                'start_date': 'La data di fine evento deve essere successiva a quella di inizio evento.',
-                'end_date': 'La data di fine evento deve essere successiva a quella di inizio evento.'
+                'start_date': gettext("End date must come after start date."),
+                'end_date': gettext("End date must come after start date.")
             })

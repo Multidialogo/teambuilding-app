@@ -6,7 +6,6 @@ from django.shortcuts import redirect, render
 from teambuilding.accounts.forms import UserAccountForm
 
 from .forms import UserProfileForm
-from .models import User
 
 
 @login_required

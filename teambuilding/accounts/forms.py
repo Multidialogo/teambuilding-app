@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from django.utils.translation import gettext
 
 
 class RegistrationForm(UserCreationForm):
@@ -10,7 +11,7 @@ class RegistrationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
-        self.fields['password2'].label = 'Password (conferma)'
+        self.fields['password2'].label = gettext('Password (confirm)')
 
 
 class UserAccountForm(forms.ModelForm):

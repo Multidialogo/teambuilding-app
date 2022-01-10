@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 15:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: teambuilding/events/models.py:10
+msgid "event start"
+msgstr "inizio evento"
+
+#: teambuilding/events/models.py:11
+msgid "event end"
+msgstr "fine evento"
+
+#: teambuilding/events/models.py:12
+msgid "title"
+msgstr "titolo"
+
+#: teambuilding/events/models.py:13
+msgid "description"
+msgstr "descrizione"
+
+#: teambuilding/events/models.py:14
+msgid "promoter"
+msgstr "organizzatore"
+
+#: teambuilding/events/models.py:15
+msgid "products"
+msgstr "prodotti"
+
+#: teambuilding/events/models.py:19
+msgid "taste event"
+msgstr "evento degustazione"
+
+#: teambuilding/events/models.py:20
+msgid "taste events"
+msgstr "eventi degustazione"
+
+#: teambuilding/events/models.py:29 teambuilding/events/models.py:30
+msgid "End date must come after start date."
+msgstr "La data di fine deve essere successiva alla data di inizio."
+
+#: teambuilding/events/tasks.py:14
+msgid "New event Taste & Purchase!"
+msgstr "Nuovo evento Taste & Purchase!"
+
+#: teambuilding/events/tasks.py:15
+msgid "A new event has been added, check it out."
+msgstr "E' stato aggiunto un nuovo evento."

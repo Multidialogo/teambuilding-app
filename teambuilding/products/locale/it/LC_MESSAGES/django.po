@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-10 15:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: teambuilding/products/models.py:13 teambuilding/products/models.py:22
+msgid "postal address"
+msgstr ""
+
+#: teambuilding/products/models.py:14
+msgid "postal addresses"
+msgstr "indirizzo postale"
+
+#: teambuilding/products/models.py:18 teambuilding/products/models.py:35
+msgid "name"
+msgstr "nome"
+
+#: teambuilding/products/models.py:19
+msgid "email"
+msgstr ""
+
+#: teambuilding/products/models.py:20
+msgid "phone number"
+msgstr "telefono"
+
+#: teambuilding/products/models.py:27 teambuilding/products/models.py:37
+#: teambuilding/products/models.py:75 teambuilding/products/models.py:109
+msgid "producer"
+msgstr "produttore"
+
+#: teambuilding/products/models.py:28
+msgid "producers"
+msgstr "produttori"
+
+#: teambuilding/products/models.py:36
+msgid "description"
+msgstr "descrizione"
+
+#: teambuilding/products/models.py:41 teambuilding/products/models.py:50
+#: teambuilding/products/models.py:112
+msgid "product"
+msgstr "prodotto"
+
+#: teambuilding/products/models.py:42
+msgid "products"
+msgstr "prodotti"
+
+#: teambuilding/products/models.py:52
+msgid "price EUR (cents)"
+msgstr "prezzo EUR (cents)"
+
+#: teambuilding/products/models.py:53
+msgid "amount"
+msgstr "quantità"
+
+#: teambuilding/products/models.py:58 teambuilding/products/models.py:99
+msgid "purchase option"
+msgstr "opzione di acquisto"
+
+#: teambuilding/products/models.py:59
+msgid "purchase options"
+msgstr "opzioni di acquisto"
+
+#: teambuilding/products/models.py:62
+#, python-format
+msgid "Amount: %(amount)s, EUR (cents): %(price)01.0f"
+msgstr "Quantità: %(amount)s, EUR (cents): %(price)01.0f"
+
+#: teambuilding/products/models.py:69 teambuilding/products/models.py:78
+msgid "delivery address"
+msgstr "indirizzo di spedizione"
+
+#: teambuilding/products/models.py:70
+msgid "delivery addresses"
+msgstr "indirizzi di spedizione"
+
+#: teambuilding/products/models.py:82
+msgid "cumulative order to producer"
+msgstr "ordine cumulativo al produttore"
+
+#: teambuilding/products/models.py:83
+msgid "cumulative orders to producers"
+msgstr "ordini cumulativi ai produttori"
+
+#: teambuilding/products/models.py:86
+#, fuzzy, python-format
+#| msgid "cumulative order for producer %s"
+msgid "cumulative order for producer %(producer)s"
+msgstr "ordine cumulativo per il produttore %(producer)s"
+
+#: teambuilding/products/models.py:93
+msgid "Created"
+msgstr "In attesa"
+
+#: teambuilding/products/models.py:94
+msgid "Processed"
+msgstr "Processato"
+
+#: teambuilding/products/models.py:103
+msgid "in cumulative order"
+msgstr "ordine cumulativo"
+
+#: teambuilding/products/models.py:106
+msgid "customer"
+msgstr "acquirente"
+
+#: teambuilding/products/models.py:115
+msgid "order status"
+msgstr "stato ordine"
+
+#: teambuilding/products/models.py:120
+msgid "simple order"
+msgstr "ordine semplice"
+
+#: teambuilding/products/models.py:121
+msgid "simple orders"
+msgstr "ordini semplici"
+
+#: teambuilding/products/models.py:124
+#, fuzzy, python-format
+#| msgid ""
+#| "Product: %(product)s, Amount: %(amount)s, Price EUR (cents): %(price)01.0f"
+msgid "Product: %(product)s, Amount: %(amount)s, EUR (cents): %(price)01.0f"
+msgstr ""
+"Prodotto: %(product)s, Quantità: %(amount)s, EUR (cents): %(price)01.0f"
+
+#: teambuilding/products/models.py:138
+msgid ""
+"Producer in instance ProductOrder must be equal to Producer in instance "
+"ProducerOrder."
+msgstr ""
+"Il produttore nell'istanza ProductOrder deve corrispondere al produttore "
+"nell'istanzaProducerOrder."
