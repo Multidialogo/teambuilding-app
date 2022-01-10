@@ -121,9 +121,12 @@ class ProductOrder(models.Model):
         verbose_name_plural = _("simple orders")
 
     def __str__(self):
-        return gettext("Product: %(product)s, Amount: %(amount)s, EUR (cents): %(price)01.0f") % ({
-            'product': str(self.product), 'amount': self.purchase_option.amount,
-            'price': self.purchase_option.price_cents
+        return gettext(
+            "Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR (cents): %(price)01.0f, "
+            "Customer email: %(customer-email)s"
+        ) % ({
+            'product': str(self.product), 'producer': str(self.producer), 'amount': self.purchase_option.amount,
+            'price': self.purchase_option.price_cents, 'customer-email': self.customer.account.email
         })
 
     def clean(self):

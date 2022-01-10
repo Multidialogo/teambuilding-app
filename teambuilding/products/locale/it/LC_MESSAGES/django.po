@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 15:34+0000\n"
+"POT-Creation-Date: 2022-01-10 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,18 +131,40 @@ msgstr "ordine semplice"
 msgid "simple orders"
 msgstr "ordini semplici"
 
-#: teambuilding/products/models.py:124
+#: teambuilding/products/models.py:125
 #, fuzzy, python-format
 #| msgid ""
 #| "Product: %(product)s, Amount: %(amount)s, Price EUR (cents): %(price)01.0f"
-msgid "Product: %(product)s, Amount: %(amount)s, EUR (cents): %(price)01.0f"
+msgid ""
+"Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR "
+"(cents): %(price)01.0f, Customer email: %(customer-email)s"
 msgstr ""
-"Prodotto: %(product)s, Quantità: %(amount)s, EUR (cents): %(price)01.0f"
+"Prodotto: %(product)s, Produttore: %(producer)s, Quantità: %(amount)s, EUR "
+"(cents): %(price)01.0f, Email cliente: %(customer-email)s"
 
-#: teambuilding/products/models.py:138
+#: teambuilding/products/models.py:141
 msgid ""
 "Producer in instance ProductOrder must be equal to Producer in instance "
 "ProducerOrder."
 msgstr ""
 "Il produttore nell'istanza ProductOrder deve corrispondere al produttore "
 "nell'istanzaProducerOrder."
+
+#: teambuilding/products/tasks.py:13
+#, python-format
+msgid ""
+"Orders:\n"
+"%(receipt)s\n"
+"Delivery address:\n"
+"%(address)s"
+msgstr ""
+"Ordini:\n"
+"%(receipt)s\n"
+"Indirizzo di spedizione:\n"
+"%(address)s"
+
+#: teambuilding/products/tasks.py:18
+#, fuzzy
+#| msgid "simple order"
+msgid "New order"
+msgstr "Nuovo ordine"
