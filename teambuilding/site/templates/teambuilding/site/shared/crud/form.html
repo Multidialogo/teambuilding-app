@@ -7,6 +7,11 @@
         <div class="control">
             {{ field }}
         </div>
-        <p class="help is-danger">{{ field.errors }}</p>
+        <div class="content is-small">
+            <p class="m-1">{{ field.help_text }}</p>
+            {% for error in field.errors %}
+                <p class="has-text-danger mx-1 mb-1 mt-0">{{ error|escape }}</p>
+            {% endfor %}
+        </div>
     </div>
 {% endfor %}
