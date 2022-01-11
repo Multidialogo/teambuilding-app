@@ -1,3 +1,5 @@
+from copy import copy
+
 from django.conf import settings
 from django.contrib.auth import logout as logout_request, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -23,12 +25,17 @@ def signup(request):
         return redirect('home')
 
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        post_args = copy(request.POST)
+        form = RegistrationForm(post_args)
 
         if form.is_valid():
             with transaction.atomic():
                 user_inactive = form.save()
                 site_domain = get_current_site(request).domain
+                # l'invio della mail avviene all'interno della transazione
+                # atomica, in modo che se ci sono problemi nell'invio della
+                # mail, quindi l'utente non puo' registrarsi, il record
+                # non viene inserito nel database
                 send_activation_mail_to_user(user_inactive, site_domain)
 
             context = {'registered_user': user_inactive}

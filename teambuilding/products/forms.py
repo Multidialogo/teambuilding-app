@@ -33,13 +33,13 @@ class ProducerPostalAddressForm(forms.ModelForm):
 class ProductOrderForm(forms.ModelForm):
     class Meta:
         model = ProductOrder
-        exclude = ('customer', 'producer_order', 'producer', 'product', 'status')
+        exclude = ('producer_order', 'producer', 'product', 'status')
 
 
 class ProducerOrderForm(forms.ModelForm):
     class Meta:
         model = ProducerOrder
-        exclude = ('producer', 'address')
+        exclude = ('address',)
 
 
 class ProducerOrderDeliveryAddressForm(forms.ModelForm):

@@ -27,8 +27,9 @@ def profile_update(request):
         raise Http404()
 
     if request.method == 'POST':
-        form = UserAccountForm(request.POST, instance=user_profile.account)
-        form_extra = UserProfileForm(request.POST, instance=user_profile)
+        post_args = request.POST
+        form = UserAccountForm(post_args, instance=user_profile.account)
+        form_extra = UserProfileForm(post_args, instance=user_profile)
 
         if form.is_valid() and form_extra.is_valid():
             with transaction.atomic():

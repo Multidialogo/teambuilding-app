@@ -33,21 +33,20 @@ def list_purchasable(request):
 @login_required
 def create(request):
     if request.method == 'POST':
-        post = copy(request.POST)
-        form = ProductForm(post)
+        post_args = copy(request.POST)
+        form = ProductForm(post_args)
 
         if form.is_valid():
-            post.update({'product': form.instance})
-            option_form = ProductPurchaseOptionForm(post)
+            with transaction.atomic():
+                product = form.save()
+                post_args.update({'product': product})
+                option_form = ProductPurchaseOptionForm(post_args)
 
-            if option_form.is_valid():
-                with transaction.atomic():
-                    form.save()
+                if option_form.is_valid():
                     option_form.save()
-
-                return redirect('product-list')
+                    return redirect('product-list')
         else:
-            option_form = ProductPurchaseOptionForm(post)
+            option_form = ProductPurchaseOptionForm(post_args)
     else:
         form = ProductForm()
         option_form = ProductPurchaseOptionForm()
@@ -62,7 +61,8 @@ def update(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        post_args = copy(request.POST)
+        form = ProductForm(post_args, instance=product)
 
         if form.is_valid():
             form.save()
@@ -92,16 +92,19 @@ def product_order_create(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
     if request.method == 'POST':
-        form = ProductOrderForm(request.POST)
-        form.instance.customer = request.user.profile
+        post_args = copy(request.POST)
+        post_args.update({'customer': request.user.profile})
+        form = ProductOrderForm(post_args)
 
         if form.is_valid():
             form.save()
             return redirect('product-list-purchasable')
     else:
         form = ProductOrderForm()
-        options = ProductPurchaseOption.objects.filter(product_id=pk)
-        form.fields['purchase_option'].queryset = options
+
+    options = ProductPurchaseOption.objects.filter(product_id=pk)
+    form.fields['purchase_option'].queryset = options
+    form.fields['customer'].widget = forms.HiddenInput()
 
     context = {'product': product, 'order_form': form}
     return render(request, 'teambuilding/product-order/create.html', context)
@@ -128,23 +131,28 @@ def producer_create(request, country=None):
         return redirect('product-producer-create', country=country)
 
     if request.method == 'POST':
-        form = ProducerForm(request.POST)
-        address_form = localize_form(country, ProducerPostalAddressForm(request.POST))
+        post_args = copy(request.POST)
+        form = ProducerForm(post_args)
+        address_form = ProducerPostalAddressForm(post_args)
+        locale_address_form = localize_form(country, address_form)
 
-        if address_form.is_valid():
-            form.instance.postal_address = address_form.instance
+        if locale_address_form.is_valid():
+            with transaction.atomic():
+                postal_address = locale_address_form.save()
+                form.instance.postal_address = postal_address
 
-            if form.is_valid():
-                with transaction.atomic():
-                    address_form.save()
+                if form.is_valid():
                     form.save()
-
-                return redirect('product-producer-list')
+                    return redirect('product-producer-list')
     else:
         form = ProducerForm()
-        address_form = localize_form(country, ProducerPostalAddressForm())
+        # nota: la funzione localize_form si preoccupa di impostare
+        # il valore di address_form.fields['country'].initial,
+        # quindi non serve impostarlo esplicitamente qui
+        address_form = ProducerPostalAddressForm()
+        locale_address_form = localize_form(country, address_form)
 
-    context = {'producer_form': form, 'address_form': address_form}
+    context = {'producer_form': form, 'address_form': locale_address_form}
     return render(request, 'teambuilding/product-producer/create.html', context)
 
 
@@ -157,20 +165,27 @@ def producer_update(request, pk, country=None):
         return redirect('product-producer-update', pk=pk, country=country)
 
     if request.method == 'POST':
-        form = ProducerForm(request.POST, instance=producer)
-        address_form = localize_form(country, ProducerPostalAddressForm(request.POST, instance=producer.postal_address))
+        post_args = copy(request.POST)
 
-        if form.is_valid() and address_form.is_valid():
+        form = ProducerForm(post_args, instance=producer)
+        address_form = ProducerPostalAddressForm(post_args, instance=producer.postal_address)
+        locale_address_form = localize_form(country, address_form)
+
+        if form.is_valid() and locale_address_form.is_valid():
             with transaction.atomic():
                 form.save()
-                address_form.save()
+                locale_address_form.save()
 
             return redirect('product-producer-list')
     else:
         form = ProducerForm(instance=producer)
-        address_form = localize_form(country, ProducerPostalAddressForm(instance=producer.postal_address))
+        # nota: la funzione localize_form si preoccupa di impostare
+        # il valore di address_form.fields['country'].initial,
+        # quindi non serve impostarlo esplicitamente qui
+        address_form = ProducerPostalAddressForm(instance=producer.postal_address)
+        locale_address_form = localize_form(country, address_form)
 
-    context = {'pk': pk, 'producer_form': form, 'address_form': address_form}
+    context = {'pk': pk, 'producer_form': form, 'address_form': locale_address_form}
     return render(request, 'teambuilding/product-producer/update.html', context)
 
 
@@ -194,35 +209,40 @@ def producer_order_create(request, producer_id, country=None):
         country = safe_country_code(country, producer.postal_address.country.country_code)
         return redirect('product-producer-order-create', producer_id=producer_id, country=country)
 
-    orders = ProductOrder.objects.filter(producer_id=producer_id, producer_order__isnull=True)
-
     if request.method == 'POST':
-        form = ProducerOrderForm(request.POST)
-        form.instance.producer = producer
-        address_form = localize_form(country, ProducerOrderDeliveryAddressForm(request.POST))
+        post_args = copy(request.POST)
+        post_args.update({'producer': producer})
 
-        if address_form.is_valid():
-            form.instance.address = address_form.instance
+        form = ProducerOrderForm(post_args)
+        address_form = ProducerOrderDeliveryAddressForm(post_args)
+        locale_address_form = localize_form(country, address_form)
 
-            if form.is_valid():
-                orders = ProductOrder.objects.filter(producer_id=producer_id, producer_order__isnull=True)
+        if locale_address_form.is_valid():
+            with transaction.atomic():
+                address = locale_address_form.save()
+                form.instance.address = address
 
-                with transaction.atomic():
-                    address_form.save()
+                if form.is_valid():
                     form.save()
+                    orders = ProductOrder.objects.filter(
+                        producer_id=producer_id, producer_order__isnull=True
+                    )
 
                     for product_order in orders:
                         product_order.producer_order = form.instance
                         product_order.save()
 
-                return redirect('product-producer-list-purchasable')
+                    return redirect('product-producer-list-purchasable')
     else:
-        form = ProducerOrderForm()
-        address_form = localize_form(country, ProducerOrderDeliveryAddressForm())
+        form = ProducerOrderForm(initial={'producer': producer})
+        address_form = ProducerOrderDeliveryAddressForm()
+        locale_address_form = localize_form(country, address_form)
 
+    orders = ProductOrder.objects.filter(producer_id=producer_id, producer_order__isnull=True)
+    form.fields['producer'].widget = forms.HiddenInput()
     context = {
-        'producer_id': producer_id, 'country': country, 'orders': orders, 'order_form': form,
-        'address_form': address_form
+        'producer_id': producer_id, 'country': country, 'orders': orders,
+        'order_form': form, 'address_form': locale_address_form
     }
     return render(request, 'teambuilding/product-producer-order/create.html', context)
 
@@ -232,9 +252,9 @@ def purchase_option_create(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
-        post = copy(request.POST)
-        post.update({'product': product})
-        form = ProductPurchaseOptionForm(post)
+        post_args = copy(request.POST)
+        post_args.update({'product': product})
+        form = ProductPurchaseOptionForm(post_args)
 
         if form.is_valid():
             form.save()
@@ -256,11 +276,11 @@ def purchase_option_update(request, pk, product_id=None):
         return redirect('product-purchase-option-update', pk=pk, product_id=product_id)
 
     if request.method == 'POST':
-        post = copy(request.POST)
+        post_args = copy(request.POST)
         # è necessario passare il prodotto perché il campo è disabilitato,
         # quindi il valore non e' presente nella richiesta POST
-        post.update({'product': option.product})
-        form = ProductPurchaseOptionForm(post, instance=option)
+        post_args.update({'product': option.product})
+        form = ProductPurchaseOptionForm(post_args, instance=option)
 
         if form.is_valid():
             form.save()

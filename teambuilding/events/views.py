@@ -1,7 +1,9 @@
+from copy import copy
 from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import TasteEventForm
@@ -34,15 +36,17 @@ def list_upcoming_by_self(request):
 @login_required
 def create(request):
     if request.method == 'POST':
-        form = TasteEventForm(request.POST)
-        form.instance.organizer = request.user.profile
+        post_args = copy(request.POST)
+        post_args.update({'organizer': request.user.profile})
+        form = TasteEventForm(post_args)
 
         if form.is_valid():
             form.save()
             return redirect('event-user-list')
     else:
-        form = TasteEventForm()
+        form = TasteEventForm(initial={'organizer': request.user.profile})
 
+    form.fields['organizer'].widget = forms.HiddenInput()
     context = {'event_form': form}
     return render(request, 'teambuilding/event/create.html', context)
 
@@ -59,7 +63,8 @@ def update(request, pk):
     event = get_object_or_404(TasteEvent, pk=pk)
 
     if request.method == 'POST':
-        form = TasteEventForm(request.POST, instance=event)
+        post_args = copy(request.POST)
+        form = TasteEventForm(post_args, instance=event)
 
         if form.is_valid():
             form.save()
