@@ -10,11 +10,11 @@
     <table class="table">
         <tr>
             <td><strong>{% translate "Nickname" %}</strong></td>
-            <td>{{ user_profile.account.nickname }}</td>
+            <td>{{ user_profile.account.nickname|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Email" %}</strong></td>
-            <td>{{ user_profile.account.email }}</td>
+            <td>{{ user_profile.account.email|escape }}</td>
         </tr>
     </table>
     <hr>

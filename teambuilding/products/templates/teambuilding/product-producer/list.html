@@ -19,9 +19,9 @@
         </tr>
         {% for producer in producers %}
             <tr>
-                <td>{{ producer.name }}</td>
-                <td>{{ producer.email }}</td>
-                <td>{{ producer.phone }}</td>
+                <td>{{ producer.name|escape }}</td>
+                <td>{{ producer.email|escape }}</td>
+                <td>{{ producer.phone|escape }}</td>
                 <td>{{ producer.postal_address }}</td>
                 <td><a href="{% url 'product-producer-update' pk=producer.id %}">{% translate "Edit" %}</a></td>
                 <td><a href="{% url 'product-producer-delete' pk=producer.id %}">{% translate "Remove" %}</a></td>

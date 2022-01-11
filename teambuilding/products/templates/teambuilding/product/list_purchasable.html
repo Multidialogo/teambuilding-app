@@ -15,8 +15,8 @@
         </tr>
         {% for product in products %}
             <tr>
-                <td>{{ product.title }}</td>
-                <td>{{ product.description }}</td>
+                <td>{{ product.title|escape }}</td>
+                <td>{{ product.description|escape }}</td>
                 <td>{{ product.producer }}</td>
                 <td><a href="{% url 'product-order-create' product.id %}">{% translate "Purchase" %}</a></td>
             </tr>

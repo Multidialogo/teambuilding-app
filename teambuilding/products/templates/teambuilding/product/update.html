@@ -24,7 +24,7 @@
             </tr>
             {% for option in options %}
                 <tr>
-                    <td>{{ option.amount }}</td>
+                    <td>{{ option.amount|escape }}</td>
                     <td>{{ option.price_cents }}</td>
                     <td>
                         <a href="{% url 'product-purchase-option-update' product_id=pk pk=option.id %}">{% translate "Edit" %}</a>

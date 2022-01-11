@@ -9,15 +9,15 @@
     <table class="table">
         <tr>
             <td><strong>{% translate "Name" %}</strong></td>
-            <td>{{ producer.name }}</td>
+            <td>{{ producer.name|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Email" %}</strong></td>
-            <td>{{ producer.email }}</td>
+            <td>{{ producer.email|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Phone number" %}</strong></td>
-            <td>{{ producer.phone }}</td>
+            <td>{{ producer.phone|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Postal address" %}</strong></td>

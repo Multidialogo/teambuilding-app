@@ -9,11 +9,11 @@
     <table class="table">
         <tr>
             <td><strong>{% translate "Name" %}</strong></td>
-            <td>{{ product.title }}</td>
+            <td>{{ product.title|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Description" %}</strong></td>
-            <td>{{ product.description }}</td>
+            <td>{{ product.description|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Producer" %}</strong></td>

@@ -9,7 +9,7 @@
     <table class="table">
         <tr>
             <td><strong>{% translate "Title" %}</strong></td>
-            <td>{{ event.title }}</td>
+            <td>{{ event.title|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Organizer" %}</strong></td>
@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td><strong>{% translate "Description" %}</strong></td>
-            <td>{{ event.description }}</td>
+            <td>{{ event.description|escape }}</td>
         </tr>
         <tr>
             <td><strong>{% translate "Products" %}</strong></td>

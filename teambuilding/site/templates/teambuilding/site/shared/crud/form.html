@@ -3,9 +3,9 @@
 {% endfor %}
 {% for field in form.visible_fields %}
     <div class="field">
-        <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+        <label for="{{ field.id_for_label|escape }}" class="label">{{ field.label|escape }}</label>
         <div class="control">
-            {{ field }}
+            {{ field|escape }}
         </div>
         <div class="content is-small">
             <p class="m-1">{{ field.help_text }}</p>

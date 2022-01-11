@@ -1,7 +1,9 @@
-{% if errors.all %}
-    <div class="notification is-danger">
+{% if errors %}
+    <div class="message is-danger">
         {% for error in errors %}
-            {{ error|escape }}
+            <div class="message-body">
+                {{ error|escape }}
+            </div>
         {% endfor %}
     </div>
 {% endif %}
