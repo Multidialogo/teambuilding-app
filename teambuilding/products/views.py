@@ -1,6 +1,9 @@
+from copy import copy
+
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django import forms
 from django.shortcuts import redirect, render, get_object_or_404
 
 from lib.postaladdress.localization import localize_form
@@ -30,11 +33,12 @@ def list_purchasable(request):
 @login_required
 def create(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
-        option_form = ProductPurchaseOptionForm(request.POST)
+        post = copy(request.POST)
+        form = ProductForm(post)
 
         if form.is_valid():
-            option_form.instance.product = form.instance
+            post.update({'product': form.instance})
+            option_form = ProductPurchaseOptionForm(post)
 
             if option_form.is_valid():
                 with transaction.atomic():
@@ -42,10 +46,13 @@ def create(request):
                     option_form.save()
 
                 return redirect('product-list')
+        else:
+            option_form = ProductPurchaseOptionForm(post)
     else:
         form = ProductForm()
         option_form = ProductPurchaseOptionForm()
 
+    option_form.fields['product'].widget = forms.HiddenInput()
     context = {'product_form': form, 'option_form': option_form}
     return render(request, 'teambuilding/product/create.html', context)
 
@@ -225,15 +232,17 @@ def purchase_option_create(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
-        form = ProductPurchaseOptionForm(request.POST)
-        form.instance.product = product
+        post = copy(request.POST)
+        post.update({'product': product})
+        form = ProductPurchaseOptionForm(post)
 
         if form.is_valid():
             form.save()
             return redirect('product-update', pk=product_id)
     else:
-        form = ProductPurchaseOptionForm()
+        form = ProductPurchaseOptionForm(initial={'product': product})
 
+    form.fields['product'].widget.attrs['disabled'] = True
     context = {'option_form': form}
     return render(request, 'teambuilding/product-purchase-option/create.html', context)
 
@@ -247,7 +256,11 @@ def purchase_option_update(request, pk, product_id=None):
         return redirect('product-purchase-option-update', pk=pk, product_id=product_id)
 
     if request.method == 'POST':
-        form = ProductPurchaseOptionForm(request.POST, instance=option)
+        post = copy(request.POST)
+        # è necessario passare il prodotto perché il campo è disabilitato,
+        # quindi il valore non e' presente nella richiesta POST
+        post.update({'product': option.product})
+        form = ProductPurchaseOptionForm(post, instance=option)
 
         if form.is_valid():
             form.save()
@@ -255,6 +268,7 @@ def purchase_option_update(request, pk, product_id=None):
     else:
         form = ProductPurchaseOptionForm(instance=option)
 
+    form.fields['product'].widget.attrs['disabled'] = True
     context = {'option_form': form}
     return render(request, 'teambuilding/product-purchase-option/update.html', context)
 

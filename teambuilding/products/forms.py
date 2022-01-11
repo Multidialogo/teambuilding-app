@@ -15,7 +15,7 @@ class ProductForm(forms.ModelForm):
 class ProductPurchaseOptionForm(forms.ModelForm):
     class Meta:
         model = ProductPurchaseOption
-        exclude = ('product',)
+        exclude = ()
 
 
 class ProducerForm(forms.ModelForm):
