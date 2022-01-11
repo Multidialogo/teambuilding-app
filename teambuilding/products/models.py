@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _, gettext
 
-from phonenumber_field.modelfields import PhoneNumberField
+from lib.phonenumber.modelfields import PhoneNumberField
 
 from lib.postaladdress.models import PostalAddress
 from teambuilding.users.models import User

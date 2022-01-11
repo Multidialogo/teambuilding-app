@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 08:14+0000\n"
+"POT-Creation-Date: 2022-01-11 12:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/phonenumber/formfields.py:22
+#, python-format
+msgid ""
+"Enter a valid phone number (e.g. %(example-number)s) or a number with an "
+"international call prefix."
+msgstr ""
+"Inserire un numero di telefono valido (esempio: %(example-number)s) o un "
+"numero con un prefisso internazionale."
+
+#. Translators: %(example-number)s is a national phone number.
+#: lib/phonenumber/formfields.py:30
+#, python-format
+msgid "Enter a valid phone number (e.g. %(example-number)s)."
+msgstr "Inserire un numero di telefono valido (esempio: %(example-number)s)."
 
 #: lib/postaladdress/migrations/0002_data.py:15
 msgid "Regione"

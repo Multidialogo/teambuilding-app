@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'icalendar',
     'phonenumber_field',
+    'lib.phonenumber',
     'lib.postaladdress',
     'teambuilding.site',
     'teambuilding.accounts',
@@ -119,6 +120,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'it-IT'
+
+PHONENUMBER_DEFAULT_REGION = 'IT'
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
