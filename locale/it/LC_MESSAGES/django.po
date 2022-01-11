@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 12:12+0000\n"
+"POT-Creation-Date: 2022-01-11 12:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,11 +258,11 @@ msgstr ""
 "Ti è stata inviata una email con un link di attivazione. Controlla la tua "
 "casella di posta ed attiva il tuo account."
 
-#: teambuilding/accounts/views.py:56
+#: teambuilding/accounts/views.py:55
 msgid "Your account has been activated."
 msgstr "Il tuo account è stato attivato."
 
-#: teambuilding/accounts/views.py:58
+#: teambuilding/accounts/views.py:57
 msgid "Invalid link."
 msgstr "Link non valido."
 

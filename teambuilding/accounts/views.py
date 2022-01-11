@@ -1,5 +1,3 @@
-from gettext import gettext
-
 from django.conf import settings
 from django.contrib.auth import logout as logout_request, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -8,6 +6,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.db import transaction
 from django.shortcuts import render, redirect
 from django.utils.http import urlsafe_base64_decode
+from django.utils.translation import gettext
 
 from .forms import RegistrationForm
 from .tasks import send_activation_mail_to_user
