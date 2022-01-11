@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-10 23:20+0000\n"
+"POT-Creation-Date: 2022-01-11 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,7 +187,12 @@ msgstr ""
 msgid "%(value)s is not a valid zip code."
 msgstr "%(value)s non è un codice postale valido."
 
-#: teambuilding/accounts/forms.py:14
+#: teambuilding/accounts/forms.py:8 teambuilding/accounts/forms.py:20
+#: teambuilding/users/templates/teambuilding/user/detail.html:12
+msgid "Nickname"
+msgstr ""
+
+#: teambuilding/accounts/forms.py:16
 msgid "Password (confirm)"
 msgstr "Password (conferma)"
 
@@ -808,10 +813,6 @@ msgstr "profili utenti"
 #: teambuilding/users/templates/teambuilding/user/detail.html:5
 msgid "User profile"
 msgstr "Profilo utente"
-
-#: teambuilding/users/templates/teambuilding/user/detail.html:12
-msgid "Nickname"
-msgstr ""
 
 #: teambuilding/users/templates/teambuilding/user/update.html:5
 msgid "User profile - Edit"
