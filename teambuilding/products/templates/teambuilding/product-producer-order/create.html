@@ -23,7 +23,7 @@
                             <td>{{ forloop.counter }}</td>
                             <td>{{ order.producer }}</td>
                             <td>{{ order.product }}</td>
-                            <td>{{ order.customer }}</td>
+                            <td>{{ order.customer.account.email }}</td>
                             <td>{{ order.purchase_option.amount }}</td>
                             <td>{{ order.purchase_option.price_cents }}</td>
                         </tr>
