@@ -23,8 +23,12 @@
                 <td>{{ producer.email|escape }}</td>
                 <td>{{ producer.phone|escape }}</td>
                 <td>{{ producer.postal_address }}</td>
-                <td><a href="{% url 'product-producer-update' pk=producer.id %}">{% translate "Edit" %}</a></td>
-                <td><a href="{% url 'product-producer-delete' pk=producer.id %}">{% translate "Remove" %}</a></td>
+                <td>{% if user.is_staff or producer.added_by_user.id == user.profile.id %}
+                    <a href="{% url 'product-producer-update' pk=producer.id %}">{% translate "Edit" %}</a>
+                {% endif %}</td>
+                <td>{% if user.is_staff or producer.added_by_user.id == user.profile.id %}
+                    <a href="{% url 'product-producer-delete' pk=producer.id %}">{% translate "Remove" %}</a>
+                {% endif %}</td>
             </tr>
         {% endfor %}
     </table>

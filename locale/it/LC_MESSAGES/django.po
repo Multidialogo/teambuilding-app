@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-12 18:15+0000\n"
+"POT-Creation-Date: 2022-01-12 20:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -423,7 +423,7 @@ msgstr "Nuovo evento"
 #: teambuilding/products/templates/teambuilding/product-purchase-option/create.html:16
 #: teambuilding/products/templates/teambuilding/product-purchase-option/update.html:16
 #: teambuilding/products/templates/teambuilding/product/create.html:20
-#: teambuilding/products/templates/teambuilding/product/update.html:43
+#: teambuilding/products/templates/teambuilding/product/update.html:47
 #: teambuilding/users/templates/teambuilding/user/update.html:18
 msgid "Save"
 msgstr "Salva"
@@ -537,17 +537,17 @@ msgid "New"
 msgstr "Nuovo"
 
 #: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:30
-#: teambuilding/products/templates/teambuilding/product-producer/list.html:26
-#: teambuilding/products/templates/teambuilding/product/list.html:24
-#: teambuilding/products/templates/teambuilding/product/update.html:30
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:27
+#: teambuilding/products/templates/teambuilding/product/list.html:25
+#: teambuilding/products/templates/teambuilding/product/update.html:31
 #: teambuilding/users/templates/teambuilding/user/detail.html:23
 msgid "Edit"
 msgstr "Modifica"
 
 #: teambuilding/events/templates/teambuilding/event/list_upcoming_by_self.html:31
-#: teambuilding/products/templates/teambuilding/product-producer/list.html:27
-#: teambuilding/products/templates/teambuilding/product/list.html:25
-#: teambuilding/products/templates/teambuilding/product/update.html:34
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:30
+#: teambuilding/products/templates/teambuilding/product/list.html:29
+#: teambuilding/products/templates/teambuilding/product/update.html:37
 msgid "Remove"
 msgstr "Rimuovi"
 

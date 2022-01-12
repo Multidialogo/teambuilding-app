@@ -36,7 +36,7 @@ class Product(models.Model):
     title = models.CharField(_("name"), max_length=50, unique=True)
     description = models.CharField(_("description"), max_length=100)
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE, verbose_name=_("producer"))
-    added_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("added by"))
+    added_by_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("added by"))
 
     class Meta:
         ordering = ['title']

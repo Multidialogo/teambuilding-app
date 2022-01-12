@@ -21,8 +21,14 @@
                 <td>{{ product.title|escape }}</td>
                 <td>{{ product.description|escape }}</td>
                 <td>{{ product.producer }}</td>
-                <td><a href="{% url 'product-update' product.id %}">{% translate "Edit" %}</a></td>
-                <td><a href="{% url 'product-delete' product.id %}">{% translate "Remove" %}</a></td>
+                <td>{% if user.is_staff or product.added_by_user.id == user.profile.id %}
+                    <a href="{% url 'product-update' product.id %}">{% translate "Edit" %}</a>
+                {% endif %}
+                </td>
+                <td>{% if user.is_staff or product.added_by_user.id == user.profile.id %}
+                    <a href="{% url 'product-delete' product.id %}">{% translate "Remove" %}</a>
+                {% endif %}
+                </td>
             </tr>
         {% endfor %}
     </table>

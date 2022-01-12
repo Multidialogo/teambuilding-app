@@ -27,11 +27,15 @@
                     <td>{{ option.amount|escape }}</td>
                     <td>{{ option.price_cents }}</td>
                     <td>
-                        <a href="{% url 'product-purchase-option-update' product_id=pk pk=option.id %}">{% translate "Edit" %}</a>
+                        {% if user.is_staff or option.product.added_by_user.id == user.profile.id %}
+                            <a href="{% url 'product-purchase-option-update' product_id=pk pk=option.id %}">{% translate "Edit" %}</a>
+                        {% endif %}
                     </td>
                     <td>
-                        {% if options.count > 1 %}
-                            <a href="{% url 'product-purchase-option-delete' product_id=pk pk=option.id %}">{% translate "Remove" %}</a>
+                        {% if user.is_staff or option.product.added_by_user.id == user.profile.id %}
+                            {% if options.count > 1 %}
+                                <a href="{% url 'product-purchase-option-delete' product_id=pk pk=option.id %}">{% translate "Remove" %}</a>
+                            {% endif %}
                         {% endif %}
                     </td>
                 </tr>

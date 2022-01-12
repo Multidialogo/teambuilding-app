@@ -2,6 +2,7 @@ from copy import copy
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django import forms
 from django.shortcuts import redirect, render, get_object_or_404
@@ -54,6 +55,7 @@ def create(request):
 
     form.fields['added_by_user'].widget = forms.HiddenInput()
     option_form.fields['product'].widget = forms.HiddenInput()
+
     context = {'product_form': form, 'option_form': option_form}
     return render(request, 'teambuilding/product/create.html', context)
 
@@ -61,6 +63,9 @@ def create(request):
 @login_required
 def update(request, pk):
     product = get_object_or_404(Product, pk=pk)
+
+    if not request.user.is_staff and product.added_by_user.id != request.user.profile.id:
+        raise PermissionDenied()
 
     if request.method == 'POST':
         post_args = copy(request.POST)
@@ -82,6 +87,9 @@ def update(request, pk):
 @login_required
 def delete(request, pk):
     product = get_object_or_404(Product, pk=pk)
+
+    if not request.user.is_staff and product.added_by_user.id != request.user.profile.id:
+        raise PermissionDenied()
 
     if request.method == 'POST':
         product.delete()
@@ -137,6 +145,7 @@ def producer_create(request, country=None):
     if request.method == 'POST':
         post_args = copy(request.POST)
         post_args.update({'added_by_user': request.user.profile})
+
         form = ProducerForm(post_args)
         address_form = ProducerPostalAddressForm(post_args)
         locale_address_form = localize_form(country, address_form)
@@ -163,8 +172,11 @@ def producer_create(request, country=None):
 
 
 @login_required
-def producer_update(request, pk, country=None):
+def producer_update(request, pk, country=None, **kwargs):
     producer = get_object_or_404(Producer, pk=pk)
+
+    if not request.user.is_staff and producer.added_by_user.id != request.user.profile.id:
+        raise PermissionDenied()
 
     if not is_country_code_valid(country):
         country = safe_country_code(country, producer.postal_address.country.country_code)
@@ -191,6 +203,7 @@ def producer_update(request, pk, country=None):
         address_form = ProducerPostalAddressForm(instance=producer.postal_address)
         locale_address_form = localize_form(country, address_form)
 
+    form.fields['added_by_user'].widget = forms.HiddenInput()
     context = {'pk': pk, 'producer_form': form, 'address_form': locale_address_form}
     return render(request, 'teambuilding/product-producer/update.html', context)
 
@@ -198,6 +211,9 @@ def producer_update(request, pk, country=None):
 @login_required
 def producer_delete(request, pk):
     producer = get_object_or_404(Producer, pk=pk)
+
+    if not request.user.is_staff and producer.added_by_user.id != request.user.profile.id:
+        raise PermissionDenied()
 
     if request.method == 'POST':
         producer.delete()
@@ -257,6 +273,9 @@ def producer_order_create(request, producer_id, country=None):
 def purchase_option_create(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
+    if not request.user.is_staff and product.added_by_user.id != request.user.profile.id:
+        raise PermissionDenied()
+
     if request.method == 'POST':
         post_args = copy(request.POST)
         post_args.update({'product': product})
@@ -276,6 +295,9 @@ def purchase_option_create(request, product_id):
 @login_required
 def purchase_option_update(request, pk, product_id=None):
     option = get_object_or_404(ProductPurchaseOption, pk=pk)
+
+    if not request.user.is_staff and option.product.added_by_user.id != request.user.profile.id:
+        raise PermissionDenied()
 
     if not product_id:
         product_id = option.product.id
@@ -302,6 +324,9 @@ def purchase_option_update(request, pk, product_id=None):
 @login_required
 def purchase_option_delete(request, pk, product_id=None):
     option = get_object_or_404(ProductPurchaseOption, pk=pk)
+
+    if not request.user.is_staff and option.product.added_by_user.id != request.user.profile.id:
+        raise PermissionDenied()
 
     if not product_id:
         product_id = option.product.id

@@ -68,7 +68,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=50, unique=True, verbose_name='name')),
                 ('description', models.CharField(max_length=100, verbose_name='description')),
-                ('added_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.user', verbose_name='added by')),
+                ('added_by_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.user', verbose_name='added by')),
                 ('producer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.producer', verbose_name='producer')),
             ],
             options={
