@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-12 10:53+0000\n"
+"POT-Creation-Date: 2022-01-12 18:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -180,7 +180,7 @@ msgid "administrative level 5"
 msgstr "livello amministrativo 5"
 
 #: lib/postaladdress/models.py:50 teambuilding/products/models.py:13
-#: teambuilding/products/models.py:22
+#: teambuilding/products/models.py:23
 msgid "postal address"
 msgstr "indirizzo postale"
 
@@ -263,8 +263,8 @@ msgstr ""
 "sottostante.\n"
 "\n"
 "%(reset-link)s\n"
-"Questo link può essere usato solo una volta. Se dovrai resettare nuovamente la"
-"password, \n"
+"Questo link può essere usato solo una volta. Se dovrai resettare nuovamente "
+"la password, \n"
 "visita %(website-link)s e richiedi un altro reset.\n"
 "\n"
 "Se non sei stato tu a richiedere il reset della password, puoi semplicemente "
@@ -311,8 +311,8 @@ msgstr "Reset password completato"
 
 #: teambuilding/accounts/templates/teambuilding/account/password_reset_complete.html:9
 msgid "Your password has been set. You may go ahead and log in now."
-msgstr "La tua nuova password è stata impostata. Ora puoi procedere con il "
-"login."
+msgstr ""
+"La tua nuova password è stata impostata. Ora puoi procedere con il login."
 
 #: teambuilding/accounts/templates/teambuilding/account/password_reset_confirm.html:10
 msgid "Please enter your new password."
@@ -380,7 +380,7 @@ msgstr "fine evento"
 msgid "title"
 msgstr "titolo"
 
-#: teambuilding/events/models.py:13 teambuilding/products/models.py:36
+#: teambuilding/events/models.py:13 teambuilding/products/models.py:37
 msgid "description"
 msgstr "descrizione"
 
@@ -388,7 +388,7 @@ msgstr "descrizione"
 msgid "organizer"
 msgstr "organizzatore"
 
-#: teambuilding/events/models.py:15 teambuilding/products/models.py:42
+#: teambuilding/events/models.py:15 teambuilding/products/models.py:44
 msgid "products"
 msgstr "prodotti"
 
@@ -555,7 +555,7 @@ msgstr "Rimuovi"
 msgid "Edit event"
 msgstr "Modifica evento"
 
-#: teambuilding/products/models.py:18 teambuilding/products/models.py:35
+#: teambuilding/products/models.py:18 teambuilding/products/models.py:36
 msgid "name"
 msgstr "nome"
 
@@ -567,91 +567,95 @@ msgstr ""
 msgid "phone number"
 msgstr "telefono"
 
-#: teambuilding/products/models.py:27 teambuilding/products/models.py:37
-#: teambuilding/products/models.py:75 teambuilding/products/models.py:109
+#: teambuilding/products/models.py:21 teambuilding/products/models.py:39
+msgid "added by"
+msgstr "aggiunto da"
+
+#: teambuilding/products/models.py:28 teambuilding/products/models.py:38
+#: teambuilding/products/models.py:77 teambuilding/products/models.py:111
 msgid "producer"
 msgstr "produttore"
 
-#: teambuilding/products/models.py:28
+#: teambuilding/products/models.py:29
 msgid "producers"
 msgstr "produttori"
 
-#: teambuilding/products/models.py:41 teambuilding/products/models.py:50
-#: teambuilding/products/models.py:112
+#: teambuilding/products/models.py:43 teambuilding/products/models.py:52
+#: teambuilding/products/models.py:114
 msgid "product"
 msgstr "prodotto"
 
-#: teambuilding/products/models.py:52
+#: teambuilding/products/models.py:54
 msgid "price EUR (cents)"
 msgstr "prezzo EURO (cents)"
 
-#: teambuilding/products/models.py:53
+#: teambuilding/products/models.py:55
 msgid "amount"
 msgstr "quantità"
 
-#: teambuilding/products/models.py:58 teambuilding/products/models.py:99
+#: teambuilding/products/models.py:60 teambuilding/products/models.py:101
 msgid "purchase option"
 msgstr "opzione di acquisto"
 
-#: teambuilding/products/models.py:59
+#: teambuilding/products/models.py:61
 msgid "purchase options"
 msgstr "opzioni di acquisto"
 
-#: teambuilding/products/models.py:62
+#: teambuilding/products/models.py:64
 #, python-format
 msgid "Amount: %(amount)s, EUR (cents): %(price)01.0f"
 msgstr "Quantità: %(amount)s, EURO (cents): %(price)01.0f"
 
-#: teambuilding/products/models.py:69 teambuilding/products/models.py:78
+#: teambuilding/products/models.py:71 teambuilding/products/models.py:80
 msgid "delivery address"
 msgstr "indirizzo di spedizione"
 
-#: teambuilding/products/models.py:70
+#: teambuilding/products/models.py:72
 msgid "delivery addresses"
 msgstr "indirizzi di spedizione"
 
-#: teambuilding/products/models.py:82
+#: teambuilding/products/models.py:84
 msgid "cumulative order to producer"
 msgstr "ordine cumulativo al produttore"
 
-#: teambuilding/products/models.py:83
+#: teambuilding/products/models.py:85
 msgid "cumulative orders to producers"
 msgstr "ordini cumulativi al produttore"
 
-#: teambuilding/products/models.py:86
+#: teambuilding/products/models.py:88
 #, python-format
 msgid "cumulative order for producer %(producer)s"
 msgstr "ordine cumulativo per il produttore %(producer)s"
 
-#: teambuilding/products/models.py:93
+#: teambuilding/products/models.py:95
 msgid "Created"
 msgstr "In attesa"
 
-#: teambuilding/products/models.py:94
+#: teambuilding/products/models.py:96
 msgid "Processed"
 msgstr "Processato"
 
-#: teambuilding/products/models.py:103
+#: teambuilding/products/models.py:105
 msgid "in cumulative order"
 msgstr "nell'ordine cumulativo"
 
-#: teambuilding/products/models.py:106
+#: teambuilding/products/models.py:108
 msgid "customer"
 msgstr "cliente"
 
-#: teambuilding/products/models.py:115
+#: teambuilding/products/models.py:117
 msgid "order status"
 msgstr "stato ordine"
 
-#: teambuilding/products/models.py:120
+#: teambuilding/products/models.py:122
 msgid "simple order"
 msgstr "ordine semplice"
 
-#: teambuilding/products/models.py:121
+#: teambuilding/products/models.py:123
 msgid "simple orders"
 msgstr "ordini semplici"
 
-#: teambuilding/products/models.py:125
+#: teambuilding/products/models.py:127
 #, python-format
 msgid ""
 "Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR "
@@ -660,7 +664,7 @@ msgstr ""
 "Prodotto: %(product)s, Produttore: %(producer)s, Quantità: %(amount)s, EURO "
 "(cents): %(price)01.0f, Email cliente: %(customer-email)s"
 
-#: teambuilding/products/models.py:141
+#: teambuilding/products/models.py:143
 msgid ""
 "Producer in instance ProductOrder must be equal to Producer in instance "
 "ProducerOrder."

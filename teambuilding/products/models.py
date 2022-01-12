@@ -18,6 +18,7 @@ class Producer(models.Model):
     name = models.CharField(_("name"), max_length=50, unique=True)
     email = models.EmailField(_("email"), blank=True)
     phone = PhoneNumberField(_("phone number"), blank=True)
+    added_by_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("added by"))
     postal_address = models.OneToOneField(
         ProducerPostalAddress, on_delete=models.CASCADE, related_name='producer', verbose_name=_("postal address")
     )
@@ -35,6 +36,7 @@ class Product(models.Model):
     title = models.CharField(_("name"), max_length=50, unique=True)
     description = models.CharField(_("description"), max_length=100)
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE, verbose_name=_("producer"))
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("added by"))
 
     class Meta:
         ordering = ['title']

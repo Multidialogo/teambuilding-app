@@ -34,6 +34,7 @@ def list_purchasable(request):
 def create(request):
     if request.method == 'POST':
         post_args = copy(request.POST)
+        post_args.update({'added_by_user': request.user.profile})
         form = ProductForm(post_args)
 
         if form.is_valid():
@@ -51,6 +52,7 @@ def create(request):
         form = ProductForm()
         option_form = ProductPurchaseOptionForm()
 
+    form.fields['added_by_user'].widget = forms.HiddenInput()
     option_form.fields['product'].widget = forms.HiddenInput()
     context = {'product_form': form, 'option_form': option_form}
     return render(request, 'teambuilding/product/create.html', context)
@@ -71,6 +73,8 @@ def update(request, pk):
         form = ProductForm(instance=product)
 
     options = ProductPurchaseOption.objects.filter(product_id=pk)
+    form.fields['added_by_user'].widget = forms.HiddenInput()
+
     context = {'pk': pk, 'options': options, 'product_form': form}
     return render(request, 'teambuilding/product/update.html', context)
 
@@ -132,6 +136,7 @@ def producer_create(request, country=None):
 
     if request.method == 'POST':
         post_args = copy(request.POST)
+        post_args.update({'added_by_user': request.user.profile})
         form = ProducerForm(post_args)
         address_form = ProducerPostalAddressForm(post_args)
         locale_address_form = localize_form(country, address_form)
@@ -152,6 +157,7 @@ def producer_create(request, country=None):
         address_form = ProducerPostalAddressForm()
         locale_address_form = localize_form(country, address_form)
 
+    form.fields['added_by_user'].widget = forms.HiddenInput()
     context = {'producer_form': form, 'address_form': locale_address_form}
     return render(request, 'teambuilding/product-producer/create.html', context)
 
