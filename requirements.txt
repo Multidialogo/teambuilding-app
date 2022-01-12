@@ -1,5 +1,6 @@
 # To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
 Django
+PyYaml
 django-extensions
 django-phonenumber-field[phonenumberslite]
 icalendar

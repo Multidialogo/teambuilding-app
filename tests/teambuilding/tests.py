@@ -1,14 +1,12 @@
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
 
-class AccountsTestCase(TestCase):
-    def setUp(self):
-        # noinspection PyPep8Naming
-        User = get_user_model()
-        User.objects.create_user('test@example.com', 'test!pwd01', is_active=True)
+class FixtureTestCase(TestCase):
+    fixtures = ['./tests/teambuilding/fixtures/fixture.yaml', ]
 
+
+class AccountsTestCase(FixtureTestCase):
     def test_password_reset(self):
         response = self.client.get(reverse('password-reset'))
         self.assertEqual(response.status_code, 200)
