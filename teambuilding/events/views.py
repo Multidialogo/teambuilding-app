@@ -62,6 +62,9 @@ def detail(request, pk):
 def update(request, pk):
     event = get_object_or_404(TasteEvent, pk=pk)
 
+    if event.organizer.id != request.user.profile.id:
+        raise PermissionDenied()
+
     if request.method == 'POST':
         post_args = copy(request.POST)
         form = TasteEventForm(post_args, instance=event)
