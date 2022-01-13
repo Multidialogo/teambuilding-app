@@ -36,6 +36,9 @@ class FixtureTestCase(TestCase):
 
 
 class AccountsTestCase(FixtureTestCase):
+    def test_user_can_login(self):
+        self.login_user()
+
     def test_admin_can_login(self):
         admin = self.login_admin()
         self.assertTrue(admin.account.is_superuser)
