@@ -7,9 +7,11 @@ from teambuilding.events.forms import TasteEventForm
 from teambuilding.events.models import TasteEvent
 from teambuilding.products.forms import ProductForm
 from teambuilding.products.models import Product, Producer
-from tests.utils.products import make_producer_post_data, make_producer_request_kwargs, \
-    make_new_product_post_data
+from tests.utils.events import make_new_event_post_data
 from tests.utils.testutils import model_to_post_data
+from tests.utils.products import (
+    make_producer_post_data, make_producer_request_kwargs, make_new_product_post_data
+)
 
 
 class FixtureTestCase(TestCase):
@@ -134,6 +136,18 @@ class ProducersTestCase(FixtureTestCase):
 
 
 class EventsTestCase(FixtureTestCase):
+    def test_user_can_add_product(self):
+        self.login_user()
+
+        post_data = make_new_event_post_data()
+        request_url = reverse('event-create')
+
+        response = self.client.post(request_url, post_data)
+        self.assertRedirects(response, reverse('event-user-list'))
+
+        event = TasteEvent.objects.get(title__exact='Evento test')
+        self.assertTrue(event)
+
     def test_user_cant_edit_other_user_event(self):
         user = self.login_user()
 
