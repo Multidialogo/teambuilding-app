@@ -36,6 +36,10 @@ class FixtureTestCase(TestCase):
 
 
 class AccountsTestCase(FixtureTestCase):
+    def test_admin_can_login(self):
+        admin = self.login_admin()
+        self.assertTrue(admin.account.is_superuser)
+
     def test_password_reset(self):
         response = self.client.get(reverse('password-reset'))
         self.assertEqual(response.status_code, 200)
