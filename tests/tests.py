@@ -38,6 +38,7 @@ class AccountsTestCase(FixtureTestCase):
 
         post_data = {'email': 'test@example.com'}
         request_url = reverse('password-reset')
+
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('password-reset-done'))
 
@@ -47,7 +48,7 @@ class ProductsTestCase(FixtureTestCase):
         user = self.login_user()
 
         product = Product.objects.exclude(added_by_user__account_id=user.id).first()
-        model_data_before = model_to_dict(product)
+        product_data_before = model_to_dict(product)
 
         post_data = model_to_post_data(product, ProductForm)
         post_data.update({'title': product.title + '(edit)'})
@@ -58,14 +59,14 @@ class ProductsTestCase(FixtureTestCase):
         self.assertEqual(response.status_code, 403)
 
         product.refresh_from_db()
-        model_data = model_to_dict(product)
-        self.assertEqual(model_data_before, model_data)
+        product_data = model_to_dict(product)
+        self.assertEqual(product_data_before, product_data)
 
     def test_admin_can_edit_any_product(self):
         admin_user = self.login_admin()
 
         product = Product.objects.exclude(added_by_user__account_id=admin_user.id).first()
-        model_data_before = model_to_dict(product)
+        product_data_before = model_to_dict(product)
 
         post_data = model_to_post_data(product, ProductForm)
         post_data.update({'title': product.title + '(edit)'})
@@ -76,16 +77,34 @@ class ProductsTestCase(FixtureTestCase):
         self.assertRedirects(response, reverse('product-list'))
 
         product.refresh_from_db()
-        model_data = model_to_dict(product)
-        self.assertNotEqual(model_data_before, model_data)
+        product_data = model_to_dict(product)
+        self.assertNotEqual(product_data_before, product_data)
 
 
 class ProducersTestCase(FixtureTestCase):
+    def test_user_cant_edit_other_user_producer(self):
+        user = self.login_user()
+
+        producer = Producer.objects.exclude(added_by_user_id=user.id).first()
+        producer_data_before = model_to_dict(producer)
+
+        post_data = make_producer_post_data(producer)
+        post_data.update({'name': producer.name + '(edit)'})
+        request_kwargs = make_producer_request_kwargs(producer)
+        request_url = reverse('product-producer-update', kwargs=request_kwargs)
+
+        response = self.client.post(request_url, post_data)
+        self.assertEqual(response.status_code, 403)
+
+        producer.refresh_from_db()
+        producer_data = model_to_dict(producer)
+        self.assertEqual(producer_data_before, producer_data)
+
     def test_admin_can_edit_any_producer(self):
         admin = self.login_admin()
 
         producer = Producer.objects.exclude(added_by_user_id=admin.id).first()
-        model_data_before = model_to_dict(producer)
+        producer_data_before = model_to_dict(producer)
 
         post_data = make_producer_post_data(producer)
         post_data.update({'name': producer.name + '(edit)'})
@@ -96,8 +115,8 @@ class ProducersTestCase(FixtureTestCase):
         self.assertRedirects(response, reverse('product-producer-list'))
 
         producer.refresh_from_db()
-        model_data = model_to_dict(producer)
-        self.assertNotEqual(model_data_before, model_data)
+        producer_data = model_to_dict(producer)
+        self.assertNotEqual(producer_data_before, producer_data)
 
 
 class EventsTestCase(FixtureTestCase):
@@ -105,7 +124,7 @@ class EventsTestCase(FixtureTestCase):
         user = self.login_user()
 
         event = TasteEvent.objects.exclude(organizer_id=user.id).first()
-        model_data_before = model_to_dict(event)
+        event_data_before = model_to_dict(event)
 
         post_data = model_to_post_data(event, TasteEventForm)
         post_data.update({'title': event.title + '(edit)'})
@@ -116,5 +135,5 @@ class EventsTestCase(FixtureTestCase):
         self.assertEqual(response.status_code, 403)
 
         event.refresh_from_db()
-        model_data = model_to_dict(event)
-        self.assertEqual(model_data_before, model_data)
+        event_data = model_to_dict(event)
+        self.assertEqual(event_data_before, event_data)
