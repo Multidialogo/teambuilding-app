@@ -136,7 +136,7 @@ class ProducersTestCase(FixtureTestCase):
 
 
 class EventsTestCase(FixtureTestCase):
-    def test_user_can_add_product(self):
+    def test_user_can_add_event(self):
         self.login_user()
 
         post_data = make_new_event_post_data()
