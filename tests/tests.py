@@ -7,7 +7,8 @@ from teambuilding.events.forms import TasteEventForm
 from teambuilding.events.models import TasteEvent
 from teambuilding.products.forms import ProductForm
 from teambuilding.products.models import Product, Producer
-from tests.utils.products import make_producer_post_data, make_producer_request_kwargs
+from tests.utils.products import make_producer_post_data, make_producer_request_kwargs, \
+    make_new_product_post_data
 from tests.utils.testutils import model_to_post_data
 
 
@@ -44,6 +45,19 @@ class AccountsTestCase(FixtureTestCase):
 
 
 class ProductsTestCase(FixtureTestCase):
+    def test_user_can_add_product(self):
+        self.login_user()
+
+        producer = Producer.objects.first()
+        post_data = make_new_product_post_data(producer.pk)
+        request_url = reverse('product-create')
+
+        response = self.client.post(request_url, post_data)
+        self.assertRedirects(response, reverse('product-list'))
+
+        product = Product.objects.get(title__exact='Prodotto test')
+        self.assertTrue(product)
+
     def test_user_cant_edit_other_user_product(self):
         user = self.login_user()
 
