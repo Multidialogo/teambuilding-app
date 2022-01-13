@@ -1,4 +1,4 @@
-import sys
+import datetime
 
 from django.forms import model_to_dict
 from django.test import TestCase
@@ -7,14 +7,9 @@ from django.urls import reverse
 from teambuilding.accounts.models import UserAccount
 from teambuilding.events.forms import TasteEventForm
 from teambuilding.events.models import TasteEvent
-from teambuilding.products.forms import ProductForm
+from teambuilding.products.forms import ProductForm, ProducerForm, ProducerPostalAddressForm
 from teambuilding.products.models import Product, Producer
-from tests.utils.events import make_new_event_post_data, make_event_post_data
-from tests.utils.testutils import model_to_post_data
-from tests.utils.products import (
-    make_producer_post_data, make_producer_request_kwargs, make_new_product_post_data,
-    make_new_producer_post_data
-)
+from tests.utils import model_to_post_data
 
 
 class FixtureTestCase(TestCase):
@@ -54,9 +49,17 @@ class AccountsTestCase(FixtureTestCase):
         self.assertTemplateUsed(response, template_name='teambuilding/account/signup_success.html')
 
     def test_user_can_login(self):
+        request_url = reverse('login')
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
         self.login_user()
 
     def test_admin_can_login(self):
+        request_url = reverse('login')
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
         admin = self.login_admin()
         self.assertTrue(admin.account.is_superuser)
 
@@ -65,7 +68,9 @@ class AccountsTestCase(FixtureTestCase):
         response = self.client.get(request_url)
         self.assertEqual(response.status_code, 200)
 
-        post_data = {'email': 'test@example.com'}
+        post_data = {
+            'email': 'test@example.com'
+        }
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('password-reset-done'))
@@ -75,9 +80,19 @@ class ProductsTestCase(FixtureTestCase):
     def test_user_can_add_product(self):
         self.login_user()
 
-        producer = Producer.objects.first()
-        post_data = make_new_product_post_data(producer.pk)
         request_url = reverse('product-create')
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        producer = Producer.objects.first()
+
+        post_data = {
+            'title': 'Prodotto test',
+            'description': 'Prodotto test descritto',
+            'producer': producer.pk,
+            'amount': 'not much',
+            'price_cents': 99
+        }
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('product-list'))
@@ -91,10 +106,13 @@ class ProductsTestCase(FixtureTestCase):
         product = Product.objects.exclude(added_by_user__account_id=user.id).first()
         product_data_before = model_to_dict(product)
 
-        post_data = model_to_post_data(product, ProductForm)
-        post_data.update({'title': product.title + '(edit)'})
         request_kwargs = {'pk': product.pk}
         request_url = reverse('product-update', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 403)
+
+        post_data = model_to_post_data(product, ProductForm)
+        post_data.update({'title': product.title + '(edit)'})
 
         response = self.client.post(request_url, post_data)
         self.assertEqual(response.status_code, 403)
@@ -109,10 +127,13 @@ class ProductsTestCase(FixtureTestCase):
         product = Product.objects.exclude(added_by_user__account_id=admin_user.id).first()
         product_data_before = model_to_dict(product)
 
-        post_data = model_to_post_data(product, ProductForm)
-        post_data.update({'title': product.title + '(edit)'})
         request_kwargs = {'pk': product.pk}
         request_url = reverse('product-update', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        post_data = model_to_post_data(product, ProductForm)
+        post_data.update({'title': product.title + '(edit)'})
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('product-list'))
@@ -126,9 +147,20 @@ class ProducersTestCase(FixtureTestCase):
     def test_user_can_add_producer(self):
         self.login_user()
 
-        post_data = make_new_producer_post_data()
         request_kwargs = {'country': 'IT'}
         request_url = reverse('product-producer-create', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        post_data = {
+            'name': 'Produttore test',
+            'email': 'produttore@example.com',
+            'country': 'IT',
+            'zip_code': '63100',
+            'street': 'Via dei test 404',
+            'adm_level_2': 'TE',
+            'adm_level_3': 'Comune test'
+        }
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('product-producer-list'))
@@ -142,10 +174,20 @@ class ProducersTestCase(FixtureTestCase):
         producer = Producer.objects.exclude(added_by_user_id=user.id).first()
         producer_data_before = model_to_dict(producer)
 
-        post_data = make_producer_post_data(producer)
-        post_data.update({'name': producer.name + '(edit)'})
-        request_kwargs = make_producer_request_kwargs(producer)
+        request_kwargs = {
+            'pk': producer.pk,
+            'country': producer.postal_address.country.country_code
+        }
+
         request_url = reverse('product-producer-update', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 403)
+
+        producer_data = model_to_post_data(producer, ProducerForm)
+        address_data = model_to_post_data(producer.postal_address, ProducerPostalAddressForm)
+        post_data = producer_data
+        post_data.update(address_data)
+        post_data.update({'name': producer.name + '(edit)'})
 
         response = self.client.post(request_url, post_data)
         self.assertEqual(response.status_code, 403)
@@ -160,10 +202,20 @@ class ProducersTestCase(FixtureTestCase):
         producer = Producer.objects.exclude(added_by_user_id=admin.id).first()
         producer_data_before = model_to_dict(producer)
 
-        post_data = make_producer_post_data(producer)
-        post_data.update({'name': producer.name + '(edit)'})
-        request_kwargs = make_producer_request_kwargs(producer)
+        request_kwargs = {
+            'pk': producer.pk,
+            'country': producer.postal_address.country.country_code
+        }
+
         request_url = reverse('product-producer-update', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        producer_data = model_to_post_data(producer, ProducerForm)
+        address_data = model_to_post_data(producer.postal_address, ProducerPostalAddressForm)
+        post_data = producer_data
+        post_data.update(address_data)
+        post_data.update({'name': producer.name + '(edit)'})
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('product-producer-list'))
@@ -177,8 +229,21 @@ class EventsTestCase(FixtureTestCase):
     def test_user_can_add_event(self):
         self.login_user()
 
-        post_data = make_new_event_post_data()
         request_url = reverse('event-create')
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        start_date = datetime.datetime(day=11, month=11, year=2022, hour=18, minute=0)
+        end_date = datetime.datetime(day=11, month=11, year=2022, hour=18, minute=30)
+        product = Product.objects.first()
+
+        post_data = {
+            'title': 'Evento test',
+            'description': 'Evento test descritto',
+            'start_date': start_date,
+            'end_date': end_date,
+            'products': (product.pk,),
+        }
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('event-user-list'))
@@ -192,12 +257,15 @@ class EventsTestCase(FixtureTestCase):
         event = TasteEvent.objects.exclude(organizer_id=user.id).first()
         event_data_before = model_to_dict(event)
 
-        post_data = model_to_post_data(event, TasteEventForm)
-        post_data.update({'title': event.title + '(edit)'})
         request_kwargs = {'pk': event.pk}
         request_url = reverse('event-update', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 403)
 
-        response = self.client.post(request_url, request_kwargs)
+        post_data = model_to_post_data(event, TasteEventForm)
+        post_data.update({'title': event.title + '(edit)'})
+
+        response = self.client.post(request_url, post_data)
         self.assertEqual(response.status_code, 403)
 
         event.refresh_from_db()
@@ -210,11 +278,15 @@ class EventsTestCase(FixtureTestCase):
         event = TasteEvent.objects.exclude(organizer_id=admin.id).first()
         event_data_before = model_to_dict(event)
 
-        post_data = make_event_post_data(event)
-        post_data.update({'title': event.title + '(edit)', 'products': [1]})
-
         request_kwargs = {'pk': event.pk}
         request_url = reverse('event-update', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        event_data = model_to_post_data(event, TasteEventForm)
+        event_data['products'] = [product.pk for product in event_data['products']]
+        post_data = event_data
+        post_data.update({'title': event.title + '(edit)', 'products': [1]})
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('event-user-list'))
