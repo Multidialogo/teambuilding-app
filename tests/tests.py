@@ -43,6 +43,24 @@ class AccountsTestCase(FixtureTestCase):
 
 
 class ProductsTestCase(FixtureTestCase):
+    def test_user_cant_edit_other_user_product(self):
+        user = self.login_user()
+
+        product = Product.objects.exclude(added_by_user__account_id=user.id).first()
+        model_data_before = model_to_dict(product)
+
+        post_data = model_to_post_data(product, ProductForm)
+        post_data.update({'title': product.title + '(edit)'})
+        request_kwargs = {'pk': product.pk}
+        request_url = reverse('product-update', kwargs=request_kwargs)
+
+        response = self.client.post(request_url, post_data)
+        self.assertEqual(response.status_code, 403)
+
+        product.refresh_from_db()
+        model_data = model_to_dict(product)
+        self.assertEqual(model_data_before, model_data)
+
     def test_admin_can_edit_any_product(self):
         admin_user = self.login_admin()
 
