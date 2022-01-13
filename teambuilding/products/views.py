@@ -196,7 +196,7 @@ def producer_update(request, pk, country=None, **kwargs):
 
             return redirect('product-producer-list')
     else:
-        form = ProducerForm(instance=producer)
+        form = ProducerForm(instance=producer, prefix='producer')
         # nota: la funzione localize_form si preoccupa di impostare
         # il valore di address_form.fields['country'].initial,
         # quindi non serve impostarlo esplicitamente qui

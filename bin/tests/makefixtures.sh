@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-fixtures_dir="./tests/teambuilding/fixtures"
+fixtures_dir="./tests/fixtures"
 fixture_filename="fixture.yaml"
 
 (
