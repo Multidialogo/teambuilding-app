@@ -36,6 +36,21 @@ class FixtureTestCase(TestCase):
 
 
 class AccountsTestCase(FixtureTestCase):
+    def test_guest_can_signup(self):
+        request_url = reverse('signup')
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        post_data = {
+            'nickname': 'Utente',
+            'email': 'user@example.com',
+            'password1': 'pass1test',
+            'password2': 'pass1test'
+        }
+
+        response = self.client.post(request_url, post_data)
+        self.assertTemplateUsed(response, template_name='teambuilding/account/signup_success.html')
+
     def test_user_can_login(self):
         self.login_user()
 
@@ -44,11 +59,11 @@ class AccountsTestCase(FixtureTestCase):
         self.assertTrue(admin.account.is_superuser)
 
     def test_password_reset(self):
-        response = self.client.get(reverse('password-reset'))
+        request_url = reverse('password-reset')
+        response = self.client.get(request_url)
         self.assertEqual(response.status_code, 200)
 
         post_data = {'email': 'test@example.com'}
-        request_url = reverse('password-reset')
 
         response = self.client.post(request_url, post_data)
         self.assertRedirects(response, reverse('password-reset-done'))
