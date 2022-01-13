@@ -1,6 +1,8 @@
 import datetime
 
+from teambuilding.events.forms import TasteEventForm
 from teambuilding.products.models import Product
+from tests.utils.testutils import model_to_post_data
 
 
 def make_new_event_post_data():
@@ -17,3 +19,9 @@ def make_new_event_post_data():
     }
 
     return post_data
+
+
+def make_event_post_data(event):
+    event_data = model_to_post_data(event, TasteEventForm)
+    event_data['products'] = [product.pk for product in event_data['products']]
+    return event_data

@@ -62,7 +62,7 @@ def detail(request, pk):
 def update(request, pk):
     event = get_object_or_404(TasteEvent, pk=pk)
 
-    if event.organizer.id != request.user.profile.id:
+    if not request.user.is_staff and event.organizer.id != request.user.profile.id:
         raise PermissionDenied()
 
     if request.method == 'POST':
@@ -83,7 +83,7 @@ def update(request, pk):
 def delete(request, pk):
     event = get_object_or_404(TasteEvent, pk=pk)
 
-    if event.organizer.id != request.user.profile.id:
+    if not request.user.is_staff and event.organizer.id != request.user.profile.id:
         raise PermissionDenied()
 
     if request.method == 'POST':

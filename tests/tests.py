@@ -1,3 +1,5 @@
+import sys
+
 from django.forms import model_to_dict
 from django.test import TestCase
 from django.urls import reverse
@@ -7,7 +9,7 @@ from teambuilding.events.forms import TasteEventForm
 from teambuilding.events.models import TasteEvent
 from teambuilding.products.forms import ProductForm
 from teambuilding.products.models import Product, Producer
-from tests.utils.events import make_new_event_post_data
+from tests.utils.events import make_new_event_post_data, make_event_post_data
 from tests.utils.testutils import model_to_post_data
 from tests.utils.products import (
     make_producer_post_data, make_producer_request_kwargs, make_new_product_post_data,
@@ -201,3 +203,22 @@ class EventsTestCase(FixtureTestCase):
         event.refresh_from_db()
         event_data = model_to_dict(event)
         self.assertEqual(event_data_before, event_data)
+
+    def test_admin_can_edit_any_event(self):
+        admin = self.login_admin()
+
+        event = TasteEvent.objects.exclude(organizer_id=admin.id).first()
+        event_data_before = model_to_dict(event)
+
+        post_data = make_event_post_data(event)
+        post_data.update({'title': event.title + '(edit)', 'products': [1]})
+
+        request_kwargs = {'pk': event.pk}
+        request_url = reverse('event-update', kwargs=request_kwargs)
+
+        response = self.client.post(request_url, post_data)
+        self.assertRedirects(response, reverse('event-user-list'))
+
+        event.refresh_from_db()
+        event_data = model_to_dict(event)
+        self.assertNotEqual(event_data_before, event_data)
