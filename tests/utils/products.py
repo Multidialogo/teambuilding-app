@@ -19,6 +19,19 @@ def make_new_product_post_data(producer_pk, include_purchase_option=True):
     return post_data
 
 
+def make_new_producer_post_data():
+    post_data = {
+        'name': 'Produttore test',
+        'email': 'produttore@example.com',
+        'country': 'IT',
+        'zip_code': '63100',
+        'street': 'Via dei test 404',
+        'adm_level_2': 'TE',
+        'adm_level_3': 'Comune test'
+    }
+    return post_data
+
+
 def make_producer_post_data(producer):
     producer_data = model_to_post_data(producer, ProducerForm)
     address_data = model_to_post_data(producer.postal_address, ProducerPostalAddressForm)
