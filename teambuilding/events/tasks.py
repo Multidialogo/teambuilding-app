@@ -1,10 +1,9 @@
-import sys
 from tempfile import NamedTemporaryFile
 
 from django.core.mail import EmailMessage
 from django.utils.translation import gettext
 
-from teambuilding.users.models import User
+from teambuilding.site.models import User
 
 from .utils import create_icalendar_from_taste_event
 

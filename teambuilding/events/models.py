@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _, gettext
 
-from teambuilding.users.models import User
+from teambuilding.site.models import User
 from teambuilding.products.models import Product
 
 
