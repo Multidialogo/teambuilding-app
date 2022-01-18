@@ -1,0 +1,378 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-17 15:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: teambuilding/products/models.py:13 teambuilding/products/models.py:23
+msgid "postal address"
+msgstr "indirizzo postale"
+
+#: teambuilding/products/models.py:14
+msgid "postal addresses"
+msgstr "indirizzi postali"
+
+#: teambuilding/products/models.py:18 teambuilding/products/models.py:36
+msgid "name"
+msgstr "nome"
+
+#: teambuilding/products/models.py:19
+msgid "email"
+msgstr ""
+
+#: teambuilding/products/models.py:20
+msgid "phone number"
+msgstr "telefono"
+
+#: teambuilding/products/models.py:21 teambuilding/products/models.py:39
+msgid "added by"
+msgstr "aggiunto da"
+
+#: teambuilding/products/models.py:28 teambuilding/products/models.py:38
+#: teambuilding/products/models.py:77 teambuilding/products/models.py:111
+msgid "producer"
+msgstr "produttore"
+
+#: teambuilding/products/models.py:29
+msgid "producers"
+msgstr "produttori"
+
+#: teambuilding/products/models.py:37
+msgid "description"
+msgstr "descrizione"
+
+#: teambuilding/products/models.py:43 teambuilding/products/models.py:52
+#: teambuilding/products/models.py:114
+msgid "product"
+msgstr ""
+
+#: teambuilding/products/models.py:44
+msgid "products"
+msgstr "prodotto"
+
+#: teambuilding/products/models.py:54
+msgid "price EUR (cents)"
+msgstr "prezzo EURO (cents)"
+
+#: teambuilding/products/models.py:55
+msgid "amount"
+msgstr "quantità"
+
+#: teambuilding/products/models.py:60 teambuilding/products/models.py:101
+msgid "purchase option"
+msgstr "opzione di acquisto"
+
+#: teambuilding/products/models.py:61
+msgid "purchase options"
+msgstr "opzioni di acquisto"
+
+#: teambuilding/products/models.py:64
+#, python-format
+msgid "Amount: %(amount)s, EUR (cents): %(price)01.0f"
+msgstr "Quantità: %(amount)s, EURO (cents): %(price)01.0f"
+
+#: teambuilding/products/models.py:71 teambuilding/products/models.py:80
+msgid "delivery address"
+msgstr "indirizzo di spedizione"
+
+#: teambuilding/products/models.py:72
+msgid "delivery addresses"
+msgstr "indirizzi di spedizione"
+
+#: teambuilding/products/models.py:84
+msgid "cumulative order to producer"
+msgstr "ordine cumulativo al produttore"
+
+#: teambuilding/products/models.py:85
+msgid "cumulative orders to producers"
+msgstr "ordini cumulativi al produttore"
+
+#: teambuilding/products/models.py:88
+#, python-format
+msgid "cumulative order for producer %(producer)s"
+msgstr "ordine cumulativo per il produttore %(producer)s"
+
+#: teambuilding/products/models.py:95
+msgid "Created"
+msgstr "In attesa"
+
+#: teambuilding/products/models.py:96
+msgid "Processed"
+msgstr "Processato"
+
+#: teambuilding/products/models.py:105
+msgid "in cumulative order"
+msgstr "nell'ordine cumulativo"
+
+#: teambuilding/products/models.py:108
+msgid "customer"
+msgstr "cliente"
+
+#: teambuilding/products/models.py:117
+msgid "order status"
+msgstr "stato ordine"
+
+#: teambuilding/products/models.py:122
+msgid "simple order"
+msgstr "ordine semplice"
+
+#: teambuilding/products/models.py:123
+msgid "simple orders"
+msgstr "ordini semplici"
+
+#: teambuilding/products/models.py:127
+#, python-format
+msgid ""
+"Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR "
+"(cents): %(price)01.0f, Customer email: %(customer-email)s"
+msgstr ""
+"Prodotto: %(product)s, Produttore: %(producer)s, Quantità: %(amount)s, EURO "
+"(cents): %(price)01.0f, Email cliente: %(customer-email)s"
+
+#: teambuilding/products/models.py:143
+msgid ""
+"Producer in instance ProductOrder must be equal to Producer in instance "
+"ProducerOrder."
+msgstr ""
+"Producer nell'istanza ProductOrder deve essere identico al Producer "
+"nell'istanza ProducerOrder."
+
+#: teambuilding/products/tasks.py:15
+#, python-format
+msgid ""
+"Orders:\n"
+"%(receipt)s\n"
+"Delivery address:\n"
+"%(address)s"
+msgstr ""
+"Ordini:\n"
+"%(receipt)s\n"
+"Indirizzo di spedizione:\n"
+"%(address)s"
+
+#: teambuilding/products/tasks.py:20
+#: teambuilding/products/templates/teambuilding/product-order/create.html:5
+msgid "New order"
+msgstr "Nuovo ordine"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:11
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:11
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:13
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:11
+#: teambuilding/products/templates/teambuilding/product/delete.html:11
+#: teambuilding/products/templates/teambuilding/product/list.html:13
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:11
+msgid "Name"
+msgstr "Nome"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:15
+#: teambuilding/products/templates/teambuilding/product/delete.html:15
+#: teambuilding/products/templates/teambuilding/product/list.html:14
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:12
+msgid "Description"
+msgstr "Descrizione"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:19
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:15
+#: teambuilding/products/templates/teambuilding/product/delete.html:19
+#: teambuilding/products/templates/teambuilding/product/list.html:15
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:13
+msgid "Producer"
+msgstr "Produttore"
+
+#: teambuilding/products/templates/teambuilding/product-order/create.html:30
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:21
+msgid "Purchase"
+msgstr "Acquista"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:7
+msgid "Send cumulative order to producer"
+msgstr "Invia ordine cumulativo al produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:11
+msgid "Orders"
+msgstr "Ordini"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:16
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:11
+msgid "Product"
+msgstr "Prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:17
+msgid "Customer email"
+msgstr "Email cliente"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:18
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:15
+#: teambuilding/products/templates/teambuilding/product/update.html:20
+msgid "Amount"
+msgstr "Quantità"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:19
+msgid "EUR (cents)"
+msgstr "EURO (cents)"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:39
+msgid "Delivery address"
+msgstr "Indirizzo di spedizione"
+
+#: teambuilding/products/templates/teambuilding/product-producer-order/create.html:45
+msgid "Send"
+msgstr "Invia"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:5
+msgid "New producer"
+msgstr "Nuovo produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:23
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:16
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:14
+msgid "Postal address"
+msgstr "Indirizzo postale"
+
+#: teambuilding/products/templates/teambuilding/product-producer/create.html:20
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:20
+#: teambuilding/products/templates/teambuilding/product-purchase-option/create.html:16
+#: teambuilding/products/templates/teambuilding/product-purchase-option/update.html:16
+#: teambuilding/products/templates/teambuilding/product/create.html:20
+#: teambuilding/products/templates/teambuilding/product/update.html:47
+msgid "Save"
+msgstr "Salva"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:5
+msgid "Remove producer"
+msgstr "Rimuovi produttore"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:15
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:14
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:12
+msgid "Email"
+msgstr ""
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:19
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:15
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:13
+msgid "Phone number"
+msgstr "Telefono"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:31
+msgid "Are you sure you want to remove this producer?"
+msgstr "Sei sicuro di voler rimuovere questo produttore?"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:35
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:31
+#: teambuilding/products/templates/teambuilding/product/delete.html:31
+msgid "Confirm"
+msgstr "Conferma"
+
+#: teambuilding/products/templates/teambuilding/product-producer/delete.html:38
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:34
+#: teambuilding/products/templates/teambuilding/product/delete.html:34
+msgid "Cancel"
+msgstr "Annulla"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:5
+msgid "Manage producers"
+msgstr "Gestione produttori"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:9
+#: teambuilding/products/templates/teambuilding/product/list.html:9
+msgid "New"
+msgstr "Nuovo"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:27
+#: teambuilding/products/templates/teambuilding/product/list.html:25
+#: teambuilding/products/templates/teambuilding/product/update.html:31
+msgid "Edit"
+msgstr "Modifica"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list.html:30
+#: teambuilding/products/templates/teambuilding/product/list.html:29
+#: teambuilding/products/templates/teambuilding/product/update.html:37
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:5
+msgid "Manage pending orders"
+msgstr "Gestione ordini in attesa"
+
+#: teambuilding/products/templates/teambuilding/product-producer/list_purchasable.html:23
+msgid "Show pending orders"
+msgstr "Mostra ordini in attesa"
+
+#: teambuilding/products/templates/teambuilding/product-producer/update.html:5
+msgid "Edit producer"
+msgstr "Modifica produttore"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/create.html:5
+msgid "New product purchase option"
+msgstr "Nuova opzione acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:5
+msgid "Remove product purchase option"
+msgstr "Rimuovi opzione acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:19
+#: teambuilding/products/templates/teambuilding/product/update.html:21
+msgid "Price EUR (cents)"
+msgstr "Prezzo EURO (cents)"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/delete.html:27
+msgid "Are you sure you want to remove this product purchase option?"
+msgstr "Sei sicuro di voler rimuovere questa opzione di acquisto prodotto?"
+
+#: teambuilding/products/templates/teambuilding/product-purchase-option/update.html:5
+msgid "Edit product purchase option"
+msgstr "Modifica opzione di acquisto prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/create.html:5
+msgid "New product"
+msgstr "Nuovo prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/create.html:14
+msgid "Purchase option"
+msgstr "Opzione di acquisto"
+
+#: teambuilding/products/templates/teambuilding/product/delete.html:5
+msgid "Remove product"
+msgstr "Rimuovi prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/delete.html:27
+msgid "Are you sure you want to remove this product?"
+msgstr "Sei sicuro di voler rimuovere questo prodotto?"
+
+#: teambuilding/products/templates/teambuilding/product/list.html:5
+msgid "Manage products"
+msgstr "Gestione prodotti"
+
+#: teambuilding/products/templates/teambuilding/product/list_purchasable.html:5
+msgid "Purchase product"
+msgstr "Acquista prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:5
+msgid "Edit product"
+msgstr "Modifica prodotto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:14
+msgid "Purchase options"
+msgstr "Opzioni di acquisto"
+
+#: teambuilding/products/templates/teambuilding/product/update.html:16
+msgid "New purchase option"
+msgstr "Nuova opzione di acquisto"
