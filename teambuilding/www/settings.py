@@ -28,11 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(strtobool(os.getenv('DEBUG', False)))
 
-if DEBUG:
-    ALLOWED_HOSTS = [
-        'teambuilding.tasting.local']
-else:
-    ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', []).split(',')
 
 # Application definition
 
@@ -44,8 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.forms',
-    'django_extensions',
-    'debug_toolbar',
+]
+
+if DEBUG:
+    INSTALLED_APPS += [
+        'django_extensions',
+        'debug_toolbar',
+    ]
+
+INSTALLED_APPS += [
     'icalendar',
     'phonenumber_field',
     'lib.phonenumber',
@@ -58,10 +61,17 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+]
+
+if DEBUG:
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+
+MIDDLEWARE += [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -135,14 +145,14 @@ USE_L10N = False
 USE_TZ = True
 
 DATETIME_INPUT_FORMATS = [
-    '%d/%m/%Y %H:%M',       # '10/25/2006 14:30'
-    '%d/%m/%Y %H:%M:%S',    # '10/25/2006 14:30:59'
-    '%d/%m/%y %H:%M',       # '10/25/06 14:30'
-    '%d/%m/%y %H:%M:%S',    # '10/25/06 14:30:59'
-    '%d-%m-%Y %H:%M',       # '10-25-2006 14:30'
-    '%d-%m-%Y %H:%M:%S',    # '10-25-2006 14:30:59'
-    '%d-%m-%y %H:%M',       # '10-25-06 14:30'
-    '%d-%m-%y %H:%M:%S',    # '10-25-06 14:30:59'
+    '%d/%m/%Y %H:%M',  # '10/25/2006 14:30'
+    '%d/%m/%Y %H:%M:%S',  # '10/25/2006 14:30:59'
+    '%d/%m/%y %H:%M',  # '10/25/06 14:30'
+    '%d/%m/%y %H:%M:%S',  # '10/25/06 14:30:59'
+    '%d-%m-%Y %H:%M',  # '10-25-2006 14:30'
+    '%d-%m-%Y %H:%M:%S',  # '10-25-2006 14:30:59'
+    '%d-%m-%y %H:%M',  # '10-25-06 14:30'
+    '%d-%m-%y %H:%M:%S',  # '10-25-06 14:30:59'
 ]
 
 # Static files (CSS, JavaScript, Images)
@@ -180,9 +190,9 @@ DEBUG_TOOLBAR_CONFIG = {
 
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 MAILER_EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
-EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.netbuilder.local')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', '1025'))
 EMAIL_USE_TLS = bool(strtobool(os.getenv('EMAIL_USE_TLS', 'False')))
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'server@smtp.netbuilder.local')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'server@example.com')
