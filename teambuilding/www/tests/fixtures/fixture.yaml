@@ -33,6 +33,7 @@
     date_joined: 2022-01-12 19:39:04.462507+00:00
     email: admin@example.com
     nickname: admin@example.com
+    birth_date: 1990-01-01
     groups: []
     user_permissions: []
 - model: accounts.useraccount
@@ -48,6 +49,7 @@
     date_joined: 2022-01-12 19:43:26.608813+00:00
     email: test@example.com
     nickname: Test
+    birth_date: 1990-02-01
     groups: []
     user_permissions: []
 - model: accounts.useraccount
@@ -63,6 +65,7 @@
     date_joined: 2022-01-12 19:55:02.332676+00:00
     email: messere@example.com
     nickname: Messere
+    birth_date: 1990-03-01
     groups: []
     user_permissions: []
 - model: site.user
