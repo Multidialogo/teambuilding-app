@@ -41,6 +41,7 @@ class AccountsTestCase(FixtureTestCase):
         post_data = {
             'nickname': 'Utente',
             'email': 'user@example.com',
+            'birth_date': '1990-01-01',
             'password1': 'pass1test',
             'password2': 'pass1test'
         }

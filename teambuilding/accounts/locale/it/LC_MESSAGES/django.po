@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-17 15:54+0000\n"
+"POT-Creation-Date: 2022-01-24 11:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,13 +26,21 @@ msgstr ""
 msgid "Password (confirm)"
 msgstr "Password (conferma)"
 
-#: teambuilding/accounts/models.py:48
+#: teambuilding/accounts/models.py:52
 msgid "email address"
 msgstr "indirizzo email"
 
-#: teambuilding/accounts/models.py:49
+#: teambuilding/accounts/models.py:53
 msgid "nickname"
 msgstr "Attivazione account Taste & Purchase"
+
+#: teambuilding/accounts/models.py:54
+msgid "birth date"
+msgstr "Data di nascita"
+
+#: teambuilding/accounts/models.py:54
+msgid "Format: dd/mm/YYYY"
+msgstr "Formato: gg/mm/AAAA"
 
 #: teambuilding/accounts/tasks.py:18
 msgid "Taste & Purchase account activation"

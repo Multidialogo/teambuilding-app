@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import AbstractUser
@@ -31,9 +33,11 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
+        date_now = datetime.now()
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_active', True)
+        extra_fields.setdefault('birth_date', date_now)
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
@@ -47,6 +51,7 @@ class UserAccount(AbstractUser):
     username = None
     email = models.EmailField(verbose_name=_('email address'), blank=False, unique=True)
     nickname = models.CharField(max_length=100, verbose_name=_('nickname'), unique=True)
+    birth_date = models.DateField(_("birth date"), help_text=_("Format: dd/mm/YYYY"))
 
     objects = UserManager()
 
