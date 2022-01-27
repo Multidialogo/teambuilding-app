@@ -1,5 +1,8 @@
 import datetime
+from io import StringIO
 
+from django.contrib.auth import get_user_model
+from django.core.management import call_command
 from django.forms import model_to_dict
 from django.test import TestCase
 from django.urls import reverse
@@ -295,3 +298,19 @@ class EventsTestCase(FixtureTestCase):
         event.refresh_from_db()
         event_data = model_to_dict(event)
         self.assertNotEqual(event_data_before, event_data)
+
+
+class SiteTestCase(FixtureTestCase):
+    def test_users_birthday_check_command(self):
+        today_date = datetime.date.today()
+        get_user_model().objects.create_user(
+            'celebrated@example.com',
+            'pass1test',
+            birth_date=today_date
+        )
+
+        out = StringIO()
+        call_command('users_birthday_check', stdout=out)
+
+        self.assertIn("Birthday check done.", out.getvalue())
+        # testare notifiche
