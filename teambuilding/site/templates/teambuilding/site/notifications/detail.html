@@ -1,0 +1,27 @@
+{% extends "teambuilding/site/shared/crud/page.html" %}
+{% load i18n %}
+
+{% block crud_header %}
+    {% translate "Notification details" %}
+{% endblock %}
+
+{% block crud_content %}
+    <table class="table">
+        <tr>
+            <td><strong>{% translate "Subject" %}</strong></td>
+            <td>{{ notification.subject|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Date" %}</strong></td>
+            <td>{{ notification.created_at }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Sender" %}</strong></td>
+            <td>{% if notification.sender %}{{ notification.sender }}{% endif %}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Body" %}</strong></td>
+            <td>{{ notification.body }}</td>
+        </tr>
+    </table>
+{% endblock %}

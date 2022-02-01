@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-27 10:01+0000\n"
+"POT-Creation-Date: 2022-02-01 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,86 @@ msgstr "profilo utente"
 #: teambuilding/site/models.py:14
 msgid "user profiles"
 msgstr "profili utenti"
+
+#: teambuilding/site/models.py:24
+#, fuzzy
+#| msgid "Events"
+msgid "Event"
+msgstr "Eventi"
+
+#: teambuilding/site/models.py:25
+msgid "Birthday"
+msgstr "Compleanno"
+
+#: teambuilding/site/models.py:30
+msgid "sender"
+msgstr "mittente"
+
+#: teambuilding/site/models.py:33
+#, fuzzy
+#| msgid "user profile"
+msgid "user notified"
+msgstr "utente notificato"
+
+#: teambuilding/site/models.py:34
+msgid "subject"
+msgstr "oggetto"
+
+#: teambuilding/site/models.py:35
+msgid "body"
+msgstr "corpo"
+
+#: teambuilding/site/models.py:36
+msgid "read"
+msgstr "letta"
+
+#: teambuilding/site/models.py:37
+msgid "also send email"
+msgstr "invia anche email"
+
+#: teambuilding/site/models.py:39
+msgid "notification type"
+msgstr "tipo notifica"
+
+#: teambuilding/site/models.py:43
+msgid "notification"
+msgstr "notifica"
+
+#: teambuilding/site/models.py:44
+msgid "notifications"
+msgstr "notifiche"
+
+#: teambuilding/site/tasks.py:38 teambuilding/site/views.py:98
+msgid "Happy birthday!"
+msgstr "Buon compleanno!"
+
+#: teambuilding/site/tasks.py:39
+#, python-format
+msgid "Happy birthday, %s!"
+msgstr "Buon compleanno, %s!"
+
+#: teambuilding/site/tasks.py:52
+#, python-format
+msgid "Today is %s's birthday!"
+msgstr "Oggi è il compleanno di %s"
+
+#: teambuilding/site/tasks.py:56
+#, python-format
+msgid ""
+"Today is %(user)s's birthday! Wish happy birthday with the following link: "
+"%(link)s"
+msgstr ""
+"Oggi è il compleanno di %(user)s! Fai gli auguri seguendo questo link: "
+"%(link)s"
+
+#: teambuilding/site/tasks.py:75
+msgid "Incoming birthday alert!"
+msgstr "Avviso di compleanno imminente!"
+
+#: teambuilding/site/tasks.py:76
+#, python-format
+msgid "%(user)s birthday is in %(in_days)01.0f"
+msgstr "Il compleanno di %(user)s è tra %(in_days)01.0f giorni"
 
 #: teambuilding/site/templates/teambuilding/site/navbar.html:12
 msgctxt "home page"
@@ -67,29 +147,72 @@ msgstr "Gestione"
 msgid "Producers"
 msgstr "Produttori"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:38
+#: teambuilding/site/templates/teambuilding/site/navbar.html:36
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:5
+msgid "Notifications"
+msgstr "Notifiche"
+
+#: teambuilding/site/templates/teambuilding/site/navbar.html:39
 msgid "Admin"
 msgstr ""
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:40
+#: teambuilding/site/templates/teambuilding/site/navbar.html:41
 msgid "Pending orders"
 msgstr "Ordini in attesa"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:46
+#: teambuilding/site/templates/teambuilding/site/navbar.html:47
 msgid "Profile"
 msgstr "Profilo"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:47
+#: teambuilding/site/templates/teambuilding/site/navbar.html:48
 msgid "Logout"
 msgstr ""
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:53
+#: teambuilding/site/templates/teambuilding/site/navbar.html:54
 msgid "Sign up"
 msgstr "Registrati"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:54
+#: teambuilding/site/templates/teambuilding/site/navbar.html:55
 msgid "Log in"
 msgstr "Log in"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:5
+msgid "Notification details"
+msgstr "Dettagli notifica"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:11
+msgid "Subject"
+msgstr "Oggetto"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:15
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:11
+msgid "Date"
+msgstr "Data"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:19
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:13
+msgid "Sender"
+msgstr "Mittente"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:23
+msgid "Body"
+msgstr "Corpo"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:12
+msgid "Description"
+msgstr "Descrizione"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:14
+msgid "Read"
+msgstr "Letta"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:22
+msgid "Yes,No"
+msgstr "Sì,No"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:23
+msgid "Detail"
+msgstr "Dettaglio"
 
 #: teambuilding/site/templates/teambuilding/site/user/detail.html:5
 msgid "User profile"
@@ -114,6 +237,18 @@ msgstr "Profilo utente - Modifica"
 #: teambuilding/site/templates/teambuilding/site/user/update.html:18
 msgid "Save"
 msgstr "Salva"
+
+#: teambuilding/site/templates/teambuilding/site/user/wish_happy_bday.html:5
+#, fuzzy
+#| msgid "Happy birthday!"
+msgid "Wish Happy Birthday!"
+msgstr "Augura buon compleanno!"
+
+#: teambuilding/site/templates/teambuilding/site/user/wish_happy_bday.html:15
+#, fuzzy
+#| msgid "Sender"
+msgid "Send"
+msgstr "Invia"
 
 #: teambuilding/site/templates/teambuilding/site/welcome.html:9
 msgid "Welcome"

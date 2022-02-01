@@ -2,6 +2,7 @@ import datetime
 from io import StringIO
 
 from django.contrib.auth import get_user_model
+from django.core import mail
 from django.core.management import call_command
 from django.forms import model_to_dict
 from django.test import TestCase
@@ -15,24 +16,26 @@ from teambuilding.products.models import Product, Producer
 from teambuilding.www.tests.utils import model_to_post_data
 
 
+def login_user(test_case):
+    user_email = 'test@example.com'
+    user = UserAccount.objects.get(email__exact=user_email)
+    user_login = test_case.client.login(email=user_email, password='pass1test')
+
+    test_case.assertTrue(user_login)
+    return user.profile
+
+
+def login_admin(test_case):
+    admin_email = 'admin@example.com'
+    admin_user = UserAccount.objects.get(email__exact=admin_email)
+    admin_login = test_case.client.login(email='admin@example.com', password='pass1test')
+
+    test_case.assertTrue(admin_login)
+    return admin_user.profile
+
+
 class FixtureTestCase(TestCase):
     fixtures = ['./teambuilding/www/tests/fixtures/fixture.yaml', ]
-
-    def login_user(self):
-        user_email = 'test@example.com'
-        user = UserAccount.objects.get(email__exact=user_email)
-        user_login = self.client.login(email=user_email, password='pass1test')
-
-        self.assertTrue(user_login)
-        return user.profile
-
-    def login_admin(self):
-        admin_email = 'admin@example.com'
-        admin_user = UserAccount.objects.get(email__exact=admin_email)
-        admin_login = self.client.login(email='admin@example.com', password='pass1test')
-
-        self.assertTrue(admin_login)
-        return admin_user.profile
 
 
 class AccountsTestCase(FixtureTestCase):
@@ -57,14 +60,14 @@ class AccountsTestCase(FixtureTestCase):
         response = self.client.get(request_url)
         self.assertEqual(response.status_code, 200)
 
-        self.login_user()
+        login_user(self)
 
     def test_admin_can_login(self):
         request_url = reverse('login')
         response = self.client.get(request_url)
         self.assertEqual(response.status_code, 200)
 
-        admin = self.login_admin()
+        admin = login_admin(self)
         self.assertTrue(admin.account.is_superuser)
 
     def test_password_reset(self):
@@ -82,7 +85,7 @@ class AccountsTestCase(FixtureTestCase):
 
 class ProductsTestCase(FixtureTestCase):
     def test_user_can_add_product(self):
-        self.login_user()
+        login_user(self)
 
         request_url = reverse('product-create')
         response = self.client.get(request_url)
@@ -105,7 +108,7 @@ class ProductsTestCase(FixtureTestCase):
         self.assertTrue(product)
 
     def test_user_cant_edit_other_user_product(self):
-        user = self.login_user()
+        user = login_user(self)
 
         product = Product.objects.exclude(added_by_user__account_id=user.id).first()
         product_data_before = model_to_dict(product)
@@ -126,7 +129,7 @@ class ProductsTestCase(FixtureTestCase):
         self.assertEqual(product_data_before, product_data)
 
     def test_admin_can_edit_any_product(self):
-        admin_user = self.login_admin()
+        admin_user = login_admin(self)
 
         product = Product.objects.exclude(added_by_user__account_id=admin_user.id).first()
         product_data_before = model_to_dict(product)
@@ -149,7 +152,7 @@ class ProductsTestCase(FixtureTestCase):
 
 class ProducersTestCase(FixtureTestCase):
     def test_user_can_add_producer(self):
-        self.login_user()
+        login_user(self)
 
         request_kwargs = {'country': 'IT'}
         request_url = reverse('product-producer-create', kwargs=request_kwargs)
@@ -173,7 +176,7 @@ class ProducersTestCase(FixtureTestCase):
         self.assertTrue(producer)
 
     def test_user_cant_edit_other_user_producer(self):
-        user = self.login_user()
+        user = login_user(self)
 
         producer = Producer.objects.exclude(added_by_user_id=user.id).first()
         producer_data_before = model_to_dict(producer)
@@ -201,7 +204,7 @@ class ProducersTestCase(FixtureTestCase):
         self.assertEqual(producer_data_before, producer_data)
 
     def test_admin_can_edit_any_producer(self):
-        admin = self.login_admin()
+        admin = login_admin(self)
 
         producer = Producer.objects.exclude(added_by_user_id=admin.id).first()
         producer_data_before = model_to_dict(producer)
@@ -231,7 +234,7 @@ class ProducersTestCase(FixtureTestCase):
 
 class EventsTestCase(FixtureTestCase):
     def test_user_can_add_event(self):
-        self.login_user()
+        login_user(self)
 
         request_url = reverse('event-create')
         response = self.client.get(request_url)
@@ -256,7 +259,7 @@ class EventsTestCase(FixtureTestCase):
         self.assertTrue(event)
 
     def test_user_cant_edit_other_user_event(self):
-        user = self.login_user()
+        user = login_user(self)
 
         event = TasteEvent.objects.exclude(organizer_id=user.id).first()
         event_data_before = model_to_dict(event)
@@ -277,7 +280,7 @@ class EventsTestCase(FixtureTestCase):
         self.assertEqual(event_data_before, event_data)
 
     def test_admin_can_edit_any_event(self):
-        admin = self.login_admin()
+        admin = login_admin(self)
 
         event = TasteEvent.objects.exclude(organizer_id=admin.id).first()
         event_data_before = model_to_dict(event)
@@ -310,7 +313,49 @@ class SiteTestCase(FixtureTestCase):
         )
 
         out = StringIO()
-        call_command('users_birthday_check', stdout=out)
+
+        with self.captureOnCommitCallbacks(execute=True):
+            call_command('users_birthday_check', stdout=out)
+
+        birthdays_in_fixtures = [
+            {'month': 1, 'day': 1},
+            {'month': 3, 'day': 1},
+            {'month': 5, 'day': 1},
+        ]
+
+        today_date_as_month_day_dict = {'month': today_date.month, 'day': today_date.day}
+
+        if today_date_as_month_day_dict in birthdays_in_fixtures:
+            expected_mail_outbox_len = 8
+        else:
+            expected_mail_outbox_len = 4
 
         self.assertIn("Birthday check done.", out.getvalue())
-        # testare notifiche
+        self.assertEqual(len(mail.outbox), expected_mail_outbox_len)
+
+    def test_wish_happy_birthday(self):
+        login_user(self)
+
+        today_date = datetime.date.today()
+        birthday_user = get_user_model().objects.create_user(
+            'celebrated@example.com',
+            'pass1test',
+            birth_date=today_date
+        )
+
+        request_kwargs = {'bday_user_pk': birthday_user.pk}
+        request_url = reverse('user-profile-happy-bday', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 200)
+
+        yesterday_date = today_date - datetime.timedelta(days=1)
+        not_birthday_user = get_user_model().objects.create_user(
+            'notcelebrated@example.com',
+            'pass1test',
+            birth_date=yesterday_date
+        )
+
+        request_kwargs = {'bday_user_pk': not_birthday_user.pk}
+        request_url = reverse('user-profile-happy-bday', kwargs=request_kwargs)
+        response = self.client.get(request_url)
+        self.assertEqual(response.status_code, 403)
