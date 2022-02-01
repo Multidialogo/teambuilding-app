@@ -13,6 +13,7 @@ from teambuilding.events.forms import TasteEventForm
 from teambuilding.events.models import TasteEvent
 from teambuilding.products.forms import ProductForm, ProducerForm, ProducerPostalAddressForm
 from teambuilding.products.models import Product, Producer
+from teambuilding.site.models import Notification
 from teambuilding.www.tests.utils import model_to_post_data
 
 
@@ -306,10 +307,36 @@ class EventsTestCase(FixtureTestCase):
 class SiteTestCase(FixtureTestCase):
     def test_users_birthday_check_command(self):
         today_date = datetime.date.today()
+        yesterday_date = today_date - datetime.timedelta(days=1)
+        tomorrow_date = today_date + datetime.timedelta(days=1)
+        four_days_date = today_date + datetime.timedelta(days=4)
+        seven_days_date = today_date + datetime.timedelta(days=7)
+
+        fixture_users = get_user_model().objects.all()
+
+        for fixture_user in fixture_users:
+            fixture_user.birth_date = yesterday_date
+            fixture_user.save()
+
         get_user_model().objects.create_user(
             'celebrated@example.com',
             'pass1test',
             birth_date=today_date
+        )
+        get_user_model().objects.create_user(
+            'almostcelebrated@example.com',
+            'pass1test',
+            birth_date=tomorrow_date
+        )
+        get_user_model().objects.create_user(
+            'unluckycelebrated@example.com',
+            'pass1test',
+            birth_date=four_days_date
+        )
+        get_user_model().objects.create_user(
+            'oneweekcelebrated@example.com',
+            'pass1test',
+            birth_date=seven_days_date
         )
 
         out = StringIO()
@@ -317,21 +344,15 @@ class SiteTestCase(FixtureTestCase):
         with self.captureOnCommitCallbacks(execute=True):
             call_command('users_birthday_check', stdout=out)
 
-        birthdays_in_fixtures = [
-            {'month': 1, 'day': 1},
-            {'month': 3, 'day': 1},
-            {'month': 5, 'day': 1},
-        ]
-
-        today_date_as_month_day_dict = {'month': today_date.month, 'day': today_date.day}
-
-        if today_date_as_month_day_dict in birthdays_in_fixtures:
-            expected_mail_outbox_len = 8
-        else:
-            expected_mail_outbox_len = 4
+        notifications_sent_count = Notification.objects.count()
+        email_sent_count = len(mail.outbox)
 
         self.assertIn("Birthday check done.", out.getvalue())
-        self.assertEqual(len(mail.outbox), expected_mail_outbox_len)
+        # total 7 users, 1 birthday today, 1 birthday tomorrow, 1 birthday in 7 days
+        # 1 happy bday + 6 happy bday reminders + 6 one-day reminders + 6 seven-days reminders
+        self.assertEqual(notifications_sent_count, 19)
+        # 1 happy bday + 6 reminders
+        self.assertEqual(email_sent_count, 7)
 
     def test_wish_happy_birthday(self):
         login_user(self)
