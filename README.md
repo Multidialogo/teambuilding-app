@@ -40,7 +40,7 @@ docker compose exec taste_purchase_web python manage.py users_birthday_check
 ### Applicazione per il team building
 E'una piattaforma progettata per aiutare i gruppi di lavoro a costruire relazioni più forti tra i membri attraverso varie attività coinvolgenti e divertenti da fare insieme.
 
-#### Attivigtà supportate
+#### Attività supportate
 
 ##### Degustazione e acquisto
 
@@ -49,7 +49,7 @@ Ogni membro del team può inserire un produttore e un prodotto nell'elenco e cre
 
 I membri del team possono effettuare ordini per prodotti particolari all'interno di qualsiasi produttore, quindi gli ordini verranno raggruppati per produttore e ottimizzati per essere inseriti al fine di risparmiare tempo e costi di spedizione.
 
-### Installazione e utilizzo
+### Installazione ed utilizzo
 
 #### Comandi CLI
 
