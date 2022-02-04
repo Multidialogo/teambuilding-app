@@ -82,22 +82,11 @@ def happy_birthday_send(request, bday_user_pk):
     if today.day != birthday_date.day or today.month != birthday_date.month:
         raise PermissionDenied()
 
-    already_wished_happy_bday = Notification.objects.filter(
-        type=Notification.NOTITYPE_BIRTHDAY, sender=request.user.profile, user=birthday_user,
-        created_at__year=today.year
-    ).exists()
-
-    if already_wished_happy_bday:
-        raise PermissionDenied()
-
     if request.method == 'POST':
         post_args = copy(request.POST)
         post_args.update({
             'sender': request.user.profile,
-            'user': birthday_user,
-            'subject': gettext("Happy birthday!"),
-            'send_email': True,
-            'type': Notification.NOTITYPE_BIRTHDAY
+            'recipient': birthday_user,
         })
 
         form = HappyBirthdayForm(post_args)
@@ -110,10 +99,7 @@ def happy_birthday_send(request, bday_user_pk):
         form = HappyBirthdayForm()
 
     form.fields['sender'].widget = forms.HiddenInput()
-    form.fields['user'].widget = forms.HiddenInput()
-    form.fields['subject'].widget = forms.HiddenInput()
-    form.fields['send_email'].widget = forms.HiddenInput()
-    form.fields['type'].widget = forms.HiddenInput()
+    form.fields['recipient'].widget = forms.HiddenInput()
 
-    context = {'notification_form': form}
+    context = {'happy_birthday_form': form}
     return render(request, 'teambuilding/site/user/wish_happy_bday.html', context)

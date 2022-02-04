@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, gettext
 
 
 class User(models.Model):
@@ -17,34 +17,46 @@ class User(models.Model):
         return str(self.account)
 
 
-class Notification(models.Model):
-    NOTITYPE_EVENT = 'EVENT'
-    NOTITYPE_BIRTHDAY = 'BIRTHDAY'
-    NOTITYPE_CHOICES = [
-        (NOTITYPE_EVENT, _("Event")),
-        (NOTITYPE_BIRTHDAY, _("Birthday"))
-    ]
-
-    created_at = models.DateTimeField(auto_now_add=True)
+class HappyBirthdayMessage(models.Model):
+    created_at = models.DateField(auto_now_add=True)
+    recipient = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name=_("recipient"),
+        related_name="+"
+    )
     sender = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name=_("sender"),
         related_name="+", null=True
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("user notified"))
+    message = models.TextField(_("body"), max_length=500)
+
+    class Meta:
+        unique_together = ['created_at', 'recipient', 'sender']
+        ordering = ['created_at', 'recipient', 'sender']
+        verbose_name = _("happy birthday message")
+        verbose_name_plural = _("happy birthday messages")
+
+    def __str__(self):
+        return gettext("Happy birthday message from %(sender)s to %(recipient)s") % (
+            {'sender': str(self.sender), 'recipient': str(self.recipient)}
+        )
+
+
+class Notification(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("recipient"))
     subject = models.CharField(_("subject"), max_length=80)
     body = models.TextField(_("body"), max_length=256)
     read = models.BooleanField(_("read"), default=False)
     send_email = models.BooleanField(_("also send email"), default=False)
-    type = models.CharField(
-        _("notification type"), max_length=16, choices=NOTITYPE_CHOICES, default=NOTITYPE_EVENT
+    origin = models.CharField(_("origin"), max_length=50, editable=False, default="SYSTEM")
+    origin_object_id = models.CharField(
+        _("origin object id"), max_length=64, editable=False, blank=True, null=True
     )
 
     class Meta:
+        ordering = ['created_at']
         verbose_name = _("notification")
         verbose_name_plural = _("notifications")
 
     def __str__(self):
-        return "%(type)s : %(subject)s" % {
-            'type': self.type,
-            'subject': self.subject
-        }
+        return self.subject

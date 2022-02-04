@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.utils.translation import gettext
 
-from .models import User, Notification
+from .models import User, Notification, HappyBirthdayMessage
 
 
 def create_user_profile(user_account):
@@ -28,22 +28,18 @@ def check_users_birthday():
         in_days = birth_date_year_days - today_year_days
 
         if in_days == 0:
-            notify_happy_birthday_to_user(user)
+            send_happy_birthday_to_user(user)
             notify_users_about_today_birthday(user)
         elif in_days in [1, 7]:
             notify_users_about_incoming_birthday(user, in_days)
 
 
-def notify_happy_birthday_to_user(birthday_user):
-    subject = gettext("Happy birthday!")
+def send_happy_birthday_to_user(birthday_user):
     body = gettext("Happy birthday, %s!") % birthday_user.account.nickname
 
-    Notification.objects.create(
-        user=birthday_user,
-        subject=subject,
-        body=body,
-        type=Notification.NOTITYPE_BIRTHDAY,
-        send_email=True
+    HappyBirthdayMessage.objects.create(
+        recipient=birthday_user,
+        message=body
     )
 
 
@@ -62,10 +58,9 @@ def notify_users_about_today_birthday(birthday_user):
 
     for user_to_notify in users_to_notify:
         Notification.objects.create(
-            user=user_to_notify,
+            recipient=user_to_notify,
             subject=subject,
             body=body,
-            type=Notification.NOTITYPE_BIRTHDAY,
             send_email=True
         )
 
@@ -80,16 +75,15 @@ def notify_users_about_incoming_birthday(birthday_user, in_days):
 
     for user_to_notify in users_to_notify:
         Notification.objects.create(
-            user=user_to_notify,
+            recipient=user_to_notify,
             subject=subject,
             body=body,
-            type=Notification.NOTITYPE_BIRTHDAY,
             send_email=False
         )
 
 
 def send_email_from_notification(notification):
     email = EmailMessage(
-        notification.subject, notification.body, to=[notification.user.account.email, ]
+        notification.subject, notification.body, to=[notification.recipient.account.email, ]
     )
     email.send()

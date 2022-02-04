@@ -339,13 +339,19 @@ class SiteTestCase(FixtureTestCase):
             birth_date=seven_days_date
         )
 
+        notification_count_before = Notification.objects.count()
+        email_sent_count_before = len(mail.outbox)
+
         out = StringIO()
 
         with self.captureOnCommitCallbacks(execute=True):
             call_command('users_birthday_check', stdout=out)
 
-        notifications_sent_count = Notification.objects.count()
-        email_sent_count = len(mail.outbox)
+        notification_count_after = Notification.objects.count()
+        notifications_sent_count = notification_count_after - notification_count_before
+
+        email_sent_count_after = len(mail.outbox)
+        email_sent_count = email_sent_count_after - email_sent_count_before
 
         self.assertIn("Birthday check done.", out.getvalue())
         # total 7 users, 1 birthday today, 1 birthday tomorrow, 1 birthday in 7 days
