@@ -20,7 +20,7 @@
     adm_level_3: Ascoli Piceno
     adm_level_4: ''
     adm_level_5: ''
-- model: accounts.useraccount
+- model: site.user
   pk: 1
   fields:
     password: pbkdf2_sha256$320000$AuxZ8Kj9I1Lw2KdJtrNLtC$wibOSwWBGm/acDZos+Oo9FQR/0YId21LLIMuSdZWuDI=
@@ -36,7 +36,7 @@
     birth_date: 1990-01-01
     groups: []
     user_permissions: []
-- model: accounts.useraccount
+- model: site.user
   pk: 2
   fields:
     password: pbkdf2_sha256$320000$K2hkUdxgUUB3H1cD381ODJ$kR8NvPJnMfMTC8KELAxIx8lg7N6U9MZHOOUkWzTswr0=
@@ -52,7 +52,7 @@
     birth_date: 1990-03-01
     groups: []
     user_permissions: []
-- model: accounts.useraccount
+- model: site.user
   pk: 3
   fields:
     password: pbkdf2_sha256$320000$NI7eNNZUptzHseoTJchcCx$xvJdVbldCsuHPQ0ROdr21jIRXa1FdzPs2hUYg0AdvgA=
@@ -68,15 +68,15 @@
     birth_date: 1990-05-01
     groups: []
     user_permissions: []
-- model: site.user
+- model: site.userprofile
   pk: 1
   fields:
     account: 1
-- model: site.user
+- model: site.userprofile
   pk: 2
   fields:
     account: 2
-- model: site.user
+- model: site.userprofile
   pk: 3
   fields:
     account: 3

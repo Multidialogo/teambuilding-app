@@ -53,7 +53,6 @@ INSTALLED_APPS += [
     'phonenumber_field',
     'lib.phonenumber',
     'lib.postaladdress',
-    'teambuilding.accounts',
     'teambuilding.site',
     'teambuilding.events',
     'teambuilding.products',
@@ -169,7 +168,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #
 
-AUTH_USER_MODEL = 'accounts.UserAccount'
+AUTH_USER_MODEL = 'site.User'
 
 LOGIN_URL = 'login'
 

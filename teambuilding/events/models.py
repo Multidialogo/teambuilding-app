@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _, gettext
 
-from teambuilding.site.models import User
+from teambuilding.site.models import UserProfile
 from teambuilding.products.models import Product
 
 
@@ -11,7 +11,7 @@ class TasteEvent(models.Model):
     end_date = models.DateTimeField(_("event end"), help_text=_("Format: dd/mm/YYYY hh:mm"))
     title = models.CharField(_("title"), max_length=50)
     description = models.CharField(_("description"), max_length=100)
-    organizer = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("organizer"))
+    organizer = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name=_("organizer"))
     products = models.ManyToManyField(Product, verbose_name=_("products"))
 
     class Meta:

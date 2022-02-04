@@ -20,7 +20,6 @@ from django.urls import include, path
 from teambuilding.site import views as site_views
 
 urlpatterns = [
-    path('auth/', include('teambuilding.accounts.urls')),
     path('events/', include('teambuilding.events.urls')),
     path('products/', include('teambuilding.products.urls')),
     path('site/', include('teambuilding.site.urls')),

@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _, gettext
 from lib.phonenumber.modelfields import PhoneNumberField
 
 from lib.postaladdress.models import PostalAddress
-from teambuilding.site.models import User
+from teambuilding.site.models import UserProfile
 
 
 class ProducerPostalAddress(PostalAddress):
@@ -18,9 +18,12 @@ class Producer(models.Model):
     name = models.CharField(_("name"), max_length=50, unique=True)
     email = models.EmailField(_("email"), blank=True)
     phone = PhoneNumberField(_("phone number"), blank=True)
-    added_by_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("added by"))
+    added_by_user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, verbose_name=_("added by")
+    )
     postal_address = models.OneToOneField(
-        ProducerPostalAddress, on_delete=models.CASCADE, related_name='producer', verbose_name=_("postal address")
+        ProducerPostalAddress, on_delete=models.CASCADE, related_name='producer',
+        verbose_name=_("postal address")
     )
 
     class Meta:
@@ -36,7 +39,9 @@ class Product(models.Model):
     title = models.CharField(_("name"), max_length=50, unique=True)
     description = models.CharField(_("description"), max_length=100)
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE, verbose_name=_("producer"))
-    added_by_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("added by"))
+    added_by_user = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, verbose_name=_("added by")
+    )
 
     class Meta:
         ordering = ['title']
@@ -105,16 +110,18 @@ class ProductOrder(models.Model):
         verbose_name=_("in cumulative order")
     )
     customer = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='+', verbose_name=_("customer")
+        UserProfile, on_delete=models.CASCADE, related_name='+', verbose_name=_("customer")
     )
     producer = models.ForeignKey(
-        Producer, on_delete=models.CASCADE, related_name='product_order', verbose_name=_("producer")
+        Producer, on_delete=models.CASCADE, related_name='product_order',
+        verbose_name=_("producer")
     )
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='product_order', verbose_name=_("product")
     )
     status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default=STATUS_CREATED, verbose_name=_("order status")
+        max_length=10, choices=STATUS_CHOICES, default=STATUS_CREATED,
+        verbose_name=_("order status")
     )
 
     class Meta:
@@ -140,7 +147,8 @@ class ProductOrder(models.Model):
         if self.producer_order:
             if self.producer_order.producer.id != self.producer.id:
                 raise ValidationError(
-                    gettext("Producer in instance ProductOrder must be equal to Producer in instance ProducerOrder."))
+                    gettext("Producer in instance ProductOrder must be equal to Producer in instance ProducerOrder.")
+                )
 
             self.status = ProductOrder.STATUS_PROCESSED
         else:

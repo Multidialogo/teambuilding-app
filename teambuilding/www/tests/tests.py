@@ -8,7 +8,6 @@ from django.forms import model_to_dict
 from django.test import TestCase
 from django.urls import reverse
 
-from teambuilding.accounts.models import UserAccount
 from teambuilding.events.forms import TasteEventForm
 from teambuilding.events.models import TasteEvent
 from teambuilding.products.forms import ProductForm, ProducerForm, ProducerPostalAddressForm
@@ -19,7 +18,7 @@ from teambuilding.www.tests.utils import model_to_post_data
 
 def login_user(test_case):
     user_email = 'test@example.com'
-    user = UserAccount.objects.get(email__exact=user_email)
+    user = get_user_model().objects.get(email__exact=user_email)
     user_login = test_case.client.login(email=user_email, password='pass1test')
 
     test_case.assertTrue(user_login)
@@ -28,7 +27,7 @@ def login_user(test_case):
 
 def login_admin(test_case):
     admin_email = 'admin@example.com'
-    admin_user = UserAccount.objects.get(email__exact=admin_email)
+    admin_user = get_user_model().objects.get(email__exact=admin_email)
     admin_login = test_case.client.login(email='admin@example.com', password='pass1test')
 
     test_case.assertTrue(admin_login)
@@ -54,7 +53,7 @@ class AccountsTestCase(FixtureTestCase):
         }
 
         response = self.client.post(request_url, post_data)
-        self.assertTemplateUsed(response, template_name='teambuilding/account/signup_success.html')
+        self.assertTemplateUsed(response, template_name='teambuilding/site/auth/signup_success.html')
 
     def test_user_can_login(self):
         request_url = reverse('login')

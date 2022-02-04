@@ -5,7 +5,7 @@ from django.utils.translation import gettext
 
 from .models import TasteEvent
 from .tasks import email_taste_event_notification
-from ..site.models import Notification, User
+from ..site.models import Notification, UserProfile
 
 
 @receiver(post_save, sender=TasteEvent)
@@ -13,7 +13,7 @@ def on_taste_event_post_save(instance, created, **kwargs):
     if created:
         subject = gettext("New event Taste & Purchase!")
         message = gettext("A new event has been added, check it out.")
-        all_users = User.objects.all()
+        all_users = UserProfile.objects.all()
 
         for user in all_users:
             Notification.objects.create(
