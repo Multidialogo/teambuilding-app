@@ -48,7 +48,7 @@ class AccountsTestCase(FixtureTestCase):
         post_data = {
             'nickname': 'Utente',
             'email': 'user@example.com',
-            'birth_date': '1990-01-01',
+            'birth_date': '01-01-1990',
             'password1': 'pass1test',
             'password2': 'pass1test'
         }
@@ -111,7 +111,7 @@ class ProductsTestCase(FixtureTestCase):
     def test_user_cant_edit_other_user_product(self):
         user = login_user(self)
 
-        product = Product.objects.exclude(added_by_user__account_id=user.id).first()
+        product = Product.objects.exclude(added_by_user_id=user.id).first()
         product_data_before = model_to_dict(product)
 
         request_kwargs = {'pk': product.pk}
@@ -132,7 +132,7 @@ class ProductsTestCase(FixtureTestCase):
     def test_admin_can_edit_any_product(self):
         admin_user = login_admin(self)
 
-        product = Product.objects.exclude(added_by_user__account_id=admin_user.id).first()
+        product = Product.objects.exclude(added_by_user_id=admin_user.id).first()
         product_data_before = model_to_dict(product)
 
         request_kwargs = {'pk': product.pk}
@@ -370,8 +370,8 @@ class SiteTestCase(FixtureTestCase):
             birth_date=today_date
         )
 
-        request_kwargs = {'bday_user_pk': birthday_user.pk}
-        request_url = reverse('user-profile-happy-bday', kwargs=request_kwargs)
+        request_kwargs = {'pk': birthday_user.pk}
+        request_url = reverse('user-happy-bday', kwargs=request_kwargs)
         response = self.client.get(request_url)
         self.assertEqual(response.status_code, 200)
 
@@ -382,7 +382,7 @@ class SiteTestCase(FixtureTestCase):
             birth_date=yesterday_date
         )
 
-        request_kwargs = {'bday_user_pk': not_birthday_user.pk}
-        request_url = reverse('user-profile-happy-bday', kwargs=request_kwargs)
+        request_kwargs = {'pk': not_birthday_user.pk}
+        request_url = reverse('user-happy-bday', kwargs=request_kwargs)
         response = self.client.get(request_url)
         self.assertEqual(response.status_code, 403)

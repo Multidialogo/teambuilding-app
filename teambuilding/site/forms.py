@@ -15,10 +15,12 @@ class RegistrationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
+        # necessario sovrascrivere fields['password2'].label per
+        # avere la traduzione
         self.fields['password2'].label = gettext('Password (confirm)')
 
 
-class UserForm(forms.ModelForm):
+class UserNicknameForm(forms.ModelForm):
     nickname = forms.CharField(label=_("Nickname"), required=False)
 
     class Meta:

@@ -36,7 +36,7 @@ def list_purchasable(request):
 def create(request):
     if request.method == 'POST':
         post_args = copy(request.POST)
-        post_args.update({'added_by_user': request.user.profile})
+        post_args.update({'added_by_user': request.user})
         form = ProductForm(post_args)
 
         if form.is_valid():
@@ -65,7 +65,7 @@ def create(request):
 def update(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
-    if not request.user.is_staff and product.added_by_user.id != request.user.profile.id:
+    if not request.user.is_staff and product.added_by_user.id != request.user.id:
         raise PermissionDenied()
 
     if request.method == 'POST':
@@ -89,7 +89,7 @@ def update(request, pk):
 def delete(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
-    if not request.user.is_staff and product.added_by_user.id != request.user.profile.id:
+    if not request.user.is_staff and product.added_by_user.id != request.user.id:
         raise PermissionDenied()
 
     if request.method == 'POST':
@@ -106,7 +106,7 @@ def product_order_create(request, pk):
 
     if request.method == 'POST':
         post_args = copy(request.POST)
-        post_args.update({'customer': request.user.profile})
+        post_args.update({'customer': request.user})
         form = ProductOrderForm(post_args)
 
         if form.is_valid():
@@ -145,7 +145,7 @@ def producer_create(request, country=None):
 
     if request.method == 'POST':
         post_args = copy(request.POST)
-        post_args.update({'added_by_user': request.user.profile})
+        post_args.update({'added_by_user': request.user})
 
         form = ProducerForm(post_args)
         address_form = ProducerPostalAddressForm(post_args)
@@ -176,7 +176,7 @@ def producer_create(request, country=None):
 def producer_update(request, pk, country=None, **kwargs):
     producer = get_object_or_404(Producer, pk=pk)
 
-    if not request.user.is_staff and producer.added_by_user.id != request.user.profile.id:
+    if not request.user.is_staff and producer.added_by_user.id != request.user.id:
         raise PermissionDenied()
 
     if not is_country_code_valid(country):
@@ -213,7 +213,7 @@ def producer_update(request, pk, country=None, **kwargs):
 def producer_delete(request, pk):
     producer = get_object_or_404(Producer, pk=pk)
 
-    if not request.user.is_staff and producer.added_by_user.id != request.user.profile.id:
+    if not request.user.is_staff and producer.added_by_user.id != request.user.id:
         raise PermissionDenied()
 
     if request.method == 'POST':
@@ -274,7 +274,7 @@ def producer_order_create(request, producer_id, country=None):
 def purchase_option_create(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
-    if not request.user.is_staff and product.added_by_user.id != request.user.profile.id:
+    if not request.user.is_staff and product.added_by_user.id != request.user.id:
         raise PermissionDenied()
 
     if request.method == 'POST':
@@ -297,7 +297,7 @@ def purchase_option_create(request, product_id):
 def purchase_option_update(request, pk, product_id=None):
     option = get_object_or_404(ProductPurchaseOption, pk=pk)
 
-    if not request.user.is_staff and option.product.added_by_user.id != request.user.profile.id:
+    if not request.user.is_staff and option.product.added_by_user.id != request.user.id:
         raise PermissionDenied()
 
     if not product_id:
@@ -326,7 +326,7 @@ def purchase_option_update(request, pk, product_id=None):
 def purchase_option_delete(request, pk, product_id=None):
     option = get_object_or_404(ProductPurchaseOption, pk=pk)
 
-    if not request.user.is_staff and option.product.added_by_user.id != request.user.profile.id:
+    if not request.user.is_staff and option.product.added_by_user.id != request.user.id:
         raise PermissionDenied()
 
     if not product_id:
@@ -368,14 +368,14 @@ def list_upcoming_events_by_self(request):
 def event_create(request):
     if request.method == 'POST':
         post_args = copy(request.POST)
-        post_args.update({'organizer': request.user.profile})
+        post_args.update({'organizer': request.user})
         form = TasteEventForm(post_args)
 
         if form.is_valid():
             form.save()
             return redirect('event-user-list')
     else:
-        form = TasteEventForm(initial={'organizer': request.user.profile})
+        form = TasteEventForm(initial={'organizer': request.user})
 
     form.fields['organizer'].widget = forms.HiddenInput()
     context = {'event_form': form}
@@ -393,7 +393,7 @@ def event_detail(request, pk):
 def event_update(request, pk):
     event = get_object_or_404(TasteEvent, pk=pk)
 
-    if not request.user.is_staff and event.organizer.id != request.user.profile.id:
+    if not request.user.is_staff and event.organizer.id != request.user.id:
         raise PermissionDenied()
 
     if request.method == 'POST':
@@ -414,7 +414,7 @@ def event_update(request, pk):
 def event_delete(request, pk):
     event = get_object_or_404(TasteEvent, pk=pk)
 
-    if not request.user.is_staff and event.organizer.id != request.user.profile.id:
+    if not request.user.is_staff and event.organizer.id != request.user.id:
         raise PermissionDenied()
 
     if request.method == 'POST':

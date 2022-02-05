@@ -4,6 +4,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.utils.translation import gettext
 
 from .models import ProductOrder
+from .utils import create_icalendar_from_taste_event
 
 
 def send_order_email_to_producer(order):
@@ -31,7 +32,7 @@ def email_taste_event_notification(notification, taste_event):
     icalendar = create_icalendar_from_taste_event(taste_event)
     mail_subject = gettext("New event Taste & Purchase!")
     message = gettext("A new event has been added, check it out.")
-    recipient_email = notification.recipient.account.email
+    recipient_email = notification.recipient.email
 
     with NamedTemporaryFile(mode='w+b') as ics:
         ics.write(icalendar)

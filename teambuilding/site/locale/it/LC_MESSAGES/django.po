@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 11:08+0000\n"
+"POT-Creation-Date: 2022-02-05 17:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,81 +18,173 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: teambuilding/site/models.py:9
+#: teambuilding/site/forms.py:10 teambuilding/site/forms.py:24
+#: teambuilding/site/templates/teambuilding/site/user/detail.html:12
+msgid "Nickname"
+msgstr ""
+
+#: teambuilding/site/forms.py:20
+msgid "Password (confirm)"
+msgstr "Password (conferma)"
+
+#: teambuilding/site/models.py:13
+msgid "The Email must be set"
+msgstr "L'email non puó essere vuota"
+
+#: teambuilding/site/models.py:15
+msgid "The Password must be set"
+msgstr "La password non puó essere vuota"
+
+#: teambuilding/site/models.py:17
+msgid "The Birth Date must be set"
+msgstr "La data di nascita non puó essere v uota"
+
+#: teambuilding/site/models.py:48
+msgid "email address"
+msgstr "indirizzo email"
+
+#: teambuilding/site/models.py:53
+msgid "nickname"
+msgstr ""
+
+#: teambuilding/site/models.py:56
+msgid "birth date"
+msgstr "compleanno"
+
+#: teambuilding/site/models.py:57
+msgid "Format: dd/mm/YYYY"
+msgstr "Formato: dd/mm/YYYY"
+
+#: teambuilding/site/models.py:86
 msgid "account"
 msgstr ""
 
-#: teambuilding/site/models.py:13
+#: teambuilding/site/models.py:90
 msgid "user profile"
 msgstr "profilo utente"
 
-#: teambuilding/site/models.py:14
+#: teambuilding/site/models.py:91
 msgid "user profiles"
 msgstr "profili utenti"
 
-#: teambuilding/site/models.py:24
-#, fuzzy
-#| msgid "Events"
-msgid "Event"
-msgstr "Eventi"
-
-#: teambuilding/site/models.py:25
-msgid "Birthday"
-msgstr "Compleanno"
-
-#: teambuilding/site/models.py:30
+#: teambuilding/site/models.py:102
 msgid "sender"
 msgstr "mittente"
 
-#: teambuilding/site/models.py:33
-#, fuzzy
-#| msgid "user profile"
-msgid "user notified"
-msgstr "utente notificato"
+#: teambuilding/site/models.py:108 teambuilding/site/models.py:142
+msgid "recipient"
+msgstr "destinatario"
 
-#: teambuilding/site/models.py:34
-msgid "subject"
-msgstr "oggetto"
-
-#: teambuilding/site/models.py:35
+#: teambuilding/site/models.py:111 teambuilding/site/models.py:147
 msgid "body"
 msgstr "corpo"
 
-#: teambuilding/site/models.py:36
-msgid "read"
-msgstr "letta"
+#: teambuilding/site/models.py:117
+msgid "happy birthday message"
+msgstr "messaggio di buon compleanno"
 
-#: teambuilding/site/models.py:37
+#: teambuilding/site/models.py:118
+msgid "happy birthday messages"
+msgstr "messaggi di buon compleanno"
+
+#: teambuilding/site/models.py:121
+#, python-format
+msgid "Happy birthday message from %(sender)s to %(recipient)s"
+msgstr "Messaggio di buon compleanno da %(sender)s a %(recipient)s"
+
+#: teambuilding/site/models.py:129
+msgid "origin"
+msgstr "origine"
+
+#: teambuilding/site/models.py:134
+msgid "origin object id"
+msgstr "id oggetto di origine"
+
+#: teambuilding/site/models.py:144
+msgid "subject"
+msgstr "oggetto"
+
+#: teambuilding/site/models.py:150
 msgid "also send email"
 msgstr "invia anche email"
 
-#: teambuilding/site/models.py:39
-msgid "notification type"
-msgstr "tipo notifica"
+#: teambuilding/site/models.py:153
+msgid "read"
+msgstr "letta"
 
-#: teambuilding/site/models.py:43
+#: teambuilding/site/models.py:158
 msgid "notification"
 msgstr "notifica"
 
-#: teambuilding/site/models.py:44
+#: teambuilding/site/models.py:159
 msgid "notifications"
 msgstr "notifiche"
 
-#: teambuilding/site/tasks.py:38 teambuilding/site/views.py:98
-msgid "Happy birthday!"
-msgstr "Buon compleanno!"
-
-#: teambuilding/site/tasks.py:39
+#: teambuilding/site/receivers.py:20 teambuilding/site/tasks.py:109
 #, python-format
 msgid "Happy birthday, %s!"
 msgstr "Buon compleanno, %s!"
 
-#: teambuilding/site/tasks.py:52
+#: teambuilding/site/tasks.py:26
+msgid "Teambuilding Platform account activation"
+msgstr "Attivazione account Piattaforma Teambuilding"
+
+#: teambuilding/site/tasks.py:28
+#, python-format
+msgid ""
+"Hi %(nickname)s,\n"
+"Please click on the link to confirm your registration, %(link)s\n"
+"If you think it's not you, then just ignore this email."
+msgstr ""
+"Ciao %(nickname)s,\n"
+"Apri il seguente link per confermare la tua registrazione, %(link)s\n"
+"Se non sei stato tu a fare richiesta, puoi ignorare questa mail."
+
+#: teambuilding/site/tasks.py:58
+msgid "Password Reset Requested"
+msgstr "Richiesto reset password"
+
+#: teambuilding/site/tasks.py:60
+#, python-format
+msgid ""
+"Hello,\n"
+"We've received a request to reset the password for your account for this "
+"email address.\n"
+"To initiate the password reset process for your account, click the link "
+"below.\n"
+"\n"
+"%(reset-link)s\n"
+"This link can only be used once. If you need to reset your password again,\n"
+"please visit %(website-link)s and request another reset.\n"
+"\n"
+"If you did not make this request, you can simply ignore this email.\n"
+"\n"
+"Sincerely,\n"
+"The Teambuilding Platform Team\n"
+msgstr ""
+"Ciao,\n"
+"Abbiamo ricevuto una richiesta di reset password per l'account collegato a "
+"questo indirizzo email\n"
+"Per iniziare la procedura di reset della password, clicka sul link "
+"sottostante.\n"
+"\n"
+"%(reset-link)s\n"
+"Questo link può essere usato solo una volta. Se dovrai resettare nuovamente "
+"la password, \n"
+"visita %(website-link)s e richiedi un altro reset.\n"
+"\n"
+"Se non sei stato tu a richiedere il reset della password, puoi semplicemente "
+"ignorare questa email.\n"
+"\n"
+"Cordialmente,\n"
+"il Team Teambuilding\n"
+
+#: teambuilding/site/tasks.py:119
 #, python-format
 msgid "Today is %s's birthday!"
 msgstr "Oggi è il compleanno di %s"
 
-#: teambuilding/site/tasks.py:56
+#: teambuilding/site/tasks.py:123
 #, python-format
 msgid ""
 "Today is %(user)s's birthday! Wish happy birthday with the following link: "
@@ -101,14 +193,97 @@ msgstr ""
 "Oggi è il compleanno di %(user)s! Fai gli auguri seguendo questo link: "
 "%(link)s"
 
-#: teambuilding/site/tasks.py:75
+#: teambuilding/site/tasks.py:141
 msgid "Incoming birthday alert!"
 msgstr "Avviso di compleanno imminente!"
 
-#: teambuilding/site/tasks.py:76
+#: teambuilding/site/tasks.py:142
 #, python-format
 msgid "%(user)s birthday is in %(in_days)01.0f"
 msgstr "Il compleanno di %(user)s è tra %(in_days)01.0f giorni"
+
+#: teambuilding/site/templates/teambuilding/site/auth/activate.html:6
+#: teambuilding/site/templates/teambuilding/site/auth/signup_success.html:6
+msgid "Account activation"
+msgstr "Attivazione account"
+
+#: teambuilding/site/templates/teambuilding/site/auth/login.html:5
+#: teambuilding/site/templates/teambuilding/site/auth/login.html:19
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_complete.html:12
+msgid "Login"
+msgstr ""
+
+#: teambuilding/site/templates/teambuilding/site/auth/login.html:14
+msgid "Forgot password?"
+msgstr "Password dimenticata?"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset.html:5
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_confirm.html:5
+msgid "Reset Password"
+msgstr "Reimposta password"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset.html:10
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"Password dimenticata? Inserisci il tuo indirizzo email, e ti invieremo "
+"istruzioni su come impostarne una nuova."
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset.html:20
+msgid "Send email"
+msgstr "Invia email"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_complete.html:6
+msgid "Password reset complete"
+msgstr "Reset password completato"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_complete.html:9
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+"La tua nuova password è stata impostata. Ora puoi procedere con il login."
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_confirm.html:10
+msgid "Please enter your new password."
+msgstr "Inserisci la nuova password"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_confirm.html:20
+msgid "Reset password"
+msgstr "Reimposta password"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_done.html:6
+msgid "Password reset sent"
+msgstr "Reset password inviato"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_done.html:9
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Ti abbiamo inviato una mail contenente le istruzioni su come reimpostare la "
+"tua password, dovresti riceverla a breve."
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_done.html:10
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Se non ricevi l'email, controlla di aver inserito l'indirizzo mail corretto, "
+"e controlla la tua cartella Spam."
+
+#: teambuilding/site/templates/teambuilding/site/auth/signup.html:5
+#: teambuilding/site/templates/teambuilding/site/auth/signup.html:16
+#: teambuilding/site/templates/teambuilding/site/navbar.html:54
+msgid "Sign up"
+msgstr "Registrati"
+
+#: teambuilding/site/templates/teambuilding/site/auth/signup_success.html:8
+msgid ""
+"An email containing an activation link has been sent to you. Check your "
+"inbox, and activate your account."
+msgstr ""
+"Ti è stata inviata una email con un link di attivazione. Controlla la tua "
+"casella di posta ed attiva il tuo account."
 
 #: teambuilding/site/templates/teambuilding/site/navbar.html:12
 msgctxt "home page"
@@ -168,10 +343,6 @@ msgstr "Profilo"
 msgid "Logout"
 msgstr ""
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:54
-msgid "Sign up"
-msgstr "Registrati"
-
 #: teambuilding/site/templates/teambuilding/site/navbar.html:55
 msgid "Log in"
 msgstr "Log in"
@@ -218,10 +389,6 @@ msgstr "Dettaglio"
 msgid "User profile"
 msgstr "Profilo utente"
 
-#: teambuilding/site/templates/teambuilding/site/user/detail.html:12
-msgid "Nickname"
-msgstr ""
-
 #: teambuilding/site/templates/teambuilding/site/user/detail.html:16
 msgid "Email"
 msgstr ""
@@ -234,19 +401,15 @@ msgstr "Modifica"
 msgid "User profile - Edit"
 msgstr "Profilo utente - Modifica"
 
-#: teambuilding/site/templates/teambuilding/site/user/update.html:18
+#: teambuilding/site/templates/teambuilding/site/user/update.html:16
 msgid "Save"
 msgstr "Salva"
 
 #: teambuilding/site/templates/teambuilding/site/user/wish_happy_bday.html:5
-#, fuzzy
-#| msgid "Happy birthday!"
 msgid "Wish Happy Birthday!"
 msgstr "Augura buon compleanno!"
 
 #: teambuilding/site/templates/teambuilding/site/user/wish_happy_bday.html:15
-#, fuzzy
-#| msgid "Sender"
 msgid "Send"
 msgstr "Invia"
 
@@ -259,5 +422,13 @@ msgid "Guest"
 msgstr "Ospite"
 
 #: teambuilding/site/templates/teambuilding/site/welcome.html:17
-msgid "Welcome to Taste & Purchase"
-msgstr "Benvenuto in Acquista & Degusta"
+msgid "Welcome to Teambuilding Platform"
+msgstr ""
+
+#: teambuilding/site/views.py:102
+msgid "Your account has been activated."
+msgstr "Il tuo account é stato attivato."
+
+#: teambuilding/site/views.py:104
+msgid "Invalid link."
+msgstr "Link non valido."

@@ -9,15 +9,15 @@ from .tasks import create_user_profile, send_email_from_notification
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def on_account_post_save(instance, created, **kwargs):
+def create_user_profile_on_user_created(instance, created, **kwargs):
     if created:
         create_user_profile(instance)
 
 
 @receiver(post_save, sender=HappyBirthdayMessage)
-def on_happy_birthday_message_post_save(instance, created, **kwargs):
+def notify_on_happy_birthday_message(instance, created, **kwargs):
     if created:
-        subject = gettext("Happy birthday, %s!") % instance.recipient.account.nickname
+        subject = gettext("Happy birthday, %s!") % instance.recipient.nickname
         Notification.objects.create(
             origin=instance.__class__.__name__,
             origin_object_id=instance.pk,
@@ -29,7 +29,7 @@ def on_happy_birthday_message_post_save(instance, created, **kwargs):
 
 
 @receiver(post_save, sender=Notification)
-def on_notification_post_save(instance, created, **kwargs):
+def send_email_on_eligible_notification(instance, created, **kwargs):
     if created and instance.send_email:
         if instance.origin == "SYSTEM" or instance.origin == HappyBirthdayMessage.__name__:
             transaction.on_commit(

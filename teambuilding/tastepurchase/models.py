@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _, gettext
@@ -15,16 +16,25 @@ class ProducerPostalAddress(PostalAddress):
 
 
 class Producer(models.Model):
-    name = models.CharField(_("name"), max_length=50, unique=True)
-    email = models.EmailField(_("email"), blank=True)
-    phone = PhoneNumberField(_("phone number"), blank=True)
+    name = models.CharField(
+        _("name"),
+        max_length=50,
+        unique=True)
+    email = models.EmailField(
+        _("email"),
+        blank=True)
+    phone = PhoneNumberField(
+        _("phone number"),
+        blank=True)
     added_by_user = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, verbose_name=_("added by")
-    )
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name=_("added by"))
     postal_address = models.OneToOneField(
-        ProducerPostalAddress, on_delete=models.CASCADE, related_name='producer',
-        verbose_name=_("postal address")
-    )
+        ProducerPostalAddress,
+        on_delete=models.CASCADE,
+        related_name='producer',
+        verbose_name=_("postal address"))
 
     class Meta:
         ordering = ['name']
@@ -36,12 +46,21 @@ class Producer(models.Model):
 
 
 class Product(models.Model):
-    title = models.CharField(_("name"), max_length=50, unique=True)
-    description = models.CharField(_("description"), max_length=100)
-    producer = models.ForeignKey(Producer, on_delete=models.CASCADE, verbose_name=_("producer"))
+    title = models.CharField(
+        _("name"),
+        max_length=50,
+        unique=True)
+    description = models.CharField(
+        _("description"),
+        max_length=100)
+    producer = models.ForeignKey(
+        Producer,
+        on_delete=models.CASCADE,
+        verbose_name=_("producer"))
     added_by_user = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, verbose_name=_("added by")
-    )
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name=_("added by"))
 
     class Meta:
         ordering = ['title']
@@ -54,8 +73,10 @@ class Product(models.Model):
 
 class ProductPurchaseOption(models.Model):
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name='purchase_option', verbose_name=_("product")
-    )
+        Product,
+        on_delete=models.CASCADE,
+        related_name='purchase_option',
+        verbose_name=_("product"))
     price_cents = models.IntegerField(_("price EUR (cents)"))
     amount = models.CharField(_("amount"), max_length=50)
 
@@ -79,11 +100,15 @@ class ProducerOrderDeliveryAddress(PostalAddress):
 
 class ProducerOrder(models.Model):
     producer = models.ForeignKey(
-        Producer, on_delete=models.CASCADE, related_name='producer_order', verbose_name=_("producer")
-    )
+        Producer,
+        on_delete=models.CASCADE,
+        related_name='producer_order',
+        verbose_name=_("producer"))
     address = models.OneToOneField(
-        ProducerOrderDeliveryAddress, on_delete=models.CASCADE, related_name='order', verbose_name=_("delivery address")
-    )
+        ProducerOrderDeliveryAddress,
+        on_delete=models.CASCADE,
+        related_name='order',
+        verbose_name=_("delivery address"))
 
     class Meta:
         verbose_name = _("cumulative order to producer")
@@ -102,27 +127,36 @@ class ProductOrder(models.Model):
     ]
 
     purchase_option = models.ForeignKey(
-        ProductPurchaseOption, on_delete=models.CASCADE, related_name='product_order',
-        verbose_name=_("purchase option")
-    )
+        ProductPurchaseOption,
+        on_delete=models.CASCADE,
+        related_name='product_order',
+        verbose_name=_("purchase option"))
     producer_order = models.ForeignKey(
-        ProducerOrder, on_delete=models.CASCADE, null=True, related_name='product_order',
-        verbose_name=_("in cumulative order")
-    )
+        ProducerOrder,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name='product_order',
+        verbose_name=_("in cumulative order"))
     customer = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, related_name='+', verbose_name=_("customer")
-    )
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='+',
+        verbose_name=_("customer"))
     producer = models.ForeignKey(
-        Producer, on_delete=models.CASCADE, related_name='product_order',
-        verbose_name=_("producer")
-    )
+        Producer,
+        on_delete=models.CASCADE,
+        related_name='product_order',
+        verbose_name=_("producer"))
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name='product_order', verbose_name=_("product")
-    )
+        Product,
+        on_delete=models.CASCADE,
+        related_name='product_order',
+        verbose_name=_("product"))
     status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default=STATUS_CREATED,
-        verbose_name=_("order status")
-    )
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default=STATUS_CREATED,
+        verbose_name=_("order status"))
 
     class Meta:
         ordering = ['producer', 'product']
@@ -134,8 +168,9 @@ class ProductOrder(models.Model):
             "Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR (cents): %(price)01.0f, "
             "Customer email: %(customer-email)s"
         ) % ({
-            'product': str(self.product), 'producer': str(self.producer), 'amount': self.purchase_option.amount,
-            'price': self.purchase_option.price_cents, 'customer-email': self.customer.account.email
+            'product': str(self.product), 'producer': str(self.producer),
+            'amount': self.purchase_option.amount, 'price': self.purchase_option.price_cents,
+            'customer-email': self.customer.email
         })
 
     def clean(self):
@@ -156,12 +191,25 @@ class ProductOrder(models.Model):
 
 
 class TasteEvent(models.Model):
-    start_date = models.DateTimeField(_("event start"), help_text=_("Format: dd/mm/YYYY hh:mm"))
-    end_date = models.DateTimeField(_("event end"), help_text=_("Format: dd/mm/YYYY hh:mm"))
-    title = models.CharField(_("title"), max_length=50)
-    description = models.CharField(_("description"), max_length=100)
-    organizer = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name=_("organizer"))
-    products = models.ManyToManyField(Product, verbose_name=_("products"))
+    start_date = models.DateTimeField(
+        _("event start"),
+        help_text=_("Format: dd/mm/YYYY hh:mm"))
+    end_date = models.DateTimeField(
+        _("event end"),
+        help_text=_("Format: dd/mm/YYYY hh:mm"))
+    title = models.CharField(
+        _("title"),
+        max_length=50)
+    description = models.CharField(
+        _("description"),
+        max_length=100)
+    organizer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name=_("organizer"))
+    products = models.ManyToManyField(
+        Product,
+        verbose_name=_("products"))
 
     class Meta:
         ordering = ['start_date', 'title']

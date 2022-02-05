@@ -44,11 +44,19 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    username = None
-    email = models.EmailField(verbose_name=_('email address'), blank=False, unique=True)
-    nickname = models.CharField(max_length=100, verbose_name=_('nickname'), unique=True)
-    birth_date = models.DateField(_("birth date"), help_text=_("Format: dd/mm/YYYY"))
+    email = models.EmailField(
+        verbose_name=_('email address'),
+        blank=False,
+        unique=True)
+    nickname = models.CharField(
+        max_length=100,
+        verbose_name=_('nickname'),
+        unique=True)
+    birth_date = models.DateField(
+        _("birth date"),
+        help_text=_("Format: dd/mm/YYYY"))
 
+    username = None
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
@@ -72,11 +80,13 @@ class User(AbstractUser):
 
 class UserProfile(models.Model):
     account = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile',
-        verbose_name=_("account")
-    )
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='profile',
+        verbose_name=_("account"))
 
     class Meta:
+        ordering = ['account__nickname']
         verbose_name = _("user profile")
         verbose_name_plural = _("user profiles")
 
@@ -86,15 +96,20 @@ class UserProfile(models.Model):
 
 class HappyBirthdayMessage(models.Model):
     created_at = models.DateField(auto_now_add=True)
-    recipient = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, verbose_name=_("recipient"),
-        related_name="+"
-    )
     sender = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, verbose_name=_("sender"),
-        related_name="+", null=True
-    )
-    message = models.TextField(_("body"), max_length=500)
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name=_("sender"),
+        related_name="+",
+        null=True)
+    recipient = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name=_("recipient"),
+        related_name="+")
+    message = models.TextField(
+        _("body"),
+        max_length=500)
 
     class Meta:
         unique_together = ['created_at', 'recipient', 'sender']
@@ -110,17 +125,33 @@ class HappyBirthdayMessage(models.Model):
 
 class Notification(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    recipient = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, verbose_name=_("recipient")
-    )
-    subject = models.CharField(_("subject"), max_length=80)
-    body = models.TextField(_("body"), max_length=256)
-    read = models.BooleanField(_("read"), default=False)
-    send_email = models.BooleanField(_("also send email"), default=False)
-    origin = models.CharField(_("origin"), max_length=50, editable=False, default="SYSTEM")
+    origin = models.CharField(
+        _("origin"),
+        max_length=50,
+        editable=False,
+        default="SYSTEM")
     origin_object_id = models.CharField(
-        _("origin object id"), max_length=64, editable=False, blank=True, null=True
-    )
+        _("origin object id"),
+        max_length=64,
+        editable=False,
+        blank=True,
+        null=True)
+    recipient = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name=_("recipient"))
+    subject = models.CharField(
+        _("subject"),
+        max_length=80)
+    body = models.TextField(
+        _("body"),
+        max_length=256)
+    send_email = models.BooleanField(
+        _("also send email"),
+        default=False)
+    read = models.BooleanField(
+        _("read"),
+        default=False)
 
     class Meta:
         ordering = ['created_at']
