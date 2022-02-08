@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-08 13:06+0000\n"
+"POT-Creation-Date: 2022-02-08 21:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "aggiunto da"
 #: teambuilding/tastepurchase/models.py:41
 #: teambuilding/tastepurchase/models.py:59
 #: teambuilding/tastepurchase/models.py:106
-#: teambuilding/tastepurchase/models.py:149
+#: teambuilding/tastepurchase/models.py:150
 msgid "producer"
 msgstr "produttore"
 
@@ -57,18 +57,17 @@ msgid "producers"
 msgstr "produttori"
 
 #: teambuilding/tastepurchase/models.py:54
-#: teambuilding/tastepurchase/models.py:204
 msgid "description"
 msgstr "descrizione"
 
 #: teambuilding/tastepurchase/models.py:67
 #: teambuilding/tastepurchase/models.py:79
-#: teambuilding/tastepurchase/models.py:154
+#: teambuilding/tastepurchase/models.py:155
 msgid "product"
 msgstr "prodotto"
 
 #: teambuilding/tastepurchase/models.py:68
-#: teambuilding/tastepurchase/models.py:212
+#: teambuilding/tastepurchase/models.py:204
 msgid "products"
 msgstr "prodotti"
 
@@ -81,7 +80,7 @@ msgid "amount"
 msgstr "quantità"
 
 #: teambuilding/tastepurchase/models.py:86
-#: teambuilding/tastepurchase/models.py:133
+#: teambuilding/tastepurchase/models.py:134
 msgid "purchase option"
 msgstr "opzione di acquisto"
 
@@ -116,35 +115,35 @@ msgstr "ordini cumulativi al produttore"
 msgid "cumulative order for producer %(producer)s"
 msgstr "ordine cumulativo per il produttore %(producer)s"
 
-#: teambuilding/tastepurchase/models.py:125
+#: teambuilding/tastepurchase/models.py:126
 msgid "Created"
 msgstr "In attesa"
 
-#: teambuilding/tastepurchase/models.py:126
+#: teambuilding/tastepurchase/models.py:127
 msgid "Processed"
 msgstr "Processato"
 
-#: teambuilding/tastepurchase/models.py:139
+#: teambuilding/tastepurchase/models.py:140
 msgid "in cumulative order"
 msgstr "nell'ordine cumulativo"
 
-#: teambuilding/tastepurchase/models.py:144
+#: teambuilding/tastepurchase/models.py:145
 msgid "customer"
 msgstr "cliente"
 
-#: teambuilding/tastepurchase/models.py:159
+#: teambuilding/tastepurchase/models.py:160
 msgid "order status"
 msgstr "stato ordine"
 
-#: teambuilding/tastepurchase/models.py:163
+#: teambuilding/tastepurchase/models.py:164
 msgid "simple order"
 msgstr "ordine semplice"
 
-#: teambuilding/tastepurchase/models.py:164
+#: teambuilding/tastepurchase/models.py:165
 msgid "simple orders"
 msgstr "ordini semplici"
 
-#: teambuilding/tastepurchase/models.py:168
+#: teambuilding/tastepurchase/models.py:169
 #, python-format
 msgid ""
 "Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR "
@@ -153,7 +152,7 @@ msgstr ""
 "Prodotto: %(product)s, Produttore: %(producer)s, Quantità: %(amount)s, EURO "
 "(cents): %(price)01.0f, Email cliente: %(customer-email)s"
 
-#: teambuilding/tastepurchase/models.py:185
+#: teambuilding/tastepurchase/models.py:187
 msgid ""
 "Producer in instance ProductOrder must be equal to Producer in instance "
 "ProducerOrder."
@@ -161,67 +160,25 @@ msgstr ""
 "Producer nell'istanza ProductOrder deve essere identico al Producer "
 "nell'istanza ProducerOrder."
 
-#: teambuilding/tastepurchase/models.py:195
-msgid "event start"
-msgstr "inizio evento"
-
-#: teambuilding/tastepurchase/models.py:196
-#: teambuilding/tastepurchase/models.py:199
-msgid "Format: dd/mm/YYYY hh:mm"
-msgstr "Formato: dd/mm/YYYY hh:mm"
-
-#: teambuilding/tastepurchase/models.py:198
-msgid "event end"
-msgstr "fine evento"
-
 #: teambuilding/tastepurchase/models.py:201
-msgid "title"
-msgstr "titolo"
-
-#: teambuilding/tastepurchase/models.py:209
 msgid "organizer"
 msgstr "organizzatore"
 
-#: teambuilding/tastepurchase/models.py:216
+#: teambuilding/tastepurchase/models.py:207
 msgid "taste event"
-msgstr ""
-
-#: teambuilding/tastepurchase/models.py:217
-msgid "taste events"
 msgstr "evento degustazione"
 
-#: teambuilding/tastepurchase/models.py:226
-#: teambuilding/tastepurchase/models.py:227
-msgid "End date must come after start date."
-msgstr "La data di fine deve essere successiva alla data di inizio."
+#: teambuilding/tastepurchase/models.py:208
+msgid "taste events"
+msgstr "eventi degustazione"
 
-#: teambuilding/tastepurchase/receivers.py:24
-#: teambuilding/tastepurchase/tasks.py:33
+#: teambuilding/tastepurchase/tasks.py:8
 msgid "New event Taste & Purchase!"
 msgstr "Nuovo evento Degusta & Acquista!"
 
-#: teambuilding/tastepurchase/receivers.py:25
-#: teambuilding/tastepurchase/tasks.py:34
+#: teambuilding/tastepurchase/tasks.py:9
 msgid "A new event has been added, check it out."
 msgstr "Un nuovo evento è stato aggiunto, vai a controllare."
-
-#: teambuilding/tastepurchase/tasks.py:18
-#, python-format
-msgid ""
-"Orders:\n"
-"%(receipt)s\n"
-"Delivery address:\n"
-"%(address)s"
-msgstr ""
-"Ordini:\n"
-"%(receipt)s\n"
-"Indirizzo di spedizione:\n"
-"%(address)s"
-
-#: teambuilding/tastepurchase/tasks.py:23
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:5
-msgid "New order"
-msgstr "Nuovo ordine"
 
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:7
 msgid "Events"
@@ -237,7 +194,7 @@ msgstr "Cronologia"
 
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:25
 msgid "Created by you"
-msgstr "In attesa"
+msgstr "Creati da te"
 
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:33
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:31
@@ -264,12 +221,12 @@ msgstr "Produttore"
 
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/create.html:5
 msgid "New event"
-msgstr ""
+msgstr "Nuovo evento"
 
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/create.html:13
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/update.html:13
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/create.html:17
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/update.html:17
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/create.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/update.html:15
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/create.html:13
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/update.html:13
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/create.html:17
@@ -321,8 +278,6 @@ msgid "Description"
 msgstr "Descrizione"
 
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:38
-#, fuzzy
-#| msgid "Are you sure you want to remove this product?"
 msgid "Are you sure you want to remove this event?"
 msgstr "Sei sicuro di voler rimuovere questo prodotto?"
 
@@ -415,6 +370,10 @@ msgstr ""
 "ottimizzati per essere inseriti al fine di risparmiare tempo e costi di "
 "spedizione."
 
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:5
+msgid "New order"
+msgstr "Nuovo ordine"
+
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:11
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:11
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:13
@@ -473,14 +432,6 @@ msgstr "Invia"
 msgid "New producer"
 msgstr "Nuovo produttore"
 
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/create.html:14
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:23
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:16
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:14
-#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/update.html:14
-msgid "Postal address"
-msgstr "Indirizzo postale"
-
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:5
 msgid "Remove producer"
 msgstr "Rimuovi produttore"
@@ -496,6 +447,12 @@ msgstr ""
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:13
 msgid "Phone number"
 msgstr "Telefono"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:23
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:16
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:14
+msgid "Postal address"
+msgstr "Indirizzo postale"
 
 #: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:30
 msgid "Are you sure you want to remove this producer?"

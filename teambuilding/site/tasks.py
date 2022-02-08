@@ -1,5 +1,6 @@
 import calendar
 from datetime import date
+from tempfile import NamedTemporaryFile
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
@@ -10,6 +11,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import gettext
 
 from .models import UserProfile, Notification, HappyBirthdayMessage
+from .utils import create_icalendar_from_event
 
 
 def send_user_activation_mail(user, site_domain):
@@ -86,7 +88,6 @@ def create_user_profile(user_account):
 def check_users_birthday():
     today = date.today()
     today_year_days = (today - date(today.year, 1, 1)).days
-
     users = get_user_model().objects.all()
 
     for user in users:
@@ -106,34 +107,24 @@ def check_users_birthday():
 
 
 def send_happy_birthday_to_user(birthday_user):
-    body = gettext("Happy birthday, %s!") % birthday_user.nickname
-
-    HappyBirthdayMessage.objects.create(
-        recipient=birthday_user,
-        message=body
-    )
+    happy_birthday_message = create_happy_birthday_message(birthday_user)
+    notification = create_happy_birthday_notification(happy_birthday_message)
+    send_email_from_notification(notification)
 
 
 def notify_users_about_today_birthday(birthday_user):
     users_to_notify = get_user_model().objects.exclude(email=birthday_user.email)
     subject = gettext("Today is %s's birthday!") % birthday_user.nickname
-
-    link_kwargs = {'pk': birthday_user.pk}
     body = gettext(
-        "Today is %(user)s's birthday! Wish happy birthday with the following link: " 
+        "Today is %(user)s's birthday! Wish happy birthday with the following link: "
         "%(link)s"
-    ) % {
+    ) % ({
         'user': birthday_user.nickname,
-        'link': reverse('user-happy-bday', kwargs=link_kwargs)
-    }
+        'link': reverse('user-happy-bday', kwargs={'pk': birthday_user.pk})
+    })
 
-    for user_to_notify in users_to_notify:
-        Notification.objects.create(
-            recipient=user_to_notify,
-            subject=subject,
-            body=body,
-            send_email=True
-        )
+    for users_to_notify in users_to_notify:
+        notify_and_send_mail_to_user(users_to_notify, subject, body)
 
 
 def notify_users_about_incoming_birthday(birthday_user, in_days):
@@ -145,12 +136,12 @@ def notify_users_about_incoming_birthday(birthday_user, in_days):
     }
 
     for user_to_notify in users_to_notify:
-        Notification.objects.create(
-            recipient=user_to_notify,
-            subject=subject,
-            body=body,
-            send_email=False
-        )
+        create_notification(user_to_notify, subject, body)
+
+
+def notify_and_send_mail_to_user(user, subject, body):
+    notification = create_notification(user, subject, body)
+    send_email_from_notification(notification)
 
 
 def send_email_from_notification(notification):
@@ -160,3 +151,40 @@ def send_email_from_notification(notification):
         to=[notification.recipient.email, ]
     )
     email.send()
+
+
+def create_happy_birthday_message(birthday_user):
+    happy_birthday_message = gettext("Happy birthday, %s!") % birthday_user.nickname
+    happy_birthday = HappyBirthdayMessage.objects.create(
+        recipient=birthday_user,
+        message=happy_birthday_message
+    )
+    return happy_birthday
+
+
+def create_happy_birthday_notification(message: HappyBirthdayMessage):
+    subject = gettext("Happy birthday, %s!") % message.recipient.nickname
+    notification = create_notification(message.recipient, subject, message.message)
+    return notification
+
+
+def create_notification(recipient, subject, body):
+    notification = Notification.objects.create(
+        recipient=recipient,
+        subject=subject,
+        body=body,
+    )
+    return notification
+
+
+def send_calendar_event_mail(recipient, subject, body, event):
+    icalendar = create_icalendar_from_event(event)
+
+    with NamedTemporaryFile(mode='w+b') as ics:
+        ics.write(icalendar)
+        ics.seek(0)
+        ics_content = ics.read()
+
+        email = EmailMessage(subject, body, to=[recipient.email, ])
+        email.attach('event.ics', ics_content, 'application/octet-stream')
+        email.send()

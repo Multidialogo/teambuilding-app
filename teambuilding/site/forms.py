@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext, gettext_lazy as _
 
-from .models import HappyBirthdayMessage
+from .models import HappyBirthdayMessage, Event
 
 
 class RegistrationForm(UserCreationForm):
@@ -32,3 +32,9 @@ class HappyBirthdayForm(forms.ModelForm):
     class Meta:
         model = HappyBirthdayMessage
         exclude = ('created_at', 'read', )
+
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        exclude = ()

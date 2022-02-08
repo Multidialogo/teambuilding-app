@@ -16,6 +16,7 @@ from .forms import (
     ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm,
     ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm, TasteEventForm
 )
+from .tasks import notify_taste_event_created
 
 
 @login_required
@@ -378,7 +379,8 @@ def event_create(request):
         form = TasteEventForm(post_args)
 
         if form.is_valid():
-            form.save()
+            taste_event = form.save()
+            notify_taste_event_created(taste_event)
             return redirect('event-user-list')
     else:
         form = TasteEventForm(initial={'organizer': request.user})

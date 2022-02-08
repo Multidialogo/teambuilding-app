@@ -10,8 +10,6 @@
         {% csrf_token %}
         {% include 'teambuilding/site/shared/forms/form_content.html' with form=producer_form %}
         {% include 'teambuilding/site/shared/forms/errors.html' with errors=producer_form.non_field_errors %}
-        <br>
-        <div class="mb-3"><h5>{% translate "Postal address" %}</h5></div>
         {% include 'teambuilding/site/shared/forms/form_content.html' with form=address_form %}
         {% include 'teambuilding/site/shared/forms/errors.html' with errors=address_form.non_field_errors %}
         <button class="btn btn-primary mt-2" type="submit">{% translate "Save" %}</button>

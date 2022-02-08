@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import AbstractUser
@@ -125,17 +126,6 @@ class HappyBirthdayMessage(models.Model):
 
 class Notification(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    origin = models.CharField(
-        _("origin"),
-        max_length=50,
-        editable=False,
-        default="SYSTEM")
-    origin_object_id = models.CharField(
-        _("origin object id"),
-        max_length=64,
-        editable=False,
-        blank=True,
-        null=True)
     recipient = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -146,9 +136,6 @@ class Notification(models.Model):
     body = models.TextField(
         _("body"),
         max_length=256)
-    send_email = models.BooleanField(
-        _("also send email"),
-        default=False)
     read = models.BooleanField(
         _("read"),
         default=False)
@@ -160,3 +147,34 @@ class Notification(models.Model):
 
     def __str__(self):
         return self.subject
+
+
+class Event(models.Model):
+    start_date = models.DateTimeField(
+        _("event start"),
+        help_text=_("Format: dd/mm/YYYY hh:mm"))
+    end_date = models.DateTimeField(
+        _("event end"),
+        help_text=_("Format: dd/mm/YYYY hh:mm"))
+    title = models.CharField(
+        _("title"),
+        max_length=50)
+    description = models.CharField(
+        _("description"),
+        max_length=100)
+
+    class Meta:
+        ordering = ['start_date', 'title']
+        verbose_name = _("event")
+        verbose_name_plural = _("events")
+
+    def __str__(self):
+        return self.title
+
+    def clean(self):
+        super().clean()
+        if self.start_date > self.end_date:
+            raise ValidationError({
+                'start_date': gettext("End date must come after start date."),
+                'end_date': gettext("End date must come after start date.")
+            })

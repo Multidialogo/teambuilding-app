@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _, gettext
 from lib.phonenumber.modelfields import PhoneNumberField
 
 from lib.postaladdress.models import PostalAddress
-from teambuilding.site.models import UserProfile
+from teambuilding.site.models import Event
 
 
 class ProducerPostalAddress(PostalAddress):
@@ -115,7 +115,8 @@ class ProducerOrder(models.Model):
         verbose_name_plural = _("cumulative orders to producers")
 
     def __str__(self):
-        return gettext("cumulative order for producer %(producer)s") % ({'producer': self.producer})
+        return gettext("cumulative order for producer %(producer)s") % (
+            {'producer': self.producer})
 
 
 class ProductOrder(models.Model):
@@ -165,8 +166,8 @@ class ProductOrder(models.Model):
 
     def __str__(self):
         return gettext(
-            "Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR (cents): %(price)01.0f, "
-            "Customer email: %(customer-email)s"
+            "Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, "
+            "EUR (cents): %(price)01.0f, Customer email: %(customer-email)s"
         ) % ({
             'product': str(self.product), 'producer': str(self.producer),
             'amount': self.purchase_option.amount, 'price': self.purchase_option.price_cents,
@@ -182,7 +183,10 @@ class ProductOrder(models.Model):
         if self.producer_order:
             if self.producer_order.producer.id != self.producer.id:
                 raise ValidationError(
-                    gettext("Producer in instance ProductOrder must be equal to Producer in instance ProducerOrder.")
+                    gettext(
+                        "Producer in instance ProductOrder must be equal "
+                        "to Producer in instance ProducerOrder."
+                    )
                 )
 
             self.status = ProductOrder.STATUS_PROCESSED
@@ -190,19 +194,7 @@ class ProductOrder(models.Model):
             self.status = ProductOrder.STATUS_CREATED
 
 
-class TasteEvent(models.Model):
-    start_date = models.DateTimeField(
-        _("event start"),
-        help_text=_("Format: dd/mm/YYYY hh:mm"))
-    end_date = models.DateTimeField(
-        _("event end"),
-        help_text=_("Format: dd/mm/YYYY hh:mm"))
-    title = models.CharField(
-        _("title"),
-        max_length=50)
-    description = models.CharField(
-        _("description"),
-        max_length=100)
+class TasteEvent(Event):
     organizer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -212,17 +204,5 @@ class TasteEvent(models.Model):
         verbose_name=_("products"))
 
     class Meta:
-        ordering = ['start_date', 'title']
         verbose_name = _("taste event")
         verbose_name_plural = _("taste events")
-
-    def __str__(self):
-        return self.title
-
-    def clean(self):
-        super().clean()
-        if self.start_date > self.end_date:
-            raise ValidationError({
-                'start_date': gettext("End date must come after start date."),
-                'end_date': gettext("End date must come after start date.")
-            })

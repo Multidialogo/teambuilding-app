@@ -253,7 +253,9 @@ class EventsTestCase(FixtureTestCase):
             'products': (product.pk,),
         }
 
-        response = self.client.post(request_url, post_data)
+        with self.captureOnCommitCallbacks(execute=True):
+            response = self.client.post(request_url, post_data)
+
         self.assertRedirects(response, reverse('event-user-list'))
 
         event = TasteEvent.objects.get(title__exact='Evento test')

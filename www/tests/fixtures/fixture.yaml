@@ -34,8 +34,8 @@
     email: admin@example.com
     nickname: admin@example.com
     birth_date: 1990-01-01
-    groups: []
-    user_permissions: []
+    groups: [ ]
+    user_permissions: [ ]
 - model: site.user
   pk: 2
   fields:
@@ -50,8 +50,8 @@
     email: test@example.com
     nickname: Test
     birth_date: 1990-03-01
-    groups: []
-    user_permissions: []
+    groups: [ ]
+    user_permissions: [ ]
 - model: site.user
   pk: 3
   fields:
@@ -66,8 +66,8 @@
     email: messere@example.com
     nickname: Messere
     birth_date: 1990-05-01
-    groups: []
-    user_permissions: []
+    groups: [ ]
+    user_permissions: [ ]
 - model: site.userprofile
   pk: 1
   fields:
@@ -80,32 +80,46 @@
   pk: 3
   fields:
     account: 3
-- model: tastepurchase.tasteevent
+#- model: tastepurchase.tasteevent
+#  pk: 1
+#  fields:
+#    start_date: 2022-12-23 18:00:00+00:00
+#    end_date: 2022-12-23 18:30:00+00:00
+#    title: Evento vino rosso
+#    description: Evento vino Roggio del filare
+#    organizer: 3
+#    products:
+#    - 2
+#- model: tastepurchase.tasteevent
+#  pk: 2
+#  fields:
+#    start_date: 2022-11-23 18:00:00+00:00
+#    end_date: 2022-11-23 18:30:00+00:00
+#    title: Evento olive ascolane
+#    description: Evento olive ascolane
+#    organizer: 2
+#    products:
+#    - 1
+- model: site.event
   pk: 1
   fields:
     start_date: 2022-12-23 18:00:00+00:00
     end_date: 2022-12-23 18:30:00+00:00
     title: Evento vino rosso
     description: Evento vino Roggio del filare
-    organizer: 3
-    products:
-    - 2
-- model: tastepurchase.tasteevent
+- model: site.event
   pk: 2
   fields:
     start_date: 2022-11-23 18:00:00+00:00
     end_date: 2022-11-23 18:30:00+00:00
     title: Evento olive ascolane
     description: Evento olive ascolane
-    organizer: 2
-    products:
-    - 1
 - model: tastepurchase.producerpostaladdress
   pk: 1
-  fields: {}
+  fields: { }
 - model: tastepurchase.producerpostaladdress
   pk: 2
-  fields: {}
+  fields: { }
 - model: tastepurchase.producer
   pk: 1
   fields:
@@ -154,3 +168,15 @@
     product: 2
     price_cents: 3000
     amount: 1 bottiglia 750 ml
+- model: tastepurchase.tasteevent
+  pk: 1
+  fields:
+    organizer: 3
+    products:
+    - 2
+- model: tastepurchase.tasteevent
+  pk: 2
+  fields:
+    organizer: 2
+    products:
+    - 1

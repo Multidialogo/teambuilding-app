@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-08 13:06+0000\n"
+"POT-Creation-Date: 2022-02-08 21:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,109 +27,124 @@ msgstr ""
 msgid "Password (confirm)"
 msgstr "Password (conferma)"
 
-#: teambuilding/site/models.py:13
+#: teambuilding/site/models.py:14
 msgid "The Email must be set"
 msgstr "L'email non puó essere vuota"
 
-#: teambuilding/site/models.py:15
+#: teambuilding/site/models.py:16
 msgid "The Password must be set"
 msgstr "La password non puó essere vuota"
 
-#: teambuilding/site/models.py:17
+#: teambuilding/site/models.py:18
 msgid "The Birth Date must be set"
 msgstr "La data di nascita non puó essere vuota"
 
-#: teambuilding/site/models.py:48
+#: teambuilding/site/models.py:49
 msgid "email address"
 msgstr "indirizzo email"
 
-#: teambuilding/site/models.py:53
+#: teambuilding/site/models.py:54
 msgid "nickname"
 msgstr ""
 
-#: teambuilding/site/models.py:56
-msgid "birth date"
-msgstr "compleanno"
-
 #: teambuilding/site/models.py:57
+msgid "birth date"
+msgstr "data di nascita"
+
+#: teambuilding/site/models.py:58
 msgid "Format: dd/mm/YYYY"
 msgstr "Formato: dd/mm/YYYY"
 
-#: teambuilding/site/models.py:86
+#: teambuilding/site/models.py:87
 msgid "account"
 msgstr ""
 
-#: teambuilding/site/models.py:90
+#: teambuilding/site/models.py:91
 msgid "user profile"
 msgstr "profilo utente"
 
-#: teambuilding/site/models.py:91
+#: teambuilding/site/models.py:92
 msgid "user profiles"
 msgstr "profili utenti"
 
-#: teambuilding/site/models.py:102
+#: teambuilding/site/models.py:103
 msgid "sender"
 msgstr "mittente"
 
-#: teambuilding/site/models.py:108 teambuilding/site/models.py:142
+#: teambuilding/site/models.py:109 teambuilding/site/models.py:132
 msgid "recipient"
 msgstr "destinatario"
 
-#: teambuilding/site/models.py:111 teambuilding/site/models.py:147
+#: teambuilding/site/models.py:112 teambuilding/site/models.py:137
 msgid "body"
 msgstr "corpo"
 
-#: teambuilding/site/models.py:117
+#: teambuilding/site/models.py:118
 msgid "happy birthday message"
 msgstr "messaggio di buon compleanno"
 
-#: teambuilding/site/models.py:118
+#: teambuilding/site/models.py:119
 msgid "happy birthday messages"
 msgstr "messaggi di buon compleanno"
 
-#: teambuilding/site/models.py:121
+#: teambuilding/site/models.py:122
 #, python-format
 msgid "Happy birthday message from %(sender)s to %(recipient)s"
 msgstr "Messaggio di buon compleanno da %(sender)s a %(recipient)s"
 
-#: teambuilding/site/models.py:129
-msgid "origin"
-msgstr "origine"
-
 #: teambuilding/site/models.py:134
-msgid "origin object id"
-msgstr "id oggetto di origine"
-
-#: teambuilding/site/models.py:144
 msgid "subject"
 msgstr "oggetto"
 
-#: teambuilding/site/models.py:150
-msgid "also send email"
-msgstr "invia anche email"
-
-#: teambuilding/site/models.py:153
+#: teambuilding/site/models.py:140
 msgid "read"
 msgstr "letta"
 
-#: teambuilding/site/models.py:158
+#: teambuilding/site/models.py:145
 msgid "notification"
 msgstr "notifica"
 
-#: teambuilding/site/models.py:159
+#: teambuilding/site/models.py:146
 msgid "notifications"
 msgstr "notifiche"
 
-#: teambuilding/site/receivers.py:20 teambuilding/site/tasks.py:109
-#, python-format
-msgid "Happy birthday, %s!"
-msgstr "Buon compleanno, %s!"
+#: teambuilding/site/models.py:154
+msgid "event start"
+msgstr "inizio evento"
 
-#: teambuilding/site/tasks.py:26
+#: teambuilding/site/models.py:155 teambuilding/site/models.py:158
+msgid "Format: dd/mm/YYYY hh:mm"
+msgstr "Formato: dd/mm/YYYY hh:mm"
+
+#: teambuilding/site/models.py:157
+msgid "event end"
+msgstr "fine evento"
+
+#: teambuilding/site/models.py:160
+msgid "title"
+msgstr "titolo"
+
+#: teambuilding/site/models.py:163
+msgid "description"
+msgstr "descrizione"
+
+#: teambuilding/site/models.py:168
+msgid "event"
+msgstr "evento"
+
+#: teambuilding/site/models.py:169
+msgid "events"
+msgstr "eventi"
+
+#: teambuilding/site/models.py:178 teambuilding/site/models.py:179
+msgid "End date must come after start date."
+msgstr "La data di fine deve essere successiva alla data di inizio."
+
+#: teambuilding/site/tasks.py:28
 msgid "Teambuilding Platform account activation"
 msgstr "Attivazione account Piattaforma Teambuilding"
 
-#: teambuilding/site/tasks.py:28
+#: teambuilding/site/tasks.py:30
 #, python-format
 msgid ""
 "Hi %(nickname)s,\n"
@@ -140,11 +155,11 @@ msgstr ""
 "Apri il seguente link per confermare la tua registrazione, %(link)s\n"
 "Se non sei stato tu a fare richiesta, puoi ignorare questa mail."
 
-#: teambuilding/site/tasks.py:58
+#: teambuilding/site/tasks.py:60
 msgid "Password Reset Requested"
 msgstr "Richiesta reset password"
 
-#: teambuilding/site/tasks.py:60
+#: teambuilding/site/tasks.py:62
 #, python-format
 msgid ""
 "Hello,\n"
@@ -179,12 +194,12 @@ msgstr ""
 "Cordialmente,\n"
 "il Team Teambuilding\n"
 
-#: teambuilding/site/tasks.py:119
+#: teambuilding/site/tasks.py:117
 #, python-format
 msgid "Today is %s's birthday!"
 msgstr "Oggi è il compleanno di %s"
 
-#: teambuilding/site/tasks.py:123
+#: teambuilding/site/tasks.py:119
 #, python-format
 msgid ""
 "Today is %(user)s's birthday! Wish happy birthday with the following link: "
@@ -193,20 +208,23 @@ msgstr ""
 "Oggi è il compleanno di %(user)s! Fai gli auguri seguendo questo link: "
 "%(link)s"
 
-#: teambuilding/site/tasks.py:141
+#: teambuilding/site/tasks.py:132
 msgid "Incoming birthday alert!"
 msgstr "Avviso di compleanno imminente!"
 
-#: teambuilding/site/tasks.py:142
+#: teambuilding/site/tasks.py:133
 #, python-format
 msgid "%(user)s birthday is in %(in_days)01.0f"
 msgstr "Il compleanno di %(user)s è tra %(in_days)01.0f giorni"
 
+#: teambuilding/site/tasks.py:157 teambuilding/site/tasks.py:166
+#, python-format
+msgid "Happy birthday, %s!"
+msgstr "Buon compleanno, %s!"
+
 #: teambuilding/site/templates/teambuilding/site/app_navbar.html:4
 #: teambuilding/site/templates/teambuilding/site/home.html:18
 #: teambuilding/site/templates/teambuilding/site/shared/base.html:42
-#, fuzzy
-#| msgid "Purchase"
 msgid "Taste & Purchase"
 msgstr "Taste & Purchase"
 
@@ -328,7 +346,7 @@ msgstr ""
 "spedizione."
 
 #: teambuilding/site/templates/teambuilding/site/home.html:23
-#: teambuilding/site/templates/teambuilding/site/home.html:34
+#: teambuilding/site/templates/teambuilding/site/home.html:35
 msgid "Go to app"
 msgstr "Vai alla app"
 
@@ -431,36 +449,3 @@ msgstr "Il tuo account é stato attivato."
 #: teambuilding/site/views.py:104
 msgid "Invalid link."
 msgstr "Link non valido."
-
-#~ msgid "Please enter your new password."
-#~ msgstr "Inserisci la nuova password"
-
-#~ msgid "Events"
-#~ msgstr "Eventi"
-
-#~ msgid "Upcoming"
-#~ msgstr "In arrivo"
-
-#~ msgid "History"
-#~ msgstr "Storico"
-
-#~ msgid "Created by you"
-#~ msgstr "Creati da te"
-
-#~ msgid "Products"
-#~ msgstr "Prodotti"
-
-#~ msgid "Manage"
-#~ msgstr "Gestione"
-
-#~ msgid "Producers"
-#~ msgstr "Produttori"
-
-#~ msgid "Pending orders"
-#~ msgstr "Ordini in attesa"
-
-#~ msgid "Welcome"
-#~ msgstr "Benvenuto"
-
-#~ msgid "Guest"
-#~ msgstr "Ospite"
