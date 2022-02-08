@@ -1,12 +1,12 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "Remove product purchase option" %}
 {% endblock %}
 
-{% block crud_content %}
-    <table class="table">
+{% block page_content %}
+    <table class="table table-borderless">
         <tr>
             <td><strong>{% translate "Product" %}</strong></td>
             <td>{{ option.product }}</td>
@@ -21,18 +21,16 @@
         </tr>
     </table>
     <hr>
-    <form method="post">
-        {% csrf_token %}
-        <div class="field">
-            <p class="control">{% translate "Are you sure you want to remove this product purchase option?" %}</p>
-        </div>
-        <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-link" type="submit">{% translate "Confirm" %}</button>
+    <div class="">
+        <p>
+            {% translate "Are you sure you want to remove this product purchase option?" %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <button class="btn btn-primary me-2" type="submit">{% translate "Confirm" %}</button>
+                <a href="{% url 'product-update' option.product_id %}">{% translate "Cancel" %}</a>
             </div>
-            <div class="control">
-                <a class="button is-link is-light" href="{% url 'product-update' option.product.id %}">{% translate "Cancel" %}</a>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

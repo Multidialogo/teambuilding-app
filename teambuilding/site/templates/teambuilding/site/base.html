@@ -1,31 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {% block title %}
-            Teambuilding Platform
-        {% endblock %}
-    </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="/static/teambuilding/platform/shared/css/site.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/teambuilding/platform/shared/js/bulma_navbar_burger.js"></script>
-    {% block scripts %}
+{% extends "teambuilding/site/shared/base.html" %}
 
-    {% endblock %}
-</head>
-
-<body class="has-background-light">
-
-{% block navbar %}
-    {% include 'teambuilding/site/navbar.html' with user=user %}
+{% block app-menu %}
+    {% include "teambuilding/site/app_navbar.html" %}
 {% endblock %}
-
-{% block content %}
-
-{% endblock %}
-
-</body>
-</html>

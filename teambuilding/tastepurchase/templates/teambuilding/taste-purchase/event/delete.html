@@ -1,20 +1,48 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
 {% load i18n %}
 
-{% block crud_header %}
-    {% translate "New event" %}
+{% block page_header %}
+    {% translate "Event details" %}
 {% endblock %}
 
-{% block crud_content %}
-    <form method="post">
-        {% csrf_token %}
-        {% include 'teambuilding/site/shared/crud/form.html' with form=event_form %}
-        {% include 'teambuilding/site/shared/crud/errors.html' with errors=event_form.non_field_errors %}
-        <hr>
-        <div class="field">
-            <div class="control">
-                <button class="button is-link" type="submit">{% translate "Save" %}</button>
+{% block page_content %}
+    <table class="table table-borderless">
+        <tr>
+            <td><strong>{% translate "Title" %}</strong></td>
+            <td>{{ event.title|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Organizer" %}</strong></td>
+            <td>{{ event.organizer }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Start datetime" %}</strong></td>
+            <td>{{ event.start_date }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "End datetime" %}</strong></td>
+            <td>{{ event.end_date }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Description" %}</strong></td>
+            <td>{{ event.description|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Products" %}</strong></td>
+            <td>{{ event.products.all|join:", " }}</td>
+        </tr>
+    </table>
+    <hr>
+    <div class="">
+        <p>
+            {% translate "Are you sure you want to remove this event?" %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <button class="btn btn-primary me-2" type="submit">{% translate "Confirm" %}</button>
+                <a href="{% url 'event-user-list' %}">{% translate "Cancel" %}</a>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

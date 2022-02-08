@@ -1,20 +1,15 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/taste-purchase/page_form.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "Edit event" %}
 {% endblock %}
 
-{% block crud_content %}
+{% block page_content %}
     <form method="post">
         {% csrf_token %}
-        {% include 'teambuilding/site/shared/crud/form.html' with form=event_form %}
-        {% include 'teambuilding/site/shared/crud/errors.html' with errors=event_form.non_field_errors %}
-        <hr>
-        <div class="field">
-            <div class="control">
-                <button class="button is-link" type="submit">{% translate "Save" %}</button>
-            </div>
-        </div>
+        {% include 'teambuilding/site/shared/forms/form_content.html' with form=event_form %}
+        {% include 'teambuilding/site/shared/forms/errors.html' with errors=event_form.non_field_errors %}
+        <button class="btn btn-primary mt-2" type="submit">{% translate "Save" %}</button>
     </form>
 {% endblock %}

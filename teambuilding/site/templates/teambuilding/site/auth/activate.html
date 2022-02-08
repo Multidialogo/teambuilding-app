@@ -1,11 +1,10 @@
-{% extends "teambuilding/site/base.html" %}
+{% extends "teambuilding/site/page_simple.html" %}
 {% load i18n %}
 
-{% block content %}
-    <section class="section">
-        <h3 class="title is-3">{% translate "Account activation" %}</h3>
-        <div>
-            <p>{{ message|escape }}</p>
-        </div>
-    </section>
+{% block page_header %}
+    {% translate "Account activation" %}
+{% endblock %}
+
+{% block page_content %}
+    <p>{{ message|escape }}</p>
 {% endblock %}

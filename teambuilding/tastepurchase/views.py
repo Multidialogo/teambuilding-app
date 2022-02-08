@@ -19,6 +19,12 @@ from .forms import (
 
 
 @login_required
+def home(request):
+    context = {}
+    return render(request, 'teambuilding/taste-purchase/home.html', context)
+
+
+@login_required
 def list_all(request):
     products = Product.objects.all()
     context = {'products': products}

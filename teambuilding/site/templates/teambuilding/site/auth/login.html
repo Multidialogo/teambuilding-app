@@ -1,23 +1,16 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/site/auth/page_form.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "Login" %}
 {% endblock %}
 
-{% block crud_content %}
-    <form method="POST">
+{% block page_content %}
+    <form method="POST" style="width: 340px; min-width: 340px;">
         {% csrf_token %}
-        {% include 'teambuilding/site/shared/crud/form.html' with form=form %}
-        {% include 'teambuilding/site/shared/crud/errors.html' with errors=form.non_field_errors %}
-        <div class="block">
-            <a class="is-link" href="{% url 'password-reset' %}">{% translate "Forgot password?" %}</a>
-        </div>
-        <hr>
-        <div class="field">
-            <div class="control">
-                <button class="button is-link" type="submit">{% translate "Login" %}</button>
-            </div>
-        </div>
+        {% include 'teambuilding/site/shared/forms/form_content.html' with form=form %}
+        {% include 'teambuilding/site/shared/forms/errors.html' with errors=form.non_field_errors %}
+        <div><a href="{% url 'password-reset' %}">{% translate "Forgot password?" %}</a></div>
+        <button class="btn btn-primary mt-4" type="submit">{% translate "Login" %}</button>
     </form>
 {% endblock %}

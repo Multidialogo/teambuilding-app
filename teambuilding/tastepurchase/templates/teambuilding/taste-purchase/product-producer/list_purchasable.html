@@ -1,18 +1,18 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "Manage pending orders" %}
 {% endblock %}
 
-{% block crud_content %}
-    <table class="table">
+{% block page_content %}
+    <table class="table table-striped">
         <tr>
-            <th>{% translate "Name" %}</th>
-            <th>{% translate "Email" %}</th>
-            <th>{% translate "Phone number" %}</th>
-            <th>{% translate "Postal address" %}</th>
-            <th></th>
+            <th scope="col">{% translate "Name" %}</th>
+            <th scope="col">{% translate "Email" %}</th>
+            <th scope="col">{% translate "Phone number" %}</th>
+            <th scope="col">{% translate "Postal address" %}</th>
+            <th scope="col"></th>
         </tr>
         {% for producer in producers %}
             <tr>
@@ -20,7 +20,8 @@
                 <td>{{ producer.email|escape }}</td>
                 <td>{{ producer.phone|escape }}</td>
                 <td>{{ producer.postal_address }}</td>
-                <td><a href="{% url 'product-producer-order-create' producer_id=producer.id %}">{% translate "Show pending orders" %}</a>
+                <td>
+                    <a href="{% url 'product-producer-order-create' producer_id=producer.id %}">{% translate "Show pending orders" %}</a>
                 </td>
             </tr>
         {% endfor %}

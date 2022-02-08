@@ -1,17 +1,17 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "Purchase product" %}
 {% endblock %}
 
-{% block crud_content %}
-    <table class="table">
+{% block page_content %}
+    <table class="table table-striped">
         <tr>
-            <th>{% translate "Name" %}</th>
-            <th>{% translate "Description" %}</th>
-            <th>{% translate "Producer" %}</th>
-            <th></th>
+            <th scope="col">{% translate "Name" %}</th>
+            <th scope="col">{% translate "Description" %}</th>
+            <th scope="col">{% translate "Producer" %}</th>
+            <th scope="col"></th>
         </tr>
         {% for product in products %}
             <tr>

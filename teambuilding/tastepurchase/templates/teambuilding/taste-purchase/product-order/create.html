@@ -1,12 +1,12 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/taste-purchase/page_form.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "New order" %}
 {% endblock %}
 
-{% block crud_content %}
-    <table class="table">
+{% block page_content %}
+    <table class="table table-striped">
         <tr>
             <td><strong>{% translate "Name" %}</strong></td>
             <td>{{ product.title|escape }}</td>
@@ -20,15 +20,9 @@
             <td>{{ product.producer }}</td>
         </tr>
     </table>
-    <hr>
-    <form method="post">
+    <form class="mt-4" method="post">
         {% csrf_token %}
-        {% include 'teambuilding/site/shared/crud/form.html' with form=order_form %}
-        <hr>
-        <div class="field">
-            <div class="control">
-                <button class="button is-link" type="submit">{% translate "Purchase" %}</button>
-            </div>
-        </div>
+        {% include 'teambuilding/site/shared/forms/form_content.html' with form=order_form %}
+        <button class="btn btn-primary mt-2" type="submit">{% translate "Purchase" %}</button>
     </form>
 {% endblock %}

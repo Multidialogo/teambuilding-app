@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load i18n %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Teambuilding Platform{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/teambuilding/site/css/site.css">
+    {% block scripts %}
+    {% endblock %}
+</head>
+
+<body class="d-flex flex-column">
+
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"
+                       href="{% url 'home' %}">
+                        {% translate "Home" context "home page" %}
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="id_navbar_apps" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        {% translate "Apps" %}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="id_navbar_apps">
+                        <li><a class="dropdown-item"
+                               href="{% url 'taste-purchase-home' %}">{% translate "Taste & Purchase" %}
+                        </a></li>
+                        <li><a class="dropdown-item" href="#">{% translate "Lunch Roulette" %}</a></li>
+                    </ul>
+                </li>
+                <span class="border-end m-2 d-sm-none d-md-block"></span>
+                {% block app-menu %}
+                {% endblock %}
+            </ul>
+            <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+                {% if user.is_authenticated %}
+                    <span class="border-end m-2 d-sm-none d-md-block"></span>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="{% url 'notification-list' %}">
+                            <span class="align-middle">{% translate "Notifications" %}</span>
+                            {% if notification_count %}
+                                <span class="align-middle badge rounded-pill bg-danger">{{ notification_count }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="{% url 'user-profile' %}">
+                            <span class="align-middle">{% translate "Profile" %}</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+            <div class="d-flex gap-2">
+                {% if user.is_authenticated %}
+                    <a class="btn btn-outline-light" href="{% url 'logout' %}">{% translate "Logout" %}</a>
+                {% else %}
+                    <a class="btn btn-outline-primary" href="{% url 'signup' %}">{% translate "Sign up" %}</a>
+                    <a class="btn btn-outline-light" href="{% url 'login' %}">{% translate "Log in" %}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="d-flex flex-grow-1">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<div class="py-4 bg-light">
+    <div class="container-fluid px-5">
+        <p class="fw-light text-center text-muted m-0 fs-medium">Teambuilding platform, licensed under @LICENSE</p>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,19 +1,19 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "Future events" %}
 {% endblock %}
 
-{% block crud_content %}
-    <table class="table">
+{% block page_content %}
+    <table class="table table-striped">
         <tr>
-            <th>{% translate "Title" %}</th>
-            <th>{% translate "Organizer" %}</th>
-            <th>{% translate "Start date" %}</th>
-            <th>{% translate "End date" %}</th>
-            <th>{% translate "Description" %}</th>
-            <th>{% translate "Products" %}</th>
+            <th scope="col">{% translate "Title" %}</th>
+            <th scope="col">{% translate "Organizer" %}</th>
+            <th scope="col">{% translate "Start date" %}</th>
+            <th scope="col">{% translate "End date" %}</th>
+            <th scope="col">{% translate "Description" %}</th>
+            <th scope="col">{% translate "Products" %}</th>
             <th></th>
         </tr>
         {% for event in events %}

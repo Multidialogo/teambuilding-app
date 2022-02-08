@@ -26,7 +26,7 @@ from .tasks import send_user_activation_mail, send_reset_password_mail
 
 def home(request):
     context = {}
-    return render(request, 'teambuilding/site/welcome.html', context)
+    return render(request, 'teambuilding/site/home.html', context)
 
 
 class LoginView(AuthLoginView):
@@ -169,14 +169,14 @@ def profile_update(request, pk=None):
 def notification_list(request, user_pk=None):
     if not user_pk:
         user_pk = request.user.pk
-        return redirect('user-profile-update', pk=user_pk)
+        return redirect('notification-list', user_pk=user_pk)
 
     user = get_object_or_404(get_user_model(), pk=user_pk)
 
     if request.user != user:
         raise PermissionDenied()
 
-    notifications = Notification.objects.filter(user__pk=user_pk)
+    notifications = Notification.objects.filter(recipient__pk=user_pk)
     context = {'notifications': notifications}
     return render(request, 'teambuilding/site/notifications/list.html', context)
 
@@ -185,7 +185,7 @@ def notification_list(request, user_pk=None):
 def notification_detail(request, pk, user_pk=None):
     if not user_pk:
         user_pk = request.user.pk
-        return redirect('user-profile-update', pk=user_pk)
+        return redirect('notification-detail', pk=pk, user_pk=user_pk)
 
     user = get_object_or_404(get_user_model(), pk=user_pk)
 
