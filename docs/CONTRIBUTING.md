@@ -3,8 +3,8 @@
   * [System requirements](#system-requirements)
   * [Local provisioning](#local-provisioning)
 * [Writing code](#writing-code)
-  * [Coding style](#coding-style)
-  * [Tests](#tests)
+  * [Coding standard](#coding-standard)
+  * [Test coverage](#test-coverage)
 * [Committing code](#committing-code)
   * [Committing guidelines](#committing-guidelines)
 
@@ -17,7 +17,7 @@ In order to provision sucessfully the application following tools are needed on 
 - Docker compose v.2
 - Docker engine v.xxx
 
-### Local Provisioning
+### Local provisioning
 
 Project can be provisioned locally with docker compose.
 
@@ -25,11 +25,11 @@ Following [repository](https://github.com/Multidialogo/teambuilding-app-provisio
 
 ## Writing code
 
-### Coding style
+### Coding standard
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+Django [coding standard](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/) must be respected
 
-### Tests
+### Test coverage
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
