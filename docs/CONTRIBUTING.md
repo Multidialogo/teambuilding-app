@@ -8,11 +8,11 @@
 
 ## Local provisioning
 
-Project can be provisioned locally with docker compose.
+Project can be provisioned locally with **docker compose**.
 
-Following [repository](https://github.com/Multidialogo/teambuilding-app-provisioning) contains a docker compose environment to build and start working with the project.
+[Following repository](https://github.com/Multidialogo/teambuilding-app-provisioning) contains a docker compose environment to build and start working with the project.
 
-Follow the provisioning project instructions as first step is suggested.
+Follow the provisioning project instructions as first step is **strongly suggested**.
 
 ## Writing code
 
