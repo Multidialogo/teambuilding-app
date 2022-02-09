@@ -11,6 +11,9 @@
 ## Getting started
 
 ### System requirements
+
+In order to provision sucessfully the application following tools are needed on the developer workstation:
+
 - Docker compose v.2
 - Docker engine v.xxx
 
