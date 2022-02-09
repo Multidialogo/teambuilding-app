@@ -1,7 +1,6 @@
 # Contributing
 * [Getting started](#getting-started)
   * [System requirements](#system-requirements)
-* [Application Provisioning](#application-provisioning)
   * [Local provisioning](#local-provisioning)
 * [Writing code](#writing-code)
   * [Coding style](#coding-style)
@@ -14,8 +13,6 @@
 ### System requirements
 - Docker compose v.2
 - Docker engine v.xxx
-
-## Application provisioning
 
 ### Local Provisioning
 
