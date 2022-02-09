@@ -1,7 +1,6 @@
 # Contributing
 * [Getting started](#getting-started)
-  * [First steps](#first-steps)
-  * [Guidelines](#guidelines)
+  * [System requirements](#system-requirements)
 * [Application Provisioning](#application-provisioning)
   * [Local provisioning](#local-provisioning)
 * [Writing code](#writing-code)
@@ -12,13 +11,9 @@
 
 ## Getting started
 
-### First steps
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-
-### Guidelines
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+### System requirements
+- Docker compose v.2
+- Docker engine v.xxx
 
 ## Application provisioning
 
