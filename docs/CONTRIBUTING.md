@@ -2,14 +2,14 @@
 * [Getting started](#getting-started)
   * [First steps](#first-steps)
   * [Guidelines](#guidelines)
+* [Application Provisioning](#application-provisioning)
+  * [Local provisioning](#local-provisioning)
 * [Writing code](#writing-code)
   * [Coding style](#coding-style)
   * [Tests](#tests)
-  * [Working with Git and Github](#working-with-git-and-github)
 * [Committing code](#committing-code)
   * [Handling pull requests](#handling-pull-requests)
   * [Committing guidelines](#committing-guidelines)
-* [Acknowledgments](#acknowledgments)
 
 ## Getting started
 
@@ -21,6 +21,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
+## Application provisioning
+
+### Local Provisioning
+
+Project can be provisioned locally with docker compose.
+Following [repository](xxx) contains a docker compose environment to build and start working with the project.
+
 ## Writing code
 
 ### Coding style
@@ -28,10 +35,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
 ### Tests
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-
-### Working with Git and Github
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
@@ -44,7 +47,3 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ### Committing guidelines
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-
-## Acknowledgments
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
