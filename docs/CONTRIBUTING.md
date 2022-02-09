@@ -31,7 +31,13 @@ Django [coding standard](https://docs.djangoproject.com/en/dev/internals/contrib
 
 ### Test coverage
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+Any new feature must be covered with a new integration test.
+
+Any feature change should be reflected in an integration test update.
+
+#### Integration tests
+
+Any new feature must be covered with at least one integration test.
 
 ## Committing code
 
