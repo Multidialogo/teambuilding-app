@@ -1,29 +1,18 @@
 # Contributing
-* [Getting started](#getting-started)
-  * [System requirements](#system-requirements)
-  * [Local provisioning](#local-provisioning)
+* [Local provisioning](#local-provisioning)
 * [Writing code](#writing-code)
   * [Coding standard](#coding-standard)
   * [Test coverage](#test-coverage)
 * [Committing code](#committing-code)
   * [Committing guidelines](#committing-guidelines)
 
-## Getting started
-
-### System requirements
-
-In order to provision sucessfully the application following tools are needed on the developer workstation:
-
-- Docker compose v.2
-- Docker engine v.xxx
-
-### Local provisioning
+## Local provisioning
 
 Project can be provisioned locally with docker compose.
 
 Following [repository](https://github.com/Multidialogo/teambuilding-app-provisioning) contains a docker compose environment to build and start working with the project.
 
-Follow the provisioning project instruction is suggested.
+Follow the provisioning project instructions as first step is suggested.
 
 ## Writing code
 
