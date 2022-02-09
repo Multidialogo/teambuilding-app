@@ -1,0 +1,10 @@
+{% extends "teambuilding/site/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Account activation" %}
+{% endblock %}
+
+{% block page_content %}
+    <p>{{ message|escape }}</p>
+{% endblock %}

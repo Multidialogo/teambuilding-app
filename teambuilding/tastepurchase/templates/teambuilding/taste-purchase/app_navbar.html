@@ -1,0 +1,56 @@
+{% load i18n %}
+
+{% if user.is_authenticated %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" href="#" id="id_navbar_events" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
+            {% translate "Events" %}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="id_navbar_events">
+            <li>
+                <a class="dropdown-item" href="{% url 'event-all-list-upcoming' %}">
+                    {% translate "Upcoming" %}
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'event-all-list-history' %}">
+                    {% translate "History" %}
+                </a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'event-user-list' %}">
+                    {% translate "Created by you" %}
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" href="#" id="id_navbar_products" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
+            {% translate "Products" %}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="id_navbar_products">
+            <li>
+                <a class="dropdown-item" href="{% url 'product-list-purchasable' %}">
+                    {% translate "Purchase" %}
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'product-list' %}">
+                    {% translate "Manage" %}
+                </a>
+            </li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li>
+                <a class="dropdown-item" href="{% url 'product-producer-list' %}">
+                    {% translate "Producers" %}
+                </a>
+            </li>
+        </ul>
+    </li>
+{% endif %}

@@ -1,0 +1,24 @@
+{% load template-filters %}
+
+{% if html_attrs %}
+    {% if field.errors %}
+        {% with "class:"|add_str:html_class|add_str:" is-invalid,aria-describedby:"|add_str:field.id_for_label|add_str:"_feedback"|add_str:","|add_str:html_attrs as field_w_attrs %}
+            {{ field|add_attr:field_w_attrs }}
+        {% endwith %}
+    {% else %}
+        {% with "class:"|add_str:html_class|add_str:",aria-describedby:"|add_str:field.id_for_label|add_str:"_feedback"|add_str:","|add_str:html_attrs as field_w_attrs %}
+            {{ field|add_attr:field_w_attrs }}
+        {% endwith %}
+    {% endif %}
+{% else %}
+    {% if field.errors %}
+        {% with "class:"|add_str:html_class|add_str:" is-invalid,aria-describedby:"|add_str:field.id_for_label|add_str:"_feedback" as field_w_attrs %}
+            {{ field|add_attr:field_w_attrs }}
+        {% endwith %}
+    {% else %}
+        {% with "class:"|add_str:html_class|add_str:",aria-describedby:"|add_str:field.id_for_label|add_str:"_feedback" as field_w_attrs %}
+            {{ field|add_attr:field_w_attrs }}
+        {% endwith %}
+    {% endif %}
+{% endif %}
+

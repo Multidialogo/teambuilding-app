@@ -1,0 +1,42 @@
+{% extends "teambuilding/site/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="d-flex flex-grow-1 flex-column p-3 align-items-center">
+        <div class="flex-grow-1 d-flex flex-column responsive-w-50 py-5 align-items-center gap-3">
+            <h1 class="fw-light">{% translate "Teambuilding Platform" %}</h1>
+            <p class="lead text-muted text-center">
+                {% translate "Teambuilding app is a platform thought to help working groups to create stronger relationships among members by means of various engaging and fun activities to do together." %}
+            </p>
+        </div>
+        <div class="row justify-content-center align-items-stretch mx-0 py-3 bg-light">
+            <div class="col-12 col-md-6 col-lg-5 col-xl-4">
+                <div class="card d-flex flex-column">
+                    <div class="bg-secondary" style="height: 280px">
+                    </div>
+                    <div class="d-flex flex-column flex-grow-1 p-3 pb-4">
+                        <h5 class="card-title">{% translate "Taste & Purchase" %}</h5>
+                        <p class="card-text flex-grow-1">
+                            {% translate "Help team members to organize food tasting and eventual group purchase of propoused products. Each team member can insert a productor and a product in the list, and create an event that will send a participiation invite to any team member.<br>Team members can place orders for particular products within any productor, and then orders will be grouped by productor and optimized to be placed in order to save expedition costs and time." %}
+                        </p>
+                        <a href="{% url 'taste-purchase-home' %}"
+                           class="btn btn-primary align-self-start">{% translate "Go to app" %}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex col-12 col-md-6 col-lg-5 col-xl-4">
+                <div class="card d-flex flex-column">
+                    <div class="bg-secondary" style="height: 280px">
+                    </div>
+                    <div class="d-flex flex-column flex-grow-1 p-3 pb-4">
+                        <h5 class="card-title">{% translate "Lunch Roulette" %}</h5>
+                        <p class="card-text flex-grow-1">{% lorem %}</p>
+                        <a href="#" class="btn btn-primary align-self-start">
+                            {% translate "Go to app" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

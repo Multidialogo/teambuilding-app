@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 11:08+0000\n"
+"POT-Creation-Date: 2022-02-08 21:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,81 +18,188 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: teambuilding/site/models.py:9
+#: teambuilding/site/forms.py:10 teambuilding/site/forms.py:24
+#: teambuilding/site/templates/teambuilding/site/user/detail.html:12
+msgid "Nickname"
+msgstr ""
+
+#: teambuilding/site/forms.py:20
+msgid "Password (confirm)"
+msgstr "Password (conferma)"
+
+#: teambuilding/site/models.py:14
+msgid "The Email must be set"
+msgstr "L'email non puó essere vuota"
+
+#: teambuilding/site/models.py:16
+msgid "The Password must be set"
+msgstr "La password non puó essere vuota"
+
+#: teambuilding/site/models.py:18
+msgid "The Birth Date must be set"
+msgstr "La data di nascita non puó essere vuota"
+
+#: teambuilding/site/models.py:49
+msgid "email address"
+msgstr "indirizzo email"
+
+#: teambuilding/site/models.py:54
+msgid "nickname"
+msgstr ""
+
+#: teambuilding/site/models.py:57
+msgid "birth date"
+msgstr "data di nascita"
+
+#: teambuilding/site/models.py:58
+msgid "Format: dd/mm/YYYY"
+msgstr "Formato: dd/mm/YYYY"
+
+#: teambuilding/site/models.py:87
 msgid "account"
 msgstr ""
 
-#: teambuilding/site/models.py:13
+#: teambuilding/site/models.py:91
 msgid "user profile"
 msgstr "profilo utente"
 
-#: teambuilding/site/models.py:14
+#: teambuilding/site/models.py:92
 msgid "user profiles"
 msgstr "profili utenti"
 
-#: teambuilding/site/models.py:24
-#, fuzzy
-#| msgid "Events"
-msgid "Event"
-msgstr "Eventi"
-
-#: teambuilding/site/models.py:25
-msgid "Birthday"
-msgstr "Compleanno"
-
-#: teambuilding/site/models.py:30
+#: teambuilding/site/models.py:103
 msgid "sender"
 msgstr "mittente"
 
-#: teambuilding/site/models.py:33
-#, fuzzy
-#| msgid "user profile"
-msgid "user notified"
-msgstr "utente notificato"
+#: teambuilding/site/models.py:109 teambuilding/site/models.py:132
+msgid "recipient"
+msgstr "destinatario"
 
-#: teambuilding/site/models.py:34
-msgid "subject"
-msgstr "oggetto"
-
-#: teambuilding/site/models.py:35
+#: teambuilding/site/models.py:112 teambuilding/site/models.py:137
 msgid "body"
 msgstr "corpo"
 
-#: teambuilding/site/models.py:36
+#: teambuilding/site/models.py:118
+msgid "happy birthday message"
+msgstr "messaggio di buon compleanno"
+
+#: teambuilding/site/models.py:119
+msgid "happy birthday messages"
+msgstr "messaggi di buon compleanno"
+
+#: teambuilding/site/models.py:122
+#, python-format
+msgid "Happy birthday message from %(sender)s to %(recipient)s"
+msgstr "Messaggio di buon compleanno da %(sender)s a %(recipient)s"
+
+#: teambuilding/site/models.py:134
+msgid "subject"
+msgstr "oggetto"
+
+#: teambuilding/site/models.py:140
 msgid "read"
 msgstr "letta"
 
-#: teambuilding/site/models.py:37
-msgid "also send email"
-msgstr "invia anche email"
-
-#: teambuilding/site/models.py:39
-msgid "notification type"
-msgstr "tipo notifica"
-
-#: teambuilding/site/models.py:43
+#: teambuilding/site/models.py:145
 msgid "notification"
 msgstr "notifica"
 
-#: teambuilding/site/models.py:44
+#: teambuilding/site/models.py:146
 msgid "notifications"
 msgstr "notifiche"
 
-#: teambuilding/site/tasks.py:38 teambuilding/site/views.py:98
-msgid "Happy birthday!"
-msgstr "Buon compleanno!"
+#: teambuilding/site/models.py:154
+msgid "event start"
+msgstr "inizio evento"
 
-#: teambuilding/site/tasks.py:39
+#: teambuilding/site/models.py:155 teambuilding/site/models.py:158
+msgid "Format: dd/mm/YYYY hh:mm"
+msgstr "Formato: dd/mm/YYYY hh:mm"
+
+#: teambuilding/site/models.py:157
+msgid "event end"
+msgstr "fine evento"
+
+#: teambuilding/site/models.py:160
+msgid "title"
+msgstr "titolo"
+
+#: teambuilding/site/models.py:163
+msgid "description"
+msgstr "descrizione"
+
+#: teambuilding/site/models.py:168
+msgid "event"
+msgstr "evento"
+
+#: teambuilding/site/models.py:169
+msgid "events"
+msgstr "eventi"
+
+#: teambuilding/site/models.py:178 teambuilding/site/models.py:179
+msgid "End date must come after start date."
+msgstr "La data di fine deve essere successiva alla data di inizio."
+
+#: teambuilding/site/tasks.py:28
+msgid "Teambuilding Platform account activation"
+msgstr "Attivazione account Piattaforma Teambuilding"
+
+#: teambuilding/site/tasks.py:30
 #, python-format
-msgid "Happy birthday, %s!"
-msgstr "Buon compleanno, %s!"
+msgid ""
+"Hi %(nickname)s,\n"
+"Please click on the link to confirm your registration, %(link)s\n"
+"If you think it's not you, then just ignore this email."
+msgstr ""
+"Ciao %(nickname)s,\n"
+"Apri il seguente link per confermare la tua registrazione, %(link)s\n"
+"Se non sei stato tu a fare richiesta, puoi ignorare questa mail."
 
-#: teambuilding/site/tasks.py:52
+#: teambuilding/site/tasks.py:60
+msgid "Password Reset Requested"
+msgstr "Richiesta reset password"
+
+#: teambuilding/site/tasks.py:62
+#, python-format
+msgid ""
+"Hello,\n"
+"We've received a request to reset the password for your account for this "
+"email address.\n"
+"To initiate the password reset process for your account, click the link "
+"below.\n"
+"\n"
+"%(reset-link)s\n"
+"This link can only be used once. If you need to reset your password again,\n"
+"please visit %(website-link)s and request another reset.\n"
+"\n"
+"If you did not make this request, you can simply ignore this email.\n"
+"\n"
+"Sincerely,\n"
+"The Teambuilding Platform Team\n"
+msgstr ""
+"Ciao,\n"
+"Abbiamo ricevuto una richiesta di reset password per l'account collegato a "
+"questo indirizzo email\n"
+"Per iniziare la procedura di reset della password, clicka sul link "
+"sottostante.\n"
+"\n"
+"%(reset-link)s\n"
+"Questo link può essere usato solo una volta. Se dovrai resettare nuovamente "
+"la password, \n"
+"visita %(website-link)s e richiedi un altro reset.\n"
+"\n"
+"Se non sei stato tu a richiedere il reset della password, puoi semplicemente "
+"ignorare questa email.\n"
+"\n"
+"Cordialmente,\n"
+"il Team Teambuilding\n"
+
+#: teambuilding/site/tasks.py:117
 #, python-format
 msgid "Today is %s's birthday!"
 msgstr "Oggi è il compleanno di %s"
 
-#: teambuilding/site/tasks.py:56
+#: teambuilding/site/tasks.py:119
 #, python-format
 msgid ""
 "Today is %(user)s's birthday! Wish happy birthday with the following link: "
@@ -101,102 +208,174 @@ msgstr ""
 "Oggi è il compleanno di %(user)s! Fai gli auguri seguendo questo link: "
 "%(link)s"
 
-#: teambuilding/site/tasks.py:75
+#: teambuilding/site/tasks.py:132
 msgid "Incoming birthday alert!"
 msgstr "Avviso di compleanno imminente!"
 
-#: teambuilding/site/tasks.py:76
+#: teambuilding/site/tasks.py:133
 #, python-format
 msgid "%(user)s birthday is in %(in_days)01.0f"
 msgstr "Il compleanno di %(user)s è tra %(in_days)01.0f giorni"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:12
-msgctxt "home page"
-msgid "Home"
-msgstr "Home"
+#: teambuilding/site/tasks.py:157 teambuilding/site/tasks.py:166
+#, python-format
+msgid "Happy birthday, %s!"
+msgstr "Buon compleanno, %s!"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:15
-msgid "Events"
-msgstr "Eventi"
+#: teambuilding/site/templates/teambuilding/site/app_navbar.html:4
+#: teambuilding/site/templates/teambuilding/site/home.html:18
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:42
+msgid "Taste & Purchase"
+msgstr "Taste & Purchase"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:17
-msgid "Upcoming"
-msgstr "In arrivo"
+#: teambuilding/site/templates/teambuilding/site/app_navbar.html:9
+#: teambuilding/site/templates/teambuilding/site/home.html:32
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:44
+msgid "Lunch Roulette"
+msgstr "Lunch Roulette"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:18
-msgid "History"
-msgstr "Storico"
+#: teambuilding/site/templates/teambuilding/site/auth/activate.html:5
+#: teambuilding/site/templates/teambuilding/site/auth/signup_success.html:5
+msgid "Account activation"
+msgstr "Attivazione account"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:20
-msgid "Created by you"
-msgstr "Creati da te"
-
-#: teambuilding/site/templates/teambuilding/site/navbar.html:24
-msgid "Products"
-msgstr "Prodotti"
-
-#: teambuilding/site/templates/teambuilding/site/navbar.html:26
-msgid "Purchase"
-msgstr "Acquista"
-
-#: teambuilding/site/templates/teambuilding/site/navbar.html:27
-msgid "Manage"
-msgstr "Gestione"
-
-#: teambuilding/site/templates/teambuilding/site/navbar.html:29
-msgid "Producers"
-msgstr "Produttori"
-
-#: teambuilding/site/templates/teambuilding/site/navbar.html:36
-#: teambuilding/site/templates/teambuilding/site/notifications/list.html:5
-msgid "Notifications"
-msgstr "Notifiche"
-
-#: teambuilding/site/templates/teambuilding/site/navbar.html:39
-msgid "Admin"
+#: teambuilding/site/templates/teambuilding/site/auth/login.html:5
+#: teambuilding/site/templates/teambuilding/site/auth/login.html:14
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_complete.html:10
+msgid "Login"
 msgstr ""
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:41
-msgid "Pending orders"
-msgstr "Ordini in attesa"
+#: teambuilding/site/templates/teambuilding/site/auth/login.html:13
+msgid "Forgot password?"
+msgstr "Password dimenticata?"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:47
-msgid "Profile"
-msgstr "Profilo"
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset.html:5
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_confirm.html:5
+msgid "Reset Password"
+msgstr "Reimposta password"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:48
-msgid "Logout"
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset.html:11
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
 msgstr ""
+"Password dimenticata? Inserisci il tuo indirizzo email, e ti invieremo "
+"istruzioni su come impostarne una nuova."
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:54
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset.html:17
+msgid "Send email"
+msgstr "Invia email"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_complete.html:5
+msgid "Password reset complete"
+msgstr "Reset password completato"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_complete.html:9
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+"La tua nuova password è stata impostata. Ora puoi procedere con il login."
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_confirm.html:14
+msgid "Reset password"
+msgstr "Reimposta password"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_done.html:5
+msgid "Password reset sent"
+msgstr "Reset password inviato"
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_done.html:9
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Ti abbiamo inviato una mail contenente le istruzioni su come reimpostare la "
+"tua password, dovresti riceverla a breve."
+
+#: teambuilding/site/templates/teambuilding/site/auth/password_reset_done.html:10
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Se non ricevi l'email, controlla di aver inserito l'indirizzo mail corretto, "
+"e controlla la tua cartella Spam."
+
+#: teambuilding/site/templates/teambuilding/site/auth/signup.html:5
+#: teambuilding/site/templates/teambuilding/site/auth/signup.html:13
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:75
 msgid "Sign up"
 msgstr "Registrati"
 
-#: teambuilding/site/templates/teambuilding/site/navbar.html:55
-msgid "Log in"
-msgstr "Log in"
+#: teambuilding/site/templates/teambuilding/site/auth/signup_success.html:9
+msgid ""
+"An email containing an activation link has been sent to you. Check your "
+"inbox, and activate your account."
+msgstr ""
+"Ti è stata inviata una email con un link di attivazione. Controlla la tua "
+"casella di posta ed attiva il tuo account."
+
+#: teambuilding/site/templates/teambuilding/site/home.html:7
+msgid "Teambuilding Platform"
+msgstr "Piattaforma Teambuilding"
+
+#: teambuilding/site/templates/teambuilding/site/home.html:9
+msgid ""
+"Teambuilding app is a platform thought to help working groups to create "
+"stronger relationships among members by means of various engaging and fun "
+"activities to do together."
+msgstr ""
+"E' una piattaforma progettata per aiutare i gruppi di lavoro a costruire "
+"relazioni più forti tra i membri attraverso varie attività coinvolgenti e "
+"divertenti da fare insieme."
+
+#: teambuilding/site/templates/teambuilding/site/home.html:20
+msgid ""
+"Help team members to organize food tasting and eventual group purchase of "
+"propoused products. Each team member can insert a productor and a product in "
+"the list, and create an event that will send a participiation invite to any "
+"team member.<br>Team members can place orders for particular products within "
+"any productor, and then orders will be grouped by productor and optimized to "
+"be placed in order to save expedition costs and time."
+msgstr ""
+"Aiuta i membri del team a organizzare degustazioni di cibo e l'eventuale "
+"acquisto di gruppo dei prodotti proposti. Ogni membro del team può inserire "
+"un produttore e un prodotto nell'elenco e creare un evento che invierà un "
+"invito alla partecipazione a qualsiasi membro del team.<br>I membri del team "
+"possono effettuare ordini per prodotti particolari all'interno di qualsiasi "
+"produttore, quindi gli ordini verranno raggruppati per produttore e "
+"ottimizzati per essere inseriti al fine di risparmiare tempo e costi di "
+"spedizione."
+
+#: teambuilding/site/templates/teambuilding/site/home.html:23
+#: teambuilding/site/templates/teambuilding/site/home.html:35
+msgid "Go to app"
+msgstr "Vai alla app"
 
 #: teambuilding/site/templates/teambuilding/site/notifications/detail.html:5
 msgid "Notification details"
 msgstr "Dettagli notifica"
 
-#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:11
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:12
 msgid "Subject"
 msgstr "Oggetto"
 
-#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:15
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:16
 #: teambuilding/site/templates/teambuilding/site/notifications/list.html:11
 msgid "Date"
 msgstr "Data"
 
-#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:19
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:20
 #: teambuilding/site/templates/teambuilding/site/notifications/list.html:13
 msgid "Sender"
 msgstr "Mittente"
 
-#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:23
+#: teambuilding/site/templates/teambuilding/site/notifications/detail.html:24
 msgid "Body"
 msgstr "Corpo"
+
+#: teambuilding/site/templates/teambuilding/site/notifications/list.html:5
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:57
+msgid "Notifications"
+msgstr "Notifiche"
 
 #: teambuilding/site/templates/teambuilding/site/notifications/list.html:12
 msgid "Description"
@@ -214,19 +393,36 @@ msgstr "Sì,No"
 msgid "Detail"
 msgstr "Dettaglio"
 
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:32
+msgctxt "home page"
+msgid "Home"
+msgstr "Home"
+
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:38
+msgid "Apps"
+msgstr "Applicazioni"
+
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:66
+msgid "Profile"
+msgstr "Profilo"
+
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:73
+msgid "Logout"
+msgstr ""
+
+#: teambuilding/site/templates/teambuilding/site/shared/base.html:76
+msgid "Log in"
+msgstr "Log in"
+
 #: teambuilding/site/templates/teambuilding/site/user/detail.html:5
 msgid "User profile"
 msgstr "Profilo utente"
-
-#: teambuilding/site/templates/teambuilding/site/user/detail.html:12
-msgid "Nickname"
-msgstr ""
 
 #: teambuilding/site/templates/teambuilding/site/user/detail.html:16
 msgid "Email"
 msgstr ""
 
-#: teambuilding/site/templates/teambuilding/site/user/detail.html:23
+#: teambuilding/site/templates/teambuilding/site/user/detail.html:21
 msgid "Edit"
 msgstr "Modifica"
 
@@ -234,30 +430,22 @@ msgstr "Modifica"
 msgid "User profile - Edit"
 msgstr "Profilo utente - Modifica"
 
-#: teambuilding/site/templates/teambuilding/site/user/update.html:18
+#: teambuilding/site/templates/teambuilding/site/user/update.html:13
 msgid "Save"
 msgstr "Salva"
 
 #: teambuilding/site/templates/teambuilding/site/user/wish_happy_bday.html:5
-#, fuzzy
-#| msgid "Happy birthday!"
 msgid "Wish Happy Birthday!"
 msgstr "Augura buon compleanno!"
 
-#: teambuilding/site/templates/teambuilding/site/user/wish_happy_bday.html:15
-#, fuzzy
-#| msgid "Sender"
+#: teambuilding/site/templates/teambuilding/site/user/wish_happy_bday.html:13
 msgid "Send"
 msgstr "Invia"
 
-#: teambuilding/site/templates/teambuilding/site/welcome.html:9
-msgid "Welcome"
-msgstr "Benvenuto"
+#: teambuilding/site/views.py:102
+msgid "Your account has been activated."
+msgstr "Il tuo account é stato attivato."
 
-#: teambuilding/site/templates/teambuilding/site/welcome.html:13
-msgid "Guest"
-msgstr "Ospite"
-
-#: teambuilding/site/templates/teambuilding/site/welcome.html:17
-msgid "Welcome to Taste & Purchase"
-msgstr "Benvenuto in Acquista & Degusta"
+#: teambuilding/site/views.py:104
+msgid "Invalid link."
+msgstr "Link non valido."

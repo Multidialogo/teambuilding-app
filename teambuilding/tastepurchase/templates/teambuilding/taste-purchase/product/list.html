@@ -1,0 +1,36 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Manage products" %}
+{% endblock %}
+
+{% block page_content %}
+    <div>
+        <a class="btn btn-outline-dark btn-sm" href="{% url 'product-create' %}">{% translate "New" %}</a>
+        <table class="table table-striped mt-3">
+            <tr>
+                <th scope="col">{% translate "Name" %}</th>
+                <th scope="col">{% translate "Description" %}</th>
+                <th scope="col">{% translate "Producer" %}</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.title|escape }}</td>
+                    <td>{{ product.description|escape }}</td>
+                    <td>{{ product.producer }}</td>
+                    <td>{% if user.is_staff or product.added_by_user.id == user.profile.id %}
+                        <a href="{% url 'product-update' product.id %}">{% translate "Edit" %}</a>
+                    {% endif %}
+                    </td>
+                    <td>{% if user.is_staff or product.added_by_user.id == user.profile.id %}
+                        <a href="{% url 'product-delete' product.id %}">{% translate "Remove" %}</a>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

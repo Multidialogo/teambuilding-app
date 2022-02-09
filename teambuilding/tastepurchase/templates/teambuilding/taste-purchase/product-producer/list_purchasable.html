@@ -1,0 +1,29 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Manage pending orders" %}
+{% endblock %}
+
+{% block page_content %}
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">{% translate "Name" %}</th>
+            <th scope="col">{% translate "Email" %}</th>
+            <th scope="col">{% translate "Phone number" %}</th>
+            <th scope="col">{% translate "Postal address" %}</th>
+            <th scope="col"></th>
+        </tr>
+        {% for producer in producers %}
+            <tr>
+                <td>{{ producer.name|escape }}</td>
+                <td>{{ producer.email|escape }}</td>
+                <td>{{ producer.phone|escape }}</td>
+                <td>{{ producer.postal_address }}</td>
+                <td>
+                    <a href="{% url 'product-producer-order-create' producer_id=producer.id %}">{% translate "Show pending orders" %}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

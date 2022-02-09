@@ -1,0 +1,40 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Remove producer" %}
+{% endblock %}
+
+{% block page_content %}
+    <table class="table table-borderless">
+        <tr>
+            <td><strong>{% translate "Name" %}</strong></td>
+            <td>{{ producer.name|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Email" %}</strong></td>
+            <td>{{ producer.email|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Phone number" %}</strong></td>
+            <td>{{ producer.phone|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Postal address" %}</strong></td>
+            <td>{{ producer.postal_address }}</td>
+        </tr>
+    </table>
+    <hr>
+    <div class="">
+        <p>
+            {% translate "Are you sure you want to remove this producer?" %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <button class="btn btn-primary me-2" type="submit">{% translate "Confirm" %}</button>
+                <a href="{% url 'product-producer-list' %}">{% translate "Cancel" %}</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

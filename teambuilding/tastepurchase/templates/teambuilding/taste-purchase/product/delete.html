@@ -1,0 +1,36 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Remove product" %}
+{% endblock %}
+
+{% block page_content %}
+    <table class="table table-borderless">
+        <tr>
+            <td><strong>{% translate "Name" %}</strong></td>
+            <td>{{ product.title|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Description" %}</strong></td>
+            <td>{{ product.description|escape }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Producer" %}</strong></td>
+            <td>{{ product.producer }}</td>
+        </tr>
+    </table>
+    <hr>
+    <div class="">
+        <p>
+            {% translate "Are you sure you want to remove this product?" %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <button class="btn btn-primary me-2" type="submit">{% translate "Confirm" %}</button>
+                <a href="{% url 'product-list' %}">{% translate "Cancel" %}</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

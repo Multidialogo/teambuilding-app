@@ -1,0 +1,36 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Manage future events (created by You)" %}
+{% endblock %}
+
+{% block page_content %}
+    <div>
+        <a class="btn btn-outline-dark btn-sm" href="{% url 'event-create' %}">{% translate "New" %}</a>
+        <table class="table table-striped mt-3">
+            <tr>
+                <th scope="col">{% translate "Title" %}</th>
+                <th scope="col">{% translate "Organizer" %}</th>
+                <th scope="col">{% translate "Start date" %}</th>
+                <th scope="col">{% translate "End date" %}</th>
+                <th scope="col">{% translate "Description" %}</th>
+                <th scope="col">{% translate "Products" %}</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.title|escape }}</td>
+                    <td>{{ event.organizer }}</td>
+                    <td>{{ event.start_date }}</td>
+                    <td>{{ event.end_date }}</td>
+                    <td>{{ event.description|escape }}</td>
+                    <td>{{ event.products.all|join:", " }}</td>
+                    <td><a href="{% url 'event-update' event.id %}">{% translate "Edit" %}</a></td>
+                    <td><a href="{% url 'event-delete' event.id %}">{% translate "Remove" %}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

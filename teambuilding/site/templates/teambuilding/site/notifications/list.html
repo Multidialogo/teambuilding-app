@@ -1,24 +1,24 @@
-{% extends "teambuilding/site/shared/crud/page.html" %}
+{% extends "teambuilding/site/page_simple.html" %}
 {% load i18n %}
 
-{% block crud_header %}
+{% block page_header %}
     {% translate "Notifications" %}
 {% endblock %}
 
-{% block crud_content %}
-    <table class="table">
+{% block page_content %}
+    <table class="table table-striped">
         <tr>
-            <th>{% translate "Date" %}</th>
-            <th>{% translate "Description" %}</th>
-            <th>{% translate "Sender" %}</th>
-            <th>{% translate "Read" %}</th>
-            <th></th>
+            <th scope="col">{% translate "Date" %}</th>
+            <th scope="col">{% translate "Description" %}</th>
+            <th scope="col">{% translate "Sender" %}</th>
+            <th scope="col">{% translate "Read" %}</th>
+            <th scope="col"></th>
         </tr>
         {% for notification in notifications %}
             <tr>
                 <td>{{ notification.created_at }}</td>
                 <td>{{ notification.subject|escape }}</td>
-                <td>{% if notification.sender %}{{ notification.sender|escape }}{% endif %}</td>
+                <td>{% if notification.sender %}{{ notification.sender|escape }}{% else %}SYSTEM{% endif %}</td>
                 <td>{{ notification.read|yesno:_("Yes,No") }}</td>
                 <td><a href="{% url 'notification-detail' notification.id %}">{% translate "Detail" %}</a></td>
             </tr>

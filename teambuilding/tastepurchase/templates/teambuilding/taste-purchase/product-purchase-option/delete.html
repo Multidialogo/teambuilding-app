@@ -1,0 +1,36 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Remove product purchase option" %}
+{% endblock %}
+
+{% block page_content %}
+    <table class="table table-borderless">
+        <tr>
+            <td><strong>{% translate "Product" %}</strong></td>
+            <td>{{ option.product }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Amount" %}</strong></td>
+            <td>{{ option.amount }}</td>
+        </tr>
+        <tr>
+            <td><strong>{% translate "Price EUR (cents)" %}</strong></td>
+            <td>{{ option.price_cents }}</td>
+        </tr>
+    </table>
+    <hr>
+    <div class="">
+        <p>
+            {% translate "Are you sure you want to remove this product purchase option?" %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <button class="btn btn-primary me-2" type="submit">{% translate "Confirm" %}</button>
+                <a href="{% url 'product-update' option.product_id %}">{% translate "Cancel" %}</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% load template-filters %}
+
+{% with template="teambuilding/site/shared/forms/form_field_input.html" label_template="teambuilding/site/shared/forms/form_field_label.html" help_template="teambuilding/site/shared/forms/form_field_helptext.html" feedback_template="teambuilding/site/shared/forms/form_field_feedback.html" %}
+    {% if field|field_type == "Select" %}
+        <div class="mb-3">
+            {% include label_template with field=field html_class="form-label" %}
+            {% include template with field=field html_class="form-select" %}
+            {% include help_template with field=field %}
+            {% include feedback_template with field=field %}
+        </div>
+    {% elif field|field_type == "SelectMultiple" %}
+        <div class="mb-3">
+            {% include label_template with field=field html_class="form-label" %}
+            {% include template with field=field html_class="form-select" html_attrs="multiple:" %}
+            {% include help_template with field=field %}
+            {% include feedback_template with field=field %}
+        </div>
+    {% elif field|field_type == "RadioSelect" %}
+        <div class="mb-3">
+            {% include label_template with field=field html_class="form-label" %}
+            {% for radio in field %}
+                <div class="form-check">
+                    {% include template with field=radio html_class="form-check-input" %}
+                    <label for="{{ radio.id_for_label|escape }}"
+                           class="form-check-label">{{ radio.choice_label|escape }}</label>
+                </div>
+            {% endfor %}
+            {% include help_template with field=field %}
+            {% include feedback_template with field=field %}
+        </div>
+    {% elif field|field_type == "CheckboxSelectMultiple" %}
+        <div class="mb-3">
+            {% include label_template with field=field html_class="form-label" %}
+            {% for check in field %}
+                <div class="form-check">
+                    {% include template with field=check html_class="form-check-input" %}
+                    {% include label_template with field=field html_class="form-check-label" %}
+                </div>
+            {% endfor %}
+            {% include help_template with field=field %}
+            {% include feedback_template with field=field %}
+        </div>
+    {% elif field|field_type == "CheckboxInput" %}
+        <div class="form-check mb-3">
+            {% include template with field=field html_class="form-check-input" %}
+            {% include label_template with field=field html_class="form-check-label" %}
+            {% include help_template with field=field %}
+            {% include feedback_template with field=field %}
+        </div>
+    {% else %}
+        <div class="mb-3">
+            {% include label_template with field=field html_class="form-label" %}
+            {% include template with field=field html_class="form-control" %}
+            {% include help_template with field=field %}
+            {% include feedback_template with field=field %}
+        </div>
+    {% endif %}
+{% endwith %}

@@ -1,0 +1,36 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Manage producers" %}
+{% endblock %}
+
+{% block page_content %}
+    <div>
+        <a class="btn btn-outline-dark btn-sm" href="{% url 'product-producer-create' %}">{% translate "New" %}</a>
+        <table class="table table-striped mt-3">
+            <tr>
+                <th scope="col">{% translate "Name" %}</th>
+                <th scope="col">{% translate "Email" %}</th>
+                <th scope="col">{% translate "Phone number" %}</th>
+                <th scope="col">{% translate "Postal address" %}</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            {% for producer in producers %}
+                <tr>
+                    <td>{{ producer.name|escape }}</td>
+                    <td>{{ producer.email|escape }}</td>
+                    <td>{{ producer.phone|escape }}</td>
+                    <td>{{ producer.postal_address }}</td>
+                    <td>{% if user.is_staff or producer.added_by_user.id == user.profile.id %}
+                        <a href="{% url 'product-producer-update' pk=producer.id %}">{% translate "Edit" %}</a>
+                    {% endif %}</td>
+                    <td>{% if user.is_staff or producer.added_by_user.id == user.profile.id %}
+                        <a href="{% url 'product-producer-delete' pk=producer.id %}">{% translate "Remove" %}</a>
+                    {% endif %}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
