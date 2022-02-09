@@ -23,9 +23,9 @@ Django [coding standard](https://docs.djangoproject.com/en/dev/internals/contrib
 
 ### Test coverage
 
-Any new feature must be covered with a new integration test.
+Any new feature **must** be covered with a new integration test.
 
-Any feature change should be reflected in an integration test update.
+Any feature change **should be reflected** in an integration test update.
 
 ## Committing code
 
