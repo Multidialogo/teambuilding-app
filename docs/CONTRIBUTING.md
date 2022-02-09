@@ -1,6 +1,6 @@
 # Contributing
 
-Follow the provisioning project instructions as first step is **strongly suggested** before proceed further.
+Follow the local provisioning instructions as first step is **strongly suggested** before proceed further.
 
 * [Local provisioning](#local-provisioning)
 * [Writing code](#writing-code)
