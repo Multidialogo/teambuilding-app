@@ -8,7 +8,6 @@
   * [Coding style](#coding-style)
   * [Tests](#tests)
 * [Committing code](#committing-code)
-  * [Handling pull requests](#handling-pull-requests)
   * [Committing guidelines](#committing-guidelines)
 
 ## Getting started
@@ -39,10 +38,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
 ## Committing code
-
-### Handling pull requests
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
 ### Committing guidelines
 
