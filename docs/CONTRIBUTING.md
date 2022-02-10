@@ -40,6 +40,11 @@ git push -u origin BRANCH_NAME
 
 # After a successfull merge you can pull rebase develop branch
 git pull --rebase origin develop
+
+# Increase TAG version on develop branch according to the changes made
+# See 'Tags' section for more info
+git tag -a v<major>.<minor>.<patch> -m 'v<major>.<minor>.<patch>'
+git push -u --follow-tags origin develop
 ```
 
 ### Committing guidelines
