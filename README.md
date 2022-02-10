@@ -9,19 +9,22 @@
 * [Contributing](#contributing)
 
 ## Overview
+![teambuilding-screen](static/teambuilding/docs/img/teambuilding-screen.png)
+
 Teambuilding app is a platform thought to help working groups to create stronger relationships among members by means of various engaging and fun activities to do together.
 
 Each activity can be managed and organized by the team, and an efficient notification system will remind to members when\where participate, and helps them within the organization.
 
 ### Supported activities
 #### Taste and purchase
+![tasting-screen](static/teambuilding/docs/img/tasting-screen.png)
 Help team members to organize food tasting and eventual group purchase of propoused products.
 Each team member can insert a producer and a product in the list, and create an event that will send a participiation invite to any team member.
 
 Team members can place orders for particular products within any productor, and then orders will be grouped by productor and optimized to be placed in order to save expedition costs and time.
 
 ## Provisioning and containerized environment
-Provisioning repository can be found [here](https://github.com/Multidialogo/teambuilding-app-provisioning).
+Provisioning repository with Docker can be found [here](https://github.com/Multidialogo/teambuilding-app-provisioning).
 
 ## Language / Framework
 Python [ [Docs](https://docs.python.org/3/) ] / Django [ [Docs](https://docs.djangoproject.com/en/4.0/) ]
@@ -46,4 +49,4 @@ Is required to set a recurrent job to execute the following commands:
 CLI command.
 
 ## Contributing
-Contributing guidelines can be found [here](https://github.com/Multidialogo/teambuilding-app/blob/develop/docs/CONTRIBUTING.md)
+Contributing guidelines can be found [here](https://github.com/Multidialogo/teambuilding-app/blob/develop/docs/CONTRIBUTING.md).
