@@ -37,7 +37,11 @@ docker compose exec teambuilding_web python manage.py users_birthday_check
 ```
 
 ## Additional setup steps
+There is a series of operations to execute in order to configure the project.
+
 ### Cron jobs
+Is required to set a recurrent job to execute the following commands:
+
 * Everyday at 00:01 AM the system should execute the *users_birthday_check* 
 CLI command.
 
