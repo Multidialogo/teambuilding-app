@@ -24,7 +24,7 @@ Each team member can insert a producer and a product in the list, and create an 
 Team members can place orders for particular products within any productor, and then orders will be grouped by productor and optimized to be placed in order to save expedition costs and time.
 
 ## Provisioning and containerized environment
-Provisioning repository with Docker can be found [here](https://github.com/Multidialogo/teambuilding-app-provisioning).
+Provisioning ([?](https://github.com/Multidialogo/teambuilding-app/wiki/Glossary#provisioning)) repository with Docker can be found [here](https://github.com/Multidialogo/teambuilding-app-provisioning).
 
 ## Language / Framework
 Python [ [Docs](https://docs.python.org/3/) ] / Django [ [Docs](https://docs.djangoproject.com/en/4.0/) ]
