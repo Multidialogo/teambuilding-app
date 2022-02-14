@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-08 21:50+0000\n"
+"POT-Creation-Date: 2022-02-14 10:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -330,25 +330,20 @@ msgstr ""
 #: teambuilding/site/templates/teambuilding/site/home.html:20
 msgid ""
 "Help team members to organize food tasting and eventual group purchase of "
-"propoused products. Each team member can insert a productor and a product in "
-"the list, and create an event that will send a participiation invite to any "
-"team member.<br>Team members can place orders for particular products within "
-"any productor, and then orders will be grouped by productor and optimized to "
-"be placed in order to save expedition costs and time."
+"propoused products."
 msgstr ""
-"Aiuta i membri del team a organizzare degustazioni di cibo e l'eventuale "
-"acquisto di gruppo dei prodotti proposti. Ogni membro del team può inserire "
-"un produttore e un prodotto nell'elenco e creare un evento che invierà un "
-"invito alla partecipazione a qualsiasi membro del team.<br>I membri del team "
-"possono effettuare ordini per prodotti particolari all'interno di qualsiasi "
-"produttore, quindi gli ordini verranno raggruppati per produttore e "
-"ottimizzati per essere inseriti al fine di risparmiare tempo e costi di "
-"spedizione."
+"Aiuta i membri del team ad organizzare degustazione di cibi ed eventuali "
+"acquisti di gruppo dei prodotti proposti."
 
 #: teambuilding/site/templates/teambuilding/site/home.html:23
-#: teambuilding/site/templates/teambuilding/site/home.html:35
-msgid "Go to app"
-msgstr "Vai alla app"
+#: teambuilding/site/templates/teambuilding/site/home.html:37
+msgid "Partecipate!"
+msgstr "Partecipa!"
+
+#: teambuilding/site/templates/teambuilding/site/home.html:34
+msgid "Help team members to organize random lunches with colleagues."
+msgstr ""
+"Aiuta i membri del team ad organizzare pranzi casuali con i propri colleghi."
 
 #: teambuilding/site/templates/teambuilding/site/notifications/detail.html:5
 msgid "Notification details"
@@ -399,8 +394,8 @@ msgid "Home"
 msgstr "Home"
 
 #: teambuilding/site/templates/teambuilding/site/shared/base.html:38
-msgid "Apps"
-msgstr "Applicazioni"
+msgid "Activities"
+msgstr "Attività"
 
 #: teambuilding/site/templates/teambuilding/site/shared/base.html:66
 msgid "Profile"

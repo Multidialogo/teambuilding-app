@@ -17,10 +17,10 @@
                     <div class="d-flex flex-column flex-grow-1 p-3 pb-4">
                         <h5 class="card-title">{% translate "Taste & Purchase" %}</h5>
                         <p class="card-text flex-grow-1">
-                            {% translate "Help team members to organize food tasting and eventual group purchase of propoused products. Each team member can insert a productor and a product in the list, and create an event that will send a participiation invite to any team member.<br>Team members can place orders for particular products within any productor, and then orders will be grouped by productor and optimized to be placed in order to save expedition costs and time." %}
+                            {% translate "Help team members to organize food tasting and eventual group purchase of propoused products." %}
                         </p>
                         <a href="{% url 'taste-purchase-home' %}"
-                           class="btn btn-primary align-self-start">{% translate "Go to app" %}</a>
+                           class="btn btn-primary align-self-start">{% translate "Partecipate!" %}</a>
                     </div>
                 </div>
             </div>
@@ -30,9 +30,11 @@
                     </div>
                     <div class="d-flex flex-column flex-grow-1 p-3 pb-4">
                         <h5 class="card-title">{% translate "Lunch Roulette" %}</h5>
-                        <p class="card-text flex-grow-1">{% lorem %}</p>
+                        <p class="card-text flex-grow-1">
+                            {% translate "Help team members to organize random lunches with colleagues." %}
+                        </p>
                         <a href="#" class="btn btn-primary align-self-start">
-                            {% translate "Go to app" %}
+                            {% translate "Partecipate!" %}
                         </a>
                     </div>
                 </div>
