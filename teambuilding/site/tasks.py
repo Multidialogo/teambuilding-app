@@ -1,4 +1,5 @@
 import calendar
+from abc import ABC
 from datetime import date
 from tempfile import NamedTemporaryFile
 
@@ -177,14 +178,35 @@ def create_notification(recipient, subject, body):
     return notification
 
 
-def send_calendar_event_mail(recipient, subject, body, event):
-    icalendar = create_icalendar_from_event(event)
+class EventNotificationManager(ABC):
+    def __init__(self, subject, body):
+        self.subject = subject
+        self.body = body
 
-    with NamedTemporaryFile(mode='w+b') as ics:
-        ics.write(icalendar)
-        ics.seek(0)
-        ics_content = ics.read()
+    def notify(self, event, send_email=True):
+        all_users = get_user_model().objects.all()
 
-        email = EmailMessage(subject, body, to=[recipient.email, ])
-        email.attach('event.ics', ics_content, 'application/octet-stream')
-        email.send()
+        for user in all_users:
+            create_notification(user, self.subject, self.body)
+            if send_email:
+                self._send_calendar_event_mail(user, event)
+
+    def _send_calendar_event_mail(self, recipient, event):
+        icalendar = create_icalendar_from_event(event)
+
+        with NamedTemporaryFile(mode='w+b') as ics:
+            ics.write(icalendar)
+            ics.seek(0)
+            ics_content = ics.read()
+
+            email = EmailMessage(self.subject, self.body, to=[recipient.email, ])
+            email.attach('event.ics', ics_content, 'application/octet-stream')
+            email.send()
+
+
+class DefaultEventNotificationManager(EventNotificationManager):
+    def __init__(self):
+        super().__init__(
+            gettext("New event Teambuilding!"),
+            gettext("A new event has been added, check it out.")
+        )
