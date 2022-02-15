@@ -11,7 +11,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import gettext
 
-from .models import UserProfile, Notification, HappyBirthdayMessage
+from .models import UserProfile, Notification, HappyBirthdayMessage, Event
 from .utils import create_icalendar_from_event
 
 
@@ -176,6 +176,16 @@ def create_notification(recipient, subject, body):
         body=body,
     )
     return notification
+
+
+def create_event(start_date, end_date, title, description):
+    event = Event.objects.create(
+        start_date=start_date,
+        end_date=end_date,
+        title=title,
+        description=description
+    )
+    return event
 
 
 class EventNotificationManager(ABC):
