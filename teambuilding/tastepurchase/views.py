@@ -16,7 +16,7 @@ from .forms import (
     ProductForm, ProducerForm, ProductPurchaseOptionForm, ProducerPostalAddressForm,
     ProductOrderForm, ProducerOrderForm, ProducerOrderDeliveryAddressForm, TasteEventForm
 )
-from .tasks import TasteEventNotificationManager
+from .tasks import create_taste_event_notification_manager
 
 
 @login_required
@@ -380,8 +380,8 @@ def event_create(request):
 
         if form.is_valid():
             taste_event = form.save()
-            event_manager = TasteEventNotificationManager()
-            event_manager.notify(taste_event)
+            event_noti_manager = create_taste_event_notification_manager()
+            event_noti_manager.notify(taste_event)
             return redirect('event-user-list')
     else:
         form = TasteEventForm(initial={'organizer': request.user})

@@ -188,7 +188,20 @@ def create_event(start_date, end_date, title, description):
     return event
 
 
-class EventNotificationManager(ABC):
+def create_event_notification_manager(subject, description):
+    event_noti_manager = EventNotificationManager(subject, description)
+    return event_noti_manager
+
+
+def create_default_event_notification_manager():
+    event_noti_manager = create_event_notification_manager(
+        gettext("New event Teambuilding!"),
+        gettext("A new event has been added, check it out.")
+    )
+    return event_noti_manager
+
+
+class EventNotificationManager:
     def __init__(self, subject, body):
         self.subject = subject
         self.body = body
@@ -212,11 +225,3 @@ class EventNotificationManager(ABC):
             email = EmailMessage(self.subject, self.body, to=[recipient.email, ])
             email.attach('event.ics', ics_content, 'application/octet-stream')
             email.send()
-
-
-class DefaultEventNotificationManager(EventNotificationManager):
-    def __init__(self):
-        super().__init__(
-            gettext("New event Teambuilding!"),
-            gettext("A new event has been added, check it out.")
-        )
