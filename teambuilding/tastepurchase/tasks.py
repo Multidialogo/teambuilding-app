@@ -1,11 +1,11 @@
 from django.utils.translation import gettext
 
-from teambuilding.site.tasks import EventNotificationManager
+from teambuilding.site.tasks import create_event_notification_manager
 
 
-class TasteEventNotificationManager(EventNotificationManager):
-    def __init__(self):
-        super().__init__(
-            gettext("New event Taste & Purchase!"),
-            gettext("A new event has been added, check it out.")
-        )
+def create_taste_event_notification_manager():
+    event_noti_manager = create_event_notification_manager(
+        gettext("New event Taste & Purchase!"),
+        gettext("A new event has been added, check it out.")
+    )
+    return event_noti_manager
