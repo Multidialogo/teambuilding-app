@@ -9,6 +9,7 @@ suggested** before proceed further.
   * [Test coverage](#test-coverage)
 * [Committing code](#committing-code)
   * [Committing guidelines](#committing-guidelines)
+* [Contact us](#contact-us)
 
 ## Local provisioning
 
@@ -53,3 +54,6 @@ This means, use frequent small commits rather than infrequent large
 commits. For example, if implementing feature X requires a small change 
 to Y, first commit the change to Y, then commit feature X in a separate 
 commit. 
+
+## Contact us
+If you have any questions, feel free to ask us at engineering@multidialogo.it
