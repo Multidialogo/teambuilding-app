@@ -1,0 +1,187 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-14 10:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/postaladdress/migrations/0002_data.py:15
+msgid "Regione"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:17
+#: lib/postaladdress/migrations/0002_data.py:53
+msgid "Provincia"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:19
+msgid "Comune"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:21
+msgid "Frazione"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:33
+msgid "Région"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:35
+msgid "Département"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:37
+msgid "Arrondissement"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:39
+#: lib/postaladdress/migrations/0002_data.py:87
+msgid "Canton"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:41
+msgid "Intercommunality"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:51
+msgid "Comunidad Autónomas"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:55
+msgid "Comarca"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:57
+msgid "Municipio"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:69
+msgid "Distrito"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:71
+msgid "Concelho"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:73
+msgid "Freguesia"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:89
+msgid "District"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:91
+msgid "Commune"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:105
+msgid "Județ"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:107
+msgid "Orașe"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:123
+msgid "Province"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:125
+msgid "District municipality"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:127
+msgid "Local municipality"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:129
+msgid "Ward"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:141
+msgid "Todōfuken"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:143
+msgid "Shi"
+msgstr ""
+
+#: lib/postaladdress/migrations/0002_data.py:145
+msgid "Shichōsonku"
+msgstr ""
+
+#: lib/postaladdress/models.py:8
+msgid "country code"
+msgstr "codice postale"
+
+#: lib/postaladdress/models.py:12 lib/postaladdress/models.py:40
+msgid "country"
+msgstr "paese"
+
+#: lib/postaladdress/models.py:13
+msgid "countries"
+msgstr "paesi"
+
+#: lib/postaladdress/models.py:41
+msgid "zip code"
+msgstr "codice posstale"
+
+#: lib/postaladdress/models.py:42
+msgid "street"
+msgstr "indirizzo"
+
+#: lib/postaladdress/models.py:43
+msgid "administrative level 1"
+msgstr "livello amministrativo 1"
+
+#: lib/postaladdress/models.py:44
+msgid "administrative level 2"
+msgstr "livello amministrativo 2"
+
+#: lib/postaladdress/models.py:45
+msgid "administrative level 3"
+msgstr "livello amministrativo 3"
+
+#: lib/postaladdress/models.py:46
+msgid "administrative level 4"
+msgstr "livello amministrativo 4"
+
+#: lib/postaladdress/models.py:47
+msgid "administrative level 5"
+msgstr "livello amministrativo 5"
+
+#: lib/postaladdress/models.py:50
+msgid "postal address"
+msgstr "indirizzo postale"
+
+#: lib/postaladdress/models.py:51
+msgid "postal addresses"
+msgstr "indirizzi postali"
+
+#: lib/postaladdress/models.py:55
+#, python-format
+msgid ""
+"%(street)s, %(adm-3)s, %(adm-1)s, %(zipcode)s, %(country)s%(adm-2)0s"
+"%(adm-4)0s%(adm-5)0s"
+msgstr ""
+"%(street)s, %(adm-3)s, %(zipcode)s, %(adm-2)s, %(country)s%(adm-1)0s"
+"%(adm-4)0s%(adm-5)0s"
+
+#: lib/postaladdress/validators.py:9
+#, python-format
+msgid "%(value)s is not a valid zip code."
+msgstr "%(value)s non è un codice postale valido."

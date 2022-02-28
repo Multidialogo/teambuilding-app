@@ -1,0 +1,15 @@
+{% extends "teambuilding/site/page_form.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Wish Happy Birthday!" %}
+{% endblock %}
+
+{% block page_content %}
+    <form method="POST">
+        {% csrf_token %}
+        {% include 'teambuilding/site/shared/forms/form_content.html' with form=happy_birthday_form %}
+        {% include 'teambuilding/site/shared/forms/errors.html' with errors=happy_birthday_form.non_field_errors %}
+        <button class="btn btn-primary mt-4" type="submit">{% translate "Send" %}</button>
+    </form>
+{% endblock %}

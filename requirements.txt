@@ -1,6 +1,6 @@
 # To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
-Django==3.2.9
-django-extensions==3.1.5
-django-phonenumber-field==6.0.0
-icalendar==4.0.9
-phonenumberslite==8.12.38
+Django
+gunicorn
+PyYaml
+django-phonenumber-field[phonenumberslite]
+icalendar

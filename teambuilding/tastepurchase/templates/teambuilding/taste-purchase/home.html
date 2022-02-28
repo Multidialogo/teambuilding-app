@@ -1,0 +1,13 @@
+{% extends "teambuilding/taste-purchase/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="d-flex flex-grow-1 flex-column p-3 justify-content-center align-items-center">
+        <div class="d-flex flex-column responsive-w-50 py-3 py-lg-4 py-xl-5 gap-2 gap-md-3 gap-lg-4 gap-xl-5">
+            <h1 class="fw-light text-center">{% translate "Welcome to Taste & Purchase" %}</h1>
+            <p class="lead text-muted text-center">
+                {% translate "Help team members to organize food tasting and eventual group purchase of propoused products. Each team member can insert a productor and a product in the list, and create an event that will send a participiation invite to any team member." %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

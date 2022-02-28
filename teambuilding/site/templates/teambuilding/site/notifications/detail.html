@@ -1,0 +1,30 @@
+{% extends "teambuilding/site/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Notification details" %}
+{% endblock %}
+
+{% block page_content %}
+    <div>
+        <table class="table table-borderless">
+            <tr>
+                <td><strong>{% translate "Subject" %}</strong></td>
+                <td>{{ notification.subject|escape }}</td>
+            </tr>
+            <tr>
+                <td><strong>{% translate "Date" %}</strong></td>
+                <td>{{ notification.created_at }}</td>
+            </tr>
+            <tr>
+                <td><strong>{% translate "Sender" %}</strong></td>
+                <td>{% if notification.sender %}{{ notification.sender }}{% else %}SYSTEM{% endif %}</td>
+            </tr>
+            <tr>
+                <td><strong>{% translate "Body" %}</strong></td>
+                <td>{{ notification.body }}</td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+{% endblock %}

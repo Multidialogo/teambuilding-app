@@ -1,0 +1,10 @@
+{% extends "teambuilding/site/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Account activation" %}
+{% endblock %}
+
+{% block page_content %}
+    <p class="fw-light lh-sm">{% translate "An email containing an activation link has been sent to you. Check your inbox, and activate your account." %}</p>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "teambuilding/taste-purchase/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Purchase product" %}
+{% endblock %}
+
+{% block page_content %}
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">{% translate "Name" %}</th>
+            <th scope="col">{% translate "Description" %}</th>
+            <th scope="col">{% translate "Producer" %}</th>
+            <th scope="col"></th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.title|escape }}</td>
+                <td>{{ product.description|escape }}</td>
+                <td>{{ product.producer }}</td>
+                <td><a href="{% url 'product-order-create' product.id %}">{% translate "Purchase" %}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

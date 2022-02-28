@@ -1,0 +1,58 @@
+{% extends "teambuilding/taste-purchase/page_form.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "Send cumulative order to producer" %}
+{% endblock %}
+
+{% block page_content %}
+    <div>
+        <h5 class="title is-5">{% translate "Orders" %}</h5>
+        <div class="card bg-light mt-3">
+            <div class="card-body">
+                <h5>{% translate "Orders" %}</h5>
+                <table class="table table-striped mt-3">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{% translate "Producer" %}</th>
+                        <th scope="col">{% translate "Product" %}</th>
+                        <th scope="col">{% translate "Customer email" %}</th>
+                        <th scope="col">{% translate "Amount" %}</th>
+                        <th scope="col">{% translate "EUR (cents)" %}</th>
+                    </tr>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ order.producer }}</td>
+                            <td>{{ order.product }}</td>
+                            <td>{{ order.customer.account.email }}</td>
+                            <td>{{ order.purchase_option.amount }}</td>
+                            <td>{{ order.purchase_option.price_cents }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            {% include 'teambuilding/site/shared/forms/form_content.html' with form=order_form %}
+            {% include 'teambuilding/site/shared/forms/errors.html' with errors=order_form.non_field_errors %}
+            <br>
+            <div class="mb-3"><h5>{% translate "Delivery address" %}</h5></div>
+            {% include 'teambuilding/site/shared/forms/form_content.html' with form=address_form %}
+            {% include 'teambuilding/site/shared/forms/errors.html' with errors=address_form.non_field_errors %}
+            <button class="btn btn-primary mt-2" type="submit">{% translate "Send" %}</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('document').ready(function () {
+            $('#id_country').on('change', function (e) {
+                let url = "{% url 'product-producer-order-create' producer_id=producer_id country='__country__' %}".replace('__country__', this.value);
+                window.location.replace(url);
+            });
+        });
+    </script>
+{% endblock %}

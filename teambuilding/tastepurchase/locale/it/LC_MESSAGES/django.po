@@ -1,0 +1,526 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-14 10:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: teambuilding/tastepurchase/models.py:14
+#: teambuilding/tastepurchase/models.py:37
+msgid "postal address"
+msgstr "indirizzo postale"
+
+#: teambuilding/tastepurchase/models.py:15
+msgid "postal addresses"
+msgstr "indirizzi postali"
+
+#: teambuilding/tastepurchase/models.py:20
+#: teambuilding/tastepurchase/models.py:50
+msgid "name"
+msgstr "nome"
+
+#: teambuilding/tastepurchase/models.py:24
+msgid "email"
+msgstr ""
+
+#: teambuilding/tastepurchase/models.py:27
+msgid "phone number"
+msgstr "telefono"
+
+#: teambuilding/tastepurchase/models.py:32
+#: teambuilding/tastepurchase/models.py:63
+msgid "added by"
+msgstr "aggiunto da"
+
+#: teambuilding/tastepurchase/models.py:41
+#: teambuilding/tastepurchase/models.py:59
+#: teambuilding/tastepurchase/models.py:106
+#: teambuilding/tastepurchase/models.py:150
+msgid "producer"
+msgstr "produttore"
+
+#: teambuilding/tastepurchase/models.py:42
+msgid "producers"
+msgstr "produttori"
+
+#: teambuilding/tastepurchase/models.py:54
+msgid "description"
+msgstr "descrizione"
+
+#: teambuilding/tastepurchase/models.py:67
+#: teambuilding/tastepurchase/models.py:79
+#: teambuilding/tastepurchase/models.py:155
+msgid "product"
+msgstr "prodotto"
+
+#: teambuilding/tastepurchase/models.py:68
+#: teambuilding/tastepurchase/models.py:204
+msgid "products"
+msgstr "prodotti"
+
+#: teambuilding/tastepurchase/models.py:80
+msgid "price EUR (cents)"
+msgstr "prezzo EURO (cents)"
+
+#: teambuilding/tastepurchase/models.py:81
+msgid "amount"
+msgstr "quantità"
+
+#: teambuilding/tastepurchase/models.py:86
+#: teambuilding/tastepurchase/models.py:134
+msgid "purchase option"
+msgstr "opzione di acquisto"
+
+#: teambuilding/tastepurchase/models.py:87
+msgid "purchase options"
+msgstr "opzioni di acquisto"
+
+#: teambuilding/tastepurchase/models.py:90
+#, python-format
+msgid "Amount: %(amount)s, EUR (cents): %(price)01.0f"
+msgstr "Quantità: %(amount)s, EURO (cents): %(price)01.0f"
+
+#: teambuilding/tastepurchase/models.py:97
+#: teambuilding/tastepurchase/models.py:111
+msgid "delivery address"
+msgstr "indirizzo di spedizione"
+
+#: teambuilding/tastepurchase/models.py:98
+msgid "delivery addresses"
+msgstr "indirizzi di spedizione"
+
+#: teambuilding/tastepurchase/models.py:114
+msgid "cumulative order to producer"
+msgstr "ordine cumulativo al produttore"
+
+#: teambuilding/tastepurchase/models.py:115
+msgid "cumulative orders to producers"
+msgstr "ordini cumulativi al produttore"
+
+#: teambuilding/tastepurchase/models.py:118
+#, python-format
+msgid "cumulative order for producer %(producer)s"
+msgstr "ordine cumulativo per il produttore %(producer)s"
+
+#: teambuilding/tastepurchase/models.py:126
+msgid "Created"
+msgstr "In attesa"
+
+#: teambuilding/tastepurchase/models.py:127
+msgid "Processed"
+msgstr "Processato"
+
+#: teambuilding/tastepurchase/models.py:140
+msgid "in cumulative order"
+msgstr "nell'ordine cumulativo"
+
+#: teambuilding/tastepurchase/models.py:145
+msgid "customer"
+msgstr "cliente"
+
+#: teambuilding/tastepurchase/models.py:160
+msgid "order status"
+msgstr "stato ordine"
+
+#: teambuilding/tastepurchase/models.py:164
+msgid "simple order"
+msgstr "ordine semplice"
+
+#: teambuilding/tastepurchase/models.py:165
+msgid "simple orders"
+msgstr "ordini semplici"
+
+#: teambuilding/tastepurchase/models.py:169
+#, python-format
+msgid ""
+"Product: %(product)s, Producer: %(producer)s, Amount: %(amount)s, EUR "
+"(cents): %(price)01.0f, Customer email: %(customer-email)s"
+msgstr ""
+"Prodotto: %(product)s, Produttore: %(producer)s, Quantità: %(amount)s, EURO "
+"(cents): %(price)01.0f, Email cliente: %(customer-email)s"
+
+#: teambuilding/tastepurchase/models.py:187
+msgid ""
+"Producer in instance ProductOrder must be equal to Producer in instance "
+"ProducerOrder."
+msgstr ""
+"Producer nell'istanza ProductOrder deve essere identico al Producer "
+"nell'istanza ProducerOrder."
+
+#: teambuilding/tastepurchase/models.py:201
+msgid "organizer"
+msgstr "organizzatore"
+
+#: teambuilding/tastepurchase/models.py:207
+msgid "taste event"
+msgstr "evento degustazione"
+
+#: teambuilding/tastepurchase/models.py:208
+msgid "taste events"
+msgstr "eventi degustazione"
+
+#: teambuilding/tastepurchase/tasks.py:8
+msgid "New event Taste & Purchase!"
+msgstr "Nuovo evento Degusta & Acquista!"
+
+#: teambuilding/tastepurchase/tasks.py:9
+msgid "A new event has been added, check it out."
+msgstr "Un nuovo evento è stato aggiunto, vai a controllare."
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:7
+msgid "Events"
+msgstr "Eventi"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:12
+msgid "Upcoming"
+msgstr "In arrivo"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:17
+msgid "History"
+msgstr "Cronologia"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:25
+msgid "Created by you"
+msgstr "Creati da te"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:33
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:31
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/detail.html:32
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:16
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:16
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:18
+msgid "Products"
+msgstr "Prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:38
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:26
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list_purchasable.html:21
+msgid "Purchase"
+msgstr "Acquista"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:43
+msgid "Manage"
+msgstr "Gestione"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/app_navbar.html:51
+msgid "Producers"
+msgstr "Produttore"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/create.html:5
+msgid "New event"
+msgstr "Nuovo evento"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/create.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/update.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/create.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/update.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/create.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/update.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/create.html:17
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:45
+msgid "Save"
+msgstr "Salva"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:5
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/detail.html:5
+msgid "Event details"
+msgstr "Dettagli evento"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:11
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/detail.html:12
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:11
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:11
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:13
+msgid "Title"
+msgstr "Titolo"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/detail.html:16
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:12
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:12
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:14
+msgid "Organizer"
+msgstr "Organizzatore"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:19
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/detail.html:20
+msgid "Start datetime"
+msgstr "Data ed ora di inizio"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:23
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/detail.html:24
+msgid "End datetime"
+msgstr "Data ed ora di fine"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:27
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/detail.html:28
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:17
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/delete.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list.html:14
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list_purchasable.html:12
+msgid "Description"
+msgstr "Descrizione"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:38
+msgid "Are you sure you want to remove this event?"
+msgstr "Sei sicuro di voler rimuovere questo prodotto?"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:43
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:35
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/delete.html:31
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/delete.html:31
+msgid "Confirm"
+msgstr "Conferma"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/delete.html:44
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:36
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/delete.html:32
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/delete.html:32
+msgid "Cancel"
+msgstr "Annulla"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:5
+msgid "Past events"
+msgstr "Eventi passati"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:15
+msgid "Start date"
+msgstr "Data inizio"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:14
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:14
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:16
+msgid "End date"
+msgstr "Data fine"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_past_by_all.html:27
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:27
+msgid "Details"
+msgstr "Dettagli"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_all.html:5
+msgid "Future events"
+msgstr "Eventi futuri"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:5
+msgid "Manage future events (created by You)"
+msgstr "Gestione eventi futuri (creati da Te)"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:10
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:10
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list.html:10
+msgid "New"
+msgstr "Nuovo"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:30
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:27
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list.html:25
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:32
+msgid "Edit"
+msgstr "Modifica"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/list_upcoming_by_self.html:31
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:30
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list.html:29
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:38
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/event/update.html:5
+msgid "Edit event"
+msgstr "Modifica evento"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/home.html:7
+msgid "Welcome to Taste & Purchase"
+msgstr "Benvenuto in Degusta & Acquista"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/home.html:9
+msgid ""
+"Help team members to organize food tasting and eventual group purchase of "
+"propoused products. Each team member can insert a productor and a product in "
+"the list, and create an event that will send a participiation invite to any "
+"team member."
+msgstr ""
+"Aiuta i membri del team a organizzare degustazioni di cibo e l'eventuale "
+"acquisto di gruppo dei prodotti proposti. Ogni membro del team può inserire "
+"un produttore e un prodotto nell'elenco e creare un evento che invierà un "
+"invito alla partecipazione a qualsiasi membro del team"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:5
+msgid "New order"
+msgstr "Nuovo ordine"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:11
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:11
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:11
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/delete.html:11
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list.html:13
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list_purchasable.html:11
+msgid "Name"
+msgstr "Nome"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-order/create.html:19
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:17
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/delete.html:19
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list_purchasable.html:13
+msgid "Producer"
+msgstr "Produttore"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:5
+msgid "Send cumulative order to producer"
+msgstr "Invia ordine cumulativo al produttore"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:10
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:13
+msgid "Orders"
+msgstr "Ordini"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:18
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/delete.html:11
+msgid "Product"
+msgstr "Prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:19
+msgid "Customer email"
+msgstr "Email cliente"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:20
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/delete.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:21
+msgid "Amount"
+msgstr "Quantità"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:21
+msgid "EUR (cents)"
+msgstr "EURO (cents)"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:41
+msgid "Delivery address"
+msgstr "Indirizzo di spedizione"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer-order/create.html:44
+msgid "Send"
+msgstr "Invia"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/create.html:5
+msgid "New producer"
+msgstr "Nuovo produttore"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:5
+msgid "Remove producer"
+msgstr "Rimuovi produttore"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:14
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:12
+msgid "Email"
+msgstr ""
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:19
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:15
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:13
+msgid "Phone number"
+msgstr "Telefono"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:23
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:16
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:14
+msgid "Postal address"
+msgstr "Indirizzo postale"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/delete.html:30
+msgid "Are you sure you want to remove this producer?"
+msgstr "Sei sicuro di voler rimuovere questo produttore?"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list.html:5
+msgid "Manage producers"
+msgstr "Gestione produttori"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:5
+msgid "Manage pending orders"
+msgstr "Gestione ordini in attesa"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/list_purchasable.html:24
+msgid "Show pending orders"
+msgstr "Mostra ordini in attesa"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-producer/update.html:5
+msgid "Edit producer"
+msgstr "Modifica produttore"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/create.html:5
+msgid "New product purchase option"
+msgstr "Nuova opzione acquisto prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/delete.html:5
+msgid "Remove product purchase option"
+msgstr "Rimuovi opzione acquisto prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/delete.html:19
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:22
+msgid "Price EUR (cents)"
+msgstr "Prezzo EURO (cents)"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/delete.html:26
+msgid "Are you sure you want to remove this product purchase option?"
+msgstr "Sei sicuro di voler rimuovere questa opzione di acquisto prodotto?"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product-purchase-option/update.html:5
+msgid "Edit product purchase option"
+msgstr "Modifica opzione di acquisto prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/create.html:5
+msgid "New product"
+msgstr "Nuovo prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/create.html:14
+msgid "Purchase option"
+msgstr "Opzione di acquisto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/delete.html:5
+msgid "Remove product"
+msgstr "Rimuovi prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/delete.html:26
+msgid "Are you sure you want to remove this product?"
+msgstr "Sei sicuro di voler rimuovere questo prodotto?"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list.html:5
+msgid "Manage products"
+msgstr "Gestione prodotti"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/list_purchasable.html:5
+msgid "Purchase product"
+msgstr "Acquista prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:5
+msgid "Edit product"
+msgstr "Modifica prodotto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:15
+msgid "Purchase options"
+msgstr "Opzioni di acquisto"
+
+#: teambuilding/tastepurchase/templates/teambuilding/taste-purchase/product/update.html:17
+msgid "New purchase option"
+msgstr "Nuova opzione di acquisto"

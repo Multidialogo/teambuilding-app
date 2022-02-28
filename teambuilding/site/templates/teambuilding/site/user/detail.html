@@ -1,0 +1,23 @@
+{% extends "teambuilding/site/page_simple.html" %}
+{% load i18n %}
+
+{% block page_header %}
+    {% translate "User profile" %}
+{% endblock %}
+
+{% block page_content %}
+    <div>
+        <table class="table table-borderless">
+            <tr>
+                <td><strong>{% translate "Nickname" %}</strong></td>
+                <td>{{ user_profile.account.nickname|escape }}</td>
+            </tr>
+            <tr>
+                <td><strong>{% translate "Email" %}</strong></td>
+                <td>{{ user_profile.account.email|escape }}</td>
+            </tr>
+        </table>
+        <hr>
+        <a class="btn btn-outline-primary" href="{% url 'user-profile-update' %}">{% translate "Edit" %}</a>
+    </div>
+{% endblock %}

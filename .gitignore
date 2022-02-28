@@ -1,6 +1,10 @@
 **/__pycache__
-static
+**/django.mo
+
+static/*
+
 .idea
 .venv
 .vscode
+
 db.sqlite3
