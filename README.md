@@ -9,7 +9,7 @@
 * [Contributing](#contributing)
 
 ## Overview
-![tasting-screen](https://user-images.githubusercontent.com/89306118/153568896-7e4d30ee-a61e-42b4-9cd7-d23d9a22d227.png)
+![teambuilding-screen](docs/assets/img/teambuilding-screen.png)
 
 Teambuilding app is a platform thought to help working groups to create stronger relationships among members by means of various engaging and fun activities to do together.
 
@@ -17,7 +17,7 @@ Each activity can be managed and organized by the team, and an efficient notific
 
 ### Supported activities
 #### Taste and purchase
-![teambuilding-screen](https://user-images.githubusercontent.com/89306118/153568893-c0af1cc6-4187-448b-a89f-5311a947e370.png)
+![tasting-screen](docs/assets/img/tasting-screen.png)
 
 Help team members to organize food tasting and eventual group purchase of propoused products.
 Each team member can insert a producer and a product in the list, and create an event that will send a participiation invite to any team member.
